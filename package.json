@@ -27,6 +27,7 @@
     "node-schedule": "^0.6.0",
     "node-uuid": "^1.4.7",
     "passport": "^0.3.2",
+    "passport-facebook": "^2.0.0",
     "passport-local": "^1.0.0",
     "sequelize": "^3.14.2",
     "serve-favicon": "~2.1.3"

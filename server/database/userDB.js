@@ -3,46 +3,47 @@
  */
 
 
-var User = require('../model/User');
+var User = require('../orm/User');
 
 var crypto = require('crypto');
 
 exports.registerUser = function(formUser,callback){
 
-    User.findOne({email: formUser.email}, function(err, user){
-        if(err){
+    User.findOne({where:{email: formUser.email}})
+        .then(function(user){
+            if(user == null){
+                var salt, hash;
+                salt = createSalt();
+                hash = hashPwd(salt, formUser.password);
+
+                User.create({
+                    firstName:formUser.firstName,
+                    lastName: formUser.lastName,
+                    email:formUser.email,
+                    username:formUser.username,
+                    password:hash,
+                    salt: salt
+                }).then(function(data){
+
+                    callback(null,data);
+                },function(err){
+                    callback(err);
+                    return;
+                })
+
+            }else{
+                callback(null,{errorCode:"102",errorMessage:"You already have account created with this email."});
+            }
+
+        },function(err){
             console.log("Database error in loginUser: " + err);
             callback(err);
             return;
-        }
+        });
 
-        if(user == null){
-            var salt, hash;
-            salt = createSalt();
-            hash = hashPwd(salt, formUser.password);
 
-            var newUser = new User({
-                firstName:formUser.firstName,
-                lastName: formUser.lastName,
-                email:formUser.email,
-                password:hash,
-                salt: salt,
-                facebookId: formUser.facebookId
-            });
-            newUser.save(function(err){
-                if(err){
-                    console.log("Database error in loginUser: " + err);
-                    callback(err);
-                    return;
-                }
-                callback(null,{id: newUser._id,firstName: newUser.firstName, lastName: newUser.lastName,email:newUser.email });
-            });
-
-        }else{
-            callback(null,{errorCode:"102",errorMessage:"You already have account created with this email."});
-        }
-    })
 }
+
 
 /*
 exports.loginUser = function(user,callback){
@@ -224,11 +225,11 @@ exports.addresses = function(uuid,callback){
 }
 */
 
-function createSalt() {
+var createSalt = function() {
     return crypto.randomBytes(128).toString('base64');
 }
 
-function hashPwd(salt, pwd) {
+var hashPwd = function(salt, pwd) {
     var hmac = crypto.createHmac('sha1', salt);
     return hmac.update(pwd).digest('hex');
 }

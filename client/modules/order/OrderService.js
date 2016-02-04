@@ -151,7 +151,7 @@ appModule.factory('OrderService', ["$rootScope","$http","$q","$log", function($r
 
             var uuid = $rootScope.state.user ? $rootScope.state.user.uuid:undefined;
 
-            $http.get($rootScope.apiContext + "/api/user/addresses/"+uuid)
+            $http.get($rootScope.apiContext + "/api/user/addresses")
                 .success(function (data){
 
                     deferred.resolve(data);

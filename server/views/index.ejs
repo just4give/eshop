@@ -21,14 +21,10 @@
   </head>
   <body>
 
-    <div class="text-center">
-      <div class="spinner" ng-hide="hideAppSpinner"></div>
-    </div>
 
-    <div  ng-show="appLoaded">
-    <header class="top-header" style="display: none">
+    <header class="top-header" >
 
-      <div class="row" style="margin-left: 5px; margin-right: 5px" ng-controller="loginController"  ng-init="$parent.apiContext='<%= apiContext %>'">
+      <div class="row" style="margin-left: 5px; margin-right: 5px" ng-controller="loginController"  >
 
 
         <div class="col-sm-3 col-xs-4">
@@ -51,7 +47,7 @@
           <button class="btn btn-opp-primary " ng-click="openLoginPopup()" ng-hide="loggedIn"><i class="fa fa-sign-in"></i> Login</button>
 
           <div class="btn-group user-menu" ng-show="loggedIn">
-            <button type="button" class="btn btn-opp-primary" ng-cloak>{{state.user.firstName}} {{state.user.lastName}} </button>
+            <button type="button" class="btn btn-opp-primary" ng-cloak>{{state.user.firstName}}  </button>
             <button type="button" class="btn btn-opp-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="caret"></span>
               <span class="sr-only">Toggle Dropdown</span>
@@ -71,44 +67,10 @@
       </div>
 
     </header>
-    <nav class="navbar navbar-inverse navbar-opp" role="navigation" style="display: none">
-      <div class="visible-xs">
-        <div class="input-group search-container " >
-          <input type="text" class="form-control" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-              </span>
-        </div><!-- /input-group -->
-      </div>
-      <div class="navbar-header">
 
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top-menu">
-          <!-- <span class="glyphicon glyphicon-align-justify"> -->
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-
-
-
-      <div class="collapse navbar-collapse" id="navbar-top-menu">
-
-        <ul class="nav navbar-nav">
-
-          <li><a ui-sref="/">Home</a></li>
-          <li><a ui-sref="pricing">Sale</a></li>
-          <li><a ui-sref="upload">Trends</a></li>
-          <li><a ui-sref="who">Who We Are</a></li>
-          <li><a ui-sref="contact">Contact US</a></li>
-        </ul>
-
-      </div>
-    </nav>
     <toaster-container></toaster-container>
-    <div ui-view class="page-view"></div>
-    </div>
+    <div ui-view class="page-view"  ></div>
+
   </body>
   <script src="vendor/jquery/dist/jquery.min.js"></script>
   <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -129,6 +91,9 @@
   <script src="vendor/angular-facebook/lib/angular-facebook.js"></script>
   <script src="vendor/angular-inview/angular-inview.js"></script>
   <script src="vendor/angularjs-toaster/toaster.min.js"></script>
+  <script src="vendor/headroom.js/dist/headroom.min.js"></script>
+  <script src="vendor/headroom.js/dist/angular.headroom.min.js"></script>
+  <script src="vendor/wow/dist/wow.min.js"></script>
 
   <script src="modules/app/AppModule.js"></script>
   <script src="modules/common/HTTPInterceptor.js"></script>

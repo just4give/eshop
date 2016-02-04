@@ -4,7 +4,7 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider",functio
     
     $stateProvider
       .state('/', {
-         url: '/',
+         url: '/?callback',
          templateUrl: 'modules/app/tmpl/home.html',
          controller: "HomeController"
      }).state('details', {

@@ -4,6 +4,8 @@
 var express = require('express');
 var router = express.Router();
 var userDB = require('../database/userDB');
+var auth = require('../config/auth');
+var passport = require('passport');
 
 /* GET users listing. */
 router.get('/profile', function(req, res) {
@@ -24,99 +26,21 @@ router.post('/register', function(req,res,next){
 
 });
 
-router.post('/fb/register', function(req,res,next){
-    console.log(req.body);
 
-    userDB.registerUser(req.body, function(err,data){
-        if(err){
-            return next(err);
-        }
-        res.json(data);
+router.post('/login', auth.authenticate);
 
-    });
-
-
-});
-router.post('/login', function(req,res,next){
-
-    userDB.loginUser(req.body, function(err,data){
-        if(err){
-            return next(err);
-        }
-
-        if(data == null){
-            res.json({errorCode:"101",errorMessage:"Login failed."})
-        }else{
-            res.json(data);
-        }
-
-
-    });
-
-
-});
-
-router.post('/fb/login', function(req,res,next){
-
-    userDB.loginFBUser(req.body, function(err,data){
-        if(err){
-            return next(err);
-        }
-
-        if(data == null){
-            res.json({errorCode:"101",errorMessage:"Login failed."})
-        }else{
-            res.json(data);
-        }
-
-
-    });
-
-
-});
-
-router.get('/address/:uuid', function(req, res,next) {
-    console.log('*** getting default address**');
-    userDB.findDefaultAddress(req.params.uuid, function(err,data){
-        if(err){
-            return next(err);
-        }
-        res.json(data);
-    });
-
+router.get('/loggedin',function(req,res,next){
+    console.log('callling loggedIn');
+    if(!req.isAuthenticated()) {
+        res.send({success:false});
+    } else {
+        res.send({success:true, user: req.user});
+    }
 });
 
 
-router.get('/address/:uuid/:addressId', function(req, res,next) {
-
-    userDB.findAddressById(req.params.uuid,req.params.addressId, function(err,data){
-        if(err){
-            return next(err);
-        }
-        res.json(data);
-    });
-
-});
-
-router.post('/address/:uuid', function(req, res,next) {
-
-    userDB.createAddress(req.params.uuid, req.body, function(err,data){
-        if(err){
-            return next(err);
-        }
-        res.json(data);
-    });
-
-});
-
-router.get('/addresses/:uuid', function(req, res,next) {
-
-    userDB.addresses(req.params.uuid, function(err,data){
-        if(err){
-            return next(err);
-        }
-        res.json(data);
-    });
-
+router.post('/logout', function(req, res) {
+    req.logout();
+    res.end();
 });
 module.exports = router;

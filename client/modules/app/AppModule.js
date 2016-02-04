@@ -2,7 +2,7 @@
  * Created by mithundas on 12/3/15.
  */
 var appModule = angular.module("photoOrder",['ui.router','ui.bootstrap','ngAnimate', 'ngTouch','mgcrea.ngStrap','angular-confirm',
-    'LocalStorageModule','ngFileUpload','facebook','angular-inview','toaster']);
+    'LocalStorageModule','ngFileUpload','facebook','toaster','headroom']);
 
 appModule.config(function (localStorageServiceProvider) {
     localStorageServiceProvider
@@ -12,11 +12,20 @@ appModule.config(function (localStorageServiceProvider) {
     console.log('storage config...');
 });
 
-appModule.run(["$interval","localStorageService", function($interval,localStorageService){
+appModule.run(["$interval","localStorageService","$rootScope", function($interval,localStorageService,$rootScope){
     console.log('angular run...');
-    $interval(function(){
-        localStorageService.remove("cart");
-    },1000*60*10);
+    $rootScope.$on('$routeChangeError', function(evt, current, previous, rejection) {
+        if(rejection === 'not authorized') {
+            //Show toast
+        }
+    })
+//create a new instance
+    new WOW().init();
+
+    $rootScope.$on('$routeChangeStart', function (next, current) {
+        //when the view changes sync wow
+        new WOW().sync();
+    });
 
 }]);
 
@@ -47,3 +56,13 @@ appModule
             animation: 'am-flip-x'
         });
     });
+
+/*
+authorizeCurrentUserForRoute: function(role) {
+    if(mvIdentity.isAuthorized(role)) {
+        return true;
+    } else {
+        return $q.reject('not authorized');
+    }
+
+}*/

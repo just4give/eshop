@@ -34,7 +34,7 @@ body{
   margin-left: 10px;
   &:hover{
     cursor: pointer;
-    color: black;
+    color: $menu-background-color;;
   }
 
   .link{

@@ -67,6 +67,9 @@ appModule.controller("searchController",["$scope","$rootScope","$log","$interval
         var modal = $modal({scope: $scope, templateUrl: 'modules/search/tmpl/modal/product-quickview-modal.html', show: true});
     }
 
+
+    $rootScope.cartProducts = $scope.products;
+
     $scope.addToCart = function(){
 
         toaster.pop({

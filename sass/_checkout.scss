@@ -15,7 +15,7 @@
     font-size: medium;
   }
   .link{
-    color: $menu-background-color;
+    //color: $menu-background-color;
     font-weight: bold;
     &:hover{
       cursor: pointer;
@@ -59,6 +59,7 @@
 .panel-payment{
   border-color: black;
   min-height: 215px;
+  box-shadow: 5px 1px 1px #ccc8c8;
   .panel-heading{
     color: white;
     background-color: black;
@@ -94,10 +95,13 @@
 }
 .panel-address{
   @extend .panel-payment;
-  border-style: dashed;
+  border-style: none;
+  border-radius: 0px;
+  box-shadow: none;
   .panel-heading{
     background-color: #DADADA;
     border: 0px;
+    border-radius: 0px;
     button{
       padding: 0px;
       padding-left: 5px;

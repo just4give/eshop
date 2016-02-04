@@ -6,16 +6,15 @@ var rootPath = path.normalize(__dirname + '/../../');
 
 module.exports = {
     development: {
-        db: 'mongodb://localhost:27017/onlinestore',
+
         rootPath: rootPath,
         port: process.env.PORT || 3000,
         host     : "localhost",
         user     : "root",
         password : "root",
-        database : "photos",
-        connectionLimit: 50,
-        apiContext:"http://localhost:3000",
-        imageRepo:"/Users/mithundas/Project_Workspace"
+        database : "eshop",
+        connectionLimit: 50
+
     },
     production: {
         rootPath: rootPath,
@@ -25,8 +24,7 @@ module.exports = {
         user     : "root",
         password : "root",
         database : "photos",
-        connectionLimit: 50,
-        apiContext:"http://localhost:3000",
-        imageRepo:"/Users/mithundas/Project_Workspace"
+        connectionLimit: 50
+
     }
 }

@@ -1,10 +1,13 @@
 /**
  * Created by Mithun.Das on 12/4/2015.
  */
-appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "$interval","$timeout","$state","UserService","localStorageService","OrderService","Facebook",
-    function($scope,$rootScope,$log,$modal,$interval,$timeout,$state,UserService,localStorageService,OrderService,Facebook){
+appModule.controller("loginController",["$window","$scope","$rootScope","$log","$modal", "$interval","$timeout","$state","UserService","localStorageService","OrderService","Facebook",
+    function($window,$scope,$rootScope,$log,$modal,$interval,$timeout,$state,UserService,localStorageService,OrderService,Facebook){
 
     $log.debug('initializing login controller');
+    $log.debug($rootScope.bootstrappedUser);
+
+    $rootScope.apiContext="";
     $scope.signupprogress = false;
 
     $scope.loginform ={};
@@ -29,14 +32,30 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
         $rootScope.cartImages = localStorageService.get("cart");
     }
     //check if user cookie is available, if yes, log user in
-       var userCookie =  localStorageService.cookie.get("app-user");
+      /* var userCookie =  localStorageService.cookie.get("app-user");
         if(userCookie && userCookie.uuid){
             $log.debug('user cookie found');
             $log.debug(userCookie);
             $rootScope.state = $rootScope.state || {};
             $rootScope.state.user = userCookie;
             $rootScope.loggedIn = true;
-        }
+        }*/
+     UserService.loggedIn().
+         then(function(data){
+         if(data.success){
+             $rootScope.state = $rootScope.state || {};
+             $rootScope.state.user = data.user;
+             $rootScope.loggedIn = true;
+         }else{
+             $rootScope.loggedIn = false;
+             if($rootScope.state){
+                 $rootScope.state.user = undefined;
+             }
+
+         }
+     },function(err){
+         $rootScope.$broadcast('api_error',err);
+     })
 
     $scope.openLoginPopup = function(){
         $log.debug('opening login modal');
@@ -49,7 +68,7 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
 
         $log.debug($scope.loginform );
 
-        if(!$scope.loginform.email || !$scope.loginform.password ){
+        if(!$scope.loginform.username || !$scope.loginform.password ){
             $scope.showLoginErr = 'Please provide email and password.';
             $scope.signupprogress = false;
             return;
@@ -57,17 +76,18 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
 
         UserService.login($scope.loginform).then(function(data){
             $scope.signupprogress = false;
+            $log.debug('login response');
             $log.debug(data);
 
-            if(data.errorCode){
-                $scope.showLoginErr = data.errorMessage;
+            if(!data.success){
+                $scope.showLoginErr = "Login failed";
             }else{
                 if(!$rootScope.state){
                     $rootScope.state ={};
                 }
-                $rootScope.state.user = data;
+                $rootScope.state.user = data.user;
                 $rootScope.loggedIn = true;
-                $scope.setUserCookie(data);
+                $scope.setUserCookie(data.user);
 
                 if(modal){
                     modal.hide();
@@ -121,12 +141,18 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
     }
 
     $scope.logout = function(){
-        $rootScope.loggedIn = false;
-        $rootScope.state.user=undefined;
-        $rootScope.cartImages=[];
-        localStorageService.remove("cart");
-        localStorageService.cookie.remove("app-user");
-        $state.go('/');
+
+        UserService.logout().then(function(data){
+            $rootScope.loggedIn = false;
+            $rootScope.state.user=undefined;
+            $rootScope.cartImages=[];
+            localStorageService.remove("cart");
+            localStorageService.cookie.remove("app-user");
+            $state.go('/');
+        },function(err){
+
+        });
+
     }
     $scope.setUserCookie=function(data){
         localStorageService.cookie.set("app-user",data,1);
@@ -255,21 +281,32 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
 
         }
         $scope.fbLogin = function() {
+            //alert('fb login called' + $state.current.name);
+            localStorageService.cookie.set("ui-state",$state.current.name,1);
 
+            $window.location.href='http://localhost:3000/api/user/login/facebook';
+            /*UserService.fbLogin().then(function(data) {
+                $scope.signupprogress = false;
+                $log.debug(data);
+            },function(err){
 
-            if(!$rootScope.fbLoggedIn){
-                Facebook.login(function(response) {
-                    $log.debug(response);
-                    if (response.status == 'connected') {
-                        $rootScope.fbLoggedIn = true;
-                        $scope.me($scope.fbLoginApp);
+            });*/
+           // fnFBLogin();
+           /* var url='https://www.facebook.com/dialog/oauth?client_id=341307939406976&redirect_uri=http://localhost:3000/api/user/login/facebook/callback';
 
-                    }
+            var fbLoginWindow = $window.open(url,'_blank', 'location=no,toolbar=yes,height=400,width=800');
 
-                });
-            }else{
-                $scope.fbLoginApp();
+            /!*window.fbLoginWindow.addEventListener('loadstart',function(event){
+                console.log('load');
+            });*!/
+
+            fbLoginWindow.onload = function(){
+                $log.debug('+++++ on load');
             }
+
+            fbLoginWindow.onbeforeunload =function(){
+                $log.debug('+++++ on close');
+            }*/
 
         };
 
@@ -292,7 +329,7 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
                 facebookId: $rootScope.fbUser.id
             };
 
-            UserService.fbLogin(fbUser).then(function(data){
+/*            UserService.fbLogin(fbUser).then(function(data){
                 $scope.signupprogress = false;
                 $log.debug(data);
 
@@ -332,7 +369,7 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
             },function(err){
                 $scope.signupprogress = false;
                 $rootScope.$broadcast('api_error',err);
-            });
+            });*/
         }
 
         $scope.me = function(callback) {
@@ -359,3 +396,28 @@ appModule.controller("loginController",["$scope","$rootScope","$log","$modal", "
             });
         }*/
 }]);
+
+
+var fnFBLogin = function(){
+    //var url='https://www.facebook.com/dialog/oauth?client_id=341307939406976&redirect_uri=http://localhost:3000/api/user/login/facebook/callback';
+    var url='http://localhost:3000/api/user/login/facebook'
+    //var url = 'http://localhost:3000';
+    window.fbLoginWindow = window.open(url,'_blank', 'location=no,height=400,width=800');
+
+    window.fbLoginWindow.addEventListener('loadstart',function(event){
+        console.log('load');
+    });
+    window.fbLoginWindow.addEventListener('exit',function(){
+        console.log('exit');
+    });
+    window.fbLoginWindow.onload =function(){
+        console.log('on load');
+        window.fbLoginWindow.onbeforeunload = function(){
+            //doc.location.reload(true); //will refresh page after popup close
+            console.log('before close');
+        }
+    };
+    window.fbLoginWindow.close = function(){
+        console.log('on close');
+    };
+};
