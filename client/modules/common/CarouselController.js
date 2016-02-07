@@ -73,7 +73,7 @@ appModule.animation('.slide-animation', ["$log",function ($log) {
 }]);
 
 appModule.controller('CarouselDemoCtrl', function ($scope) {
-    $scope.myInterval = 5000;
+    $scope.myInterval = 10000;
     $scope.noWrapSlides = false;
     var slides = $scope.slides = [ {image:'images/img000.png', text:"Stealing Deals on HD TVs. ",
         text2:"Everyday is christmas. Find your perfect TV today.",

@@ -1,8 +1,23 @@
 <div class="row product-details">
     <div class="col-xs-12 col-sm-6">
-        <div class="product-image">
-            <img ng-src="{{product.url}}">
-        </div>
+
+            <!--<img ng-src="{{product.url}}">-->
+
+            <div class="row" >
+                <div class="product-carousel-box" style="border-right: 1px double gray">
+                    <h1 class="text-center" >{{product.name}}</h1>
+                    <uib-carousel interval="myInterval" no-wrap="true">
+                        <uib-slide ng-repeat="slide in slides" active="slide.active" class="row">
+
+
+                            <div class="col-xs-12">
+                                <img ng-src="{{slide.image}}" class="img-responsive">
+                            </div>
+                        </uib-slide>
+                    </uib-carousel>
+                </div>
+
+            </div>
     </div>
     <div class="col-xs-12 col-sm-6 product-detail-box">
         <div class="">
@@ -19,15 +34,14 @@
                 </uib-tab>
 
             </uib-tabset>
-            <div class="col-xs-12 input-group" style="margin-top: 10px">
-                <label class="col-xs-6">Quantity</label>
-                <div class="col-xs-6"><select class="form-control" ng-model="product.quantity" ng-options="n for n in quantities"></select></div>
-            </div>
             <div class="col-xs-12 " style="margin-top: 10px">
-                <button class="btn btn-opp-secondary pull-right" ng-click="addToCart()">Add to cart</button>
+                <label class="col-xs-4">Quantity</label>
+                <div class="col-xs-4"><select class="form-control" ng-model="product.quantity" ng-options="n for n in quantities"></select></div>
+                <button class="col-xs-4 btn btn-opp-secondary" ng-click="addToCart()"><i class="fa fa-shopping-bag"></i> Add to cart</button>
             </div>
+
             <div class="col-xs-12 " style="margin-top: 10px">
-                <button class="btn btn-opp-primary pull-right" ng-click="$hide()">Continue Shopping</button>
+                <button class="btn btn-default pull-right" ng-click="$hide()">Continue Shopping</button>
             </div>
 
         </div>

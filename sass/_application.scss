@@ -4,6 +4,7 @@ body{
   //background-color: $background-color;
   //color: #CCCCCC;
   color: black;
+  padding-top: 80px;
 }
 
 .navbar-opp{
@@ -26,8 +27,11 @@ body{
   font-size: x-large;
 }
 .top-header{
-  min-height: 60px;
+  height: 80px;
+  background-color: rgba(0,0,0,0.9);
   padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .cart{
   color: $menu-background-color;
@@ -417,5 +421,33 @@ body{
     color: black;
     font-size: large;
     padding: 10px;
+  }
+}
+
+.category-box{
+
+  height: 250px;
+  //background: url("../images/img000.png") no-repeat center ;
+  background-size: contain;
+  background-color: rgba(0,0,0,.8);
+  border: 5px solid black;
+  border-left: 0px;
+  img{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    max-height: 250px;
+    opacity: .5;
+  }
+  p{
+    color: white;
+    font-size: x-large;
+    text-align: center;
+    padding-top: 30px;
+    position: relative;
+  }
+  button{
+    position: relative;
   }
 }

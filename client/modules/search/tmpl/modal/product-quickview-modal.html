@@ -12,15 +12,15 @@
                         <div class="product-image">
                             <img ng-src="{{selectedProduct.url}}">
                         </div>
+
                     </div>
                     <div class="col-xs-12 col-sm-6 product-detail-box">
                         <div class="">
-                            <div class="col-xs-12 reg-price">
-                                <span><strong>Reg price</strong></span><span><strike> $200</strike></span>
+                            <div class="col-xs-12 ">
+                                <span class="reg-price"><strike> <strong>Reg price</strong></span><span>$200</strike></span>
+                                <span class="sale-price"><strong>Sale price</strong></span><span> $150</span>
                             </div>
-                            <div class="col-xs-12 sale-price">
-                                <span><strong>Sale price</strong></span><span> $150</span>
-                            </div>
+
                             <uib-tabset>
 
                                 <uib-tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" >
@@ -33,10 +33,11 @@
                                 <div class="col-xs-6"><select class="form-control" ng-model="selectedProduct.quantity" ng-options="n for n in quantities"></select></div>
                             </div>
                             <div class="col-xs-12 " style="margin-top: 10px">
-                                <button class="btn btn-opp-secondary pull-right" ng-click="addToCart()">Add to cart</button>
+                                <button class="btn btn-opp-secondary " ng-click="addToCart()"><i class="fa fa-shopping-bag"></i> Add to cart</button>
+                                <button class="btn btn-default pull-right" ng-click="$hide()">Continue Shopping</button>
                             </div>
                             <div class="col-xs-12 " style="margin-top: 10px">
-                                <button class="btn btn-opp-primary pull-right" ng-click="$hide()">Continue Shopping</button>
+
                             </div>
 
                         </div>

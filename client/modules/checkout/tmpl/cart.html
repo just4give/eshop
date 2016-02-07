@@ -1,0 +1,174 @@
+<div class="container margin-top-10">
+    <!--<div class="row">
+        <div class="alert alert-danger" ng-hide="$parent.loggedIn">
+            <strong>Please login to place your order</strong>
+        </div>
+    </div>-->
+
+<!--
+    <div class="row shipping-info" ng-show="$parent.loggedIn">
+        <div class="col-sm-6 col-xs-12 ">
+            <h1>Shipping Information</h1>
+
+            <div class="address-box" ng-show="shippingAddress">
+
+                <h5>{{shippingAddress.firstName}} {{shippingAddress.lastName}}</h5>
+                <h5>{{shippingAddress.address}}</h5>
+                <h5>{{shippingAddress.zip}} {{shippingAddress.city}}</h5>
+            </div>
+            <a class="link" ng-show="shippingAddress" ng-click="openAddressPopup()">Change</a>
+            <a class="link" ng-hide="shippingAddress" ng-click="openAddressPopup('add')"><i class="fa fa-plus"></i> Shipping Address</a>
+        </div>
+
+        &lt;!&ndash;<div class="col-lg-3 col-sm-6 col-xs-12 pull-right" >
+            <h1>Shipping Method</h1>
+            <select class="form-control" ng-options='option as (option.label+" - "+option.price + " RSD" )  for option in shippingMethods'
+                    ng-model="order.shippingMethod" ng-change="updateShippingMethod()"></select>
+            <h5>{{order.shippingMethod.summary}}</h5>
+        </div>&ndash;&gt;
+
+    </div>-->
+
+
+    <div class="row shipping-items">
+        <div class="col-xs-12 col-sm-12" style="padding-left: 0px;padding-right: 0px">
+            <h1>Your items</h1>
+            <table class="table">
+                <!--<thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+
+                </tr>
+                </thead>-->
+                <tbody>
+                <tr ng-repeat="product in cart">
+                    <td class="col-xs-5">
+
+                        <div class="col-sm-4 col-xs-12">
+                            <img ng-src="{{product.url}}">
+                        </div>
+                        <div class="col-sm-8 col-xs-12 text-center">
+                            {{product.name}}
+                        </div>
+
+                    </td>
+                    <td class="col-xs-3 ">
+                        <i class="link fa fa-minus-circle"></i> 2x <i class="fa fa-plus-circle"></i></td>
+                    <td class="col-xs-2 ">$150</td>
+                    <td class="col-xs-2"><i class="text-danger fa fa-trash"></i></td>
+
+                </tr>
+
+                </tbody>
+            </table>
+
+
+            <div class="col-xs-12 col-sm-6">
+                <div class="panel panel-primary panel-address">
+                    <div class="panel-heading">Billing Address
+                        <button type="button" class="pull-right btn btn-opp-secondary" ng-click="">Copy Shipping Address</button>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="heading col-xs-12">Full Address</div>
+                            <div class="text-box col-xs-12">
+                                <input type="text" class="col-xs-12" placeholder="Address line 1">
+                                <input type="text" class="col-xs-12" style="margin-top: 3px" placeholder="Address line 2">
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top:10px">
+                            <div class="col-xs-4" style="padding-left: 0px">
+                                <div class="heading col-xs-12">City</div>
+                                <div class="text-box col-xs-12">
+                                    <input type="text"  class="col-xs-12" placeholder="city">
+
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="heading col-xs-12">State</div>
+                                <div class="text-box col-xs-12">
+                                    <input type="text"  class="col-xs-12" placeholder="state">
+
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="heading col-xs-12">Zip</div>
+                                <div class="text-box col-xs-12">
+                                    <input type="text" class="col-xs-12" placeholder="zip">
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+        <!--<div class="col-sm-3 col-xs-12 price-summary">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h3>{{cartImages.length}} products(s)</h3>
+                </div>
+                <div class="col-xs-6">
+                    <h5>{{getTotalProductPrice()}} RSD</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <h3>Shipping & handling</h3>
+                </div>
+                <div class="col-xs-6">
+                    <h5 ng-show="shippingCost == 0">FREE</h5>
+                    <h5 ng-show="shippingCost > 0">{{shippingCost}} RSD</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 text-success">
+                    <h3>Total savings</h3>
+                </div>
+                <div class="col-xs-6 text-success">
+                    <h5>{{savings}} RSD</h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <h3><strong>Total</strong></h3>
+                </div>
+                <div class="col-xs-6 text-success text-x-large">
+                    <span><strong>{{totalProductPrice+shippingCost-savings}} RSD</strong></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 ">
+                    <button class="btn btn-opp-primary btn-block" ng-click="placeOrder()" ng-disabled="!$parent.loggedIn || !order.addressId  || !order.shippingMethod || orderprogress">
+                        <i ng-show="orderprogress" class="fa fa-spinner fa-spin"></i> Place Order</button>
+                    <div class="alert alert-danger" ng-show="!$parent.loggedIn || !order.addressId  || !order.shippingMethod ">Please login, enter shipping address and shipping method to proceed.</div>
+                </div>
+            </div>
+
+
+
+        </div>-->
+
+    </div>
+
+    <div class="row shipping-summary">
+        <div class="col-sm-6 col-xs-12">
+
+        </div>
+
+    </div>
+    <div class="sticky-checkout">
+        <div class="price">$200</div> <button class="btn btn-opp-secondary" ng-click="checkout()"> Checkout </button>
+    </div>
+
+
+</div>

@@ -55,7 +55,7 @@ var user = sequelize.define('user', {
 });
 
 user.sync().then(function(){
-    var salt, hash;
+    /*var salt, hash;
      salt = createSalt();
      hash = hashPwd(salt, 'password');
      return user.create({
@@ -65,7 +65,7 @@ user.sync().then(function(){
      username:'micky@gmail.com',
      password:hash,
      salt: salt
-     });
+     });*/
 });
 
 var hashPwd = function(salt, pwd) {

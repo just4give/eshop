@@ -1,6 +1,6 @@
 .slider {
   //width: 800px;
-  height: 300px;
+  height: 400px;
   overflow: hidden;
   position: relative;
   background: #e6e6e6;
@@ -136,18 +136,22 @@ NAV
 }
 
 .dots .dot a.active {
-  border-color: #FFF;
+  border-color: gray;
   background-color: transparent;
 }
 
 //bootstrap ui carousel
+.carousel{
+  height: 400px;
+  padding-top: 50px;
+}
 .carousel-box{
-  //background: url("../images/bg1.png") no-repeat ;
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-  background-size: cover;
-  height: 300px;
+  background: url("../images/brick.jpg") repeat ;
+
+  //background-size: cover;
+  height: 400px;
+  background-color: rgba(0,0,0,.8);
+
   .text-box{
     h3{
       color: black;
@@ -168,11 +172,11 @@ NAV
   }
 
   .carousel-indicators li{
-    border-color: $menu-background-color;
+    border-color: rgba(185,185,185,0.5);
   }
 
   .carousel-indicators .active{
-    background-color: $menu-background-color;
+    border-color: rgba(185,185,185,0.5);
   }
 }
 

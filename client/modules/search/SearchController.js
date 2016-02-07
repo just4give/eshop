@@ -68,9 +68,11 @@ appModule.controller("searchController",["$scope","$rootScope","$log","$interval
     }
 
 
-    $rootScope.cartProducts = $scope.products;
+    //$rootScope.cartProducts = $scope.products;
 
-    $scope.addToCart = function(){
+    $scope.addToCart = function(index){
+        $rootScope.cart = $rootScope.cart || [];
+        $rootScope.cart.push($scope.products[index]);
 
         toaster.pop({
             type: 'success',

@@ -121,7 +121,7 @@ appModule.controller("loginController",["$window","$scope","$rootScope","$log","
 
     }
     $scope.checkout = function(){
-      $state.go('checkout');
+      $state.go('cart');
     }
 
     $rootScope.retrieveCart = function(){

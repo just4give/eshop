@@ -1,23 +1,18 @@
 <div class="row">
-    <div class="col-sm-3 hidden-xs">
-        <div class="left-ads" ng-controller="adController">
-            <h3 class="title">{{slides[currentIndex].text1}}</h3>
-            <p>{{slides[currentIndex].text2}}</p>
-        </div>
-    </div>
 
-    <div class="col-sm-9 col-xs-12" ng-controller="CarouselDemoCtrl">
+
+    <div class="row" ng-controller="CarouselDemoCtrl">
         <div class="carousel-box">
             <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
                 <uib-slide ng-repeat="slide in slides" active="slide.active" class="row">
 
 
-                    <div class="col-xs-6 text-box">
+                   <!-- <div class="col-xs-6 text-box">
 
                         <h3>{{slide.text}}</h3>
                         <h5>{{slide.text2}}</h5>
                         <button class="btn btn-success">{{slide.link.text}}</button>
-                    </div>
+                    </div>-->
                     <div class="col-xs-6">
                         <img ng-src="{{slide.image}}" class="img-responsive">
                     </div>
@@ -27,6 +22,34 @@
 
     </div>
     <!-- carousel slider -->
+    <div class="row">
+        <div class="col-sm-3 col-xs-6 category-box">
+            <img src="/images/laptop.png">
+            <p>Computer and Laptop</p>
+            <button class="btn btn-opp-primary center-block" >Shop Now</button>
+        </div>
+        <div class="col-sm-3 col-xs-6 category-box">
+            <img src="/images/mobile.png">
+            <p>Tablet and Mobile</p>
+            <button class="btn btn-opp-primary center-block" >Shop Now</button>
+        </div>
+        <div class="col-sm-3 col-xs-6 category-box">
+            <img src="/images/earphone.png">
+            <p>Accessories</p>
+            <button class="btn btn-opp-primary center-block" >Shop Now</button>
+        </div>
+        <div class="col-sm-3 col-xs-6 category-box">
+            <img src="/images/tv.png">
+            <p>TV and Entertainment</p>
+            <button class="btn btn-opp-primary center-block" >Shop Now</button>
+        </div>
+
+ </div>
+
+    <div class="col-xs-12">
+        <h3>Most popular</h3>
+    </div>
+
     <ng-include src="'modules/search/tmpl/search.html'" ng-controller="searchController"></ng-include>
 
 </div>

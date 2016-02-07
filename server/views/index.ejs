@@ -22,28 +22,11 @@
   <body>
 
 
-    <header class="top-header" >
+    <header headroom offset='220' class="navbar-fixed-top top-header" >
 
-      <div class="row" style="margin-left: 5px; margin-right: 5px" ng-controller="loginController"  >
+      <div class="col-xs-12 text-right"  ng-controller="loginController"  >
+          <a ui-sref="/" class="pull-left">HOME</a>
 
-
-        <div class="col-sm-3 col-xs-4">
-          <div class="band-logo">
-            <img src="images/logo.png" />
-          </div>
-
-        </div>
-
-        <div class="col-sm-6 hidden-xs">
-          <div class="input-group search-container">
-            <input type="text" class="form-control" placeholder="Search for...">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-            </span>
-          </div><!-- /input-group -->
-        </div>
-
-        <div class="col-sm-3 col-xs-8 text-right">
           <button class="btn btn-opp-primary " ng-click="openLoginPopup()" ng-hide="loggedIn"><i class="fa fa-sign-in"></i> Login</button>
 
           <div class="btn-group user-menu" ng-show="loggedIn">
@@ -59,10 +42,9 @@
               <li><a href="" class="link" ng-click="logout()">Logout</a></li>
             </ul>
           </div>
-        <a class="link cart" ng-click="checkout()"><i class="fa fa-shopping-cart fa-2x"></i>
-          <span class="badge" ng-cloak="">{{cartImages? cartImages.length:0}} </span>
-        </a>
-        </div>
+          <a class="link cart" ng-click="checkout()"><i class="fa fa-shopping-bag fa-2x"></i>
+            <span class="badge" ng-cloak="">{{cart? cart.length:0}} </span>
+          </a>
 
       </div>
 
@@ -102,6 +84,7 @@
   <script src="modules/common/LoginController.js"></script>
   <script src="modules/app/HomeController.js"></script>
   <script src="modules/upload/UploadController.js"></script>
+  <script src="modules/checkout/CartController.js"></script>
   <script src="modules/checkout/CheckoutController.js"></script>
   <script src="modules/app/ContactController.js"></script>
   <script src="modules/order/MyOrderController.js"></script>

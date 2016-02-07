@@ -15,11 +15,16 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider",functio
         url: '/upload',
         templateUrl: 'modules/upload/tmpl/upload-container.html',
         controller:"UploadController"
+    }).state('cart', {
+            url: '/cart',
+            templateUrl: 'modules/checkout/tmpl/cart.html',
+            controller:"CartController"
     }).state('checkout', {
             url: '/checkout',
             templateUrl: 'modules/checkout/tmpl/checkout.html',
             controller:"CheckoutController"
-    }).state('myorder', {
+    })
+    .state('myorder', {
             url: '/myorder',
             templateUrl: 'modules/order/tmpl/my-order.html',
             controller:"MyOrderController"

@@ -1,4 +1,4 @@
-$menu-background-color: #DCA408;
+$menu-background-color: #b80c08;
 $menu-color: white;
 $menu-background-shade: #F5E1E1;
 $background-color: #E9E9E9;
@@ -23,22 +23,24 @@ $secondary-band-color: green;
 }
 .btn-opp-primary{
   color: white;
-  background-color: $secondary-band-color;
-  border-color: $secondary-band-color;
+  //background-color: $secondary-band-color;
+  //border-color: $secondary-band-color;
+  background-color: transparent;
+  border-color: #ADADAD;
     &:hover{
       color: white;
-    background-color: darkgreen;
+    background-color: $menu-background-color;
   }
   @include no-active-focus;
 
 }
 .btn-opp-secondary{
   color: white;
-  background-color: $menu-background-color;
-  border-color: $menu-background-color;
-  opacity: .8;
+  background-color: rgba(0,0,0,1);
+  border-color: black;
+
   &:hover{
-    color: white;
+    color: $menu-background-color;
     opacity: 1;
   }
   @include no-active-focus;

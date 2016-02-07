@@ -1,0 +1,54 @@
+$product-carousel-height  : 400px;
+
+.product-carousel-box{
+    height: $product-carousel-height;
+
+  h1{
+    font-size: x-large;
+  }
+
+  .text-box{
+    h3{
+      color: black;
+      font-size: xx-large;
+      text-transform: capitalize;
+      @media (max-width: 767px) {
+        font-size: large;
+      }
+    }
+    h5{
+
+      font-size: x-large;
+      text-transform: capitalize;
+      @media (max-width: 767px) {
+        font-size: medium;
+      }
+    }
+  }
+
+  .carousel-indicators li{
+    border-color: rgba(185,185,185,0.5);
+  }
+/*  .carousel-indicators li {
+    background-size : 42px 22px;
+    width : 42px;
+    height: 22px;
+    background-repeat : no-repeat;
+    background-position : center;
+    cursor : pointer;
+  }
+  .carousel-indicators li:nth-child(1){
+    background-image: url(http://cache.wallpaperdownloader.com/bing/img/WeddedRocks_20100418.jpg);
+  }*/
+  .carousel-indicators .active{
+    border-color: $menu-background-color;
+    background-color: $menu-background-color
+  }
+
+  img {
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    padding: 25px;
+  }
+}
