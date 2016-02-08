@@ -1272,7 +1272,8 @@ NAV
     background-color: transparent;
     border-bottom: 2px solid gray;
     font-size: large;
-    position: relative;
+    position: fixed;
+    right: 200px;
     transition: all .5s linear; }
     .product-search-box .product-search-text:focus {
       width: 400px;
@@ -1284,7 +1285,9 @@ NAV
       z-index: 1; }
       @media (max-width: 767px) {
         .product-search-box .product-search-text:focus {
-          width: 100%; } }
+          width: 100%;
+          top: 50px;
+          left: 10px; } }
   .product-search-box .btn-search {
     background-color: transparent;
     border: 0px;

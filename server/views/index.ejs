@@ -26,10 +26,10 @@
 
       <div class="col-xs-12 text-right"  ng-controller="loginController"  >
           <a ui-sref="/" class="pull-left" style="color: rgba(187, 13, 13, 0.58);"><i class="fa fa-shopping-basket fa-3x"></i></a>
-          <div class="product-search-box">
+          <form class="product-search-box">
             <input type="search" placeholder="Search..." class="product-search-text" ng-model="query">
-            <a class="btn-search" ui-sref="search({query: query , category: ''})"><i class="fa fa-search"></i></a>
-          </div>
+            <button class="btn-search" ng-submit="search(query)"   ui-sref="search({query: query , category: ''})"><i class="fa fa-search"></i></button>
+          </form>
           <button class="btn btn-opp-primary " ng-click="openLoginPopup()" ng-hide="loggedIn"><i class="fa fa-sign-in"></i> Login</button>
 
           <div class="btn-group user-menu" ng-show="loggedIn">

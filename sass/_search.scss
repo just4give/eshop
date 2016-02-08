@@ -225,13 +225,16 @@
     background-color: transparent;
     border-bottom: 2px solid gray;
     font-size: large;
-    position: relative;
+    position: fixed;
+    right: 200px;
     transition: all .5s linear;
     &:focus {
       width: 400px;
 
       @media (max-width: 767px) {
         width: 100%;
+        top: 50px;
+        left: 10px;
       }
 
       -webkit-box-shadow: none;

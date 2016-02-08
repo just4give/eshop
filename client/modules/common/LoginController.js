@@ -395,6 +395,10 @@ appModule.controller("loginController",["$window","$scope","$rootScope","$log","
                 });
             });
         }*/
+
+        $rootScope.search = function(query){
+            $state.go("search",{query: query});
+        }
 }]);
 
 
