@@ -1,26 +1,81 @@
 .shipping-info{
 
-  //border-bottom: 1px solid #E0DCDC;
+
   padding-bottom: 5px;
+  margin-bottom: 20px;
+  margin-top: 10px;
 
-  h1{
-    font-size: large;
-    font-weight: bold;
-  }
-  h3{
-    font-size: large;
 
-  }
-  h5{
-    font-size: medium;
-  }
   .link{
-    //color: $menu-background-color;
+
     font-weight: bold;
     &:hover{
       cursor: pointer;
       text-decoration: none;
     }
+  }
+
+  label {
+    width: auto;
+    border-radius: 3px;
+    border: 1px solid #D1D3D4;
+    padding: 5px;
+
+  }
+
+  /* hide input */
+  input[type=radio]:empty {
+    margin-left: -999px;
+    display: none;
+  }
+
+  /* style label */
+  input[type=radio]:empty + label {
+    position: relative;
+    //float: left;
+    line-height: 2.5em;
+    text-indent: 3.25em;
+    margin-top: 2em;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  input[type=radio]:empty + label:before {
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    content: '';
+    width: 2.5em;
+    background: #D1D3D4;
+    border-radius: 3px 0 0 3px;
+  }
+
+  /* toggle hover */
+  input[type=radio]:hover:not(:checked) + label:before {
+    content:'\2714';
+    text-indent: .9em;
+    color: #C2C2C2;
+  }
+
+  input[type=radio]:hover:not(:checked) + label {
+    color: #888;
+  }
+
+  /* toggle on */
+  input[type=radio]:checked + label:before {
+    content:'\2714';
+    text-indent: .9em;
+    color: #9CE2AE;
+    background-color: #4DCB6D;
+  }
+
+  input[type=radio]:checked + label {
+    color: #777;
   }
 
 }
@@ -83,6 +138,7 @@
       border: 0px;
       outline: none;
       background-color: #eee;
+      line-height: 40px;
       //border-bottom: 1px solid darkgray;
       &:focus,&:active.focus,&:active:focus{
         -webkit-box-shadow:none;
@@ -206,5 +262,35 @@ $checkout-circle-height-xs: 50px;
       top: 30px;
       border-top: 5px solid rgba(0, 0, 0, 0.2);
     }
+  }
+}
+
+.billing-address{
+  .table>tbody>tr>td{
+    border: 0px;
+  }
+}
+
+//animation
+
+
+.checkout-pagelet.ng-enter {
+  animation: bounceInUp .35s linear;
+}
+
+.checkout-pagelet.ng-leave {
+  animation: bounceInUp .35s linear;
+}
+
+.price-table{
+  font-size: large;
+  tr>td{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .total{
+    font-size: x-large;
+    color: #1e8e09;
+    font-weight: bold;
   }
 }

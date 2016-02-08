@@ -214,3 +214,47 @@
     }
   }
 }
+
+.product-search-box {
+  display: inline-block;
+
+  .product-search-text {
+    width: 50px;
+    border: 0px;
+    color: #cccccc;
+    background-color: transparent;
+    border-bottom: 2px solid gray;
+    font-size: large;
+    position: relative;
+    transition: all .5s linear;
+    &:focus {
+      width: 400px;
+
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      border: 0px;
+      outline: none;
+      border-bottom: 2px solid gray;
+      z-index: 1;
+
+    }
+  }
+
+  .btn-search{
+    background-color: transparent;
+    border: 0px;
+    color: red;
+    font-size: x-large;
+
+    &:active, &:focus{
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      border: 0px;
+      outline: none;
+    }
+  }
+}

@@ -3,25 +3,12 @@
         <div class="modal-content login-modal">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$hide()"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Shipping Address</h4>
+                <h4 class="modal-title">Create New Shipping Address</h4>
             </div>
             <div class="modal-body ">
 
-                <div class="col-xs-12">
-                    <ul class="list-unstyled">
-                        <li class="row address-item" ng-repeat="addr in addresses">
-                            <span class="addr-text col-sm-6">{{addr.firstName}} {{addr.lastName}}, {{addr.address}}, {{addr.zip}} {{addr.city}}</span>
-                            <span class="col-sm-2"><button class="btn btn-success" ng-click="ship2this($index);$hide()">Ship to this</button> </span>
-                            <span class="col-sm-2"><button class="btn btn-primary" ng-click="editAddress($index)" >Edit</button> </span>
 
-                        </li>
-                    </ul>
-                </div>
-                <div class="margin-bottom-10">
-                    <a class="link" ng-click="addAddress=!addAddress"><i class="fa fa-plus"></i> Shipping Address</a>
-                </div>
-
-                <div class="form-horizontal" role="form" ng-show="addAddress">
+                <div class="form-horizontal" role="form" >
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="fname">First Name</label>
                         <div class="col-sm-10">
@@ -35,34 +22,41 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="address">Address</label>
+                        <label class="control-label col-sm-2" for="address">Address1</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="address" placeholder="Enter street address" ng-model="address.address">
+                            <input type="text" class="form-control" id="address" placeholder="Enter street address1" ng-model="address.address1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="address2">Address2</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="address2" placeholder="Enter street address2" ng-model="address.address2">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="city">City</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="city" placeholder="Enter city"  ng-model="address.city">
+                            <input type="text" class="form-control" id="city" placeholder="City"  ng-model="address.city">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="zip">Postal Code</label>
+                        <label class="control-label col-sm-2" for="state">State</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="zip" placeholder="Enter postal code" ng-model="address.postalCode">
+                            <input type="text" class="form-control" id="state" placeholder="State" ng-model="address.state">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="phone">Phone</label>
+                        <label class="control-label col-sm-2" for="zip">Zip</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="phone" placeholder="Enter phone number" ng-model="address.phone">
+                            <input type="text" class="form-control" id="zip" placeholder="Zip code" ng-model="address.zip">
                         </div>
                     </div>
+
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <div class="checkbox">
+                           <!-- <div class="checkbox">
                                 <label><input type="checkbox" ng-model="address.ship2this"> Ship to this</label>
-                            </div>
+                            </div>-->
                             <!--<div class="checkbox">
                                 <label><input type="checkbox"  ng-model="address.defaultAddress"> Mark it default</label>
                             </div>-->
@@ -70,7 +64,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="button" class="btn btn-default" ng-click="submitAddress();$hide()">Submit</button>
+                            <button type="button" class="btn btn-opp-secondary" ng-click="submitAddress();$hide()">Create</button>
                         </div>
                     </div>
                 </div>

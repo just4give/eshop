@@ -31,7 +31,7 @@ appModule.controller("UploadController",["$scope","$rootScope","$log","$modal","
         $scope.totalPrice =0;
 
         angular.forEach($scope.imageBag, function(item){
-            $scope.totalPhoto += item.quantity;
+            $scope.totalPhoto += parseInt(item.quantity);
             $scope.totalPrice += item.format.price*item.quantity;
         })
 
