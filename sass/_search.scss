@@ -258,3 +258,32 @@
     }
   }
 }
+
+.search-facet{
+  background-color: rgba(0,0,0,0.04);
+  padding-top: 20px;
+ ul{
+   font-weight: bold;
+   font-size: large;
+   margin-top: 30px;
+   color: lightgray;
+
+ }
+  ul>li{
+    margin-top: 10px;
+    font-size: medium;
+    padding-left: 20px;
+    color: gray;
+  }
+
+  a,i{
+    text-decoration: none;
+    &:active, &:focus{
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      border: 0px;
+      outline: none;
+    }
+  }
+
+}

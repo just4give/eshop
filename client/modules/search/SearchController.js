@@ -1,10 +1,13 @@
 /**
  * Created by Mithun.Das on 12/8/2015.
  */
-appModule.controller("searchController",["$scope","$rootScope","$log","$interval","$modal","toaster",
-    function($scope,$rootScope,$log,$interval,$modal,toaster){
+appModule.controller("searchController",["$scope","$rootScope","$log","$interval","$modal","toaster","$stateParams","$state",
+    function($scope,$rootScope,$log,$interval,$modal,toaster,$stateParams,$state){
 
     $scope.quantities = [1,2,3,4,5,6,7,8,9,10];
+    $scope.query = $stateParams.query;
+    $scope.category = $stateParams.category;
+    $scope.facetOpen=true;
 
  $scope.products = [
      {

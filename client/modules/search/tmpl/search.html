@@ -8,7 +8,7 @@
             <li ng-repeat="p in products" class="product-box wow zoomIn col-xs-6 col-sm-3" data-wow-delay="1s" >
 
                     <img ng-src="{{p.url}}" class="center-block">
-                    <a class="col-xs-12" href="#/details/{{p.id}}"><span class="name">{{p.name}}</span></a>
+                    <a class="col-xs-12" ui-sref="details({id: p.id})" ><span class="name">{{p.name}}</span></a>
                     <div class="col-xs-12 reg-price">
                         <!--<i class="fa fa-tag"></i>-->
                         <span class="reg-price">$200</span>

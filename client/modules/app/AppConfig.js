@@ -1,4 +1,5 @@
-appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider",function($stateProvider, $urlRouterProvider, $httpProvider) {
+appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locationProvider",
+    function($stateProvider, $urlRouterProvider, $httpProvider,$locationProvider) {
     
 	$urlRouterProvider.otherwise('/');
     
@@ -7,14 +8,15 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider",functio
          url: '/?callback',
          templateUrl: 'modules/app/tmpl/home.html',
          controller: "HomeController"
-     }).state('details', {
+     }).state('search', {
+            url: '/search?query&category',
+            templateUrl: 'modules/search/tmpl/search-result.html',
+            controller: "searchController"
+    })
+    .state('details', {
             url: '/details/:id',
             templateUrl: 'modules/search/tmpl/product-details.html',
             controller:'productDetailsController'
-    }).state('upload', {
-        url: '/upload',
-        templateUrl: 'modules/upload/tmpl/upload-container.html',
-        controller:"UploadController"
     }).state('cart', {
             url: '/cart',
             templateUrl: 'modules/checkout/tmpl/cart.html',
@@ -35,11 +37,15 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider",functio
         url: '/contact',
         templateUrl: 'modules/app/tmpl/contact-us.html',
         controller: 'ContactController'
-    }).state('pricing', {
-        url: '/pricing',
-        templateUrl: 'modules/app/tmpl/pricing.html'
     })
      ;
+
+ /*    $locationProvider.html5Mode({
+     enabled: true,
+     requireBase: false
+     });*/
+
+    $locationProvider.hashPrefix('!');
 
     $httpProvider.interceptors.push('httpInterceptor');
 

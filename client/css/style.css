@@ -1296,6 +1296,27 @@ NAV
       border: 0px;
       outline: none; }
 
+.search-facet {
+  background-color: rgba(0, 0, 0, 0.04);
+  padding-top: 20px; }
+  .search-facet ul {
+    font-weight: bold;
+    font-size: large;
+    margin-top: 30px;
+    color: lightgray; }
+  .search-facet ul > li {
+    margin-top: 10px;
+    font-size: medium;
+    padding-left: 20px;
+    color: gray; }
+  .search-facet a, .search-facet i {
+    text-decoration: none; }
+    .search-facet a:active, .search-facet a:focus, .search-facet i:active, .search-facet i:focus {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      border: 0px;
+      outline: none; }
+
 .headroom {
   transition: transform 200ms linear; }
 

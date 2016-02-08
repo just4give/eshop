@@ -25,15 +25,15 @@
     <header headroom offset='220' class="navbar-fixed-top top-header" >
 
       <div class="col-xs-12 text-right"  ng-controller="loginController"  >
-          <a ui-sref="/" class="pull-left">HOME</a>
+          <a ui-sref="/" class="pull-left" style="color: rgba(187, 13, 13, 0.58);"><i class="fa fa-shopping-basket fa-3x"></i></a>
           <div class="product-search-box">
-            <input type="search" placeholder="Search..." class="product-search-text">
-            <button class="btn-search"><i class="fa fa-search"></i></button>
+            <input type="search" placeholder="Search..." class="product-search-text" ng-model="query">
+            <a class="btn-search" ui-sref="search({query: query , category: ''})"><i class="fa fa-search"></i></a>
           </div>
           <button class="btn btn-opp-primary " ng-click="openLoginPopup()" ng-hide="loggedIn"><i class="fa fa-sign-in"></i> Login</button>
 
           <div class="btn-group user-menu" ng-show="loggedIn">
-            <button type="button" class="btn btn-opp-primary" ng-cloak>{{state.user.firstName}}  </button>
+            <button type="button" class="btn btn-opp-primary" ng-bind="state.user.firstName">  </button>
             <button type="button" class="btn btn-opp-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="caret"></span>
               <span class="sr-only">Toggle Dropdown</span>
@@ -46,7 +46,7 @@
             </ul>
           </div>
           <a class="link cart" ng-click="checkout()"><i class="fa fa-shopping-bag fa-2x"></i>
-            <span class="badge" ng-cloak="">{{cart? cart.length:0}} </span>
+            <span class="badge" ng-bind="cart? cart.length:0"> </span>
           </a>
 
       </div>
