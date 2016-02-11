@@ -8,7 +8,7 @@ module.exports = {
     development: {
 
         rootPath: rootPath,
-        port: process.env.PORT || 3000,
+        port: process.env.PORT || 3100,
         host     : "localhost",
         user     : "root",
         password : "root",
@@ -16,14 +16,14 @@ module.exports = {
         connectionLimit: 50
 
     },
-    production: {
+    aws: {
+
         rootPath: rootPath,
-        db: 'mongodb://localhost:27017/onlinestore',
-        port: process.env.PORT || 80,
+        port: process.env.PORT || 3100,
         host     : "localhost",
         user     : "root",
-        password : "root",
-        database : "photos",
+        password : "password",
+        database : "eshop",
         connectionLimit: 50
 
     }
