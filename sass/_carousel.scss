@@ -144,6 +144,10 @@ NAV
 .carousel{
   height: 400px;
   padding-top: 50px;
+  @media (max-width: $mobile-width) {
+    height: 200px;
+    padding-top: 20px;
+  }
 }
 .carousel-box{
   background: url("../images/brick.jpg") repeat ;
@@ -151,6 +155,10 @@ NAV
   //background-size: cover;
   height: 400px;
   background-color: rgba(0,0,0,.8);
+
+  @media (max-width: $mobile-width) {
+    height: 200px;
+  }
 
   .text-box{
     h3{
@@ -183,7 +191,10 @@ NAV
 .carousel-inner{
   img{
     margin:auto;
-    max-height: 300px
+    max-height: 300px;
+    @media (max-width: $mobile-width) {
+      height: 150px;
+    }
   }
 }
 .carousel-control{

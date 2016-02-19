@@ -1,3 +1,4 @@
+<view-title>eShop</view-title>
 <div class="row">
 
 
@@ -50,6 +51,23 @@
         <h3>Most popular</h3>
     </div>
 
-    <ng-include src="'modules/search/tmpl/search.html'" ng-controller="searchController"></ng-include>
+
+    <div class="row search-page" ng-controller="searchController">
+        <!-- <div class="col-md-3 col-lg-3 filter-box">
+             <h2>Filter</h2>
+         </div>-->
+
+
+        <ul class="list-unstyled">
+            <li ng-repeat="p in products" class="wow zoomIn col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center" data-wow-delay="0s" >
+                <ng-include src="'modules/search/tmpl/search.html'" ></ng-include>
+
+            </li>
+        </ul>
+
+
+
+    </div>
+
 
 </div>

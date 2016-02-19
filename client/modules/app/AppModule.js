@@ -2,7 +2,7 @@
  * Created by mithundas on 12/3/15.
  */
 var appModule = angular.module("photoOrder",['ui.router','ui.bootstrap','ngAnimate', 'ngTouch','mgcrea.ngStrap','angular-confirm',
-    'LocalStorageModule','ngFileUpload','facebook','toaster','headroom']);
+    'LocalStorageModule','ngFileUpload','facebook','toaster','headroom','viewhead']);
 
 appModule.config(function (localStorageServiceProvider) {
     localStorageServiceProvider
@@ -26,6 +26,22 @@ appModule.run(["$interval","localStorageService","$rootScope", function($interva
         //when the view changes sync wow
         new WOW().sync();
     });
+
+    $rootScope.$on('$stateChangeStart', function (event, toState) {
+        console.log('$stateChangeStart');
+        console.log(toState);
+    });
+
+    $rootScope.$on('$locationChangeSuccess', function(e) {
+        console.log('$locationChangeSuccess');
+    });
+
+
+    $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+        console.log(event);
+        console.log(toState);
+    });
+
 
 }]);
 

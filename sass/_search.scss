@@ -108,7 +108,8 @@
 .product-box{
 
   height: 300px;
-  width: 300px;
+  //width: 300px;
+  width: 100%;
   background-size: contain;
   overflow-y: hidden;
   margin-bottom: 50px;
@@ -120,13 +121,15 @@
 
   img{
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
-    width: 100%;
-    margin-top:50px;
-    height: 200px;
+    width: 250px;
+    margin-top: 50px;
+    height: auto;
+    max-height: 250px;
     opacity: 1;
     padding: 5px;
+    padding-left: 25px;
     &:hover{
 
     }
@@ -226,7 +229,8 @@
     border-bottom: 2px solid gray;
     font-size: large;
     position: fixed;
-    right: 200px;
+    right: 220px;
+    top: 20px;
     transition: all .5s linear;
     &:focus {
       width: 400px;
@@ -252,6 +256,9 @@
     border: 0px;
     color: red;
     font-size: x-large;
+    position: relative;
+    top: 8px;
+    right: 30px;
 
     &:active, &:focus{
       -webkit-box-shadow: none;

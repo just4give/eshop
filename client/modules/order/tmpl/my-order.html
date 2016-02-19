@@ -9,19 +9,19 @@
                 <th></th>
                 <th>Ordered On</th>
                 <th>Order ID</th>
-                <th>No. Prints</th>
+
                 <th>Your Cost</th>
                 <th>Status</th>
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat="ord in orders">
-                <td class="col-xs-4 col-sm-2"><button class="btn btn-trans" ng-click="openOderDetails($index)"><i class=" fa fa-eye fa-lg"></i></button></td>
+                <td class="col-xs-4 col-sm-2"><button class="btn btn-trans" ng-click="openOderDetails($index)">View Details</button></td>
                 <td class="col-xs-4 col-sm-2">
                     {{ord.orderDate | date: 'shortDate'}}
                 </td>
                 <td class="col-xs-4 col-sm-4">{{ord.trackingId}}</td>
-                <td class="col-xs-4 col-sm-4">{{ord.noOfPrints}}</td>
+
                 <td class="col-xs-4 col-sm-2">{{ord.finalCost}} RSD</td>
                 <td class="col-xs-4 col-sm-2">{{ord.orderStatus}}</td>
 

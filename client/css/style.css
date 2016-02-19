@@ -680,11 +680,18 @@ NAV
 .carousel {
   height: 400px;
   padding-top: 50px; }
+  @media (max-width: 400px) {
+    .carousel {
+      height: 200px;
+      padding-top: 20px; } }
 
 .carousel-box {
   background: url("../images/brick.jpg") repeat;
   height: 400px;
   background-color: rgba(0, 0, 0, 0.8); }
+  @media (max-width: 400px) {
+    .carousel-box {
+      height: 200px; } }
   .carousel-box .text-box h3 {
     color: black;
     font-size: xx-large;
@@ -706,6 +713,9 @@ NAV
 .carousel-inner img {
   margin: auto;
   max-height: 300px; }
+  @media (max-width: 400px) {
+    .carousel-inner img {
+      height: 150px; } }
 
 .carousel-control {
   width: 8%; }
@@ -1112,6 +1122,15 @@ NAV
     color: #1e8e09;
     font-weight: bold; }
 
+.animate-enter {
+  -webkit-transition: 1s linear all;
+  /* Chrome */
+  transition: 1s linear all;
+  opacity: 0; }
+
+.animate-enter.animate-enter-active {
+  opacity: 1; }
+
 .search-page {
   padding: 20px; }
   .search-page .filter-box {
@@ -1198,7 +1217,7 @@ NAV
 
 .product-box {
   height: 300px;
-  width: 300px;
+  width: 100%;
   background-size: contain;
   overflow-y: hidden;
   margin-bottom: 50px; }
@@ -1206,11 +1225,13 @@ NAV
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 250px;
     margin-top: 50px;
-    height: 200px;
+    height: auto;
+    max-height: 250px;
     opacity: 1;
-    padding: 5px; }
+    padding: 5px;
+    padding-left: 25px; }
   .product-box p {
     color: white;
     font-size: x-large;
@@ -1273,7 +1294,8 @@ NAV
     border-bottom: 2px solid gray;
     font-size: large;
     position: fixed;
-    right: 200px;
+    right: 220px;
+    top: 20px;
     transition: all .5s linear; }
     .product-search-box .product-search-text:focus {
       width: 400px;
@@ -1292,7 +1314,10 @@ NAV
     background-color: transparent;
     border: 0px;
     color: red;
-    font-size: x-large; }
+    font-size: x-large;
+    position: relative;
+    top: 8px;
+    right: 30px; }
     .product-search-box .btn-search:active, .product-search-box .btn-search:focus {
       -webkit-box-shadow: none;
       box-shadow: none;

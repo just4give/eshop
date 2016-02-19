@@ -1,10 +1,10 @@
 appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locationProvider",
     function($stateProvider, $urlRouterProvider, $httpProvider,$locationProvider) {
     
-	$urlRouterProvider.otherwise('/');
+	$urlRouterProvider.otherwise('home');
     
     $stateProvider
-      .state('/', {
+      .state('home', {
          url: '/?callback',
          templateUrl: 'modules/app/tmpl/home.html',
          controller: "HomeController"
@@ -40,10 +40,8 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locat
     })
      ;
 
- /*    $locationProvider.html5Mode({
-     enabled: true,
-     requireBase: false
-     });*/
+     $locationProvider.html5Mode(true);
+
 
     $locationProvider.hashPrefix('!');
 

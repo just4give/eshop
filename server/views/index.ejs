@@ -3,10 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Online Photo Order">
-    <meta name="author" content="XXX">
-    <title><%= title %></title>
-
+    <meta name="description" content="Online shopping cart website, a product by AppStackSolutions.com">
+    <meta name="author" content="AppStackSolutions.com">
+    <title ng-bind-template="{{viewTitle}} - AppStackSolutions.com">AppStackSolutions.com</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,15 +16,15 @@
 
     <link href="css/style.css" rel="stylesheet" />
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-
+    <base href="/">
   </head>
   <body>
 
 
-    <header headroom offset='220' class="navbar-fixed-top top-header" >
+    <header headroom offset='220' class="navbar-fixed-top top-header wow bounceInDown" data-wow-delay="0s">
 
       <div class="col-xs-12 text-right"  ng-controller="loginController"  >
-          <a ui-sref="/" class="pull-left" style="color: rgba(187, 13, 13, 0.58);"><i class="fa fa-shopping-basket fa-3x"></i></a>
+          <a ui-sref="home" class="pull-left" style="color: rgba(187, 13, 13, 0.58);"><i class="fa fa-shopping-basket fa-3x"></i></a>
           <form class="product-search-box">
             <input type="search" placeholder="Search..." class="product-search-text" ng-model="query">
             <button class="btn-search" ng-submit="search(query)"   ui-sref="search({query: query , category: ''})"><i class="fa fa-search"></i></button>
@@ -39,8 +38,8 @@
               <span class="sr-only">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu">
-              <li><a href="#" class="link">My Account</a></li>
-              <li><a href="#/myorder" class="link">My Order</a></li>
+              <li><a ui-sref="home" class="link">My Account</a></li>
+              <li><a ui-sref="myorder" class="link">My Order</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="" class="link" ng-click="logout()">Logout</a></li>
             </ul>
@@ -79,6 +78,7 @@
   <script src="vendor/headroom.js/dist/headroom.min.js"></script>
   <script src="vendor/headroom.js/dist/angular.headroom.min.js"></script>
   <script src="vendor/wow/dist/wow.min.js"></script>
+  <script src="vendor/angularjs-viewhead/angularjs-viewhead.js"></script>
 
   <script src="modules/app/AppModule.js"></script>
   <script src="modules/common/HTTPInterceptor.js"></script>

@@ -4,22 +4,9 @@
 appModule.controller("MyOrderController",["$scope","$rootScope","$log","$modal","$state", "$interval","OrderService",
     function($scope,$rootScope,$log,$modal,$state,$interval,OrderService){
 
-        $rootScope.$watch('loggedIn',function(){
-            if($rootScope.loggedIn){
-                $log.debug('user logged in ');
-                OrderService.getOrders().
-                then(function(data){
-                    $scope.orders = data;
-                },function(err){
-                    $rootScope.$broadcast('api_error',err);
-                });
 
-            }else{
-                $log.debug('user logged out ');
-            }
-
-        });
-
+        $scope.orders = [{orderDate: new Date(), trackingId:'123-xxx',finalCost:'$200',orderStatus:'ORDERED'},
+            {orderDate: new Date(), trackingId:'156-xxx',finalCost:'$400',orderStatus:'SHIPPED'}]
         $scope.openOderDetails = function(index){
 
             var orderId = $scope.orders[index].id;

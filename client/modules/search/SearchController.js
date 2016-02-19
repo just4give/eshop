@@ -13,42 +13,50 @@ appModule.controller("searchController",["$scope","$rootScope","$log","$interval
      {
      id:101,
      name:"Microsoft Surface",
-     url:"images/product/p1.png"
+     url:"images/product/p1.png",
+     price:100
      },
      {
          id:102,
          name:"Apple iPhone 6 plus",
-         url:"images/product/p2.jpeg"
+         url:"images/product/p2.jpeg",
+         price:110
      },
      {
          id:103,
          name:"Samsung Galaxy S6",
-         url:"images/product/p3.png"
+         url:"images/product/p3.png",
+         price:199
      },
      {
          id:104,
          name:"Apple iPad Mini",
-         url:"images/product/p4.jpg"
+         url:"images/product/p4.jpg",
+         price:349
      },
      {
          id:105,
          name:"HP Monitor",
-         url:"images/product/p5.png"
+         url:"images/product/p5.png",
+         price:160
      },
      {
          id:106,
          name:"Toshiba Laptop",
-         url:"images/product/p6.jpg"
+         url:"images/product/p6.jpg",
+         price:300
      },
      {
          id:107,
          name:"Bose Bluetooth Speaker",
-         url:"images/product/p7.jpg"
+         url:"images/product/p7.jpg",
+         price:199
      },
      {
          id:108,
          name:"Beats Headphone",
-         url:"images/product/p8.jpg"
+         url:"images/product/p8.jpg",
+         price:99
      }];
 
     $scope.quickView = function(index){
@@ -73,9 +81,12 @@ appModule.controller("searchController",["$scope","$rootScope","$log","$interval
 
     //$rootScope.cartProducts = $scope.products;
 
-    $scope.addToCart = function(index){
+    $scope.addToCart = function(product){
         $rootScope.cart = $rootScope.cart || [];
-        $rootScope.cart.push($scope.products[index]);
+        var item =angular.copy(product);
+
+        item.quantity=1;
+        $rootScope.cart.push(item);
 
         toaster.pop({
             type: 'success',

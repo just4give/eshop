@@ -210,30 +210,22 @@ appModule.controller("CartController",["$scope","$rootScope","$log","$modal","$s
     }
 
     $scope.getTotalProductPrice = function(){
-        $log.debug('updating price');
+
         $scope.totalProductPrice = 0;
-        angular.forEach($scope.cartImages, function(product){
-            $scope.totalProductPrice+= product.format.price* product.quantity;
+        angular.forEach($scope.cart, function(product){
+            $scope.totalProductPrice+= product.price* product.quantity;
         })
         return $scope.totalProductPrice;
     };
 
     $scope.deleteCartItem = function(index){
 
-        $confirm({text: 'Are you sure,you want to remove from cart?' ,ok:"Yes",cancel:"No" , title:"Confirm delete"})
+        $confirm({text: 'You are removing this item from cart.' ,ok:"Yes,delete",cancel:"Don't" , title:"Confirm delete"})
             .then(function() {
-                var cartItem = $scope.cartImages[index];
-                if(cartItem.id){
-                    //delete from database
-                    OrderService.deleteCart(cartItem.id)
-                        .then(function(data){
-                            $scope.cartImages.splice(index,1);
-                        },function(err){
+                var cartItem = $rootScope.cart[index];
 
-                        });
-                }else{
-                    $scope.cartImages.splice(index,1);
-                }
+                    $rootScope.cart.splice(index,1);
+
             });
 
 
@@ -259,12 +251,12 @@ appModule.controller("CartController",["$scope","$rootScope","$log","$modal","$s
     }
 
     $scope.increaseItemQuantity = function(selectedCartItem){
-        selectedCartItem.quantity=selectedCartItem.quantity+1;
+        selectedCartItem.quantity++;
     }
 
         $scope.decreaseeItemQuantity = function(selectedCartItem){
             if(selectedCartItem.quantity>1){
-                selectedCartItem.quantity=selectedCartItem.quantity-1;
+                selectedCartItem.quantity--;
             }
 
         }
@@ -272,6 +264,8 @@ appModule.controller("CartController",["$scope","$rootScope","$log","$modal","$s
     $scope.checkout = function(){
         $state.go("checkout");
     }
+
+
     }]);
 
 appModule.run(function($confirmModalDefaults) {
