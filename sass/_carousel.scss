@@ -194,6 +194,7 @@ NAV
     max-height: 300px;
     @media (max-width: $mobile-width) {
       height: 150px;
+      margin-left: 50px;
     }
   }
 }

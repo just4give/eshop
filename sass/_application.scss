@@ -5,6 +5,10 @@ body{
   //color: #CCCCCC;
   color: black;
   padding-top: 80px;
+
+  @media (max-width: 767px) {
+    padding-top: 100px;
+  }
 }
 
 .navbar-opp{
@@ -32,6 +36,10 @@ body{
   padding-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
+
+  @media (max-width: 767px) {
+    height: 100px;
+  }
 }
 .cart{
   color: $menu-background-color;
@@ -315,6 +323,7 @@ body{
   padding-left: 5px;
   padding-right: 5px;
 }
+/*
 .ng-show{
   -webkit-animation:fadeIn .35s linear;
   -o-animation:fadeIn .35s linear;
@@ -326,6 +335,7 @@ body{
   -o-animation:fadeOut .35s linear;
   animation: fadeOut .35s linear;
 }
+*/
 
 .page-view.ng-enter {
   animation: fadeInRight .35s linear;
