@@ -1,19 +1,32 @@
 /*
  * angular-confirm
  * https://github.com/Schlogen/angular-confirm
- * @version v1.2.1 - 2015-11-18
+ * @version v1.2.3 - 2016-01-26
  * @license Apache
  */
+(function (root, factory) {
+  'use strict';
+  if (typeof define === 'function' && define.amd) {
+    define(['angular'], factory);
+  } else if (typeof module !== 'undefined' && typeof module.exports === 'object') {
+    module.exports = factory(require('angular'));
+  } else {
+    return factory(root.angular);
+  }
+}(this, function (angular) {
 angular.module('angular-confirm', ['ui.bootstrap.modal'])
   .controller('ConfirmModalController', function ($scope, $uibModalInstance, data) {
     $scope.data = angular.copy(data);
 
-    $scope.ok = function () {
-      $uibModalInstance.close();
+    $scope.ok = function (closeMessage) {
+      $uibModalInstance.close(closeMessage);
     };
 
-    $scope.cancel = function () {
-      $uibModalInstance.dismiss('cancel');
+    $scope.cancel = function (dismissMessage) {
+      if (angular.isUndefined(dismissMessage)) {
+        dismissMessage = 'cancel';
+      }
+      $uibModalInstance.dismiss(dismissMessage);
     };
 
   })
@@ -92,3 +105,4 @@ angular.module('angular-confirm', ['ui.bootstrap.modal'])
       }
     }
   });
+}));

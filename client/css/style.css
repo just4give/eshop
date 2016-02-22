@@ -689,7 +689,7 @@ NAV
 .carousel {
   height: 400px;
   padding-top: 50px; }
-  @media (max-width: 400px) {
+  @media (max-width: 767px) {
     .carousel {
       height: 200px;
       padding-top: 20px; } }
@@ -698,7 +698,7 @@ NAV
   background: url("../images/brick.jpg") repeat;
   height: 400px;
   background-color: rgba(0, 0, 0, 0.8); }
-  @media (max-width: 400px) {
+  @media (max-width: 767px) {
     .carousel-box {
       height: 200px; } }
   .carousel-box .text-box h3 {
@@ -722,7 +722,7 @@ NAV
 .carousel-inner img {
   margin: auto;
   max-height: 300px; }
-  @media (max-width: 400px) {
+  @media (max-width: 767px) {
     .carousel-inner img {
       height: 150px;
       margin-left: 50px; } }
@@ -1247,7 +1247,7 @@ NAV
   .product-box img {
     position: absolute;
     top: 0;
-    left: 0;
+    left: calc(50% - 125px);
     width: 250px;
     margin-top: 50px;
     height: auto;
