@@ -1054,6 +1054,9 @@ NAV
   padding: 10px;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
   background-color: rgba(46, 171, 5, 0.67); }
+  @media (max-width: 767px) {
+    .sticky-checkout {
+      top: 110px; } }
   .sticky-checkout .price {
     display: inline-block;
     font-size: xx-large;
