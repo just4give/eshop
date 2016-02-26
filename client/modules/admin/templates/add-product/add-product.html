@@ -1,0 +1,25 @@
+<h3>Upload</h3>
+
+<button class="btn btn-primary " ngf-select="uploadFiles($files)"
+        accept="image/*"  ngf-max-size="10MB" ngf-multiple="true"><i class="fa fa-plus"></i> Upload Image</button>
+
+
+
+<ul class="list-inline">
+    <li ng-repeat="m in productImages">
+        <div class="img-panel">
+            <div class="img-header" ng-click="deleteImageFromBag($index)">
+                <i class="text-danger fa fa-times-circle fa-lg close-circle"></i>
+            </div>
+            <div class="img-holder">
+                <img ng-src="{{m.imgSrc}}" ng-show="m.imgSrc">
+                <div class="prog-percentage" ng-hide="m.imgSrc">{{m.progress}}</div>
+                <div class="prog" ng-hide="m.imgSrc" ng-style="{width: m.progress }"></div>
+            </div>
+
+
+
+        </div>
+    </li>
+
+</ul>

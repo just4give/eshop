@@ -9,7 +9,7 @@ var userRoute = require('../routes/userRouter');
 module.exports = function(app) {
 
     app.all("*",function(req,res,next){
-        console.log('***** setting header ');
+
         res.header("Access-Control-Allow-Origin", "*");
         res.header('Access-Control-Allow-Methods', 'OPTIONS,GET,POST,PUT,DELETE');
         res.header("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With");

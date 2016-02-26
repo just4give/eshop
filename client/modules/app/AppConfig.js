@@ -6,7 +6,7 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locat
     $stateProvider
       .state('home', {
          url: '/?callback',
-         templateUrl: 'modules/app/tmpl/home.html',
+         templateUrl: 'modules/app/tmpl/login.html',
          controller: "HomeController"
      }).state('search', {
             url: '/search?query&category',

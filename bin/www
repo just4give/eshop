@@ -1,10 +1,16 @@
 #!/usr/bin/env node
 var debug = require('debug')('PhotoOrder');
 var app = require('../app');
+var adminApp = require('../admin-app');
 
 app.set('port', process.env.PORT || 3100);
 
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
 });
-//NODE_ENV=production node bin/www
+
+adminApp.set('port', process.env.PORT || 3200);
+
+var server2 = adminApp.listen(adminApp.get('port'), function() {
+  debug('Express admin server listening on port ' + server2.address().port);
+});

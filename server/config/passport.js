@@ -2,7 +2,7 @@
  * Created by mithundas on 12/30/15.
  */
 var passport = require('passport'),
-    mongoose = require('mongoose'),
+
     LocalStrategy = require('passport-local').Strategy,
     User = require('../orm/User');
 
