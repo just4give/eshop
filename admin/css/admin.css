@@ -77,7 +77,46 @@
  */
 body {
   background-color: #f8f8f8;
-  padding-top: 10px; }
+  padding-top: 60px; }
+
+.nav-h {
+  color: white;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 20px;
+  height: 60px; }
+  .nav-h .band {
+    font-size: x-large;
+    font-weight: bold;
+    color: rgba(245, 239, 239, 0.65); }
+  .nav-h .user-name {
+    font-size: large; }
+  .nav-h .link-logout {
+    font-size: x-large;
+    margin-left: 10px;
+    color: rgba(255, 0, 0, 0.71); }
+  .nav-h .dropdown-menu {
+    background-color: rgba(218, 209, 209, 0.83);
+    top: 150%; }
+    .nav-h .dropdown-menu li > a:hover {
+      background-color: rgba(0, 0, 0, 0.1); }
+
+.nav-v {
+  background-color: rgba(41, 39, 39, 0.7);
+  padding-top: 20px;
+  padding-bottom: 20px; }
+  .nav-v li > a {
+    color: white; }
+    .nav-v li > a:hover {
+      background-color: rgba(0, 0, 0, 0.6); }
+    .nav-v li > a:active, .nav-v li > a:focus {
+      background-color: rgba(0, 0, 0, 0.2); }
+  .nav-v .active a {
+    background-color: rgba(0, 0, 0, 0.2); }
+
+.chart-container {
+  height: 250px;
+  padding: 10px; }
 
 /*#wrapper {
     width: 100%;

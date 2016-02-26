@@ -23,7 +23,7 @@ module.exports = function(app, config) {
     app.use(cookieParser());
     app.use(express.static(path.join(config.rootPath, 'admin')));
     app.use(express.static(path.join(config.rootPath, 'client')));
-
+    app.use(express.static(config.image.repo));
 
     app.use(session({secret: 'online shop admin',
                     resave:true,

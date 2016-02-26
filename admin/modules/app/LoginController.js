@@ -9,7 +9,7 @@ admin.controller("LoginController",["$scope","$rootScope","$log","$modal","$stat
 
     $scope.submitLogin = function(){
 
-        $state.go('dashboard');
+        $state.go('home.dashboard');
 
     }
 

@@ -13,7 +13,19 @@ module.exports = {
         user     : "root",
         password : "root",
         database : "eshop",
-        connectionLimit: 50
+        connectionLimit: 50,
+        image:{
+            repo: "/photo",
+            thumb:{
+                height: 200,
+                width:180
+            },
+            original:{
+                height: 400,
+                width:360
+            }
+        },
+        apiContext:"http://localhost:4200"
 
     },
     aws: {

@@ -1,0 +1,53 @@
+<h3 class="text-center margin-bottom-20"><span class="label label-default">Add New Product</span></h3>
+
+<form name="p">
+    <div class="form-group col-sm-6" ng-class="{ 'has-error': p.name.$invalid  }">
+        <label class="control-label">Name</label>
+        <input type="text" class="form-control" placeholder="Product title"  ng-model="product.name" name="name" required>
+    </div>
+    <div class="form-group col-sm-6" ng-class="{ 'has-error': p.description.$invalid  }">
+        <label class="control-label">Description</label>
+        <input type="text" class="form-control" placeholder="Product description"  ng-model="product.description" name="description" required>
+    </div>
+    <div class="form-group col-sm-6" ng-class="{ 'has-error': p.tax.$invalid  }">
+        <label class="control-label">Tax</label>
+        <select class="form-control" ng-model="product.taxId" name="tax" ng-options='d.id as d.name for d in taxes' required ></select>
+    </div>
+    <div class="form-group col-sm-6" ng-class="{ 'has-error': p.price.$invalid  }">
+        <label class="control-label">Price</label>
+        <input type="number" class="form-control" placeholder="Product price"  ng-model="product.price" name="price" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+    <button class="btn btn-default " ngf-select="uploadFiles($files)"
+            accept="image/*"  ngf-max-size="10MB" ngf-multiple="true"><i class="fa fa-plus"></i> Product Image</button>
+
+    </div>
+
+    <div class="form-group col-sm-6">
+        </div>
+
+    <ul class="list-inline col-xs-12">
+        <li ng-repeat="m in productImages">
+            <div class="img-panel">
+                <div class="img-header" ng-click="deleteImageFromBag($index)">
+                    <i class="text-danger fa fa-times-circle fa-lg close-circle"></i>
+                </div>
+                <div class="img-holder">
+                    <img ng-src="{{m.imgSrc}}" ng-show="m.imgSrc">
+                    <div class="prog-percentage" ng-hide="m.imgSrc">{{m.progress}}</div>
+                    <div class="prog" ng-hide="m.imgSrc" ng-style="{width: m.progress }"></div>
+                </div>
+
+            </div>
+            <div class="text-center">
+                <label>Choose as parmary<input type="radio" name="primaryImage" ng-model="product.imageUrl" value="{{m.imgSrc}}"> </label>
+            </div>
+        </li>
+
+    </ul>
+    {{product.imageUrl}}
+    <div class="col-xs-12 text-right">
+        <button class="btn btn-warning">Create</button>
+    </div>
+</form>

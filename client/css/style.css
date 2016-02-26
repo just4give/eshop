@@ -773,24 +773,22 @@ NAV
   margin-top: 15px; }
 
 .img-panel {
-  height: 270px;
-  width: 180px;
-  margin: 10px;
-  border-top-right-radius: 15px;
-  background-color: #CECECE;
+  height: 250px;
+  width: 200px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
   -ms-box-shadow: 5px 5px 5px #999;
   -moz-box-shadow: 5px 5px 5px #999;
   -webkit-box-shadow: 5px 5px 5px #999;
   box-shadow: 5px 5px 5px #999; }
   .img-panel .img-holder {
-    width: 180px;
+    width: 200px;
     height: auto;
     max-height: 200px;
-    padding: 5px;
+    padding: 10px;
     padding-top: 15px; }
     .img-panel .img-holder img {
       width: 100%;
-      height: 150px; }
+      height: 200px; }
     .img-panel .img-holder .prog {
       width: 50%;
       height: 150px;
@@ -812,42 +810,6 @@ NAV
       font-size: x-large;
       font-weight: bold;
       color: white; }
-  .img-panel .img-status {
-    padding-left: 10px;
-    padding-right: 10px; }
-    .img-panel .img-status input[type=checkbox] {
-      visibility: hidden; }
-    .img-panel .img-status .high {
-      color: green; }
-  .img-panel .img-format .format-size {
-    width: 150px; }
-  .img-panel .img-format .format-caret {
-    width: 30px; }
-  .img-panel .img-quantity input {
-    height: 34px;
-    width: 100px;
-    background-color: #CECECE;
-    margin: 0px;
-    border: 0px;
-    padding: 0px;
-    color: white;
-    text-align: center;
-    /* margin-top: 1px; */
-    font-size: larger;
-    font-weight: bold; }
-    .img-panel .img-quantity input:focus, .img-panel .img-quantity input:active.focus, .img-panel .img-quantity input:active:focus {
-      -webkit-box-shadow: none;
-      box-shadow: none;
-      border: 0px;
-      outline: none; }
-  .img-panel .img-quantity button {
-    height: 35px;
-    width: 35px; }
-    .img-panel .img-quantity button:focus, .img-panel .img-quantity button:active.focus, .img-panel .img-quantity button:active:focus {
-      -webkit-box-shadow: none;
-      box-shadow: none;
-      border: 0px;
-      outline: none; }
 
 .close-circle {
   margin-top: -10px;

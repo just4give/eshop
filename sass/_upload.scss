@@ -34,31 +34,31 @@
   padding: 5px;
   margin-top: 15px;
 }
-.img-panel{
-  height: 270px;
-  width: 180px;
-  margin: 10px;
-  border-top-right-radius: 15px;
-  background-color: #CECECE;
+.img-panel {
+  height: 250px;
+  width: 200px;
+  //margin: 10px;
+  // border-top-right-radius: 15px;
+  // background-color: #CECECE;
+  border: 1px solid rgba(0, 0, 0, 0.07);
   -ms-box-shadow: 5px 5px 5px #999;
   -moz-box-shadow: 5px 5px 5px #999;
   -webkit-box-shadow: 5px 5px 5px #999;
   box-shadow: 5px 5px 5px #999;
 
-
-  .img-holder{
-    width: 180px;
+  .img-holder {
+    width: 200px;
     height: auto;
     max-height: 200px;
-    padding: 5px;
+    padding: 10px;
     padding-top: 15px;
 
-    img{
+    img {
       width: 100%;
-      height: 150px;
+      height: 200px;
       //border: 1px solid;
     }
-    .prog{
+    .prog {
       width: 50%;
       height: 150px;
       background-color: green;
@@ -69,7 +69,7 @@
       font-size: x-large;
       line-height: 150px;
     }
-    .prog-percentage{
+    .prog-percentage {
       line-height: 150px;
       position: relative;
       top: 0px;
@@ -80,59 +80,6 @@
       font-size: x-large;
       font-weight: bold;
       color: white;
-    }
-  }
-
-  .img-status{
-    padding-left: 10px;
-    padding-right: 10px;
-
-    input[type=checkbox] {
-      visibility: hidden;
-    }
-    .high{
-      color: green;
-    }
-  }
-  .img-format{
-
-    .format-size{
-      width:150px;
-    }
-    .format-caret{
-      width: 30px;
-    }
-  }
-
-  .img-quantity{
-    input{
-      height: 34px;
-      width: 100px;
-      background-color: #CECECE;
-      margin: 0px;
-      border: 0px;
-      padding: 0px;
-      color: white;
-      text-align: center;
-      /* margin-top: 1px; */
-      font-size: larger;
-      font-weight: bold;
-      &:focus,&:active.focus,&:active:focus{
-        -webkit-box-shadow:none;
-        box-shadow: none;
-        border: 0px;
-        outline: none;
-      }
-    }
-    button{
-      height: 35px;
-      width: 35px;
-      &:focus,&:active.focus,&:active:focus{
-        -webkit-box-shadow:none;
-        box-shadow: none;
-        border: 0px;
-        outline: none;
-      }
     }
   }
 }

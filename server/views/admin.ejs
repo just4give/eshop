@@ -6,11 +6,11 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="vendor/angular-chart.js/dist/angular-chart.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/admin.css">
   <link rel="stylesheet" href="vendor/metisMenu/dist/metisMenu.min.css">
-
-  <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
 
 
 
@@ -19,8 +19,26 @@
 <body >
 
 <div >
-
-  <div ui-view class="container"></div>
+  <header class="navbar navbar-inverse navbar-fixed-top nav-h">
+    <div class="col-xs-6"> <span class="band">eShop Admin </span></div>
+    <div  class="col-xs-6 text-right">
+      <!-- Split button -->
+      <div class="btn-group">
+        <button type="button" class="btn btn-danger">Robertson</button>
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#">My Profile</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </div>
+      <a href="" class="link-logout" ng-click="logout()" uib-tooltip="Log Out" tooltip-placement="bottom-left"><i class="fa fa-sign-out"></i></a>
+    </div>
+  </header>
+  <div ui-view class=""></div>
 
 </div>
 
@@ -47,11 +65,15 @@
 <script src="vendor/headroom.js/dist/angular.headroom.min.js"></script>
 <script src="vendor/wow/dist/wow.min.js"></script>
 <script src="vendor/angularjs-viewhead/angularjs-viewhead.js"></script>
-
+<script src="vendor/metisMenu/dist/metisMenu.min.js"></script>
+<script src="vendor/Chart.js/Chart.min.js"></script>
+<script src="vendor/angular-chart.js/dist/angular-chart.min.js"></script>
 
 <script src="modules/app/AppModule.js"></script>
 <script src="modules/app/AppConfig.js"></script>
 <script src="modules/app/LoginController.js"></script>
+<script src="modules/app/DashboardController.js"></script>
+<script src="modules/app/ProductController.js"></script>
 
 </body>
 
