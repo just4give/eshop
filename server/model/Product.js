@@ -4,6 +4,7 @@
 var Sequelize = require('sequelize');
 var sequelize = require('../config/sequelize');
 var Tax = require('./Tax');
+var Photo = require('./Photo');
 
 var product = sequelize.define('product', {
     id: {
@@ -38,6 +39,7 @@ var product = sequelize.define('product', {
 
 });
 product.belongsTo(Tax);
+product.belongsTo(Photo);
 product.sync().then(function(){
 
 });
@@ -46,8 +48,9 @@ product.middleware ={
     list: {
         fetch: {
             before: function(req, res, context) {
-                context.include = [Tax];
-                console.log('Yahooo ! inside product list fetch');
+                //context.include = [{model:Tax, where:{id:2}}];
+                context.include = [{model:Tax},{model:Photo}];
+
                 return context.continue;
             },
             action: function(req, res, context) {
@@ -65,6 +68,25 @@ product.middleware ={
         auth: function(req, res, context) {
 
             return context.error(403, "can't delete a product");
+        }
+    },
+    read: {
+        fetch: {
+            before: function (req, res, context) {
+                //context.include = [{model:Tax, where:{id:2}}];
+               // console.log('product:read:fetch:before');
+                context.include = [{model: Tax}, {model: Photo}];
+
+                return context.continue;
+            },
+            action: function (req, res, context) {
+                // change behavior of actually writing the data
+                return context.continue;
+            },
+            after: function (req, res, context) {
+                // set some sort of flag after writing list data
+                return context.continue;
+            }
         }
     }
 }

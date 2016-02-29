@@ -20,7 +20,7 @@
 
     <div class="form-group col-sm-6">
     <button class="btn btn-default " ngf-select="uploadFiles($files)"
-            accept="image/*"  ngf-max-size="10MB" ngf-multiple="true"><i class="fa fa-plus"></i> Product Image</button>
+            accept="image/*"  ngf-max-size="10MB" ngf-multiple="true" ng-disabled="slides.length>=1"><i class="fa fa-plus"></i> Product Image</button>
 
     </div>
 
@@ -54,7 +54,7 @@
     <ul class="col-xs-12 list-inline " >
         <li ng-repeat="m in slides">
             <div class="img-panel">
-                <div class="img-header" ng-click="deleteImageFromBag(m.id)">
+                <div class="img-header" ng-click="deletePhoto(m)">
                     <i class="text-danger fa fa-times-circle fa-lg close-circle"></i>
                 </div>
                 <div class="img-holder">
@@ -65,7 +65,7 @@
 
             </div>
             <div class="text-center text-warning">
-                <label> Choose as parmary <input type="radio" name="primaryImage" ng-model="product.imageId" value="{{m.id}}"> </label>
+                <label> Choose as parmary <input type="radio" name="primaryImage" ng-model="product.photoId" value="{{m.id}}"> </label>
             </div>
         </li>
 

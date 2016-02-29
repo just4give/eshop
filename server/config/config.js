@@ -17,7 +17,7 @@ module.exports = {
         connectionLimit: 50,
         modelPath: modelPath,
         image:{
-            repo: "/Users/mithundas/Project_Workspace",
+            repo: "/photo",
             thumb:{
                 height: 200,
                 width:180

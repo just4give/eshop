@@ -5,7 +5,7 @@ var router = express.Router();
 
 
 router.get('*', function(req, res) {
-  console.log(req.user);
+  console.log("serving by deault admin render");
   res.render('admin', { title: 'Online Shop'});
 });
 

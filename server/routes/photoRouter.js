@@ -11,7 +11,7 @@ var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var config = require('../config/config')[env];
 var path = require('path');
 var easyimg = require('easyimage');
-
+var Photo = require('../model/Photo');
 
 
 
@@ -35,8 +35,16 @@ router.post('/upload', multipartMiddleware,function (req, res, next) {
             x:0, y:0
         }).then(
             function(image) {
+                var imageUrl = config.apiContext+'/repo/thumb/'+ fileName;
+                Photo.create({fileName:fileName, thumbnailUrl: imageUrl, imageUrl:imageUrl,active:true})
+                    .then(function(data){
+                    res.json(data);
+                },function(err){
+                    console.log(err);
+                    return next(err);
+                });
 
-                res.json({imgSrc:config.apiContext+'/repo/thumb/'+ fileName });
+
             },
             function (err) {
                 console.log(err);

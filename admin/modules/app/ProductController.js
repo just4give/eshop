@@ -35,27 +35,12 @@ admin.controller("ProductController",["$scope","$rootScope","$log","$modal","$st
     }]);
 
 admin.controller("ProductDetailsController",["$scope","$rootScope","$log","$modal","$state", "toaster","Upload","$window",
-    "Product","Tax","$stateParams",
-    function($scope,$rootScope,$log,$modal,$state,toaster,Upload,$window,Product,Tax,$stateParams){
+    "Product","Tax","Photo","$stateParams","$confirm",
+    function($scope,$rootScope,$log,$modal,$state,toaster,Upload,$window,Product,Tax,Photo,$stateParams,$confirm){
 
-   /* $scope.product={
-        imageUrl:{
-            imageUrl: 'http://lorempixel.com/450/300/people/3',
-            id: 1
-        }
-    };
-*/
 
 
         $scope.slides=[];
-  /*  for(var i=1;i<16;i++){
-        $scope.slides.push({
-            imageUrl: 'http://lorempixel.com/450/300/people/'+i,
-            id: i
-        })
-    }*/
-
-
 
         $scope.upload = function(file,cnt){
 
@@ -68,9 +53,9 @@ admin.controller("ProductDetailsController",["$scope","$rootScope","$log","$moda
                 return;
             }
 
-            if($scope.slides.length >=4){
+            if($scope.slides.length >=1){
 
-                toaster.pop("info","","You are limited to upload only 4 images per product");
+                toaster.pop("info","","You are limited to upload only 1 image per product");
                 return;
             }
 
@@ -84,8 +69,8 @@ admin.controller("ProductDetailsController",["$scope","$rootScope","$log","$moda
             }).then(function (resp) {
 
                 $log.debug(resp.data);
-                newImage.imageUrl = resp.data.imgSrc;
-                newImage.id = resp.data.imgId;
+                newImage.imageUrl = resp.data.imageUrl;
+                newImage.id = resp.data.id;
 
 
 
@@ -112,6 +97,8 @@ admin.controller("ProductDetailsController",["$scope","$rootScope","$log","$moda
         if($stateParams.id >0){
             Product.get({id:$stateParams.id},function(data){
                 $scope.product= data;
+                $scope.slides=[];
+                $scope.slides.push(data.photo);
             })
         }else{
             $scope.product = new Product();
@@ -143,6 +130,24 @@ admin.controller("ProductDetailsController",["$scope","$rootScope","$log","$moda
 
         }
 
+        $scope.deletePhoto = function(r){
+            $confirm({text: 'You are going to delete the record.' ,ok:"Yes,delete",cancel:"Cancel" , title:"Delete?"})
+                .then(function() {
+                    var index = _.findIndex($scope.slides, r);
+
+                    Photo.get({id:r.id},function(photo){
+                        photo.$delete(function(data){
+                            $scope.slides.splice(index,1);
+                            toaster.pop("info","","Record deleted");
+                        },function(err){
+                            $log.debug(err);
+                            toaster.pop("error","",err.data.message);
+                        });
+                    })
+
+
+                });
+        }
   /*      var overlay =  $("#image-slider .overlay");
         var slider =  $("#image-slider");
         var sliderW = slider.width();
