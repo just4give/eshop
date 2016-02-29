@@ -3372,7 +3372,7 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 			//Some browsers (like Firefox and IE) don't honor transform-origin properly in SVG elements, so we need to manually adjust the matrix accordingly. We feature detect here rather than always doing the conversion for certain browsers because they may fix the problem at some point in the future.
 
 			_createSVG = function(type, container, attributes) {
-				var element = _doc.createElementNS("http://www.w3.org/2000/svg", type),
+				var element = _doc.createElementNS("http://app.w3.org/2000/svg", type),
 					reg = /([a-z])([A-Z])/g,
 					p;
 				for (p in attributes) {

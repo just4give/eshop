@@ -258,7 +258,7 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 				if (_isOldIE) {
 					return;
 				}
-				var url = "http://www.w3.org/2000/svg",
+				var url = "http://app.w3.org/2000/svg",
 					svg = _doc.createElementNS(url, "svg"),
 					e = _doc.createElementNS(url, "rect");
 				e.setAttributeNS(null, "width", "10");

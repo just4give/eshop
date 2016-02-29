@@ -14,7 +14,7 @@ To install using [Bower](http://bower.io):
 bower install angular-inview
 ```
 
-or [npm](https://www.npmjs.com/):
+or [npm](https://app.npmjs.com/):
 
 ```
 npm install angular-inview

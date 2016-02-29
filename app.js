@@ -7,6 +7,7 @@ var config = require('./server/config/config')[env];
 
 var app = express();
 require('./server/config/express')(app, config);
+require('./server/config/epilouge')(app,config);
 require('./server/config/passport')(config);
 require('./server/config/routes')(app);
 

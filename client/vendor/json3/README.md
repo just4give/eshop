@@ -9,9 +9,9 @@
 - [Development Version](http://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.js) *(43 KB; uncompressed with comments)*
 - [Production Version](http://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js) *(3.5 KB; compressed and `gzip`-ped)*
 
-Special thanks to [cdnjs](http://cdnjs.com/libraries/json3/) and [jsDelivr](http://www.jsdelivr.com/#!json3) for hosting CDN copies of JSON 3.
+Special thanks to [cdnjs](http://cdnjs.com/libraries/json3/) and [jsDelivr](http://app.jsdelivr.com/#!json3) for hosting CDN copies of JSON 3.
 
-[JSON](http://json.org/) is a language-independent data interchange format based on a loose subset of the JavaScript grammar. Originally popularized by [Douglas Crockford](http://www.crockford.com/), the format was standardized in the [fifth edition](http://es5.github.com/) of the ECMAScript specification. The 5.1 edition, ratified in June 2011, incorporates several modifications to the grammar pertaining to the serialization of dates.
+[JSON](http://json.org/) is a language-independent data interchange format based on a loose subset of the JavaScript grammar. Originally popularized by [Douglas Crockford](http://app.crockford.com/), the format was standardized in the [fifth edition](http://es5.github.com/) of the ECMAScript specification. The 5.1 edition, ratified in June 2011, incorporates several modifications to the grammar pertaining to the serialization of dates.
 
 JSON 3 exposes two functions: `stringify()` for [serializing](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/JSON/stringify) a JavaScript value to JSON, and `parse()` for [producing](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/JSON/parse) a JavaScript value from a JSON source string. It is a **drop-in replacement** for [JSON 2](http://json.org/js). The functions behave exactly as described in the ECMAScript spec, **except** for the date serialization discrepancy noted below.
 
@@ -102,11 +102,11 @@ JSON 3 has been **tested** with the following web browsers, CommonJS environment
 
 ## Web Browsers
 
-- Windows [Internet Explorer](http://www.microsoft.com/windows/internet-explorer), version 6.0 and higher
-- Mozilla [Firefox](http://www.mozilla.com/firefox), version 1.0 and higher
-- Apple [Safari](http://www.apple.com/safari), version 2.0 and higher
-- [Opera](http://www.opera.com) 7.02 and higher
-- [Mozilla](http://sillydog.org/narchive/gecko.php) 1.0, [Netscape](http://sillydog.org/narchive/) 6.2.3, and [SeaMonkey](http://www.seamonkey-project.org/) 1.0 and higher
+- Windows [Internet Explorer](http://app.microsoft.com/windows/internet-explorer), version 6.0 and higher
+- Mozilla [Firefox](http://app.mozilla.com/firefox), version 1.0 and higher
+- Apple [Safari](http://app.apple.com/safari), version 2.0 and higher
+- [Opera](http://app.opera.com) 7.02 and higher
+- [Mozilla](http://sillydog.org/narchive/gecko.php) 1.0, [Netscape](http://sillydog.org/narchive/) 6.2.3, and [SeaMonkey](http://app.seamonkey-project.org/) 1.0 and higher
 
 ## CommonJS Environments
 
@@ -116,7 +116,7 @@ JSON 3 has been **tested** with the following web browsers, CommonJS environment
 
 ## JavaScript Engines
 
-- Mozilla [Rhino](http://www.mozilla.org/rhino) 1.5R5 and higher
+- Mozilla [Rhino](http://app.mozilla.org/rhino) 1.5R5 and higher
 - WebKit [JSC](https://trac.webkit.org/wiki/JSC)
 - Google [V8](http://code.google.com/p/v8)
 

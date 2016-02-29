@@ -12,7 +12,7 @@ An Angular module that gives you access to the browsers local storage
 ##Table of contents:
 - [![Gitter][gitter-image]][gitter-url]
 - [Get Started](#get-started)
-- [Video Tutorial](https://www.youtube.com/watch?v=I4iB0kOSmx8)
+- [Video Tutorial](https://app.youtube.com/watch?v=I4iB0kOSmx8)
 - [Development](#development)
 - [Configuration](#configuration)
  - [setPrefix](#setprefix)

@@ -1,6 +1,6 @@
 # angular-toggle-switch [![Build Status](https://travis-ci.org/cgarvis/angular-toggle-switch.png?branch=master)](https://travis-ci.org/cgarvis/angular-toggle-switch)
 
-Toggle Switches for AngularJS.  Based off [Bootstrap switch](http://www.larentis.eu/switch/) by Matt Lartentis.
+Toggle Switches for AngularJS.  Based off [Bootstrap switch](http://app.larentis.eu/switch/) by Matt Lartentis.
 
 ## Demo
 [cgarvis.github.io/angular-toggle-switch](http://cgarvis.github.io/angular-toggle-switch)

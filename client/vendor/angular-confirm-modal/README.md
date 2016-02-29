@@ -8,7 +8,7 @@ To use ui-bootstrap < 0.14.x you must keep on the 1.1.x release track for this m
 
 This module requires the Angular-UI $modal service http://angular-ui.github.io/bootstrap/#/modal.
 
-[NPM](https://www.npmjs.com/package/angular-confirm)
+[NPM](https://app.npmjs.com/package/angular-confirm)
 
 To install with bower: `bower install angular-confirm-modal`
 

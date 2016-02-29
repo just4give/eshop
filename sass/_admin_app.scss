@@ -4,11 +4,16 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 $header-heigh: 60px;
-
+html, body {
+    margin:0;
+    padding:0;
+    height:100%;
+}
 body {
     background-color: #f8f8f8;
     padding-top: $header-heigh;
 }
+
 
 .nav-h{
     color: white;
@@ -41,6 +46,7 @@ body {
     background-color: rgba(41, 39, 39, 0.7);
     padding-top: 20px;
     padding-bottom: 20px;
+    height: 100vh;
     li>a{
         color: white;
         &:hover{
@@ -411,4 +417,44 @@ table.dataTable thead .sorting:after {
     margin-top: 40px;
     color: white;
     @include box-shadow;
+}
+
+.link{
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.link.link-delete{
+    color: rgba(255, 0, 0, 0.4);
+    &:hover{
+        color: rgba(255, 0, 0, 1);
+    }
+}
+.link.link-edit{
+    color: rgba(0, 0, 255, 0.4);
+    &:hover{
+        color: rgba(0, 0, 255, 1);
+    }
+}
+.link.link-lg{
+    font-size: large;
+}
+
+.admin-page-view{
+    padding: 5px;
+}
+.admin-page-view .sort-icon{
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.admin-page-view.ng-enter {
+    animation: fadeIn .35s linear;
+}
+
+.admin-page-view.ng-leave {
+    animation: fadeOut .35s linear;
 }

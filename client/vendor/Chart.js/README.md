@@ -3,11 +3,11 @@
 [![Build Status](https://travis-ci.org/nnnick/Chart.js.svg?branch=master)](https://travis-ci.org/nnnick/Chart.js) [![Code Climate](https://codeclimate.com/github/nnnick/Chart.js/badges/gpa.svg)](https://codeclimate.com/github/nnnick/Chart.js)
 
 
-*Simple HTML5 Charts using the canvas element* [chartjs.org](http://www.chartjs.org)
+*Simple HTML5 Charts using the canvas element* [chartjs.org](http://app.chartjs.org)
 
 ## Documentation
 
-You can find documentation at [chartjs.org/docs](http://www.chartjs.org/docs/). The markdown files that build the site are available under `/docs`. Please note - in some of the json examples of configuration you might notice some liquid tags - this is just for the generating the site html, please disregard.
+You can find documentation at [chartjs.org/docs](http://app.chartjs.org/docs/). The markdown files that build the site are available under `/docs`. Please note - in some of the json examples of configuration you might notice some liquid tags - this is just for the generating the site html, please disregard.
 
 ## Bugs, issues and contributing
 

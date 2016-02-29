@@ -3,6 +3,7 @@
  */
 var path = require('path');
 var rootPath = path.normalize(__dirname + '/../../');
+var modelPath = path.join(rootPath, 'server/model');
 
 module.exports = {
     development: {
@@ -14,8 +15,9 @@ module.exports = {
         password : "root",
         database : "eshop",
         connectionLimit: 50,
+        modelPath: modelPath,
         image:{
-            repo: "/photo",
+            repo: "/Users/mithundas/Project_Workspace",
             thumb:{
                 height: 200,
                 width:180

@@ -1,0 +1,13 @@
+/* Generated code for Angular based on Sequelize models */
+angular.module('epilouge.ngService',['ngResource']);
+#foreach($service in $services)
+ angular.module('epilouge.ngService').factory('$service.factory', ["$resource", "$log",function($resource,$log){
+
+      return  #[[$resource]]#('/api/$service.model/:id', { id: '@id' }, {
+         update: {
+           method: 'PUT' // this method issues a PUT request
+         }
+       });
+
+ }]);
+#end

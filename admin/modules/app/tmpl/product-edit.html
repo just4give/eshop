@@ -26,28 +26,52 @@
 
     <div class="form-group col-sm-6">
         </div>
-
-    <ul class="list-inline col-xs-12">
-        <li ng-repeat="m in productImages">
+    <!--<div id="image-slider" class="col-xs-12 " ng-show="slides && slides.length>0">
+    <a class="left-arrow" ng-click="slideLeft()"><i class="fa fa-chevron-circle-left" ></i></a>
+    <a class="right-arrow" ng-click="slideRight()"><i class="fa fa-chevron-circle-right"></i></a>
+    <ul class="list-inline overlay" >
+        <li ng-repeat="m in slides">
             <div class="img-panel">
-                <div class="img-header" ng-click="deleteImageFromBag($index)">
+                <div class="img-header" ng-click="deleteImageFromBag(m.id)">
                     <i class="text-danger fa fa-times-circle fa-lg close-circle"></i>
                 </div>
                 <div class="img-holder">
-                    <img ng-src="{{m.imgSrc}}" ng-show="m.imgSrc">
-                    <div class="prog-percentage" ng-hide="m.imgSrc">{{m.progress}}</div>
-                    <div class="prog" ng-hide="m.imgSrc" ng-style="{width: m.progress }"></div>
+                    <img ng-src="{{m.imageUrl}}" ng-show="m.imageUrl">
+                    <div class="prog-percentage" ng-hide="m.imageUrl">{{m.progress}}</div>
+                    <div class="prog" ng-hide="m.imageUrl" ng-style="{width: m.progress }"></div>
                 </div>
 
             </div>
-            <div class="text-center">
-                <label>Choose as parmary<input type="radio" name="primaryImage" ng-model="product.imageUrl" value="{{m.imgSrc}}"> </label>
+            <div class="text-center text-warning">
+                <label> Choose as parmary <input type="radio" name="primaryImage" ng-model="product.imageId" value="{{m.id}}"> </label>
             </div>
         </li>
 
     </ul>
-    {{product.imageUrl}}
+
+</div>-->
+
+    <ul class="col-xs-12 list-inline " >
+        <li ng-repeat="m in slides">
+            <div class="img-panel">
+                <div class="img-header" ng-click="deleteImageFromBag(m.id)">
+                    <i class="text-danger fa fa-times-circle fa-lg close-circle"></i>
+                </div>
+                <div class="img-holder">
+                    <img ng-src="{{m.imageUrl}}" ng-show="m.imageUrl">
+                    <div class="prog-percentage" ng-hide="m.imageUrl">{{m.progress}}</div>
+                    <div class="prog" ng-hide="m.imageUrl" ng-style="{width: m.progress }"></div>
+                </div>
+
+            </div>
+            <div class="text-center text-warning">
+                <label> Choose as parmary <input type="radio" name="primaryImage" ng-model="product.imageId" value="{{m.id}}"> </label>
+            </div>
+        </li>
+
+    </ul>
+    {{product.image}}
     <div class="col-xs-12 text-right">
-        <button class="btn btn-warning">Create</button>
+        <button class="btn btn-warning" ng-click="save()">Create</button>
     </div>
 </form>

@@ -75,6 +75,11 @@
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; }
+
 body {
   background-color: #f8f8f8;
   padding-top: 60px; }
@@ -104,7 +109,8 @@ body {
 .nav-v {
   background-color: rgba(41, 39, 39, 0.7);
   padding-top: 20px;
-  padding-bottom: 20px; }
+  padding-bottom: 20px;
+  height: 100vh; }
   .nav-v li > a {
     color: white; }
     .nav-v li > a:hover {
@@ -473,5 +479,69 @@ table.dataTable thead .sorting:after {
   -moz-box-shadow: 2px 2px 2px #CCC8C8;
   -webkit-box-shadow: 2px 2px 2px #CCC8C8;
   box-shadow: 2px 2px 2px #CCC8C8; }
+
+.link:hover {
+  cursor: pointer; }
+
+.link.link-delete {
+  color: rgba(255, 0, 0, 0.4); }
+  .link.link-delete:hover {
+    color: red; }
+
+.link.link-edit {
+  color: rgba(0, 0, 255, 0.4); }
+  .link.link-edit:hover {
+    color: blue; }
+
+.link.link-lg {
+  font-size: large; }
+
+.admin-page-view {
+  padding: 5px; }
+
+.admin-page-view .sort-icon:hover {
+  cursor: pointer; }
+
+.admin-page-view.ng-enter {
+  animation: fadeIn .35s linear; }
+
+.admin-page-view.ng-leave {
+  animation: fadeOut .35s linear; }
+
+#image-slider {
+  height: 350px;
+  background-color: transparent;
+  overflow-x: hidden;
+  padding-top: 20px; }
+  #image-slider .left-arrow {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    line-height: 350px;
+    width: 30px;
+    font-size: xx-large;
+    color: rgba(0, 0, 0, 0.8);
+    z-index: 1; }
+    #image-slider .left-arrow i:hover {
+      color: yellow;
+      cursor: pointer; }
+  #image-slider .right-arrow {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    line-height: 350px;
+    width: 30px;
+    font-size: xx-large;
+    color: rgba(0, 0, 0, 0.8);
+    z-index: 1; }
+    #image-slider .right-arrow i:hover {
+      color: yellow;
+      cursor: pointer; }
+  #image-slider .overlay {
+    width: 2000px;
+    background-color: transparent;
+    position: relative;
+    left: 0px;
+    transition: left 0.5s ease-in-out; }
 
 /*# sourceMappingURL=admin.css.map */

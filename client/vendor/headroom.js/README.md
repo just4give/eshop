@@ -37,7 +37,7 @@ Using headroom.js is really simple. It has a pure JS API, plus an optional jQuer
 
 ### Using Headroom.js with a CDN
 
-CDN provided by [jsDelivr CDN](http://www.jsdelivr.com/#!headroomjs)
+CDN provided by [jsDelivr CDN](http://app.jsdelivr.com/#!headroomjs)
 ```
 <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js"></script>
 <script src="//cdn.jsdelivr.net/headroomjs/0.5.0/angular.headroom.min.js"></script>
@@ -151,4 +151,4 @@ Issues can be resolved quickest if they are descriptive and include both a reduc
 
 ## License
 
-Licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+Licensed under the [MIT License](http://app.opensource.org/licenses/mit-license.php).

@@ -15,10 +15,10 @@ Follow [@mattaussaguel](//twitter.com/mattaussaguel) for updates as WOW evolves.
 ### [LIVE DEMO ➫](http://mynameismatthieu.com/WOW/)
 
 ## Live examples
-- [MaterialUp](http://www.materialup.com)
-- [Fliplingo](https://www.fliplingo.com)
-- [Streamline Icons](http://www.streamlineicons.com)
-- [Microsoft Stories](http://www.microsoft.com/en-us/news/stories/garage/)
+- [MaterialUp](http://app.materialup.com)
+- [Fliplingo](https://app.fliplingo.com)
+- [Streamline Icons](http://app.streamlineicons.com)
+- [Microsoft Stories](http://app.microsoft.com/en-us/news/stories/garage/)
 
 
 ## Version
@@ -126,4 +126,4 @@ Thanks to everyone who has contributed to the project so far:
 - Attila Oláh - [@attilaolah](//twitter.com/attilaolah) - [Github Profile](//github.com/attilaolah)
 - [and many others](//github.com/matthieua/WOW/graphs/contributors)
 
-Initiated and designed by [Vincent Le Moign](//www.webalys.com/), [@webalys](//twitter.com/webalys)
+Initiated and designed by [Vincent Le Moign](//app.webalys.com/), [@webalys](//twitter.com/webalys)

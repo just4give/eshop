@@ -8,7 +8,7 @@ admin.controller("LoginController",["$scope","$rootScope","$log","$modal","$stat
 
 
     $scope.submitLogin = function(){
-
+        $rootScope.loggedIn = true;
         $state.go('home.dashboard');
 
     }

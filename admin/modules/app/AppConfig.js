@@ -23,12 +23,23 @@ admin.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locationP
     })
         .state('home.products', {
             url: '/products',
-            templateUrl: 'modules/app/tmpl/product-edit.html',
+            templateUrl: 'modules/app/tmpl/products.html',
             controller:'ProductController'
+        })
+        .state('home.product-detail', {
+            url: '/products/:id',
+            templateUrl: 'modules/app/tmpl/product-edit.html',
+            controller: 'ProductDetailsController'
         })
         .state('home.taxes', {
             url: '/taxes',
-            templateUrl: 'modules/app/tmpl/taxes.html'
+            templateUrl: 'modules/app/tmpl/taxes.html',
+            controller: 'TaxController'
+        })
+        .state('home.tax-detail', {
+            url: '/taxes/:id',
+            templateUrl: 'modules/app/tmpl/tax-edit.html',
+            controller: 'TaxDetailsController'
         })
 
      ;

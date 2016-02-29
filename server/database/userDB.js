@@ -3,7 +3,7 @@
  */
 
 
-var User = require('../orm/User');
+var User = require('../model/User');
 
 var crypto = require('crypto');
 

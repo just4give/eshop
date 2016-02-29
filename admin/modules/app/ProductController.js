@@ -1,17 +1,66 @@
-/**
- * Created by Mithun.Das on 12/4/2015.
- */
-admin.controller("ProductController",["$scope","$rootScope","$log","$modal","$state", "toaster","Upload",
-    function($scope,$rootScope,$log,$modal,$state,toaster,Upload){
 
-    $scope.product={};
+admin.controller("ProductController",["$scope","$rootScope","$log","$modal","$state", "toaster","Product","$confirm",
+    function($scope,$rootScope,$log,$modal,$state,toaster,Product,$confirm){
 
-    $scope.taxes = [{id:1, name:'Electronics Tax', pct:6.5},{id:2, name:'Apparel Tax', pct:4.5}];
+        $scope.sortKey ="name";
+        $scope.reverse =true;
+
+
+        $scope.sort = function(keyname){
+            $scope.sortKey = keyname;   //set the sortKey to the param passed
+            $scope.reverse = !$scope.reverse; //if true make it false and vice versa
+        }
+
+        Product.query(function(data){
+            $scope.records = data;
+        })
+
+        $scope.edit = function(id){
+            $state.go("home.product-detail",{id:id});
+        }
+        $scope.create = function(){
+            $state.go("home.product-detail",{id:-1});
+        }
+        $scope.delete = function(r){
+            $confirm({text: 'You are going to delete the record.' ,ok:"Yes,delete",cancel:"Cancel" , title:"Delete?"})
+                .then(function() {
+                    var index = _.findIndex($scope.records, r);
+                    r.$delete(function(data){
+                        $scope.records.splice(index,1);
+                        toaster.pop("info","","Record deleted");
+                    });
+                });
+        }
+
+    }]);
+
+admin.controller("ProductDetailsController",["$scope","$rootScope","$log","$modal","$state", "toaster","Upload","$window",
+    "Product","Tax","$stateParams",
+    function($scope,$rootScope,$log,$modal,$state,toaster,Upload,$window,Product,Tax,$stateParams){
+
+   /* $scope.product={
+        imageUrl:{
+            imageUrl: 'http://lorempixel.com/450/300/people/3',
+            id: 1
+        }
+    };
+*/
+
+
+        $scope.slides=[];
+  /*  for(var i=1;i<16;i++){
+        $scope.slides.push({
+            imageUrl: 'http://lorempixel.com/450/300/people/'+i,
+            id: i
+        })
+    }*/
+
+
 
         $scope.upload = function(file,cnt){
 
-            $rootScope.productImages = $rootScope.productImages||[];
-            $log.debug('****'+file);
+            $scope.slides = $scope.slides||[];
+
 
             if(!file ||file.$error){
                 //$scope.modalErrorMessage = 'Image size can not be more than 10MB';
@@ -19,10 +68,14 @@ admin.controller("ProductController",["$scope","$rootScope","$log","$modal","$st
                 return;
             }
 
+            if($scope.slides.length >=4){
 
+                toaster.pop("info","","You are limited to upload only 4 images per product");
+                return;
+            }
 
             var newImage = {progress: '0%' };
-            $rootScope.productImages.push(newImage);
+            $scope.slides.push(newImage);
 
             Upload.upload({
                 url: '/api/photo/upload',
@@ -31,10 +84,9 @@ admin.controller("ProductController",["$scope","$rootScope","$log","$modal","$st
             }).then(function (resp) {
 
                 $log.debug(resp.data);
-                newImage.imgSrc = resp.data.imgSrc;
-                newImage.imgId = resp.data.imgId;
-                newImage.width = resp.data.width;
-                newImage.height = resp.data.height;
+                newImage.imageUrl = resp.data.imgSrc;
+                newImage.id = resp.data.imgId;
+
 
 
             }, function (resp) {
@@ -57,4 +109,68 @@ admin.controller("ProductController",["$scope","$rootScope","$log","$modal","$st
             });
         }
 
-}]);
+        if($stateParams.id >0){
+            Product.get({id:$stateParams.id},function(data){
+                $scope.product= data;
+            })
+        }else{
+            $scope.product = new Product();
+        }
+
+        Tax.query(function(data){
+            $scope.taxes = data;
+        })
+
+
+        $scope.save = function(){
+
+            if($scope.product.id){
+                $scope.product.$update(function(data){
+                    $log.debug(data);
+                    toaster.pop("info","","Tax details updated");
+
+                    $state.go("home.products");
+                })
+
+            }else{
+                $scope.product.$save(function(data){
+                    $log.debug(data);
+                    toaster.pop("info","","Tax details created");
+
+                    $state.go("home.products");
+                })
+            }
+
+        }
+
+  /*      var overlay =  $("#image-slider .overlay");
+        var slider =  $("#image-slider");
+        var sliderW = slider.width();
+        var imageDisplayed = Math.floor(sliderW/210);
+        overlay.width($scope.slides.length*210);
+        var maxLeft=($scope.slides.length - imageDisplayed)*-210;
+            angular.element($window).bind('resize', function(){
+            sliderW = slider.width();
+            imageDisplayed = sliderW/210;
+            maxLeft=   ($scope.slides.length - imageDisplayed)*-210;
+        });
+
+
+        $scope.slideLeft= function(){
+
+            var leftPos = overlay.position().left;
+            $log.debug("left=" + leftPos);
+            if(leftPos<=-100){
+                overlay.css('left', leftPos+ 210);
+            }
+        }
+
+        $scope.slideRight = function(){
+            var leftPos = overlay.position().left;
+            $log.debug("left=" + leftPos );
+            if(leftPos> maxLeft){
+                overlay.css('left', leftPos-210);
+            }
+        }*/
+
+    }]);

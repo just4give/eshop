@@ -2,10 +2,10 @@
 
 [![Slack](https://bootstrap-slack.herokuapp.com/badge.svg)](https://bootstrap-slack.herokuapp.com)
 ![Bower version](https://img.shields.io/bower/v/bootstrap.svg)
-[![npm version](https://img.shields.io/npm/v/bootstrap.svg)](https://www.npmjs.com/package/bootstrap)
+[![npm version](https://img.shields.io/npm/v/bootstrap.svg)](https://app.npmjs.com/package/bootstrap)
 [![Build Status](https://img.shields.io/travis/twbs/bootstrap/master.svg)](https://travis-ci.org/twbs/bootstrap)
 [![devDependency Status](https://img.shields.io/david/dev/twbs/bootstrap.svg)](https://david-dm.org/twbs/bootstrap#info=devDependencies)
-[![NuGet](https://img.shields.io/nuget/v/bootstrap.svg)](https://www.nuget.org/packages/Bootstrap)
+[![NuGet](https://img.shields.io/nuget/v/bootstrap.svg)](https://app.nuget.org/packages/Bootstrap)
 [![Selenium Test Status](https://saucelabs.com/browser-matrix/bootstrap.svg)](https://saucelabs.com/u/bootstrap)
 
 Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thornton](https://twitter.com/fat), and maintained by the [core team](https://github.com/orgs/twbs/people) with the massive support and involvement of the community.
@@ -32,8 +32,8 @@ Several quick start options are available:
 * [Download the latest release](https://github.com/twbs/bootstrap/archive/v3.3.6.zip).
 * Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
 * Install with [Bower](http://bower.io): `bower install bootstrap`.
-* Install with [npm](https://www.npmjs.com): `npm install bootstrap`.
-* Install with [Meteor](https://www.meteor.com): `meteor add twbs:bootstrap`.
+* Install with [npm](https://app.npmjs.com): `npm install bootstrap`.
+* Install with [Meteor](https://app.meteor.com): `meteor add twbs:bootstrap`.
 * Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap`.
 
 Read the [Getting started page](http://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
@@ -111,7 +111,7 @@ Get updates on Bootstrap's development and chat with the project maintainers and
 * Join [the official Slack room](https://bootstrap-slack.herokuapp.com).
 * Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##bootstrap` channel.
 * Implementation help may be found at Stack Overflow (tagged [`twitter-bootstrap-3`](https://stackoverflow.com/questions/tagged/twitter-bootstrap-3)).
-* Developers should use the keyword `bootstrap` on packages which modify or add to the functionality of Bootstrap when distributing through [npm](https://www.npmjs.com/browse/keyword/bootstrap) or similar delivery mechanisms for maximum discoverability.
+* Developers should use the keyword `bootstrap` on packages which modify or add to the functionality of Bootstrap when distributing through [npm](https://app.npmjs.com/browse/keyword/bootstrap) or similar delivery mechanisms for maximum discoverability.
 
 
 ## Versioning

@@ -43,7 +43,7 @@ Check out the sample app: http://angular-ui.github.io/ui-router/sample/
  - [download the release](http://angular-ui.github.io/ui-router/release/angular-ui-router.js) (or [minified](http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js))
  - [link to cdn](http://cdnjs.com/libraries/angular-ui-router)
  - via **[jspm](http://jspm.io/)**: by running `$ jspm install angular-ui-router` from your console
- - or via **[npm](https://www.npmjs.org/)**: by running `$ npm install angular-ui-router` from your console
+ - or via **[npm](https://app.npmjs.org/)**: by running `$ npm install angular-ui-router` from your console
  - or via **[Bower](http://bower.io/)**: by running `$ bower install angular-ui-router` from your console
  - or via **[Component](https://github.com/component/component)**: by running `$ component install angular-ui/ui-router` from your console
 
@@ -241,7 +241,7 @@ myApp.config(function($stateProvider) {
 ### Videos
 
 * [Introduction Video](https://egghead.io/lessons/angularjs-introduction-ui-router) (egghead.io)
-* [Tim Kindberg on Angular UI-Router](https://www.youtube.com/watch?v=lBqiZSemrqg)
+* [Tim Kindberg on Angular UI-Router](https://app.youtube.com/watch?v=lBqiZSemrqg)
 * [Activating States](https://egghead.io/lessons/angularjs-ui-router-activating-states) (egghead.io)
 * [Learn Angular.js using UI-Router](http://youtu.be/QETUuZ27N0w) (LearnCode.academy)
 

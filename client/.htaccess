@@ -62,7 +62,7 @@
 # Prevent Apache from returning a 404 error for a rewrite if a directory
 # with the same name does not exist.
 # http://httpd.apache.org/docs/current/content-negotiation.html#multiviews
-# http://www.webmasterworld.com/apache/3808792.htm
+# http://app.webmasterworld.com/apache/3808792.htm
 
 Options -MultiViews
 
@@ -206,7 +206,7 @@ AddDefaultCharset utf-8
 # performance impact: http://httpd.apache.org/docs/current/misc/perf-tuning.html#symlinks
 
 # Also, some cloud hosting services require `RewriteBase` to be set:
-# http://www.rackspace.com/knowledge_center/frequently-asked-question/why-is-mod-rewrite-not-working-on-my-site
+# http://app.rackspace.com/knowledge_center/frequently-asked-question/why-is-mod-rewrite-not-working-on-my-site
 
 <IfModule mod_rewrite.c>
     Options +FollowSymlinks
@@ -216,16 +216,16 @@ AddDefaultCharset utf-8
 </IfModule>
 
 # ------------------------------------------------------------------------------
-# | Suppressing / Forcing the "www." at the beginning of URLs                  |
+# | Suppressing / Forcing the "app." at the beginning of URLs                  |
 # ------------------------------------------------------------------------------
 
 # The same content should never be available under two different URLs especially
-# not with and without "www." at the beginning. This can cause SEO problems
+# not with and without "app." at the beginning. This can cause SEO problems
 # (duplicate content), therefore, you should choose one of the alternatives and
 # redirect the other one.
 
-# By default option 1 (no "www.") is activated:
-# http://no-www.org/faq.php?q=class_b
+# By default option 1 (no "app.") is activated:
+# http://no-app.org/faq.php?q=class_b
 
 # If you'd prefer to use option 2, just comment out all the lines from option 1
 # and uncomment the ones from option 2.
@@ -234,25 +234,25 @@ AddDefaultCharset utf-8
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# Option 1: rewrite www.example.com → example.com
+# Option 1: rewrite app.example.com → example.com
 
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
-    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteCond %{HTTP_HOST} ^app\.(.+)$ [NC]
     RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
 </IfModule>
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# Option 2: rewrite example.com → www.example.com
+# Option 2: rewrite example.com → app.example.com
 
 # Be aware that the following might not be a good idea if you use "real"
 # subdomains for certain parts of your website.
 
 # <IfModule mod_rewrite.c>
 #    RewriteCond %{HTTPS} !=on
-#    RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
-#    RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+#    RewriteCond %{HTTP_HOST} !^app\..+$ [NC]
+#    RewriteRule ^ http://app.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 # </IfModule>
 
 
@@ -324,7 +324,7 @@ AddDefaultCharset utf-8
 # ------------------------------------------------------------------------------
 
 # Rewrite secure requests properly to prevent SSL certificate warnings, e.g.:
-# prevent `https://www.example.com` when your certificate only allows
+# prevent `https://app.example.com` when your certificate only allows
 # `https://secure.example.com`.
 
 # <IfModule mod_rewrite.c>
@@ -341,7 +341,7 @@ AddDefaultCharset utf-8
 # (the initial HTTP connection) for an attacker to downgrade or redirect the
 # request. The following header ensures that browser will ONLY connect to your
 # server via HTTPS, regardless of what the users type in the address bar.
-# http://www.html5rocks.com/en/tutorials/security/transport-layer-security/
+# http://app.html5rocks.com/en/tutorials/security/transport-layer-security/
 
 # <IfModule mod_headers.c>
 #    Header set Strict-Transport-Security max-age=16070400;
@@ -409,7 +409,7 @@ AddDefaultCharset utf-8
 # ------------------------------------------------------------------------------
 
 # Prevent some of the mobile network providers from modifying the content of
-# your site: http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9.5.
+# your site: http://app.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9.5.
 
 # <IfModule mod_headers.c>
 #    Header set Cache-Control "no-transform"

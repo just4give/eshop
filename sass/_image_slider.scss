@@ -1,0 +1,49 @@
+$slider-height:350px;
+#image-slider{
+  height: $slider-height;
+  //background-color: rgba(0,0,0,.4);
+  background-color: transparent;
+  overflow-x: hidden;
+  padding-top: 20px;
+  //width: 500px;
+
+  .left-arrow{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    line-height: $slider-height;
+    width: 30px;
+    font-size: xx-large;
+    color: rgba(0,0,0,.8);
+    z-index: 1;
+    i:hover{
+      color: yellow;
+      cursor: pointer;
+    }
+  }
+
+  .right-arrow{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    line-height: $slider-height;
+    width: 30px;
+    font-size: xx-large;
+    color: rgba(0,0,0,.8);
+    z-index: 1;
+    i:hover{
+      color: yellow;
+      cursor: pointer;
+    }
+
+  }
+
+  .overlay{
+    width: 2000px;
+    //background-color: red;
+    background-color: transparent;
+    position: relative;
+    left: 0px;
+    transition: left 0.5s ease-in-out;
+  }
+}

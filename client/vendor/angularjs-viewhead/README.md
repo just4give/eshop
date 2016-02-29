@@ -79,7 +79,7 @@ There are sometimes other elements in the HTML head that vary between views. Exa
 and Facebook open graph metadata. This markup is parsed primarily by robots like search engine crawlers,
 so having your AngularJS app generate them dynamically via JavaScript will not be useful alone, but if you
 create static snapshots of your application to serve to robots, for example using a service like
-[BromBone](http://www.brombone.com/), this module can be an effective way to include machine-readable
+[BromBone](http://app.brombone.com/), this module can be an effective way to include machine-readable
 metadata in those snapshots.
 
 To add per-view metadata elements to the HTML head, place them near the top of your view template (it doesn't

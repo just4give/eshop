@@ -6,7 +6,7 @@
 [![Code Climate](https://codeclimate.com/github/jtblin/angular-chart.js/badges/gpa.svg)](https://codeclimate.com/github/jtblin/angular-chart.js)
 [![Code Coverage](https://d3s6mut3hikguw.cloudfront.net/github/jtblin/angular-chart.js/badges/coverage.svg)](https://codeclimate.com/github/jtblin/angular-chart.js)
 
-Beautiful, reactive, responsive charts for Angular.JS using [Chart.js](http://www.chartjs.org/). 
+Beautiful, reactive, responsive charts for Angular.JS using [Chart.js](http://app.chartjs.org/).
 
 [Demo](http://jtblin.github.io/angular-chart.js/)
 
@@ -53,7 +53,7 @@ They all use mostly the same API (`[chart-]` indicates an optional but recommend
 
 - `[chart-]data`: series data
 - `[chart-]labels`: x axis labels (line, bar, radar) or series labels (pie, doughnut, polar area)
-- `[chart-]options`: chart options (as from [Chart.js documentation](http://www.chartjs.org/docs/))
+- `[chart-]options`: chart options (as from [Chart.js documentation](http://app.chartjs.org/docs/))
 - `[chart-]series`: (default: `[]`): series labels (line, bar, radar)
 - `[chart-]colours`: data colours (will use default colours if not specified)
 - `getColour`: function that returns a colour in case there are not enough (will use random colours if not specified)
@@ -191,7 +191,7 @@ Pull requests welcome!
 1. Fork the repo
 1. Install dependencies: `npm install` and `bower install`
 1. Make your changes
-1. Install [GraphicsMagick](http://www.graphicsmagick.org/)
+1. Install [GraphicsMagick](http://app.graphicsmagick.org/)
 1. Run tests: `npm test`
 1. Submit pull request
 
