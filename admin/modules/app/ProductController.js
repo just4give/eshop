@@ -35,8 +35,8 @@ admin.controller("ProductController",["$scope","$rootScope","$log","$modal","$st
     }]);
 
 admin.controller("ProductDetailsController",["$scope","$rootScope","$log","$modal","$state", "toaster","Upload","$window",
-    "Product","Tax","Photo","$stateParams","$confirm",
-    function($scope,$rootScope,$log,$modal,$state,toaster,Upload,$window,Product,Tax,Photo,$stateParams,$confirm){
+    "Product","Tax","Photo","$stateParams","$confirm","$timeout",
+    function($scope,$rootScope,$log,$modal,$state,toaster,Upload,$window,Product,Tax,Photo,$stateParams,$confirm,$timeout){
 
 
 
@@ -94,6 +94,67 @@ admin.controller("ProductDetailsController",["$scope","$rootScope","$log","$moda
             });
         }
 
+        $scope.uploadProductImage = function(file){
+
+
+            if(!file ||file.$error){
+
+                return;
+            }
+
+
+
+            var newImage = {progress: '0%',imageUrl:undefined };
+            var existingPhoto = $scope.product.photo;
+            $scope.product.photo=newImage;
+
+            Upload.upload({
+                url: '/api/photo/upload',
+                method: 'POST',
+                file:file
+            }).then(function (resp) {
+
+
+                    $log.debug(resp.data);
+                    newImage.imageUrl = resp.data.imageUrl;
+                    newImage.id = resp.data.id;
+                    $scope.product.photo = resp.data;
+                    $scope.product.photoId= resp.data.id;
+
+                    if($scope.product.id >0) {
+                        $scope.product.$update(function (data) {
+                            $log.debug("updated product");
+                            $log.debug(data);
+                            $scope.product.photo = resp.data;
+                            if (existingPhoto) {
+                                Photo.get({id: existingPhoto.id}, function (photo) {
+                                    photo.$delete(function (data) {
+
+                                    }, function (err) {
+
+                                    });
+                                })
+                            }
+                        })
+                    }
+
+
+
+
+
+
+            }, function (err) {
+                if(existingPhoto){
+                    $scope.product.photo =$scope.product.photo;
+                }
+            }, function (evt) {
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+
+                newImage.progress = progressPercentage +'%';
+            });
+
+        }
+
         if($stateParams.id >0){
             Product.get({id:$stateParams.id},function(data){
                 $scope.product= data;
@@ -114,7 +175,7 @@ admin.controller("ProductDetailsController",["$scope","$rootScope","$log","$moda
             if($scope.product.id){
                 $scope.product.$update(function(data){
                     $log.debug(data);
-                    toaster.pop("info","","Tax details updated");
+                    toaster.pop("info","","Product  updated");
 
                     $state.go("home.products");
                 })
@@ -122,7 +183,7 @@ admin.controller("ProductDetailsController",["$scope","$rootScope","$log","$moda
             }else{
                 $scope.product.$save(function(data){
                     $log.debug(data);
-                    toaster.pop("info","","Tax details created");
+                    toaster.pop("info","","Product  created");
 
                     $state.go("home.products");
                 })

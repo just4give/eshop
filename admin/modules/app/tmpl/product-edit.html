@@ -1,31 +1,59 @@
-<h3 class="text-center margin-bottom-20"><span class="label label-default">Add New Product</span></h3>
+<h3 class="text-center margin-bottom-20"><span class="label label-default">{{product.id>0 ? 'Update':'Create'}} Product</span></h3>
 
 <form name="p">
-    <div class="form-group col-sm-6" ng-class="{ 'has-error': p.name.$invalid  }">
-        <label class="control-label">Name</label>
-        <input type="text" class="form-control" placeholder="Product title"  ng-model="product.name" name="name" required>
-    </div>
-    <div class="form-group col-sm-6" ng-class="{ 'has-error': p.description.$invalid  }">
-        <label class="control-label">Description</label>
-        <input type="text" class="form-control" placeholder="Product description"  ng-model="product.description" name="description" required>
-    </div>
-    <div class="form-group col-sm-6" ng-class="{ 'has-error': p.tax.$invalid  }">
-        <label class="control-label">Tax</label>
-        <select class="form-control" ng-model="product.taxId" name="tax" ng-options='d.id as d.name for d in taxes' required ></select>
-    </div>
-    <div class="form-group col-sm-6" ng-class="{ 'has-error': p.price.$invalid  }">
-        <label class="control-label">Price</label>
-        <input type="number" class="form-control" placeholder="Product price"  ng-model="product.price" name="price" required>
-    </div>
 
-    <div class="form-group col-sm-6">
-    <button class="btn btn-default " ngf-select="uploadFiles($files)"
-            accept="image/*"  ngf-max-size="10MB" ngf-multiple="true" ng-disabled="slides.length>=1"><i class="fa fa-plus"></i> Product Image</button>
+    <div class="col-sm-6 col-xs-12">
+        <div class="form-group col-sm-6">
+            <div class="img-panel no-shadow" ng-show="product.photo">
+              <!--  <div class="img-header" ng-click="deletePhoto(product.photo)">
+                    <i class="text-danger fa fa-times-circle fa-lg close-circle"></i>
+                </div>-->
+                <div class="img-holder">
+                    <img ng-src="{{product.photo.imageUrl}}" ng-show="product.photo.imageUrl">
+                    <div class="prog-percentage" ng-hide="product.photo.imageUrl">{{product.photo.progress}}</div>
+                    <div class="prog" ng-hide="product.photo.imageUrl" ng-style="{width: product.photo.progress }"></div>
+                </div>
 
-    </div>
+            </div>
+            <div class="img-panel" ng-hide="product.photo">
 
-    <div class="form-group col-sm-6">
+                <div class="img-holder">
+                    <p>Upload Product Image</p>
+
+                </div>
+
+            </div>
+          <!--  <div class="text-center text-warning">
+                <label> Choose as parmary <input type="radio" name="primaryImage" ng-model="product.photoId" value="{{m.id}}"> </label>
+            </div>-->
+
+            <button class="btn btn-default " ngf-select="uploadProductImage($file)"
+                    accept="image/*"  ngf-max-size="10MB" ngf-multiple="false" style="width: 200px"><i class="fa fa-plus"></i> {{product.photoId?'Change':'Add'}} Product Image</button>
+
         </div>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+        <div class="form-group col-sm-12" ng-class="{ 'has-error': p.name.$invalid  }">
+            <label class="control-label">Name</label>
+            <input type="text" class="form-control" placeholder="Product title"  ng-model="product.name" name="name" required>
+        </div>
+        <div class="form-group col-sm-12" ng-class="{ 'has-error': p.description.$invalid  }">
+            <label class="control-label">Description</label>
+            <input type="text" class="form-control" placeholder="Product description"  ng-model="product.description" name="description" required>
+        </div>
+        <div class="form-group col-sm-12" ng-class="{ 'has-error': p.tax.$invalid  }">
+            <label class="control-label">Tax</label>
+            <select class="form-control" ng-model="product.taxId" name="tax" ng-options='d.id as d.name for d in taxes' required ></select>
+        </div>
+        <div class="form-group col-sm-12" ng-class="{ 'has-error': p.price.$invalid  }">
+            <label class="control-label">Price</label>
+            <input type="number" class="form-control" placeholder="Product price"  ng-model="product.price" name="price" required>
+        </div>
+    </div>
+
+
+
+
     <!--<div id="image-slider" class="col-xs-12 " ng-show="slides && slides.length>0">
     <a class="left-arrow" ng-click="slideLeft()"><i class="fa fa-chevron-circle-left" ></i></a>
     <a class="right-arrow" ng-click="slideRight()"><i class="fa fa-chevron-circle-right"></i></a>
@@ -53,7 +81,7 @@
 
     <ul class="col-xs-12 list-inline " >
         <li ng-repeat="m in slides">
-            <div class="img-panel">
+    <!--        <div class="img-panel">
                 <div class="img-header" ng-click="deletePhoto(m)">
                     <i class="text-danger fa fa-times-circle fa-lg close-circle"></i>
                 </div>
@@ -66,12 +94,12 @@
             </div>
             <div class="text-center text-warning">
                 <label> Choose as parmary <input type="radio" name="primaryImage" ng-model="product.photoId" value="{{m.id}}"> </label>
-            </div>
+            </div>-->
         </li>
 
     </ul>
-    {{product.image}}
+
     <div class="col-xs-12 text-right">
-        <button class="btn btn-warning" ng-click="save()">Create</button>
+        <button class="btn btn-warning" ng-click="save()">{{product.id>0 ? 'Update':'Create'}}</button>
     </div>
 </form>

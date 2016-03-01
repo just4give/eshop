@@ -22,10 +22,7 @@ var product = sequelize.define('product', {
         type: Sequelize.STRING,
         field: 'description'
     },
-    imageUrl: {
-        type: Sequelize.STRING,
-        field: 'imageUrl'
-    },
+
     price: {
         type: Sequelize.INTEGER,
         field: 'price'
@@ -75,6 +72,24 @@ product.middleware ={
             before: function (req, res, context) {
                 //context.include = [{model:Tax, where:{id:2}}];
                // console.log('product:read:fetch:before');
+                context.include = [{model: Tax}, {model: Photo}];
+
+                return context.continue;
+            },
+            action: function (req, res, context) {
+                // change behavior of actually writing the data
+                return context.continue;
+            },
+            after: function (req, res, context) {
+                // set some sort of flag after writing list data
+                return context.continue;
+            }
+        }
+    },
+    create: {
+        fetch: {
+            before: function (req, res, context) {
+                console.log("product:create:fetch")
                 context.include = [{model: Tax}, {model: Photo}];
 
                 return context.continue;

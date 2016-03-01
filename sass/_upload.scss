@@ -83,6 +83,12 @@
     }
   }
 }
+.img-panel.no-shadow{
+  -ms-box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
 
 .close-circle{
   margin-top: -10px;

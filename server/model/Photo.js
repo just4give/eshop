@@ -3,7 +3,10 @@
  */
 var Sequelize = require('sequelize');
 var sequelize = require('../config/sequelize');
-
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var config = require('../config/config')[env];
+var path = require('path');
+var fs = require('fs');
 
 var photo = sequelize.define('photo', {
     id: {
@@ -46,7 +49,33 @@ photo.middleware = {
     delete:{
         auth: function(req, res, context) {
 
-            return context.error(403, "can't delete a photo");
+           // return context.error(403, "can't delete a photo");
+            return  context.continue;
+        },
+        fetch: function(req, res, context) {
+            console.log("photo delete:fetch ",context.instance.fileName);
+            var thumbnailPath = path.join(config.image.repo, '/repo/thumb/', context.instance.fileName);
+            var targetPath = path.join(config.image.repo, '/repo/', context.instance.fileName);
+
+            fs.stat(thumbnailPath,function(err, stat){
+                if(!err){
+                    fs.unlink(thumbnailPath);
+                }
+            });
+
+            fs.stat(targetPath,function(err, stat){
+                if(!err){
+                    fs.unlink(targetPath);
+                }
+            });
+
+
+            return  context.continue;
+        },
+        write: function(req, res, context) {
+
+
+            return  context.continue;
         }
     }
 }
