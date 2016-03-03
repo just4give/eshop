@@ -5,6 +5,7 @@ var Sequelize = require('sequelize');
 var sequelize = require('../config/sequelize');
 var Tax = require('./Tax');
 var Photo = require('./Photo');
+var Category = require('./Category');
 
 var product = sequelize.define('product', {
     id: {
@@ -37,6 +38,7 @@ var product = sequelize.define('product', {
 });
 product.belongsTo(Tax);
 product.belongsTo(Photo);
+product.belongsTo(Category);
 product.sync().then(function(){
 
 });
@@ -46,7 +48,7 @@ product.middleware ={
         fetch: {
             before: function(req, res, context) {
                 //context.include = [{model:Tax, where:{id:2}}];
-                context.include = [{model:Tax},{model:Photo}];
+                context.include = [{model:Tax},{model:Photo},{model:Category}];
 
                 return context.continue;
             },
@@ -72,7 +74,7 @@ product.middleware ={
             before: function (req, res, context) {
                 //context.include = [{model:Tax, where:{id:2}}];
                // console.log('product:read:fetch:before');
-                context.include = [{model: Tax}, {model: Photo}];
+                context.include = [{model: Tax}, {model: Photo},{model:Category}];
 
                 return context.continue;
             },
@@ -90,7 +92,7 @@ product.middleware ={
         fetch: {
             before: function (req, res, context) {
                 console.log("product:create:fetch")
-                context.include = [{model: Tax}, {model: Photo}];
+                context.include = [{model: Tax}, {model: Photo},{model:Category}];
 
                 return context.continue;
             },

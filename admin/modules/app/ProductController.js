@@ -35,8 +35,8 @@ admin.controller("ProductController",["$scope","$rootScope","$log","$modal","$st
     }]);
 
 admin.controller("ProductDetailsController",["$scope","$rootScope","$log","$modal","$state", "toaster","Upload","$window",
-    "Product","Tax","Photo","$stateParams","$confirm","$timeout",
-    function($scope,$rootScope,$log,$modal,$state,toaster,Upload,$window,Product,Tax,Photo,$stateParams,$confirm,$timeout){
+    "Product","Tax","Photo","Category","$stateParams","$confirm","$timeout",
+    function($scope,$rootScope,$log,$modal,$state,toaster,Upload,$window,Product,Tax,Photo,Category,$stateParams,$confirm,$timeout){
 
 
 
@@ -167,6 +167,9 @@ admin.controller("ProductDetailsController",["$scope","$rootScope","$log","$moda
 
         Tax.query(function(data){
             $scope.taxes = data;
+        })
+        Category.query(function(data){
+            $scope.categories = data;
         })
 
 

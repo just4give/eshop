@@ -41,7 +41,16 @@ admin.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locationP
             templateUrl: 'modules/app/tmpl/tax-edit.html',
             controller: 'TaxDetailsController'
         })
-
+        .state('home.categories', {
+            url: '/categories',
+            templateUrl: 'modules/app/tmpl/categories.html',
+            controller: 'CategoryController'
+        })
+        .state('home.category-detail', {
+            url: '/categories/:id',
+            templateUrl: 'modules/app/tmpl/category-edit.html',
+            controller: 'CategoryDetailsController'
+        })
      ;
 
 

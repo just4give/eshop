@@ -1,6 +1,16 @@
 /* Generated code for Angular based on Sequelize models */
 angular.module('epilouge.ngService',['ngResource']);
 
+ angular.module('epilouge.ngService').factory('Category', ["$resource", "$log",function($resource,$log){
+
+      return  $resource('/api/category/:id', { id: '@id' }, {
+         update: {
+           method: 'PUT' // this method issues a PUT request
+         }
+       });
+
+ }]);
+
  angular.module('epilouge.ngService').factory('Photo', ["$resource", "$log",function($resource,$log){
 
       return  $resource('/api/photo/:id', { id: '@id' }, {
