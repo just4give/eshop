@@ -55,6 +55,7 @@
   "dependencies": {
     "angular-resource": "^1.5.0",
     "lodash": "^4.5.1",
-    "angularUtils-pagination": "angular-utils-pagination#^0.10.1"
+    "angularUtils-pagination": "angular-utils-pagination#^0.10.1",
+    "angularjs-slider": "~2.10.2"
   }
 }

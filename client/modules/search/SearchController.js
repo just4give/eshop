@@ -1,15 +1,64 @@
 /**
  * Created by Mithun.Das on 12/8/2015.
  */
-appModule.controller("searchController",["$scope","$rootScope","$log","$interval","$modal","toaster","$stateParams","$state",
-    function($scope,$rootScope,$log,$interval,$modal,toaster,$stateParams,$state){
+appModule.controller("searchController",["$scope","$rootScope","$log","$timeout","$modal","toaster","$stateParams","$state",
+    "Product","Categories","Merchandises",
+    function($scope,$rootScope,$log,$timeout,$modal,toaster,$stateParams,$state,Product,Categories,Merchandises){
 
     $scope.quantities = [1,2,3,4,5,6,7,8,9,10];
-    $scope.query = $stateParams.query;
-    $scope.category = $stateParams.category;
+    $rootScope.search = {query : $stateParams.query, checkedCategories :[],checkedMerchandises:[]};
+
+    $log.debug("Search query = ",$rootScope.search );
+    $scope.categories=Categories;
+    $scope.merchandises=Merchandises;
     $scope.facetOpen=true;
 
- $scope.products = [
+    angular.forEach(Categories,function(d){
+        //$rootScope.search.checkedCategories.push(d.name);
+    })
+    angular.forEach(Merchandises,function(d){
+        //$rootScope.search.checkedMerchandises.push(d.name);
+    })
+
+    $scope.slider = {
+        min: 0,
+        max: 1000,
+        options: {
+            floor: 0,
+            ceil: 1000,
+            translate: function(value) {
+                return '$' + value;
+            }
+        }
+    };
+        $timeout(function () {
+            $scope.$broadcast('rzSliderForceRender');
+        });
+    $scope.getResults = function(currentPage){
+        Product.query({q:$rootScope.search.query,
+            category:$rootScope.search.checkedCategories,
+            merchandise: $rootScope.search.checkedMerchandises},function(data,headers){
+            $log.debug("searched products ", data);
+            $scope.products = data;
+        });
+    }
+
+    $scope.getResults(1);
+    $scope.reSearch = function(){
+        $scope.getResults(1);
+    }
+    $scope.toggleCheck = function (code,list) {
+        if (list.indexOf(code) === -1) {
+            list.push(code);
+        } else {
+            list.splice(list.indexOf(code), 1);
+        }
+
+        $scope.reSearch(1);
+    };
+
+
+/* $scope.products = [
      {
      id:101,
      name:"Microsoft Surface",
@@ -57,7 +106,7 @@ appModule.controller("searchController",["$scope","$rootScope","$log","$interval
          name:"Beats Headphone",
          url:"images/product/p8.jpg",
          price:99
-     }];
+     }];*/
 
     $scope.quickView = function(index){
 

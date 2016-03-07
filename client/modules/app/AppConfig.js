@@ -6,12 +6,34 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locat
     $stateProvider
       .state('home', {
          url: '/?callback',
-         templateUrl: 'modules/app/tmpl/login.html',
+         templateUrl: 'modules/app/tmpl/home.html',
          controller: "HomeController"
      }).state('search', {
             url: '/search?query&category',
             templateUrl: 'modules/search/tmpl/search-result.html',
-            controller: "searchController"
+            controller: "searchController",
+            resolve:{
+                Categories: function(Category,$q){
+                    var deferred = $q.defer();
+
+                    Category.query(function(data){
+
+                        deferred.resolve(data);
+                    })
+
+                    return deferred.promise;
+                },
+                Merchandises: function(Merchandise,$q){
+                    var deferred = $q.defer();
+
+                    Merchandise.query(function(data){
+
+                        deferred.resolve(data);
+                    })
+
+                    return deferred.promise;
+                }
+            }
     })
     .state('details', {
             url: '/details/:id',

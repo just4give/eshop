@@ -4,7 +4,8 @@
 
 var routes = require('../routes/adminRouter');
 var photoRouter = require('../routes/photoRouter');
-
+var userRoute = require('../routes/userRouter');
+var productRoute = require('../routes/productRouter');
 
 module.exports = function(app) {
 
@@ -15,10 +16,11 @@ module.exports = function(app) {
         res.header("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With");
         next();
     });
-    app.use('/', routes);
+
     app.use('/api/photo',photoRouter);
-
-
+    app.use('/api/users', userRoute);
+    app.use('/api/products', productRoute);
+    app.use('/', routes);
 
 // catch 404 and forward to error handler
     app.use(function (req, res, next) {

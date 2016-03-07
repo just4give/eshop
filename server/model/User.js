@@ -55,17 +55,26 @@ var user = sequelize.define('user', {
 });
 
 user.sync().then(function(){
-    /*var salt, hash;
-     salt = createSalt();
-     hash = hashPwd(salt, 'password');
-     return user.create({
-     firstName:'micky',
-     lastName: 'mouse',
-     email:'micky@gmail.com',
-     username:'micky@gmail.com',
-     password:hash,
-     salt: salt
-     });*/
+
+
+    return user.findAll()
+        .then(function(data){
+            if(data.length==0){
+                var salt, hash;
+                salt = createSalt();
+                hash = hashPwd(salt, 'password');
+                return user.create({
+                    firstName:'micky',
+                    lastName: 'mouse',
+                    email:'micky@gmail.com',
+                    username:'micky@gmail.com',
+                    password:hash,
+                    salt: salt
+                });
+            }
+
+        });
+
 });
 
 var hashPwd = function(salt, pwd) {

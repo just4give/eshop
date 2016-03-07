@@ -46,6 +46,12 @@
             <select class="form-control" ng-model="product.categoryId" name="category" ng-options='d.id as d.name for d in categories' required ></select>
         </div>
 
+        <div class="form-group col-sm-12" ng-class="{ 'has-error': p.merchandise.$invalid  }">
+            <label class="control-label">Merchandise</label>
+           <!-- <select class="form-control" ng-model="product.merchandiseId" name="merchandise" ng-options='d.id as d.name for d in merchandises' required ></select>-->
+            <input type="text" ng-model="product.merchandise" name="merchandise" uib-typeahead="d as d.name for d in merchandises | filter:$viewValue | limitTo:8" class="form-control" required>
+        </div>
+
         <div class="form-group col-sm-12" ng-class="{ 'has-error': p.tax.$invalid  }">
             <label class="control-label">Tax</label>
             <select class="form-control" ng-model="product.taxId" name="tax" ng-options='d.id as d.name for d in taxes' required ></select>

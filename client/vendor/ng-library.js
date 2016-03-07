@@ -61,3 +61,13 @@ angular.module('epilouge.ngService').factory('User', ["$resource", "$log",functi
 
 }]);
 
+angular.module('epilouge.ngService').factory('Merchandise', ["$resource", "$log",function($resource,$log){
+
+    return  $resource('/api/merchandise/:id', { id: '@id' }, {
+        update: {
+            method: 'PUT' // this method issues a PUT request
+        }
+    });
+
+}]);
+

@@ -11,7 +11,10 @@ admin.controller("ProductController",["$scope","$rootScope","$log","$modal","$st
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         }
 
-        Product.query(function(data){
+        Product.query(function(data,headers){
+            var rangeFields = headers('Content-Range').split(/\s|-|\//);
+            $scope.totalRecords = parseInt(rangeFields[3]);
+            $log.debug("Total ",$scope.totalRecords);
             $scope.records = data;
         })
 
@@ -35,8 +38,8 @@ admin.controller("ProductController",["$scope","$rootScope","$log","$modal","$st
     }]);
 
 admin.controller("ProductDetailsController",["$scope","$rootScope","$log","$modal","$state", "toaster","Upload","$window",
-    "Product","Tax","Photo","Category","$stateParams","$confirm","$timeout",
-    function($scope,$rootScope,$log,$modal,$state,toaster,Upload,$window,Product,Tax,Photo,Category,$stateParams,$confirm,$timeout){
+    "Product","Tax","Photo","Category","Merchandise","$stateParams","$confirm","$timeout",
+    function($scope,$rootScope,$log,$modal,$state,toaster,Upload,$window,Product,Tax,Photo,Category,Merchandise,$stateParams,$confirm,$timeout){
 
 
 
@@ -171,7 +174,9 @@ admin.controller("ProductDetailsController",["$scope","$rootScope","$log","$moda
         Category.query(function(data){
             $scope.categories = data;
         })
-
+        Merchandise.query(function(data){
+            $scope.merchandises=data;
+        })
 
         $scope.save = function(){
 

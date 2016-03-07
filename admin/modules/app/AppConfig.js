@@ -51,6 +51,16 @@ admin.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locationP
             templateUrl: 'modules/app/tmpl/category-edit.html',
             controller: 'CategoryDetailsController'
         })
+        .state('home.merchandises', {
+            url: '/merchandises',
+            templateUrl: 'modules/app/tmpl/merchandises.html',
+            controller: 'MerchandiseController'
+        })
+        .state('home.merchandise-detail', {
+            url: '/merchandises/:id',
+            templateUrl: 'modules/app/tmpl/merchandise-edit.html',
+            controller: 'MerchandiseDetailsController'
+        })
      ;
 
 

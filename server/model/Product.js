@@ -6,6 +6,7 @@ var sequelize = require('../config/sequelize');
 var Tax = require('./Tax');
 var Photo = require('./Photo');
 var Category = require('./Category');
+var Merchandise = require('./Merchandise');
 
 var product = sequelize.define('product', {
     id: {
@@ -39,6 +40,7 @@ var product = sequelize.define('product', {
 product.belongsTo(Tax);
 product.belongsTo(Photo);
 product.belongsTo(Category);
+product.belongsTo(Merchandise);
 product.sync().then(function(){
 
 });
@@ -47,17 +49,44 @@ product.middleware ={
     list: {
         fetch: {
             before: function(req, res, context) {
-                //context.include = [{model:Tax, where:{id:2}}];
-                context.include = [{model:Tax},{model:Photo},{model:Category}];
+
+                //console.log("passport ", req.isAuthenticated());
+                //console.log("product search ", req.query, context.criteria);
+                context.include = [{model:Tax},{model:Photo},{model:Category},{model:Merchandise}];
+                if(req.query.category){
+                    if(!Array.isArray(req.query.category)){
+                        req.query.category = [req.query.category];
+                    }
+                    context.include.forEach(function(include){
+                       if(include.model == Category){
+                           include.where = {name:{$in:req.query.category}};
+                       }
+                    })
+
+                }
+                if(req.query.merchandise){
+                    if(!Array.isArray(req.query.merchandise)){
+                        req.query.merchandise = [req.query.merchandise];
+                    }
+                    context.include.forEach(function(include){
+                        if(include.model == Merchandise){
+                            include.where = {name:{$in:req.query.merchandise}};
+                        }
+                    })
+
+                }
 
                 return context.continue;
             },
             action: function(req, res, context) {
-                // change behavior of actually writing the data
+                //context.include = [{model:Tax, where:{id:2}}];
+
+
                 return context.continue;
             },
             after: function(req, res, context) {
                 // set some sort of flag after writing list data
+                console.log(res.data);
                 return context.continue;
             }
         }
@@ -74,7 +103,7 @@ product.middleware ={
             before: function (req, res, context) {
                 //context.include = [{model:Tax, where:{id:2}}];
                // console.log('product:read:fetch:before');
-                context.include = [{model: Tax}, {model: Photo},{model:Category}];
+                context.include = [{model: Tax}, {model: Photo},{model:Category},{model:Merchandise}];
 
                 return context.continue;
             },
@@ -92,7 +121,7 @@ product.middleware ={
         fetch: {
             before: function (req, res, context) {
                 console.log("product:create:fetch")
-                context.include = [{model: Tax}, {model: Photo},{model:Category}];
+                context.include = [{model: Tax}, {model: Photo},{model:Category},{model:Merchandise}];
 
                 return context.continue;
             },
@@ -102,6 +131,28 @@ product.middleware ={
             },
             after: function (req, res, context) {
                 // set some sort of flag after writing list data
+                return context.continue;
+            }
+        },
+        start:{
+            action: function(req, res, context) {
+                if(req.body.merchandise){
+                    req.body.merchandiseId = req.body.merchandise.id;
+                }
+
+
+                return context.continue;
+            }
+        }
+    },
+    update: {
+        start:{
+            action: function(req, res, context) {
+
+                if(req.body.merchandise){
+                    req.body.merchandiseId = req.body.merchandise.id;
+                }
+
                 return context.continue;
             }
         }

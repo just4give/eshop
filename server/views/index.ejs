@@ -13,7 +13,7 @@
     <link href="vendor/angular/angular-csp.css" rel="stylesheet">
     <link href="vendor/animate.css/animate.min.css" rel="stylesheet">
     <link href="vendor/angularjs-toaster/toaster.min.css" rel="stylesheet">
-
+    <link href="vendor/angularjs-slider/dist/rzslider.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" />
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <base href="/">
@@ -23,20 +23,38 @@
 
     <header headroom offset='220' class="navbar-fixed-top top-header wow bounceInDown" data-wow-delay="0s">
 
-      <div class="col-xs-12 text-right"  ng-controller="loginController"  >
-          <a ui-sref="home" class="pull-left" style="color: rgba(187, 13, 13, 0.58);"><i class="fa fa-shopping-basket fa-3x"></i></a>
-          <form class="product-search-box">
-            <input type="search" placeholder="Search..." class="product-search-text" ng-model="query">
-            <button class="btn-search" ng-submit="search(query)"   ui-sref="search({query: query , category: ''})"><i class="fa fa-search"></i></button>
-          </form>
-          <button class="btn btn-opp-primary " ng-click="openLoginPopup()" ng-hide="loggedIn"><i class="fa fa-sign-in"></i> Login</button>
+      <div class="row"  ng-controller="loginController"  >
 
-          <div class="btn-group user-menu" ng-show="loggedIn">
-            <button type="button" class="btn btn-opp-primary" ng-bind="state.user.firstName">  </button>
-            <button type="button" class="btn btn-opp-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="caret"></span>
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
+        <div class="col-xs-6 col-sm-3 text-left">
+          <a ui-sref="home" class="" style="color: rgba(187, 13, 13, 0.58);">
+            <i class="fa fa-shopping-basket fa-3x"></i>
+          </a>
+        </div>
+        <form class="col-xs-6 col-sm-6 hidden-xs">
+          <!--<input type="search" placeholder="Search..." class="product-search-text" ng-model="query">
+          <button class="btn-search" ng-submit="search(query)"   ui-sref="search({query: query , category: ''})"><i class="fa fa-search"></i></button>
+-->
+          <div class="input-group ">
+            <input type="text" class="form-control" placeholder="Search for..." ng-model="search.query">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" ng-submit="search(search.query)"  ui-sref="search({query: search.query })"><i class="fa fa-search"></i></button>
+            </span>
+          </div><!-- /input-group -->
+        </form>
+
+        <div class="col-xs-6 col-sm-3 text-right">
+
+          <a class="link cart" ng-click="checkout()"><i class="fa fa-shopping-bag fa-2x"></i>
+            <span class="badge" ng-bind="cart? cart.length:0"> </span>
+          </a>
+
+          <a class="link" ng-click="openLoginPopup()" ng-hide="false"> Login</a>
+
+          <div class="btn-group " ng-show="true">
+            <!--<button type="button" class="btn btn-opp-primary" ng-bind="state.user.firstName">  </button>-->
+            <a  class="link cart dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="text-warning fa fa-user fa-2x"></i>
+            </a>
             <ul class="dropdown-menu">
               <li><a ui-sref="home" class="link">My Account</a></li>
               <li><a ui-sref="myorder" class="link">My Order</a></li>
@@ -44,10 +62,19 @@
               <li><a href="" class="link" ng-click="logout()">Logout</a></li>
             </ul>
           </div>
-          <a class="link cart" ng-click="checkout()"><i class="fa fa-shopping-bag fa-2x"></i>
-            <span class="badge" ng-bind="cart? cart.length:0"> </span>
-          </a>
 
+        </div>
+        <form class="col-xs-12 visible-xs">
+          <!--<input type="search" placeholder="Search..." class="product-search-text" ng-model="query">
+          <button class="btn-search" ng-submit="search(query)"   ui-sref="search({query: query , category: ''})"><i class="fa fa-search"></i></button>
+-->
+          <div class="input-group ">
+            <input type="text" class="form-control" placeholder="Search for..." ng-model="search.query">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-submit="search(search.query)"  ui-sref="search({query: search.query })"><i class="fa fa-search"></i></button>
+              </span>
+          </div><!-- /input-group -->
+        </form>
       </div>
 
     </header>
@@ -79,6 +106,10 @@
   <script src="vendor/headroom.js/dist/angular.headroom.min.js"></script>
   <script src="vendor/wow/dist/wow.min.js"></script>
   <script src="vendor/angularjs-viewhead/angularjs-viewhead.js"></script>
+  <script src="vendor/angular-resource/angular-resource.min.js"></script>
+  <script src="vendor/ng-library.js"></script>
+  <script src="vendor/lodash/dist/lodash.min.js"></script>
+  <script src="vendor/angularjs-slider/dist/rzslider.min.js"></script>
 
   <script src="modules/app/AppModule.js"></script>
   <script src="modules/common/HTTPInterceptor.js"></script>

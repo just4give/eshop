@@ -11,20 +11,15 @@
     <tr>
         <th ng-click="sort('name')">Name
             <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
-        <th ng-click="sort('description')">Description
-            <span class="glyphicon sort-icon" ng-show="sortKey=='description'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
-        <th ng-click="sort('price')">Price
-            <span class="glyphicon sort-icon" ng-show="sortKey=='price'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
 
     </tr>
     </thead>
     <tbody>
-    <tr  dir-paginate="r in records |itemsPerPage: 10 " >
+    <tr  dir-paginate="r in records|orderBy:sortKey:reverse |itemsPerPage: 10 " >
 
         <td class="col-xs-4 ">{{r.name}} </td>
 
-        <td class="col-xs-3 ">{{r.description}} </td>
-        <td class="col-xs-2 ">{{r.price}} </td>
+
         <td class="col-xs-2 ">
             <a class="link link-edit link-lg" uib-tooltip="Edit" ng-click="edit(r.id)"><i class="fa fa-pencil-square-o"></i></a>
             <a class="link link-delete link-lg" uib-tooltip="Delete" ng-click="delete(r)"><i class="fa fa-trash-o"></i></a></td>

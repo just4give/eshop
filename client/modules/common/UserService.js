@@ -10,7 +10,7 @@ appModule.factory('UserService', ["$rootScope","$http","$q", "$log",function($ro
 
             var deferred = $q.defer();
 
-                $http.post($rootScope.apiContext + "/api/user/login", user)
+                $http.post($rootScope.apiContext + "/api/users/login", user)
                     .success(function (data){
 
                         deferred.resolve(data);
@@ -28,7 +28,7 @@ appModule.factory('UserService', ["$rootScope","$http","$q", "$log",function($ro
 
             var deferred = $q.defer();
 
-            $http.get($rootScope.apiContext + "/api/user/loggedin")
+            $http.get($rootScope.apiContext + "/api/users/loggedin")
                 .success(function (data){
 
                     deferred.resolve(data);
@@ -46,7 +46,7 @@ appModule.factory('UserService', ["$rootScope","$http","$q", "$log",function($ro
 
             var deferred = $q.defer();
 
-            $http.get($rootScope.apiContext + "/api/user/login/facebook")
+            $http.get($rootScope.apiContext + "/api/users/login/facebook")
                 .success(function (data){
 
                     deferred.resolve(data);
@@ -64,7 +64,7 @@ appModule.factory('UserService', ["$rootScope","$http","$q", "$log",function($ro
 
             var deferred = $q.defer();
 
-            $http.post($rootScope.apiContext + "/api/user/register", user)
+            $http.post($rootScope.apiContext + "/api/users/register", user)
                 .success(function (data){
 
                     deferred.resolve(data);
@@ -82,7 +82,7 @@ appModule.factory('UserService', ["$rootScope","$http","$q", "$log",function($ro
 
             var deferred = $q.defer();
 
-            $http.post($rootScope.apiContext + "/api/user/fb/register", user)
+            $http.post($rootScope.apiContext + "/api/users/fb/register", user)
                 .success(function (data){
 
                     deferred.resolve(data);
@@ -100,7 +100,7 @@ appModule.factory('UserService', ["$rootScope","$http","$q", "$log",function($ro
 
             var deferred = $q.defer();
 
-            $http.post($rootScope.apiContext + "/api/user/logout", {})
+            $http.post($rootScope.apiContext + "/api/users/logout", {})
                 .success(function (data){
 
                     deferred.resolve(data);

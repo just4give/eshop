@@ -2,7 +2,7 @@
  * Created by mithundas on 12/3/15.
  */
 var appModule = angular.module("photoOrder",['ui.router','ui.bootstrap','ngAnimate', 'ngTouch','mgcrea.ngStrap','angular-confirm',
-    'LocalStorageModule','ngFileUpload','toaster','headroom','viewhead']);
+    'LocalStorageModule','ngFileUpload','toaster','headroom','viewhead','epilouge.ngService','rzModule']);
 
 appModule.config(function (localStorageServiceProvider) {
     localStorageServiceProvider
@@ -12,8 +12,10 @@ appModule.config(function (localStorageServiceProvider) {
     console.log('storage config...');
 });
 
-appModule.run(["$interval","localStorageService","$rootScope", function($interval,localStorageService,$rootScope){
+appModule.run(["$interval","localStorageService","$rootScope", "RzSliderOptions",
+    function($interval,localStorageService,$rootScope,RzSliderOptions ){
     console.log('angular run...');
+       // RzSliderOptions.options( { showTicks: true } );
     $rootScope.$on('$routeChangeError', function(evt, current, previous, rejection) {
         if(rejection === 'not authorized') {
             //Show toast

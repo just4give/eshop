@@ -83,7 +83,7 @@ router.post('/upload', multipartMiddleware,function (req, res, next) {
                 //create thumbnail just after moving file to repo
                 easyimg.thumbnail({
                     src:targetPath, dst:thumbnailPath,
-                    width:180, height:200,
+                    width:200,
                     x:0, y:0
                 }).then(
                     function(image) {

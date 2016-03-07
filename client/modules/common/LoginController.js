@@ -6,7 +6,7 @@ appModule.controller("loginController",["$window","$scope","$rootScope","$log","
 
     $log.debug('initializing login controller');
     $log.debug($rootScope.bootstrappedUser);
-
+    $rootScope.search =  $rootScope.search || {};
     $rootScope.apiContext="";
     $scope.signupprogress = false;
 
