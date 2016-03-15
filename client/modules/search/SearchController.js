@@ -62,6 +62,9 @@ appModule.controller("searchController",["$scope","$rootScope","$log","$timeout"
 
     }
 
+    $scope.getSearchName=function(name){
+        return name.replace(/\s+/g, '-').toUpperCase();
+    }
     $scope.getResults(1);
     $scope.reSearch = function(){
         $scope.getResults(1);

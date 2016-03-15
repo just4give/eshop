@@ -44,7 +44,33 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locat
             url: '/details/:id',
             templateUrl: 'modules/search/tmpl/product-details.html',
             controller:'productDetailsController'
-    }).state('cart', {
+    }).state('product', {
+            url: '/product/:name/:id',
+            templateUrl: 'modules/search/tmpl/product-details.html',
+            controller:'productDetailsController',
+            resolve: {
+                loadMyFiles: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'eshop',
+                        files: [
+
+                            'vendor/bootstrap/dist/css/bootstrap.min.css',
+                            'vendor/font-awesome/css/font-awesome.min.css',
+                            'vendor/angular/angular-csp.css',
+                            'vendor/animate.css/animate.min.css',
+                            'vendor/angularjs-toaster/toaster.min.css',
+                            'vendor/angularjs-slider/dist/rzslider.css',
+                            'vendor/metisMenu/dist/metisMenu.min.css',
+                            'vendor/bootstrap-additions/dist/bootstrap-additions.min.css',
+                            'css/admin.css',
+                            'css/style.css'
+
+                        ]
+                    })
+                }
+            }
+        })
+        .state('cart', {
             url: '/cart',
             templateUrl: 'modules/checkout/tmpl/cart.html',
             controller:"CartController"
@@ -85,6 +111,7 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locat
                             'vendor/angularjs-toaster/toaster.min.css',
                             'vendor/angularjs-slider/dist/rzslider.css',
                             'vendor/metisMenu/dist/metisMenu.min.css',
+                            'vendor/bootstrap-additions/dist/bootstrap-additions.min.css',
                             'css/admin.css',
                             'css/style.css'
 

@@ -1,3 +1,12 @@
 .aside-backdrop {
    background-color: rgba(0,0,0,0.5);
 }
+
+.aside{
+  background-color: black;
+  .side-menu{
+    li{
+      font-size: large;
+    }
+  }
+}

@@ -1399,4 +1399,9 @@ NAV
 .aside-backdrop {
   background-color: rgba(0, 0, 0, 0.5); }
 
+.aside {
+  background-color: black; }
+  .aside .side-menu li {
+    font-size: large; }
+
 /*# sourceMappingURL=style.css.map */
