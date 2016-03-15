@@ -70,6 +70,14 @@
 .margin-bottom-20 {
   margin-bottom: 20px; }
 
+.link:hover {
+  cursor: pointer; }
+
+.link.login {
+  padding-right: 20px;
+  padding-left: 20px;
+  color: white; }
+
 /*!
  * Start Bootstrap - SB Admin 2 Bootstrap Admin Theme (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.

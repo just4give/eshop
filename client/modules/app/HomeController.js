@@ -14,23 +14,6 @@ appModule.controller("HomeController",["$scope","$rootScope","$log","$modal","$s
         $state.go(localStorageService.cookie.get("ui-state"));
 
     }
-    $interval(function(){
-        $(".left-ads").addClass("flash animated ");
 
-        $timeout(function(){
-            $(".left-ads").removeClass("flash animated ");
-        },1000);
-
-    },5000);
-
-
-    $scope.animateProcess = function(){
-
-        angular.element("#process-list li").addClass('bounce-in-up');
-    }
-    $scope.animateDiscount = function(){
-
-            angular.element("#discount-list li").addClass('bounce-in-up');
-    }
 
 }]);

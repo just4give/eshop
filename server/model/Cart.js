@@ -5,7 +5,7 @@ var Sequelize = require('sequelize');
 var sequelize = require('../config/sequelize');
 var User = require('./User');
 var Product = require('./Product');
-
+var Photo = require('./Photo');
 
 var cart = sequelize.define('cart', {
     id: {
@@ -15,14 +15,6 @@ var cart = sequelize.define('cart', {
         autoIncrement: true
     },
 
-    productId: {
-        type: Sequelize.INTEGER,
-        field: 'productId'
-    },
-    userId: {
-        type: Sequelize.INTEGER,
-        field: 'userId'
-    },
     quantity: {
         type: Sequelize.INTEGER,
         field: 'quantity'
@@ -53,6 +45,7 @@ var cart = sequelize.define('cart', {
 cart.belongsTo(Product);
 cart.belongsTo(User);
 
+
 cart.sync().then(function(){
 
 });
@@ -61,12 +54,10 @@ cart.middleware ={
     list: {
         fetch: {
             before: function(req, res, context) {
-
+                context.include = [{model: Product,include:[Photo]}];
                 return context.continue;
             },
             action: function(req, res, context) {
-                //context.include = [{model:Tax, where:{id:2}}];
-
 
                 return context.continue;
             },
@@ -89,15 +80,18 @@ cart.middleware ={
     read: {
         fetch: {
             before: function (req, res, context) {
-
+                console.log("cart:read:fetch:before");
+                context.include = [{model: Product}];
                 return context.continue;
             },
             action: function (req, res, context) {
                 // change behavior of actually writing the data
+                console.log("cart:read:fetch:action");
                 return context.continue;
             },
             after: function (req, res, context) {
                 // set some sort of flag after writing list data
+                console.log("cart:read:fetch:after");
                 return context.continue;
             }
         }
@@ -114,8 +108,8 @@ cart.middleware ={
         },
         fetch: {
             before: function (req, res, context) {
-               /* console.log("product:create:fetch")
-                context.include = [{model: Tax}, {model: Photo},{model:Category},{model:Merchandise}];*/
+
+                context.include = [{model: Product}];
 
                 return context.continue;
             },
@@ -125,12 +119,23 @@ cart.middleware ={
             },
             after: function (req, res, context) {
                 // set some sort of flag after writing list data
+
+                context.include = [{model: Product}];
                 return context.continue;
             }
         },
-        write:function(req, res, context) {
+        write: {
 
-            return context.continue;
+            before: function (req, res, context) {
+                // set some sort of flag after writing list data
+
+                return context.continue;
+            },
+            after: function (req, res, context) {
+                //console.log("Cart write ", context.instance.dataValues.user);
+                delete  context.instance.dataValues.user;
+                return context.continue;
+            }
         }
     },
     update: {

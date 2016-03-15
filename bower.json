@@ -56,6 +56,10 @@
     "angular-resource": "^1.5.0",
     "lodash": "^4.5.1",
     "angularUtils-pagination": "angular-utils-pagination#^0.10.1",
-    "angularjs-slider": "~2.10.2"
+    "angularjs-slider": "~2.10.2",
+    "ngSmoothScroll": "~2.0.0",
+    "angular-credit-cards": "~2.4.3",
+    "angular-ui-router-styles": "~1.1.0",
+    "bootstrap-additions": "~0.3.1"
   }
 }

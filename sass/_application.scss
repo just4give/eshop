@@ -30,12 +30,20 @@ body{
   cursor: pointer;
   font-size: x-large;
 }
+.img-brand{
+  img{
+    height: 50px;
+    width: 50px;
+    display: block;
+  }
+}
 .top-header{
   height: 80px;
   background-color: rgba(0,0,0,0.9);
   padding-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
+
 
   @media (max-width: 767px) {
     height: 100px;
@@ -460,4 +468,14 @@ body{
   button{
     position: relative;
   }
+}
+
+.animate-show {
+  -webkit-transition: 1s linear all; /* Chrome */
+  transition: 10s linear all;
+  opacity: 0;
+}
+
+.animate-show.animate-show-active {
+  opacity: 1;
 }

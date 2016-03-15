@@ -1,17 +1,19 @@
 /**
  * Created by Mithun.Das on 12/8/2015.
  */
-appModule.controller("searchController",["$scope","$rootScope","$log","$timeout","$modal","toaster","$stateParams","$state",
-    "Product","Categories","Merchandises",
-    function($scope,$rootScope,$log,$timeout,$modal,toaster,$stateParams,$state,Product,Categories,Merchandises){
+appModule.controller("searchController",["$scope","$rootScope","$log","$timeout","$interval","$modal","toaster","$stateParams","$state",
+    "SearchService","Categories","Merchandises","UserCart",
+    function($scope,$rootScope,$log,$timeout,$interval,$modal,toaster,$stateParams,$state,SearchService,Categories,Merchandises,UserCart){
 
     $scope.quantities = [1,2,3,4,5,6,7,8,9,10];
-    $rootScope.search = {query : $stateParams.query, checkedCategories :[],checkedMerchandises:[]};
+        $rootScope.search = $rootScope.search|| {query : $stateParams.query, priceMin:0, priceMax:1000,checkedCategories :[],checkedMerchandises:[]};
 
     $log.debug("Search query = ",$rootScope.search );
     $scope.categories=Categories;
     $scope.merchandises=Merchandises;
     $scope.facetOpen=true;
+
+
 
     angular.forEach(Categories,function(d){
         //$rootScope.search.checkedCategories.push(d.name);
@@ -28,19 +30,36 @@ appModule.controller("searchController",["$scope","$rootScope","$log","$timeout"
             ceil: 1000,
             translate: function(value) {
                 return '$' + value;
+            },
+            onChange: function(sliderId, modelValue, highValue){
+                $scope.slider.changed=true;
             }
         }
     };
-        $timeout(function () {
-            $scope.$broadcast('rzSliderForceRender');
-        });
+
+    $interval(function(){
+        if($scope.slider.changed){
+            $scope.slider.changed=false;
+            $scope.reSearch();
+        }
+    },2000)
+
+
+    $timeout(function () {
+        $scope.$broadcast('rzSliderForceRender');
+    });
+
     $scope.getResults = function(currentPage){
-        Product.query({q:$rootScope.search.query,
-            category:$rootScope.search.checkedCategories,
-            merchandise: $rootScope.search.checkedMerchandises},function(data,headers){
-            $log.debug("searched products ", data);
-            $scope.products = data;
-        });
+
+        SearchService.query(currentPage,10,$rootScope.search)
+            .then(function (data) {
+                $scope.products  = data.rows;
+                $scope.totalRecords = data.count;
+            }, function (err) {
+
+                toaster.pop("error", "", "System error !");
+            });
+
     }
 
     $scope.getResults(1);
@@ -131,11 +150,10 @@ appModule.controller("searchController",["$scope","$rootScope","$log","$timeout"
     //$rootScope.cartProducts = $scope.products;
 
     $scope.addToCart = function(product){
-        $rootScope.cart = $rootScope.cart || [];
-        var item =angular.copy(product);
 
-        item.quantity=1;
-        $rootScope.cart.push(item);
+
+        var product =angular.copy(product);
+        UserCart.addToCart(product);
 
         toaster.pop({
             type: 'success',

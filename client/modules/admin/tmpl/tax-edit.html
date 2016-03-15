@@ -1,0 +1,19 @@
+<h3 class="text-center margin-bottom-20"><span class="label label-default" ng-bind="tax.id?'Update Tax':'Create New Tax'"></span></h3>
+
+<form name="p" novalidate>
+    <div class="form-group col-sm-6" ng-class="{ 'has-error': p.name.$invalid  }">
+        <label class="control-label">Name</label>
+        <input type="text" class="form-control" placeholder="Name"  ng-model="tax.name" name="name" required>
+    </div>
+
+    <div class="form-group col-sm-6" ng-class="{ 'has-error': p.pct.$invalid  }">
+        <label class="control-label">Percentage</label>
+        <input type="number" class="form-control" placeholder="Tax %"  ng-model="tax.pct" name="pct" required>
+    </div>
+
+
+
+    <div class="col-xs-12 text-right">
+        <button class="btn btn-warning" ng-click="saveTax()" ng-disabled="p.$invalid" ng-bind="tax.id?'Update':'Create'">Create</button>
+    </div>
+</form>

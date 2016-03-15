@@ -1,12 +1,13 @@
 /**
  * Created by Mithun.Das on 12/4/2015.
  */
-appModule.controller("loginController",["$window","$scope","$rootScope","$log","$modal", "$interval","$timeout","$state","UserService","localStorageService","OrderService",
-    function($window,$scope,$rootScope,$log,$modal,$interval,$timeout,$state,UserService,localStorageService,OrderService){
+appModule.controller("loginController",["$window","$scope","$rootScope","$log","$modal", "$interval","$timeout",
+    "$state","UserService","localStorageService","OrderService","UserCart","$stateParams","$location",
+    function($window,$scope,$rootScope,$log,$modal,$interval,$timeout,$state,UserService,localStorageService,OrderService,UserCart,$stateParams,$location){
 
     $log.debug('initializing login controller');
     $log.debug($rootScope.bootstrappedUser);
-    $rootScope.search =  $rootScope.search || {};
+    //$rootScope.search =  $rootScope.search || {};
     $rootScope.apiContext="";
     $scope.signupprogress = false;
 
@@ -15,32 +16,28 @@ appModule.controller("loginController",["$window","$scope","$rootScope","$log","
     $rootScope.fbLoggedIn = false;
     $rootScope.fbUser = {};
 
+    var callbackUrl = $stateParams.cb;
+    $location.search('cb', null);
+
     var modal;
 
-        angular.element(document).ready(function() {
-            console.log('document ready inside logib controller...');
-            $rootScope.hideAppSpinner = true;
-            $timeout(function(){
-                $rootScope.appLoaded = true;
-                $('header').css('display','block');
-                $('nav').css('display','block');
-            },2000);
-
-        });
     //check cart
-    if( !$rootScope.loggedIn) {
-        $rootScope.cartImages = localStorageService.get("cart");
-    }
-    //check if user cookie is available, if yes, log user in
-      /* var userCookie =  localStorageService.cookie.get("app-user");
-        if(userCookie && userCookie.uuid){
-            $log.debug('user cookie found');
-            $log.debug(userCookie);
-            $rootScope.state = $rootScope.state || {};
-            $rootScope.state.user = userCookie;
-            $rootScope.loggedIn = true;
-        }*/
-     UserService.loggedIn().
+   /* if( !$rootScope.loggedIn) {
+       // $rootScope.cartImages = localStorageService.get("cart");
+    }*/
+        if(!localStorageService.get('cart')){
+            localStorageService.set('cart', []);
+        }
+
+        localStorageService.bind($rootScope, 'cart');
+
+        /*$rootScope.$watch("cart",function(newValue,oldValue){
+            $log.debug("*** cart modified");
+           $rootScope.cartUpdated=true;
+        },true);*/
+
+
+        UserService.loggedIn().
          then(function(data){
          if(data.success){
              $rootScope.state = $rootScope.state || {};
@@ -58,7 +55,7 @@ appModule.controller("loginController",["$window","$scope","$rootScope","$log","
      })
 
     $scope.openLoginPopup = function(){
-        $log.debug('opening login modal');
+
          modal = $modal({scope: $scope, templateUrl: 'modules/common/tmpl/modal/login-modal.html', show: true});
     }
 
@@ -82,35 +79,21 @@ appModule.controller("loginController",["$window","$scope","$rootScope","$log","
             if(!data.success){
                 $scope.showLoginErr = "Login failed";
             }else{
-                if(!$rootScope.state){
-                    $rootScope.state ={};
-                }
+
+                $rootScope.state=$rootScope.state||{}
                 $rootScope.state.user = data.user;
                 $rootScope.loggedIn = true;
-                $scope.setUserCookie(data.user);
-
+                //UserCart.sync();
                 if(modal){
                     modal.hide();
                 }
-
-                //if cart is not empty , persist cart and remove from local storage
-                if( $rootScope.cartImages &&  $rootScope.cartImages.length>0){
-                    OrderService.saveCart($rootScope.cartImages)
-                        .then(function(data){
-                            $log.debug('cart saved...');
-                            $log.debug(data);
-                            localStorageService.remove("cart");
-                            $rootScope.retrieveCart();
-
-
-                        },function(err){
-                            $log.debug('erro saving cart...');
-                            $rootScope.$broadcast('api_error',err);
-                        });
+                if(callbackUrl){
+                    $state.go(callbackUrl);
                 }else{
-                    $log.debug('get cart');
-                    $rootScope.retrieveCart();
+                    $state.go("home");
                 }
+
+
                 //then fetch call cart details
             }
         },function(err){
@@ -120,43 +103,23 @@ appModule.controller("loginController",["$window","$scope","$rootScope","$log","
 
 
     }
-    $scope.checkout = function(){
-      $state.go('cart');
-    }
-
-    $rootScope.retrieveCart = function(){
-        OrderService.getCart()
-            .then(function(data){
-               // $rootScope.cartImages =data;
-                $rootScope.cartImages =[];
-                angular.forEach(data, function(item){
-                    $rootScope.cartImages.push({id:item.id, imgId:item.imgId, imgSrc:item.imgSrc, quantity: item.quantity, format: {frameSize: item.frameSize, price: item.price},paperFinish:item.paperFinish,
-                        userId:item.userId});
-                })
 
 
-            },function(err){
-                $rootScope.$broadcast('api_error',err);
-            });
-    }
 
     $scope.logout = function(){
 
         UserService.logout().then(function(data){
             $rootScope.loggedIn = false;
             $rootScope.state.user=undefined;
-            $rootScope.cartImages=[];
+            $rootScope.cart=[];
             localStorageService.remove("cart");
-            localStorageService.cookie.remove("app-user");
             $state.go('/');
         },function(err){
 
         });
 
     }
-    $scope.setUserCookie=function(data){
-        localStorageService.cookie.set("app-user",data,1);
-    }
+
     $scope.register = function(){
         $scope.showSignupErr ='';
         $scope.signupprogress = true;
@@ -230,9 +193,9 @@ appModule.controller("loginController",["$window","$scope","$rootScope","$log","
 
 
 
-        $rootScope.search = function(query){
+      /*  $rootScope.search = function(query){
             $state.go("search",{query: query});
-        }
+        }*/
 }]);
 
 

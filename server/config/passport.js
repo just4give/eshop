@@ -24,6 +24,9 @@ module.exports = function(config) {
 
                 if(user && user.authenticate(password)) {
                     console.log('user is authenticated');
+                    delete user.dataValues.password;
+                    delete user.dataValues.salt;
+                    console.log("****** returning user ", user);
                     return done(null, user);
                 } else {
                     console.log('user is NOT authenticated');

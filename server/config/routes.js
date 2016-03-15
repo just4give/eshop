@@ -5,6 +5,7 @@
 var routes = require('../routes/indexRouter');
 var userRoute = require('../routes/userRouter');
 var productRoute = require('../routes/productRouter');
+var paymentRoute = require('../routes/paymentRouter');
 
 
 module.exports = function(app) {
@@ -19,6 +20,7 @@ module.exports = function(app) {
 
     app.use('/api/users', userRoute);
     app.use('/api/products', productRoute);
+    app.use('/api/payment', paymentRoute);
     app.use('/', routes);
 
 // catch 404 and forward to error handler

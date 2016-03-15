@@ -42,6 +42,15 @@ var user = sequelize.define('user', {
     salt: {
         type: Sequelize.STRING,
         field: 'salt'
+    },
+    roles: {
+        type: Sequelize.STRING,
+        get: function() {
+            return JSON.parse(this.getDataValue('roles'));
+        },
+        set: function(val) {
+            return this.setDataValue('roles', JSON.stringify(val));
+        }
     }
 
 },{
@@ -69,7 +78,8 @@ user.sync().then(function(){
                     email:'micky@gmail.com',
                     username:'micky@gmail.com',
                     password:hash,
-                    salt: salt
+                    salt: salt,
+                    roles:["user","admin"]
                 });
             }
 
@@ -86,4 +96,51 @@ var createSalt = function() {
     return crypto.randomBytes(128).toString('base64');
 }
 
+user.middleware ={
+    list: {
+        fetch: {
+            before: function(req, res, context) {
+
+                return context.continue;
+            },
+            action: function(req, res, context) {
+
+                return context.continue;
+            },
+            after: function(req, res, context) {
+
+                return context.continue;
+            }
+        },
+        start:{
+            action: function(req, res, context) {
+
+
+                return context.continue;
+            }
+        }
+    },
+    read: {
+        fetch: {
+            before: function (req, res, context) {
+                console.log("*** user read");
+                return context.continue;
+            },
+            action: function (req, res, context) {
+                // change behavior of actually writing the data
+                return context.continue;
+            },
+            after: function (req, res, context) {
+                // set some sort of flag after writing list data
+                return context.continue;
+            }
+        }
+    },
+    delete:{
+        auth: function(req, res, context) {
+
+            return context.error(403, "can't delete a product");
+        }
+    }
+}
 module.exports = user;

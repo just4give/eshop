@@ -27,7 +27,10 @@ appModule.controller("productDetailsController",["$scope","$rootScope","$log","$
 
     $scope.addToCart = function(){
         $rootScope.cart = $rootScope.cart || [];
-        $rootScope.cart.push($scope.product);
+        var item ={};
+        item.product =angular.copy(product);
+        item.quantity=1;
+        $rootScope.cart.push(item);
         toaster.pop({
             type: 'success',
             body: 'added to cart successfully.',

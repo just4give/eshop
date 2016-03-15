@@ -88,7 +88,7 @@ router.post('/upload', multipartMiddleware,function (req, res, next) {
                 }).then(
                     function(image) {
 
-                        var imageUrl = config.apiContext+'/repo/thumb/'+ photo.id+fileExtn;
+                        var imageUrl = config.image.rootUrl+'/repo/thumb/'+ photo.id+fileExtn;
                         photo.thumbnailUrl = imageUrl;
                         photo.imageUrl = imageUrl;
                         photo.fileName = photo.id+fileExtn;

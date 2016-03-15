@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="photoOrder">
+<html ng-app="eshop">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,25 +9,33 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="vendor/angular-chart.js/dist/angular-chart.css">
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="vendor/angular/angular-csp.css" rel="stylesheet">
     <link href="vendor/animate.css/animate.min.css" rel="stylesheet">
     <link href="vendor/angularjs-toaster/toaster.min.css" rel="stylesheet">
-    <link href="vendor/angularjs-slider/dist/rzslider.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="vendor/angularjs-slider/dist/rzslider.css" rel="stylesheet">
+    <link href="vendor/bootstrap-additions/dist/bootstrap-additions.min.css" rel="stylesheet" >
+    <!--<link rel="stylesheet" href="css/admin.css" type="text/css">-->
+    <link rel="stylesheet" href="vendor/metisMenu/dist/metisMenu.min.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <base href="/">
   </head>
   <body>
 
+  <!--<button type="button" class="btn btn-lg btn-danger"
+          data-template-url="modules/app/tmpl/side-menu.html" data-placement="right"
+          data-animation="am-slide-right"
+          bs-aside="aside" data-container="body">Menu
+  </button>-->
+    <header headroom offset='220' class="navbar navbar-fixed-top top-header wow bounceInDown" data-wow-delay="0s" ng-show="showHeader">
 
-    <header headroom offset='220' class="navbar-fixed-top top-header wow bounceInDown" data-wow-delay="0s">
-
-      <div class="row"  ng-controller="loginController"  >
+      <div class="row navbar-header"  ng-controller="loginController"  >
 
         <div class="col-xs-6 col-sm-3 text-left">
-          <a ui-sref="home" class="" style="color: rgba(187, 13, 13, 0.58);">
-            <i class="fa fa-shopping-basket fa-3x"></i>
+          <a ui-sref="home" class="img-brand" >
+            <img src="images/logo.png">
           </a>
         </div>
         <form class="col-xs-6 col-sm-6 hidden-xs">
@@ -37,41 +45,48 @@
           <div class="input-group ">
             <input type="text" class="form-control" placeholder="Search for..." ng-model="search.query">
             <span class="input-group-btn">
-              <button class="btn btn-default" type="button" ng-submit="search(search.query)"  ui-sref="search({query: search.query })"><i class="fa fa-search"></i></button>
+              <button class="btn btn-default" type="button"  ui-sref="search({query: search.query })"><i class="fa fa-search"></i></button>
             </span>
           </div><!-- /input-group -->
         </form>
 
         <div class="col-xs-6 col-sm-3 text-right">
 
-          <a class="link cart" ng-click="checkout()"><i class="fa fa-shopping-bag fa-2x"></i>
+          <a class="link cart" ui-sref="cart"><i class="fa fa-shopping-bag fa-2x"></i>
             <span class="badge" ng-bind="cart? cart.length:0"> </span>
+
           </a>
+          <a class="link login" ui-sref="admin.dashboard" ><strong> Admin</strong></a>
+          <a class="link login" ui-sref="login({cb:'cart'})" ng-hide="loggedIn"><strong> Login</strong></a>
 
-          <a class="link" ng-click="openLoginPopup()" ng-hide="false"> Login</a>
 
-          <div class="btn-group " ng-show="true">
+
+          <div class="btn-group " >
             <!--<button type="button" class="btn btn-opp-primary" ng-bind="state.user.firstName">  </button>-->
-            <a  class="link cart dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a  class="link cart dropdown-toggle" data-template-url="modules/app/tmpl/side-menu.html" data-placement="right"
+                data-animation="am-slide-right"
+                bs-aside="aside" data-container="body">
               <i class="text-warning fa fa-user fa-2x"></i>
             </a>
-            <ul class="dropdown-menu">
+           <!-- <ul class="dropdown-menu">
               <li><a ui-sref="home" class="link">My Account</a></li>
               <li><a ui-sref="myorder" class="link">My Order</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="" class="link" ng-click="logout()">Logout</a></li>
-            </ul>
+            </ul>-->
+
+
           </div>
 
         </div>
-        <form class="col-xs-12 visible-xs">
+        <form class="col-xs-12 visible-xs margin-top-10 margin-bottom-10">
           <!--<input type="search" placeholder="Search..." class="product-search-text" ng-model="query">
           <button class="btn-search" ng-submit="search(query)"   ui-sref="search({query: query , category: ''})"><i class="fa fa-search"></i></button>
 -->
           <div class="input-group ">
             <input type="text" class="form-control" placeholder="Search for..." ng-model="search.query">
               <span class="input-group-btn">
-                <button class="btn btn-default" type="button" ng-submit="search(search.query)"  ui-sref="search({query: search.query })"><i class="fa fa-search"></i></button>
+                <button class="btn btn-default" type="button"  ui-sref="search({query: search.query })"><i class="fa fa-search"></i></button>
               </span>
           </div><!-- /input-group -->
         </form>
@@ -109,26 +124,44 @@
   <script src="vendor/angular-resource/angular-resource.min.js"></script>
   <script src="vendor/ng-library.js"></script>
   <script src="vendor/lodash/dist/lodash.min.js"></script>
+  <script src="vendor/metisMenu/dist/metisMenu.min.js"></script>
+  <script src="vendor/Chart.js/Chart.min.js"></script>
+  <script src="vendor/angular-chart.js/dist/angular-chart.min.js"></script>
   <script src="vendor/angularjs-slider/dist/rzslider.min.js"></script>
+  <script src="vendor/angularUtils-pagination/dirPagination.js"></script>
+  <script src="vendor/ngSmoothScroll/lib/angular-smooth-scroll.js"></script>
+  <script src="vendor/angular-credit-cards/release/angular-credit-cards.js"></script>
+  <script src="vendor/angular-ui-router-styles/ui-router-styles.js"></script>
+  <script src="vendor/oclazyload/dist/ocLazyLoad.js"></script>
 
   <script src="modules/app/AppModule.js"></script>
   <script src="modules/common/HTTPInterceptor.js"></script>
   <script src="modules/app/AppConfig.js"></script>
+  <script src="modules/common/UserCart.js"></script>
+  <script src="modules/common/UserPayment.js"></script>
   <script src="modules/common/CarouselController.js"></script>
   <script src="modules/common/LoginController.js"></script>
   <script src="modules/app/HomeController.js"></script>
-  <script src="modules/upload/UploadController.js"></script>
   <script src="modules/checkout/CartController.js"></script>
   <script src="modules/checkout/CheckoutController.js"></script>
+  <script src="modules/checkout/ConfirmController.js"></script>
   <script src="modules/app/ContactController.js"></script>
   <script src="modules/order/MyOrderController.js"></script>
   <script src="modules/common/PhotoService.js"></script>
   <script src="modules/common/UserService.js"></script>
   <script src="modules/order/OrderService.js"></script>
   <script src="modules/common/ExceptionController.js"></script>
+  <script src="modules/search/SearchService.js"></script>
   <script src="modules/search/SearchController.js"></script>
   <script src="modules/common/AdController.js"></script>
   <script src="modules/search/ProductDetailsController.js"></script>
+
+  <!--admin controllers -->
+  <script src="modules/admin/DashboardController.js"></script>
+  <script src="modules/admin/ProductController.js"></script>
+  <script src="modules/admin/TaxController.js"></script>
+  <script src="modules/admin/CategoryController.js"></script>
+  <script src="modules/admin/MerchandiseController.js"></script>
 
 
 </html>

@@ -33,11 +33,24 @@ module.exports = function(app,config){
 
    _.forEach(modelMap, function(value,key){
 
-        var resource =  epilogue.resource({
-            model: value,
-            endpoints: ['/api/'+key, '/api/'+key+'/:id'],
-            associations: false
-        });
+    /*   if(key ==='Cart'){
+           var resource =  epilogue.resource({
+               model: value,
+               endpoints: ['/api/'+key, '/api/'+key+'/:id'],
+               associations: true
+           });
+       }else{
+           var resource =  epilogue.resource({
+               model: value,
+               endpoints: ['/api/'+key, '/api/'+key+'/:id'],
+               associations: false
+           });
+       }*/
+       var resource =  epilogue.resource({
+           model: value,
+           endpoints: ['/api/'+key, '/api/'+key+'/:id'],
+           associations: false
+       });
 
         if(value.middleware){
             resource.use(value.middleware);

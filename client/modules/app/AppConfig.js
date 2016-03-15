@@ -8,7 +8,12 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locat
          url: '/?callback',
          templateUrl: 'modules/app/tmpl/home.html',
          controller: "HomeController"
-     }).state('search', {
+     }) .state('login', {
+            url: '/login?cb',
+            templateUrl: 'modules/app/tmpl/login.html',
+            controller: "loginController"
+        })
+        .state('search', {
             url: '/search?query&category',
             templateUrl: 'modules/search/tmpl/search-result.html',
             controller: "searchController",
@@ -47,7 +52,11 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locat
             url: '/checkout',
             templateUrl: 'modules/checkout/tmpl/checkout.html',
             controller:"CheckoutController"
-    })
+    }).state('confirm', {
+            url: '/confirm',
+            templateUrl: 'modules/checkout/tmpl/confirm.html',
+            controller:"ConfirmController"
+        })
     .state('myorder', {
             url: '/myorder',
             templateUrl: 'modules/order/tmpl/my-order.html',
@@ -60,6 +69,80 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locat
         templateUrl: 'modules/app/tmpl/contact-us.html',
         controller: 'ContactController'
     })
+        .state('admin', {
+            url: '/admin',
+            templateUrl: 'modules/admin/tmpl/home.html',
+            resolve: {
+                loadMyFiles: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'eshop',
+                        files: [
+
+                            'vendor/bootstrap/dist/css/bootstrap.min.css',
+                            'vendor/font-awesome/css/font-awesome.min.css',
+                            'vendor/angular/angular-csp.css',
+                            'vendor/animate.css/animate.min.css',
+                            'vendor/angularjs-toaster/toaster.min.css',
+                            'vendor/angularjs-slider/dist/rzslider.css',
+                            'vendor/metisMenu/dist/metisMenu.min.css',
+                            'css/admin.css',
+                            'css/style.css'
+
+                        ]
+                    })
+                }
+            }
+        })
+    .state('admin.dashboard', {
+            url: '/dashboard',
+            templateUrl: 'modules/admin/tmpl/dashboard.html',
+            controller:'DashboardController'
+        })
+        .state('admin.orders', {
+            url: '/orders',
+            templateUrl: 'modules/admin/tmpl/orders.html'
+        })
+        .state('admin.products', {
+            url: '/products',
+            templateUrl: 'modules/admin/tmpl/products.html',
+            controller:'ProductController',
+
+        })
+        .state('admin.product-detail', {
+            url: '/products/:id',
+            templateUrl: 'modules/admin/tmpl/product-edit.html',
+            controller: 'ProductDetailsController'
+        })
+        .state('admin.taxes', {
+            url: '/taxes',
+            templateUrl: 'modules/admin/tmpl/taxes.html',
+            controller: 'TaxController'
+        })
+        .state('admin.tax-detail', {
+            url: '/taxes/:id',
+            templateUrl: 'modules/admin/tmpl/tax-edit.html',
+            controller: 'TaxDetailsController'
+        })
+        .state('admin.categories', {
+            url: '/categories',
+            templateUrl: 'modules/admin/tmpl/categories.html',
+            controller: 'CategoryController'
+        })
+        .state('admin.category-detail', {
+            url: '/categories/:id',
+            templateUrl: 'modules/admin/tmpl/category-edit.html',
+            controller: 'CategoryDetailsController'
+        })
+        .state('admin.merchandises', {
+            url: '/merchandises',
+            templateUrl: 'modules/admin/tmpl/merchandises.html',
+            controller: 'MerchandiseController'
+        })
+        .state('admin.merchandise-detail', {
+            url: '/merchandises/:id',
+            templateUrl: 'modules/admin/tmpl/merchandise-edit.html',
+            controller: 'MerchandiseDetailsController'
+        })
      ;
 
      $locationProvider.html5Mode(true);
@@ -69,6 +152,6 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locat
 
     $httpProvider.interceptors.push('httpInterceptor');
 
-    console.log('route config...');
+
         
 }]);

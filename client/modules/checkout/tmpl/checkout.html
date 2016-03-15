@@ -1,177 +1,145 @@
 <view-title>eShop - Checkout</view-title>
-<div class="container ">
-    <div class="checkbox-step-bar">
-        <div class="bar "></div>
-        <div class="step pull-left">
-            <div class="circle "  ng-click="changeStep('shipping')"  ng-class="{'completed': address,'active':step ==='shipping'} ">
-                <div>1</div>
-                <div class="text">Shipping Address</div>
-            </div>
+<div class="container">
 
-        </div>
+    <div class="row">
+        <div class="col-sm-8 col-xs-12">
+            <div class="row text-left shipping-info"  id="shipping">
+                <div class="panel panel-default">
+                    <div class=" panel-heading">1. Choose your shipping address</div>
+                    <div class="panel-body shipping-info" >
+                        <div class="col-xs-12 ">
+                            <input type="radio"  name="address"  id="add1" ng-model="address" value="a1" ng-change="shiipingSelected('payment')">
+                            <label for="add1">John Smith, 123 Main Street,MA,02169</label>
+                        </div>
+                        <div class="col-xs-12 ">
+                            <input type="radio"  name="address" id="add2"  ng-model="address" value="a2" ng-change="shiipingSelected('payment')">
+                            <label for="add2">John Smith, 123 Main Street,MA,02169</label>
+                        </div>
 
-        <div class="step">
-            <div class="circle "  ng-click="changeStep('payment')" ng-class="{'completed': formCard.$valid, 'active':step ==='payment'} ">
-                <div>2</div>
-                <div class="text">Payment Details</div>
-            </div>
-        </div>
-
-        <div class="step pull-right"  >
-            <div class="circle"  ng-click="changeStep('confirm')" ng-class="{ 'active': step ==='confirm'} ">
-                <div>3</div>
-                <div class="text">Confirm</div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- shipping address -->
-    <div class="row checkout-pagelet text-center shipping-info" ng-show="step ==='shipping'">
-
-        <div class="col-xs-12 ">
-            <input type="radio"  name="address"  id="add1" ng-model="address" value="a1" ng-change="changeStep('payment')">
-            <label for="add1">John Smith, 123 Main Street,MA,02169</label>
-        </div>
-        <div class="col-xs-12 ">
-            <input type="radio"  name="address" id="add2"  ng-model="address" value="a2" ng-change="changeStep('payment')">
-            <label for="add2">John Smith, 123 Main Street,MA,02169</label>
-        </div>
-
-        <div class="col-xs-12">
-        <a class="link"  ng-click="openAddressPopup()"><i class="fa fa-truck"></i> Shipping Address</a>
-        </div>
-
-
-    </div>
-
-
-    <!-- payment details  -->
-    <div class="checkout-pagelet" ng-show="step ==='payment'">
-   <!-- <div class="alert alert-info alert-dismissible" role="alert" ng-show="loggedIn">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        We don't store your credit card detail
-    </div>-->
-
-
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-        <form class="panel panel-primary panel-payment" name="formCard"  id="formCard" novalidate>
-            <div class="panel-heading">Payment Details
-            <span class="pull-right text-success" ng-show="formCard.$valid" ><i class="fa fa-check-square-o"></i> Complete</span>
-            <span class="pull-right text-danger" ng-hide="formCard.$valid"><i class="fa fa-square-o"></i> Incomplete</span>
-            </div>
-            <div class="panel-body " >
-                <div class="row">
-                    <div class="heading col-xs-12">Cardhoder's Name</div>
-                    <div class="text-box col-xs-12" >
-                        <input type="text" class="col-xs-5" placeholder="First name "  required ng-model="card.firstName">
-                        <input type="text" class="col-xs-6 col-xs-offset-1" placeholder="Last name"  required ng-model="card.lastName">
-                    </div>
-                </div>
-                <div class="row" style="margin-top:10px">
-                    <div class="heading col-xs-12">Card Number</div>
-                    <div class="text-box col-xs-12">
-                        <input type="number" class="col-xs-2" placeholder="XXXX"  required ng-model="card.num1">
-                        <input type="number" class="col-xs-2 col-xs-offset-1" placeholder="XXXX"  required ng-model="card.num2">
-                        <input type="number" class="col-xs-2 col-xs-offset-1" placeholder="XXXX"  required ng-model="card.num3">
-                        <input type="number" class="col-xs-2 col-xs-offset-1" placeholder="XXXX"  required ng-model="card.num4">
-                    </div>
-                </div>
-                <div class="row" style="margin-top:10px">
-                    <div class="col-xs-6" style="padding-left: 0px">
-                        <div class="heading col-xs-12">Expiry Date</div>
-                        <div class="text-box col-xs-12">
-                            <input type="number" min="1" max="12" class="col-xs-4" placeholder="MM"  required ng-model="card.mm">
-                            <input type="number" min="0" max="99" class="col-xs-4 col-xs-offset-1" placeholder="YY"  required ng-model="card.yy">
+                        <div class="col-xs-12">
+                            <a class="link"  ng-click="openAddressPopup()"><i class="fa fa-truck"></i> Shipping Address</a>
                         </div>
                     </div>
-                    <div class="col-xs-6">
-                        <div class="heading col-xs-12">CVV</div>
-                        <div class="text-box col-xs-12">
-                            <input type="number" max="999" min="100" class="col-xs-12" placeholder="XXX"  required ng-model="card.cvv">
+                </div>
+            </div>
+            <div class="row  shipping-info text-left">
+                <div class="panel panel-default">
+                    <div class="panel-heading">2. Choose your shipping method</div>
+                    <div class="panel-body shipping-info" >
+                        <div class="col-xs-12 col-sm-12 ">
+                            <input type="radio"  name="address"  id="s1" ng-model="shippingMethod" value="s1" >
+                            <label for="s1">Standard 5 days shipping ($5)</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-12">
+                            <input type="radio"  name="address" id="s2"  ng-model="shippingMethod" value="s2" >
+                            <label for="s2">2 days priority shipping ($15)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="payment" >
+                <div class="col-xs-12 text-center margin-bottom-20" >
+                    <button class="margin-top-10 btn btn-default btn-lg" ng-class="[{'btn-success':paymentMethod==='paypal'}]" ng-click="payWithPayPal()"><i class="fa fa-paypal"></i> Pay with Paypal</button>
+                    <button class="margin-top-10 btn btn-default btn-lg" ng-class="[{'btn-success':paymentMethod==='credit_card'}]"ng-click="payWithCreditCard()"><i class="fa fa-credit-card"></i> Pay with Credit Card</button>
+                </div>
+                <div class="col-xs-12" ng-show="paymentMethod==='credit_card'">
+                        <form class="panel panel-default panel-card" name="formCard"  id="formCard" novalidate>
+                            <div class="panel-heading">3. Credit Card
+                                <span class="pull-right text-success" ng-show="formCard.$valid" ><i class="fa fa-check-square-o"></i> Complete</span>
+                                <span class="pull-right text-danger" ng-hide="formCard.$valid"><i class="fa fa-square-o"></i> Incomplete</span>
+                            </div>
+                            <div class="panel-body " >
+                                <div class="row">
+                                    <div class="heading col-xs-12">Cardhoder's Name</div>
+                                    <div class="text-box col-xs-12" >
+                                        <div class="col-xs-12 col-sm-6 margin-top-10" ng-class="{ 'has-error': formCard.fname.$invalid  }" style="padding-left: 0px">
+                                            <input type="text" class="col-xs-11" placeholder="First name "  required ng-model="card.first_name" name="fname">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 margin-top-10" ng-class="{ 'has-error': formCard.lname.$invalid  }"  style="padding-left: 0px">
+                                            <input type="text" class="col-xs-11" placeholder="Last name"  required ng-model="card.last_name" name="lname">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:10px">
+                                    <div class="heading col-xs-12">Card Number</div>
+                                    <div class="text-box col-xs-12" ng-class="{ 'has-error': formCard.cardNumber.$invalid  }">
+                                      <input type="text" class="col-sm-6 col-xs-10" placeholder="16 digit credit card number" name="cardNumber" required ng-model="card.number" cc-number cc-eager-type >
+
+                                    <span class="col-sm-offset-1 col-sm-2 col-xs-2">
+                                        <i ng-show="formCard.cardNumber.$ccEagerType ==='MasterCard'" class="fa fa-cc-mastercard fa-fw fa-3x"></i>
+                                        <i ng-show="formCard.cardNumber.$ccEagerType ==='Visa'" class="fa fa-cc-visa fa-fw fa-3x"></i>
+                                        <i ng-show="formCard.cardNumber.$ccEagerType ==='American Express'" class="fa fa-cc-amex fa-fw fa-3x"></i>
+                                    </span>
+
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:10px">
+                                    <div class="col-sm-6 col-xs-12" style="padding-left: 0px">
+                                        <div class="heading col-xs-12">Expiry Date</div>
+                                        <div cc-exp class="text-box col-xs-12">
+                                            <div class="col-xs-6" ng-class="{ 'has-error': formCard.month.$invalid  }" style="padding-left: 0px">
+                                                <input class="col-xs-10" placeholder="MM"  required ng-model="card.expire_month" cc-exp-month name="month"/>
+                                            </div>
+                                            <div class="col-xs-6" ng-class="{ 'has-error': formCard.year.$invalid  }"  style="padding-left: 0px">
+                                                <input  class="col-xs-10" placeholder="YY"  required ng-model="card.expire_year" cc-exp-year name="year"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-12" style="padding-left: 0px">
+                                        <div class="heading col-xs-12">CVV</div>
+                                        <div class="text-box col-xs-12"  ng-class="{ 'has-error': formCard.cvv.$invalid  }"  >
+                                            <input type="text" class="col-xs-12" placeholder="XXX"  required ng-model="card.cvv" ng-model="card.cvv2" cc-cvc name="cvv">
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </form>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="col-sm-4 col-xs-12">
+            <div class="checkout-pagelet" id="confirm">
+
+
+                <div class="panel panel-payment " ng-class="{'disabled' :orderPgIndc}">
+                    <div class="panel-heading">Place your order</div>
+                    <div class="panel-body " >
+                        <table class="price-table margin-bottom-20">
+                            <tr><td><label>Item(s)</label></td><td ng-bind="cart.length"></td></tr>
+                            <tr><td><label>Item(s) cost</label></td><td>$200</td></tr>
+                            <tr><td><label>Tax</label></td><td>$10</td></tr>
+                            <tr><td><label>Shipping and Handling</label></td><td>$15</td></tr>
+                            <tr><td><label>Total</label></td><td class="total">$225</td></tr>
+                            <tr><td>Have any coupon?</td></tr>
+                            <tr>
+                                <td ><input type="text" ng-model="couponCode"> </td>
+                                <td ><button class="btn btn-default pull-left">Apply</button> </td>
+                            </tr>
+                        </table>
+
+                        <div class="text-center" ng-show="orderPgIndc" ng-animate=" 'animate' ">
+                            <span class="text1"><strong><i class="fa fa-spinner fa-spin"></i> Order being processed...</strong></span>
+                            <p class="text-success">Please do not refresh the page or hit back</p>
+                        </div>
+                        <div class="text-center margin-bottom-20">
+                            <button class="btn btn-success btn-lg" ng-click="makePurchase()" ng-disabled="orderPgIndc" id="btn-confirm">Make Payment</button>
 
                         </div>
                     </div>
-
-
                 </div>
-            </div>
 
-        </form>
-        <div class="col-xs-12">
-            <ul class="list-inline">
-                <li><label>Is billing address same as shipping?</label></li>
-                <li><input type="radio" name="samebilling" ng-model="card.samebilling" value="yes"> Yes</li>
-                <li><input type="radio" name="samebilling" ng-model="card.samebilling" value="no"> No</li>
-                <li></li>
-            </ul>
-
-        </div>
-
-        <form  name="formBill" class="billing-address" ng-show="card.samebilling==='no'">
-            <table class="table " style="border: 0px">
-                <tr><td><input type="text" class="form-control" placeholder="First name" required ng-model="billing.firstName"> </td></tr>
-                <tr><td><input type="text" class="form-control" placeholder="Last name" required ng-model="billing.lastName"> </td></tr>
-                <tr><td><input type="text" class="form-control" placeholder="Address Line1" required ng-model="billing.address1"> </td></tr>
-                <tr><td><input type="text" class="form-control" placeholder="Address Line2" required ng-model="billing.address2"> </td></tr>
-                <tr><td><input type="text" class="form-control" placeholder="City" required ng-model="billing.city"> </td></tr>
-                <tr><td><input type="text" class="form-control" placeholder="State" required ng-model="billing.state"> </td></tr>
-                <tr><td><input type="text" class="form-control" placeholder="Zip" required ng-model="billing.zip"> </td></tr>
-            </table>
-
-        </form>
-
-        <div class="col-xs-12">
-            <button class="btn btn-success pull-right" ng-hide="formCard.$invalid || ( card.samebilling==='no' && formBill.$invalid )" ng-click="changeStep('confirm')">Continue</button>
-        </div>
-
-
-    </div>
-
-
-    </div>
-
-    <!-- confirm details -->
-    <div class="checkout-pagelet" ng-show="step ==='confirm'">
-        <h3 class="text-center">Confirm your order</h3>
-        <div class="panel panel-payment">
-            <div class="panel-heading">Your order will be shipped to</div>
-            <div class="panel-body " >
-                <label >John Smith, 123 Main Street,MA,02169</label>
-            </div>
-        </div>
-
-        <div class="panel panel-payment">
-            <div class="panel-heading">Choose your shipping method</div>
-            <div class="panel-body shipping-info" >
-                <div class="col-xs-12 col-sm-6 ">
-                    <input type="radio"  name="address"  id="s1" ng-model="shippingMethod" value="s1" >
-                    <label for="s1">Standard 5 days shipping ($5)</label>
-                </div>
-                <div class="col-xs-12 col-sm-6">
-                    <input type="radio"  name="address" id="s2"  ng-model="shippingMethod" value="s2" >
-                    <label for="s2">2 days priority shipping ($15)</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="panel panel-payment">
-            <div class="panel-heading">Your total cost</div>
-            <div class="panel-body " >
-                <table class="price-table">
-                    <tr><td><label>Item(s)</label></td><td ng-bind="cart.length"></td></tr>
-                    <tr><td><label>Item(s) cost</label></td><td>$200</td></tr>
-                    <tr><td><label>Tax</label></td><td>$10</td></tr>
-                    <tr><td><label>Shipping and Handling</label></td><td>$15</td></tr>
-                    <tr><td><label>Total</label></td><td class="total">$225</td></tr>
-                </table>
 
             </div>
         </div>
 
-        <div class="col-xs-12 text-center margin-bottom-20">
-            <button class="btn btn-opp-secondary btn-lg">Make Payment</button>
-        </div>
     </div>
 
 </div>
