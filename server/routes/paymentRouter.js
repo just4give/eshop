@@ -8,15 +8,19 @@ var paypal = require('paypal-rest-sdk');
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var config = require('../config/config')[env];
 paypal.configure(config.paypal.api);
+var Coupon = require('../model/Coupon');
+var Cart = require('../model/Cart');
+var Product = require('../model/Product');
+var Tax = require('../model/Tax');
+var auth = require('../config/auth');
+var Payment = require('../model/Payment');
+var Order = require('../model/Order');
 
+router.post('/create', auth.requiresApiLogin,function(req, res,next) {
 
-
-router.post('/create', function(req, res) {
-
-    console.log('making payment');
-    console.log('payment id='+req.session.paymentId );
-    console.log('create/card : session id='+req.sessionID);
-    console.log("req body ", req.body);
+ console.log("req body ", req.body);
+    var order = req.body;
+    order.userId =  req.user.id;
     var payment = {
         "intent": "sale",
         "payer": {
@@ -56,12 +60,23 @@ router.post('/create', function(req, res) {
         payment.redirect_urls =config.paypal.api.redirect_urls;
     }
 
-    paypal.payment.create(payment, function (error, payment) {
-        if (error) {
-            console.log(error);
+    paypal.payment.create(payment, function (err, payment) {
+        if (err) {
+
+            console.log("*********payment error");
+            console.log(err);
+            var err2 = {
+                status:500, message:'Invalid card'
+            }
+            //TODO: generate proper paypal message
+            return next(err2);
         } else {
-                  if(payment.payer.payment_method === 'paypal') {
+
+
+            if(payment.payer.payment_method === 'paypal') {
              req.session.paymentId = payment.id;
+             req.session.order = JSON.stringify(order);
+
              var redirectUrl;
              for(var i=0; i < payment.links.length; i++) {
              var link = payment.links[i];
@@ -72,9 +87,38 @@ router.post('/create', function(req, res) {
               console.log("redirecting to ", redirectUrl);
              res.json({method:'paypal', redirectUrl:redirectUrl});
              }else{
-              req.session.paymentId = payment.id;
-              console.log(payment);
-              res.json({paymentId: payment.id, method:'credit_card'});
+                  req.session.paymentId = payment.id;
+                  console.log("CC payment ", payment);
+                  //save details into database
+                  Payment.create({
+                      method:payment.payer.payment_method,
+                      paymentId:payment.id,
+                      cardNumber:order.card.number,
+                      payerInfo: JSON.stringify(payment.payer),
+                      transactionInfo: JSON.stringify(payment.transactions),
+                      userId: req.user.id
+                  }).then(function(data){
+                      order.paymentId = data.id;
+                      order.orderStatusId=1;
+                      Order.create(order)
+                          .then(function(data){
+                              Cart.update({orderId: data.id, updatedAt:new Date()},{where: {id: {$in:order.cartIds}} })
+                                  .then(function(data){
+                                      res.json({paymentId: payment.id, method:'credit_card'});
+                                  },function(err){
+                                      return next(err);
+                                  })
+
+
+                          },function(err){
+
+                          })
+
+
+                  },function(err){
+                      return next(err);
+                  })
+
              }
 
         }
@@ -82,61 +126,98 @@ router.post('/create', function(req, res) {
 
 });
 
-/*router.get('/create/paypal', function(req, res) {
 
-    console.log('making paypal payment');
 
-    var payment = {
-        "intent": "sale",
-        "payer": {
-            "payment_method": "paypal"
-        },
-        "redirect_urls": {
-            "return_url": "http://localhost:3200/execute",
-            "cancel_url": "http://localhost:3200/cancel"
-        },
-        "transactions": [{
-            "amount": {
-                "total": "5.00",
-                "currency": "USD"
-            },
-            "description": "My awesome payment"
-        }]
-    };
-
-    paypal.payment.create(payment, function (error, payment) {
-        if (error) {
-            console.log(error);
-        } else {
-            if(payment.payer.payment_method === 'paypal') {
-                req.session.paymentId = payment.id;
-                var redirectUrl;
-                for(var i=0; i < payment.links.length; i++) {
-                    var link = payment.links[i];
-                    if (link.method === 'REDIRECT') {
-                        redirectUrl = link.href;
-                    }
-                }
-                res.redirect(redirectUrl);
-            }
-            console.log(payment);
-        }
-    });
-
-});*/
-
-router.get('/execute', function(req, res){
+router.get('/execute',auth.requiresApiLogin, function(req, res,next){
     var paymentId = req.session.paymentId;
     var payerId = req.param('PayerID');
-
+    var order = JSON.parse(req.session.order);
+    console.log("2.Cart ids ",order.cartIds);
     var details = { "payer_id": payerId };
     paypal.payment.execute(paymentId, details, function (error, payment) {
         if (error) {
             console.log(error);
+            return next(err);
         } else {
-            res.redirect("/confirm?id="+paymentId);
+            console.log("Paypal payment ", payment);
+            //res.redirect("/confirm?id="+paymentId);
+            Payment.create({
+                method:payment.payer.payment_method,
+                paymentId:payment.id,
+                payerId:payment.payer.payer_info.payer_id,
+                payerInfo: JSON.stringify(payment.payer),
+                transactionInfo: JSON.stringify(payment.transactions),
+                userId: req.user.id
+            }).then(function(data){
+                order.paymentId = data.id;
+                Order.create(order)
+                    .then(function(data){
+                        Cart.update({orderId: data.id, updatedAt:new Date()},{where: {id: {$in:order.cartIds}} })
+                            .then(function(data){
+                                res.redirect("/confirm?id="+paymentId);
+                            },function(err){
+                                return next(err);
+                            })
+
+
+                    },function(err){
+
+                    })
+
+
+            },function(err){
+                return next(err);
+            })
         }
     });
 
 });
+
+router.get('/cancel',auth.requiresApiLogin, function(req, res,next){
+    res.redirect("/cart");
+});
+router.post('/coupon', function(req, res){
+    var code = req.param('code');
+    var amt = req.param('amt') || 0;
+    var now = new Date();
+    Coupon.findOne({where: {code:code, validFrom:{$lte:now}, validThrough:{$gte:now} }})
+        .then(function(coupon){
+          if(!coupon){
+              res.json({valid:false, message:'Coupon not valid or expired'});
+         }else{
+             if(coupon.minPurchase > amt ){
+                  res.json({valid:false, message:'Minimum purchase required'});
+              }else{
+
+                 var discount =0;
+                 if(coupon.type === 'amt'){
+                     discount = coupon.value;
+                 }else{
+                     discount = (amt*coupon.value)/100;
+                 }
+                  res.json({valid:true, amt:discount, id:coupon.id});
+              }
+          }
+
+        },function(err){
+           return next(err);
+        });
+
+});
+router.post('/calctax', auth.requiresApiLogin,function(req, res){
+    var userId =req.user.id;
+
+    Cart.findAll({where: {userId:userId, orderId:null },include:[{model: Product,include:[Tax]}]})
+        .then(function(carts){
+            var estTax =0;
+            carts.forEach(function(cart){
+                estTax += (cart.product.price*cart.quantity*cart.product.tax.pct)/100;
+            })
+            res.json({tax:estTax});
+        },function(err){
+            return next(err);
+        });
+
+});
+
 module.exports = router;

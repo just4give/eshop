@@ -6,8 +6,8 @@
     <meta name="description" content="Online shopping cart website, a product by AppStackSolutions.com">
     <meta name="author" content="AppStackSolutions.com">
     <title ng-bind-template="{{viewTitle}} - AppStackSolutions.com">AppStackSolutions.com</title>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+   <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>-->
     <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="vendor/angular-chart.js/dist/angular-chart.css">
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
   <body>
 
   <!--<button type="button" class="btn btn-lg btn-danger"
-          data-template-url="modules/app/tmpl/side-menu.html" data-placement="right"
+          data-template-url="modules/www/tmpl/side-menu.html" data-placement="right"
           data-animation="am-slide-right"
           bs-aside="aside" data-container="body">Menu
   </button>-->
@@ -56,24 +56,18 @@
             <span class="badge" ng-bind="cart? cart.length:0"> </span>
 
           </a>
-          <a class="link login" ui-sref="admin.dashboard" ><strong> Admin</strong></a>
-          <a class="link login" ui-sref="login({cb:'cart'})" ng-hide="loggedIn"><strong> Login</strong></a>
+
+          <a class="link login" ui-sref="login" ng-hide="loggedIn"><strong> Login</strong></a>
 
 
 
-          <div class="btn-group " >
+          <div class="btn-group " ng-show="loggedIn">
             <!--<button type="button" class="btn btn-opp-primary" ng-bind="state.user.firstName">  </button>-->
             <a  class="link cart dropdown-toggle" data-template-url="modules/app/tmpl/side-menu.html" data-placement="right"
                 data-animation="am-slide-right"
                 bs-aside="aside" data-container="body">
               <i class="text-warning fa fa-user fa-2x"></i>
             </a>
-           <!-- <ul class="dropdown-menu">
-              <li><a ui-sref="home" class="link">My Account</a></li>
-              <li><a ui-sref="myorder" class="link">My Order</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="" class="link" ng-click="logout()">Logout</a></li>
-            </ul>-->
 
 
           </div>
@@ -162,6 +156,7 @@
   <script src="modules/admin/TaxController.js"></script>
   <script src="modules/admin/CategoryController.js"></script>
   <script src="modules/admin/MerchandiseController.js"></script>
+  <script src="modules/admin/ShippingController.js"></script>
 
 
 </html>

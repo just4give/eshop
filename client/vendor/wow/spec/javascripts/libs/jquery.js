@@ -7794,7 +7794,7 @@ jQuery.extend({
     global: true,
     processData: true,
     async: true,
-    contentType: "application/x-app-form-urlencoded; charset=UTF-8",
+    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
     /*
     timeout: 0,
     data: null,
@@ -8543,7 +8543,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
   var callbackName, overwritten, responseContainer,
     jsonProp = s.jsonp !== false && ( rjsonp.test( s.url ) ?
       "url" :
-      typeof s.data === "string" && !( s.contentType || "" ).indexOf("application/x-app-form-urlencoded") && rjsonp.test( s.data ) && "data"
+      typeof s.data === "string" && !( s.contentType || "" ).indexOf("application/x-www-form-urlencoded") && rjsonp.test( s.data ) && "data"
     );
 
   // Handle iff the expected data type is "jsonp" or we have a parameter to set

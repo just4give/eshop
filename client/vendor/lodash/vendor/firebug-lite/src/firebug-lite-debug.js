@@ -11017,7 +11017,7 @@ var ChromeFrameBase = extend(ChromeBase,
             Firebug.GoogleChrome.dispatch("FB_deactivate");
 
             // xxxpedro problem here regarding Chrome extension. We can't deactivate the whole
-            // app, otherwise it won't be able to be reactivated without reloading the page.
+            // www, otherwise it won't be able to be reactivated without reloading the page.
             // but we need to stop listening global keys, otherwise the key activation won't work.
             Firebug.chrome.close();
         }

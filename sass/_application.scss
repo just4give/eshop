@@ -306,13 +306,17 @@ body{
   animation: rotate360 1s linear infinite;
   -webkit-animation: rotate360 1s linear infinite;
 
-  border-width: 10px;
-  width: 100px;
-  height: 100px;
+  border-width: 5px;
+  width: 50px;
+  height: 50px;
   line-height: 100%;
   margin-top: 20px;
 }
-
+.spinner.sp-2x{
+  border-width: 10px;
+  width: 100px;
+  height: 100px;
+}
 /*.ng-hide-add {
   opacity: 1;
   transition: .35s linear all;

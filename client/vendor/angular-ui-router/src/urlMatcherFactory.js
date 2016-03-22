@@ -782,7 +782,7 @@ function $UrlMatcherFactory() {
    * @param {string} name  The type name.
    * @param {Object|Function} definition   The type definition. See
    *        {@link ui.router.util.type:Type `Type`} for information on the values accepted.
-   * @param {Object|Function} definitionFn (optional) A function that is injected before the app
+   * @param {Object|Function} definitionFn (optional) A function that is injected before the www
    *        runtime starts.  The result of this function is merged into the existing `definition`.
    *        See {@link ui.router.util.type:Type `Type`} for information on the values accepted.
    *

@@ -1,0 +1,19 @@
+<h3 class="text-center margin-bottom-20"><span class="label label-default" ng-bind="shipping.id?'Update Shipping':'Create New Shipping'"></span></h3>
+
+<form name="p" novalidate>
+    <div class="form-group col-sm-6" ng-class="{ 'has-error': p.name.$invalid  }">
+        <label class="control-label">Name</label>
+        <input type="text" class="form-control" placeholder="Name"  ng-model="shipping.name" name="name" required>
+    </div>
+
+    <div class="form-group col-sm-6" ng-class="{ 'has-error': p.price.$invalid  }">
+        <label class="control-label">Price</label>
+        <input type="number" class="form-control" placeholder="Shipping Cost"  ng-model="shipping.price" name="price" required>
+    </div>
+
+
+
+    <div class="col-xs-12 text-right">
+        <button class="btn btn-warning" ng-click="save()" ng-disabled="p.$invalid" ng-bind="shipping.id?'Update':'Create'">Create</button>
+    </div>
+</form>

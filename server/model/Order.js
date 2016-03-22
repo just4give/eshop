@@ -7,7 +7,11 @@ var User = require('./User');
 var Cart = require('./Cart');
 var Photo = require('./Photo');
 var Product = require('./Product');
-
+var Payment = require('./Payment');
+var Shipping = require('./Shipping');
+var Coupon = require('./Coupon');
+var Address = require('./Address');
+var OrderStatus = require('./OrderStatus');
 
 var order = sequelize.define('order', {
     id: {
@@ -30,6 +34,19 @@ var order = sequelize.define('order', {
         type: Sequelize.DECIMAL(10, 2),
         field: 'tax'
     },
+    shippingCost: {
+        type: Sequelize.DECIMAL(10, 2),
+        field: 'shippingCost'
+    },
+    discount: {
+        type: Sequelize.DECIMAL(10, 2),
+        field: 'discount'
+    },
+    finalCost: {
+        type: Sequelize.DECIMAL(10, 2),
+        field: 'finalCost'
+    },
+
     createdAt: {
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('NOW'),
@@ -51,9 +68,14 @@ var order = sequelize.define('order', {
 });
 
 order.belongsTo(User);
+order.belongsTo(Payment);
+order.belongsTo(Shipping);
+order.belongsTo(Address);
+order.belongsTo(Coupon);
+order.belongsTo(OrderStatus);
 order.hasMany(Cart);
 
-order.sync({force:true}).then(function(){
+order.sync({force:false}).then(function(){
 
 });
 
@@ -61,6 +83,7 @@ order.middleware ={
     list: {
         fetch: {
             before: function(req, res, context) {
+                console.log("context ", context.criteria);
                 context.include = [{model: Cart,include:[{model: Product,include:[Photo]}]}];
                 return context.continue;
             },

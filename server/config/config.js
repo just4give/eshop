@@ -35,12 +35,12 @@ module.exports = {
                 "client_id" : "AVMw5JN4k_zRzJ64NBiw4MsRtmIz-VzG7AL8Y9pLJIV8xzh5izEABb7P-IBDAih_x8nJhGTDrrE0rGAg",
                 "client_secret" : "ENU_KLnpFMWA4ujjyhOtAewn8CjbPiLoXAmd05SqqKjoRhe8bvhNdO4PPTLoO5IFz-s-K4ZXX7FG6wzU",
                 redirect_urls :{
-                return_url: "http://localhost:4100/api/payment/execute",
-                cancel_url: "http://localhost:4100/api/payment/cancel"
+                return_url: "http://localhost:4100/api/payments/execute",
+                cancel_url: "http://localhost:4100/api/payments/cancel"
                 }
             }
         },
-        apiContext:"http://localhost:4200"
+        apiContext:"http://localhost:4100"
 
     },
     aws: {

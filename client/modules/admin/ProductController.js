@@ -217,6 +217,12 @@ appModule.controller("ProductDetailsController",["$scope","$rootScope","$log","$
 
                 });
         }
+
+        $scope.priceCopy = function(product){
+            if(!product.price){
+                product.price=product.regularPrice;
+            }
+        }
   /*      var overlay =  $("#image-slider .overlay");
         var slider =  $("#image-slider");
         var sliderW = slider.width();

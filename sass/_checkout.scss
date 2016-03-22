@@ -17,8 +17,8 @@
 
   label {
     width: auto;
-    border-radius: 3px;
-    border: 1px solid #D1D3D4;
+    //border-radius: 3px;
+   // border: 1px solid #D1D3D4;
     padding: 5px;
 
   }
@@ -52,7 +52,7 @@
     content: '';
     width: 2.5em;
     background: #D1D3D4;
-    border-radius: 3px 0 0 3px;
+   // border-radius: 3px 0 0 3px;
   }
 
   /* toggle hover */
@@ -166,6 +166,9 @@
   border:none;
   box-shadow: none;
   .total{
+    color: white;
+  }
+  .discount{
     color: white;
   }
   .panel-heading{
@@ -366,8 +369,17 @@ $checkout-circle-height-xs: 50px;
     padding-left: 20px;
     padding-right: 20px;
   }
+  tr>td>label{
+    font-size: medium;
+    font-weight: normal;
+  }
   .total{
     font-size: x-large;
+    color: #1e8e09;
+    font-weight: bold;
+  }
+  .discount{
+    font-size: large;
     color: #1e8e09;
     font-weight: bold;
   }

@@ -37,19 +37,9 @@ appModule.controller("loginController",["$window","$scope","$rootScope","$log","
         },true);*/
 
 
-        UserService.loggedIn().
+        UserService.isAuthorized().
          then(function(data){
-         if(data.success){
-             $rootScope.state = $rootScope.state || {};
-             $rootScope.state.user = data.user;
-             $rootScope.loggedIn = true;
-         }else{
-             $rootScope.loggedIn = false;
-             if($rootScope.state){
-                 $rootScope.state.user = undefined;
-             }
 
-         }
      },function(err){
          $rootScope.$broadcast('api_error',err);
      })
@@ -73,22 +63,19 @@ appModule.controller("loginController",["$window","$scope","$rootScope","$log","
 
         UserService.login($scope.loginform).then(function(data){
             $scope.signupprogress = false;
-            $log.debug('login response');
-            $log.debug(data);
 
             if(!data.success){
                 $scope.showLoginErr = "Login failed";
             }else{
 
-                $rootScope.state=$rootScope.state||{}
-                $rootScope.state.user = data.user;
+                $rootScope.user = data.user;
                 $rootScope.loggedIn = true;
                 //UserCart.sync();
                 if(modal){
                     modal.hide();
                 }
-                if(callbackUrl){
-                    $state.go(callbackUrl);
+                if($rootScope.loginRedirect){
+                    $state.go($rootScope.loginRedirect);
                 }else{
                     $state.go("home");
                 }
@@ -110,7 +97,7 @@ appModule.controller("loginController",["$window","$scope","$rootScope","$log","
 
         UserService.logout().then(function(data){
             $rootScope.loggedIn = false;
-            $rootScope.state.user=undefined;
+            $rootScope.user=undefined;
             $rootScope.cart=[];
             localStorageService.remove("cart");
             $state.go('/');
@@ -141,15 +128,10 @@ appModule.controller("loginController",["$window","$scope","$rootScope","$log","
             if(data.errorCode){
                 $scope.showSignupErr = data.errorMessage;
             }else{
-                if(!$rootScope.state){
-                    $rootScope.state ={};
-                }
-                $rootScope.state.user = data;
+
+                $rootScope.user = data;
                 $rootScope.loggedIn = true;
-                $scope.setUserCookie(data);
-                if(modal){
-                    modal.hide();
-                }
+
             }
         },function(err){
             $scope.signupprogress = false;

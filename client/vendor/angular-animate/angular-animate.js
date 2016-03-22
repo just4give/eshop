@@ -1458,7 +1458,7 @@ var $$AnimateCssDriverProvider = ['$$animationProvider', function($$animationPro
     var rootBodyElement = jqLite(
       // this is to avoid using something that exists outside of the body
       // we also special case the doc fragement case because our unit test code
-      // appends the $rootElement to the body after the app has been bootstrapped
+      // appends the $rootElement to the body after the www has been bootstrapped
       isDocumentFragment(rootNode) || bodyNode.contains(rootNode) ? rootNode : bodyNode
     );
 

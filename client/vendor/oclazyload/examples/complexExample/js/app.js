@@ -1,6 +1,6 @@
 'use strict';
 
-// Declare app level module which depends on filters, and services
+// Declare www level module which depends on filters, and services
 var App = angular.module('app', ['ui.router', 'oc.lazyLoad'])
   .config(function($stateProvider, $locationProvider, $urlRouterProvider, $ocLazyLoadProvider) {
     $urlRouterProvider.otherwise("/");

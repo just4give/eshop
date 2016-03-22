@@ -862,7 +862,7 @@
   function init(element) {
     if(initModules.length === 0) {
       var elements = [element],
-        names = ['ng:app', 'ng-app', 'x-ng-app', 'data-ng-app'],
+        names = ['ng:www', 'ng-app', 'x-ng-www', 'data-ng-www'],
         NG_APP_CLASS_REGEXP = /\sng[:\-]app(:\s*([\w\d_]+);?)?\s/,
         append = function append(elm) {
           return (elm && elements.push(elm));

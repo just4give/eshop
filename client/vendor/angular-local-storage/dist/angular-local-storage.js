@@ -31,7 +31,7 @@ var isDefined = angular.isDefined,
 angular
   .module('LocalStorageModule', [])
   .provider('localStorageService', function() {
-    // You should set a prefix to avoid overwriting any local storage variables from the rest of your app
+    // You should set a prefix to avoid overwriting any local storage variables from the rest of your www
     // e.g. localStorageServiceProvider.setPrefix('yourAppName');
     // With provider you can use config as this:
     // myApp.config(function (localStorageServiceProvider) {
@@ -246,7 +246,7 @@ angular
         var prefixLength = prefix.length;
         var keys = [];
         for (var key in webStorage) {
-          // Only return keys that are for this app
+          // Only return keys that are for this www
           if (key.substr(0,prefixLength) === prefix) {
             try {
               keys.push(key.substr(prefixLength));
@@ -259,7 +259,7 @@ angular
         return keys;
       };
 
-      // Remove all data for this app from local storage
+      // Remove all data for this www from local storage
       // Also optionally takes a regular expression string and removes the matching key-value pairs
       // Example use: localStorageService.clearAll();
       // Should be used mostly for development purposes
@@ -280,7 +280,7 @@ angular
         var prefixLength = prefix.length;
 
         for (var key in webStorage) {
-          // Only remove items that are for this app and match the regular expression
+          // Only remove items that are for this www and match the regular expression
           if (prefixRegex.test(key) && testRegex.test(key.substr(prefixLength))) {
             try {
               removeFromLocalStorage(key.substr(prefixLength));

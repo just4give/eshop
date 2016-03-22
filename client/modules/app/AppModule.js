@@ -13,15 +13,18 @@ appModule.config(function (localStorageServiceProvider) {
 
 });
 
-appModule.run(["$interval","localStorageService","$rootScope", "RzSliderOptions","UserCart",
-    function($interval,localStorageService,$rootScope,RzSliderOptions,UserCart ){
+appModule.run(["$interval","localStorageService","$rootScope", "RzSliderOptions","UserCart","$state",
+    function($interval,localStorageService,$rootScope,RzSliderOptions,UserCart,$state ){
 
        // RzSliderOptions.options( { showTicks: true } );
-    $rootScope.$on('$routeChangeError', function(evt, current, previous, rejection) {
-        if(rejection === 'not authorized') {
-            //Show toast
-        }
-    })
+        $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, rejection) {
+
+
+            if(rejection === 'not authorized') {
+                $state.go('login');
+            }
+        })
+
 //create a new instance
     new WOW().init();
 
@@ -43,8 +46,10 @@ appModule.run(["$interval","localStorageService","$rootScope", "RzSliderOptions"
         console.log(toState);
             if(toState.name==='login'){
                 $rootScope.showHeader=false;
+                $rootScope.loginRedirect=fromState.name;
             }else{
                 $rootScope.showHeader=true;
+                $rootScope.loginRedirect= undefined;
             }
     });
 

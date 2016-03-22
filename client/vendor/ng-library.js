@@ -80,3 +80,23 @@ angular.module('epilouge.ngService').factory('Cart', ["$resource", "$log",functi
     });
 
 }]);
+
+angular.module('epilouge.ngService').factory('Address', ["$resource", "$log",function($resource,$log){
+
+    return  $resource('/api/address/:id', { id: '@id' }, {
+        update: {
+            method: 'PUT' // this method issues a PUT request
+        }
+    });
+
+}]);
+
+angular.module('epilouge.ngService').factory('Coupon', ["$resource", "$log",function($resource,$log){
+
+    return  $resource('/api/coupon/:id', { id: '@id' }, {
+        update: {
+            method: 'PUT' // this method issues a PUT request
+        }
+    });
+
+}]);

@@ -164,6 +164,11 @@ appModule.controller("searchController",["$scope","$rootScope","$log","$timeout"
             showCloseButton: true
         });
     }
-
+    $scope.loadMore = function(){
+        $scope.prgIndicator= true;
+        $timeout(function(){
+            $scope.prgIndicator=false;
+        },1000)
+    }
 
 }]);

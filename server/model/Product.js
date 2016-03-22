@@ -24,13 +24,23 @@ var product = sequelize.define('product', {
         type: Sequelize.STRING,
         field: 'description'
     },
+    detailDescription: {
+        type: Sequelize.STRING,
+        field: 'detailDescription'
+    },
 
     price: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
         field: 'price'
+    },
+
+    regularPrice: {
+        type: Sequelize.DECIMAL,
+        field: 'regularPrice',
+        set: function(val) {
+            return this.setDataValue('regularPrice', val?val:product.price);
+        }
     }
-
-
 
 },{
     freezeTableName: true,

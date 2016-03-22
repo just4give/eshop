@@ -8,47 +8,47 @@
             <div class="modal-body ">
 
 
-                <div class="form-horizontal" role="form" >
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="fname">First Name</label>
+                <form name="p" class="form-horizontal" role="form" >
+                    <div class="form-group" ng-class="{ 'has-error': p.fname.$invalid  }">
+                        <label class="control-label col-sm-2" >First Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="fname" placeholder="Enter first name" ng-model="address.firstName">
+                            <input type="text" class="form-control" name="fname" placeholder="Enter first name" ng-model="address.firstName" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="lname">Last Name</label>
+                    <div class="form-group" ng-class="{ 'has-error': p.lname.$invalid  }">
+                        <label class="control-label col-sm-2" >Last Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="lname" placeholder="Enter last name" ng-model="address.lastName">
+                            <input type="text" class="form-control" name="lname" placeholder="Enter last name" ng-model="address.lastName" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="address">Address1</label>
+                    <div class="form-group" ng-class="{ 'has-error': p.address1.$invalid  }">
+                        <label class="control-label col-sm-2" >Address1</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="address" placeholder="Enter street address1" ng-model="address.address1">
+                            <input type="text" class="form-control" name="address1" placeholder="Enter street address1" ng-model="address.address1" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="address2">Address2</label>
+                    <div class="form-group" ng-class="{ 'has-error': p.address2.$invalid  }">
+                        <label class="control-label col-sm-2" >Address2</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="address2" placeholder="Enter street address2" ng-model="address.address2">
+                            <input type="text" class="form-control" name="address2" placeholder="Enter street address2" ng-model="address.address2" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="city">City</label>
+                    <div class="form-group" ng-class="{ 'has-error': p.city.$invalid  }">
+                        <label class="control-label col-sm-2">City</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="city" placeholder="City"  ng-model="address.city">
+                            <input type="text" class="form-control" name="city" placeholder="City"  ng-model="address.city" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="state">State</label>
+                    <div class="form-group" ng-class="{ 'has-error': p.state.$invalid  }">
+                        <label class="control-label col-sm-2" >State</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="state" placeholder="State" ng-model="address.state">
+                            <input type="text" class="form-control" name="state" placeholder="State" ng-model="address.state"  required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="zip">Zip</label>
+                    <div class="form-group" ng-class="{ 'has-error': p.zip.$invalid  }">
+                        <label class="control-label col-sm-2" >Zip</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="zip" placeholder="Zip code" ng-model="address.zip">
+                            <input type="text" class="form-control" name="zip" placeholder="Zip code" ng-model="address.zip" required>
                         </div>
                     </div>
 
@@ -64,10 +64,10 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="button" class="btn btn-opp-secondary" ng-click="submitAddress();$hide()">Create</button>
+                            <button type="button" class="btn btn-opp-secondary" ng-click="createAddress(address);$hide()">Create</button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
 
 

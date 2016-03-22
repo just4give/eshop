@@ -7,17 +7,16 @@
                 <div class="panel panel-default">
                     <div class=" panel-heading">1. Choose your shipping address</div>
                     <div class="panel-body shipping-info" >
-                        <div class="col-xs-12 ">
-                            <input type="radio"  name="address"  id="add1" ng-model="address" value="a1" ng-change="shiipingSelected('payment')">
-                            <label for="add1">John Smith, 123 Main Street,MA,02169</label>
-                        </div>
-                        <div class="col-xs-12 ">
-                            <input type="radio"  name="address" id="add2"  ng-model="address" value="a2" ng-change="shiipingSelected('payment')">
-                            <label for="add2">John Smith, 123 Main Street,MA,02169</label>
+                        <div class="col-xs-12 " ng-repeat="addr in addresses">
+                            <input type="radio"  name="address"  id="addr{{$index}}" ng-model="order.addressId" ng-value="addr.id" >
+                            <label for="addr{{$index}}" ng-bind-template="{{addr.firstName}} {{addr.lastName}}, {{addr.address1}}, {{addr.state}}, {{addr.zip}}"></label>
+                            <a class="link link-edit link-lg" uib-tooltip="Edit" ng-click="editAddress(addr)"><i class="fa fa-pencil-square-o"></i></a>
+                            <a class="link link-delete link-lg" uib-tooltip="Delete" ng-click="deleteAddress($index)"><i class="fa fa-trash-o"></i></a></td>
                         </div>
 
-                        <div class="col-xs-12">
-                            <a class="link"  ng-click="openAddressPopup()"><i class="fa fa-truck"></i> Shipping Address</a>
+
+                        <div class="col-xs-12 margin-top-10">
+                            <a class="link"  ng-click="openAddressPopup()"><i class="fa fa-truck"></i> Add Shipping Address</a>
                         </div>
                     </div>
                 </div>
@@ -26,14 +25,13 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">2. Choose your shipping method</div>
                     <div class="panel-body shipping-info" >
-                        <div class="col-xs-12 col-sm-12 ">
-                            <input type="radio"  name="address"  id="s1" ng-model="shippingMethod" value="s1" >
-                            <label for="s1">Standard 5 days shipping ($5)</label>
+                        <div class="col-xs-12 col-sm-12 " ng-repeat="shipping in shippings">
+                            <input type="radio"  name="shipping"  id="s{{$index}}" ng-model="order.shippingId" ng-value="shipping.id"
+                            ng-change="changeShipping(shipping)">
+                            <label for="s{{$index}}" ng-bind="shipping.name"></label>
                         </div>
-                        <div class="col-xs-12 col-sm-12">
-                            <input type="radio"  name="address" id="s2"  ng-model="shippingMethod" value="s2" >
-                            <label for="s2">2 days priority shipping ($15)</label>
-                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -114,23 +112,32 @@
                     <div class="panel-body " >
                         <table class="price-table margin-bottom-20">
                             <tr><td><label>Item(s)</label></td><td ng-bind="cart.length"></td></tr>
-                            <tr><td><label>Item(s) cost</label></td><td>$200</td></tr>
-                            <tr><td><label>Tax</label></td><td>$10</td></tr>
-                            <tr><td><label>Shipping and Handling</label></td><td>$15</td></tr>
-                            <tr><td><label>Total</label></td><td class="total">$225</td></tr>
+                            <tr><td><label>Item(s) cost</label></td><td ng-bind="order.productCost | currency"></td></tr>
+                            <tr><td><label>Tax</label></td><td ng-bind="order.tax | currency">$10</td></tr>
+                            <tr><td><label>Shipping and Handling</label></td><td ng-bind="order.shippingCost |currency"></td></tr>
+                            <tr ng-show="order.discount>0"><td><label>Discount</label></td><td ng-bind="order.discount |currency" class="discount"><string></string></td></tr>
+                            <tr><td><label>Total</label></td><td class="total" ng-bind-template="{{order.productCost+order.tax+order.shippingCost-order.discount | currency}} ">$225</td></tr>
                             <tr><td>Have any coupon?</td></tr>
                             <tr>
                                 <td ><input type="text" ng-model="couponCode"> </td>
-                                <td ><button class="btn btn-default pull-left">Apply</button> </td>
+                                <td ><button class="btn btn-default pull-left" ng-click="applyCoupon()">Apply</button> </td>
                             </tr>
                         </table>
 
-                        <div class="text-center" ng-show="orderPgIndc" ng-animate=" 'animate' ">
-                            <span class="text1"><strong><i class="fa fa-spinner fa-spin"></i> Order being processed...</strong></span>
-                            <p class="text-success">Please do not refresh the page or hit back</p>
+                        <div class="row text-center margin-bottom-10" ng-show="orderPgIndc">
+                            <i class="spinner"></i>
+                        </div>
+                        <div class="text-center margin-bottom-10 alert alert-success" ng-show="apiSMessage" >
+                            <!--<span class="text1"><strong>Order being processed...Please do not refresh the page or hit back</strong></span>-->
+                            <span ng-bind="apiSMessage"><strong></strong></span>
+                        </div>
+                        <div class="text-center margin-bottom-10 alert alert-danger" ng-show="apiEMessage" >
+                            <!--<span class="text1"><strong>Order being processed...Please do not refresh the page or hit back</strong></span>-->
+                            <span  ng-bind="apiEMessage"><strong></strong></span>
                         </div>
                         <div class="text-center margin-bottom-20">
-                            <button class="btn btn-success btn-lg" ng-click="makePurchase()" ng-disabled="orderPgIndc" id="btn-confirm">Make Payment</button>
+                            <button class="btn btn-success btn-lg" ng-click="makePurchase()"   id="btn-confirm"
+                            ng-disabled="orderPgIndc || !order.addressId || !order.shippingId || !paymentMethod || (paymentMethod==='credit_card' && formCard.$invalid)" >Make Payment</button>
 
                         </div>
                     </div>

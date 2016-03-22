@@ -45,6 +45,10 @@ input::-webkit-inner-spin-button {
   background-color: #00a31e;
 }
 .toast-top-right {
-  top: 85px;
+  top: 5px;
   right: 12px;
+}
+
+.spinner{
+  color: rgba(0, 0, 255, 0.37);
 }

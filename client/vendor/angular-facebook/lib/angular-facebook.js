@@ -76,7 +76,7 @@ provides: [facebook]
 
         /**
          * Set if you want to check the authentication status
-         * at the start up of the app
+         * at the start up of the www
          * @type {Boolean}
          */
         settings.status = true;
@@ -230,7 +230,7 @@ provides: [facebook]
 
         /**
          * Init Facebook API required stuff
-         * This will prepare the app earlier (on settingsuration)
+         * This will prepare the www earlier (on settingsuration)
          * @arg {Object/String} initSettings
          * @arg {Boolean} _loadSDK (optional, true by default)
          */
@@ -240,7 +240,7 @@ provides: [facebook]
             settings.appId = initSettings || settings.appId;
           }
 
-          // If object is passed, merge it with app settings
+          // If object is passed, merge it with www settings
           if (angular.isObject(initSettings)) {
             angular.extend(settings, initSettings);
           }
@@ -524,7 +524,7 @@ provides: [facebook]
          * Define fbAsyncInit required by Facebook API
          */
         $window.fbAsyncInit = function() {
-          // Initialize our Facebook app
+          // Initialize our Facebook www
           $timeout(function() {
             if (!settings.appId) {
               throw 'Missing appId setting.';
@@ -537,7 +537,7 @@ provides: [facebook]
 
 
             /**
-             * Subscribe to Facebook API events and broadcast through app.
+             * Subscribe to Facebook API events and broadcast through www.
              */
             angular.forEach({
               'auth.login': 'login',

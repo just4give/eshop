@@ -3,16 +3,16 @@
         <div class="aside-content">
             <div class="aside-header" >
                 <button type="button" class="close" ng-click="$hide()">×</button>
-                <h4 class="aside-title" ng-bind="state.user.firstName">Hello,User</h4></div>
+                <h4 class="aside-title" ng-bind="user.firstName">Hello,User</h4></div>
             <div class="aside-body" >
 
                 <ul class="list-unstyled side-menu">
-                    <li><a ui-sref="admin.dashboard" ><i class="fa fa-cogs fa-fw"></i> Admin</a></li>
+                    <li><a ui-sref="admin.dashboard" ng-click="$hide()"><i class="fa fa-cogs fa-fw"></i> Admin</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a ui-sref="home" ><i class="fa fa-user fa-fw"></i> My Account</a></li>
-                    <li><a ui-sref="myorder" ><i class="fa fa-briefcase fa-fw"></i> My Order</a></li>
+                    <li><a ui-sref="home" ng-click="$hide()"><i class="fa fa-user fa-fw"></i> My Account</a></li>
+                    <li><a ui-sref="myorder" ng-click="$hide()"><i class="fa fa-briefcase fa-fw"></i> My Order</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="" ng-click="logout()"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+                    <li><a href="" ng-click="logout();$hide()"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
                 </ul>
 
 

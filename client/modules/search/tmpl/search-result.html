@@ -33,26 +33,20 @@
     </div>
     <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
         <div class="row search-page" >
-            <!-- <div class="col-md-3 col-lg-3 filter-box">
-                 <h2>Filter</h2>
-             </div>-->
-
-
-            <!--<ul class="list-unstyled">
-                <li ng-repeat="p in products" class="wow zoomIn col-xs-12 col-sm-6 col-md-4 col-lg-3 text-center" data-wow-delay="0s" >
-                    <ng-include src="'modules/search/tmpl/search.html'" ></ng-include>
-
-                </li>
-            </ul>-->
+            <img src="images/loader.gif" class="hidden">
+            <div class="row">
+                <label ng-bind-template="found {{totalRecords}} products"> </label>
+            </div>
             <div class="row">
                 <div class="wow zoomIn col-xs-12 col-sm-4 col-md-4 col-lg-3 text-center" ng-repeat="p in products">
                     <div class="thumbnail product-box">
-                        <img ng-src="{{p.photo.imageUrl}}" alt="product image" err-src="images/no-image.png">
+                        <div class="on-sale" ng-show="p.regularPrice!==p.price"></div>
+                        <img ng-src="{{p.photo.imageUrl}}" alt="product image" err-src="images/no-image.png" loader-src="images/loader.gif" >
                         <div class="caption">
                             <h3><a  ui-sref="product({id: p.id, name: getSearchName(p.name)})" ><span class="name">{{p.name}}</span></a></h3>
 
                             <h2 class="text-success">
-
+                                <strong><strike> <span class="reg-price" ng-bind-template="${{p.regularPrice}}" ng-show="p.regularPrice!==p.price">Price unavailable</span></strike></strong>
                                <strong> <span class="price" ng-bind-template="${{p.price}}">Price unavailable</span></strong>
 
                             </h2>
@@ -74,7 +68,12 @@
                     </div>
                 </div>
             </div>
-
+            <div class="row text-center margin-bottom-10" ng-show="prgIndicator">
+               <i class="spinner"></i>
+            </div>
+            <div class="row text-center">
+                <button class="btn btn-default" ng-click="loadMore()">Load More</button>
+            </div>
 
         </div>
     </div>

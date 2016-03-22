@@ -5,8 +5,12 @@
 .aside{
   background-color: black;
   .side-menu{
-    li{
+    li>a{
       font-size: large;
+      font-weight: normal;
+      line-height: 35px;
+      color: rgba(255, 255, 255, 0.82);
+
     }
   }
 }

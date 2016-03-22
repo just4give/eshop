@@ -1,36 +1,60 @@
 <div class="container margin-top-10">
-    <div class="col-xs-12">
+    <div class="row margin-bottom-10">
         <span class="text-xx-large">Your Order(s)</span>
     </div>
-    <div class="col-xs-12">
-        <table class="table">
-            <thead>
-            <tr>
-                <th></th>
-                <th>Ordered On</th>
-                <th>Order ID</th>
+    <div class="row ">
+        <div class="col-sm-6"><strong class="pull-left" ng-bind-template="{{totalRecords}} - order(s) found"></strong></div>
 
-                <th>Your Cost</th>
-                <th>Status</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="ord in orders">
-                <td class="col-xs-4 col-sm-2"><button class="btn btn-trans" ng-click="openOderDetails($index)">View Details</button></td>
-                <td class="col-xs-4 col-sm-2">
-                    {{ord.orderDate | date: 'shortDate'}}
-                </td>
-                <td class="col-xs-4 col-sm-4">{{ord.trackingId}}</td>
+        <dir-pagination-controls on-page-change="pageChanged(newPageNumber)" class="col-sm-6 text-right"></dir-pagination-controls>
+    </div>
+    <div class="panel panel-default order-panel " dir-paginate="order in orders |itemsPerPage:recordsPerPage" total-items="totalRecords" current-page="pagination.current" >
+        <div class="panel-heading">
+            <table class="" style="width: 100%">
+                <thead>
+                        <tr class="row">
+                            <th class="col-xs-4" >Placed On</th>
+                            <th class="col-xs-4" >Total</th>
+                            <th class="col-xs-4" >Ship To</th>
+                        </tr>
+                </thead>
+                <tbody>
+                <tr class="row" ng-init="fullAddress=order.address.firstName + ' '+order.address.lastName +', '+ order.address.address1+', '+ order.address.state + ' '+ order.address.zip">
+                    <td class="col-xs-4" ng-bind="order.createdAt | date:'short'"></td>
+                    <td class="col-xs-4" ng-bind="order.finalCost | currency"></td>
+                    <td class="col-xs-4" ><p  ng-bind-template="{{fullAddress| limitTo:20}} {{fullAddress.length > 20 ? '...' : ''}}"
+                                              uib-popover="{{fullAddress}}" popover-trigger="mouseenter" popover-placement="bottom-left"></p></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel-body " >
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3 ng-bind="order.orderStatus.label">Preparing shipment</h3>
+                </div>
+                <div class="col-xs-12 " data-wow-delay="0s">
+                    <uib-progressbar animate="true" value="0" type="success"></uib-progressbar>
+                </div>
 
-                <td class="col-xs-4 col-sm-2">{{ord.finalCost}} RSD</td>
-                <td class="col-xs-4 col-sm-2">{{ord.orderStatus}}</td>
+            </div>
+            <div class="row order-item" ng-repeat="cart in order.carts">
+                <div class="col-xs-6 col-sm-3">
+                    <img ng-src="{{cart.product.photo.imageUrl}}" class="img-responsive">
+                </div>
+                <div class="col-xs-6 col-sm-9">
+                    <div class="col-sm-6 col-xs-12">
+                        <a class="col-xs-12 product-name" ui-sref="product({id: cart.product.id, name: getSearchName(cart.product.name)})"><span class="" ng-bind="cart.product.name"></span></a>
+                        <p ng-bind-template="Quantity: {{cart.quantity}}"></p>
+                        <p ng-bind-template="Price: {{cart.price | currency}}"></p>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <p><button class="btn btn-default" ng-click="addToCart(cart.product)">Buy it Again</button></p>
+                        <p><button class="btn btn-default" ng-click="addToCart(cart.product)">Cancel This Item</button></p>
+                    </div>
 
+                </div>
+            </div>
 
-
-                <!--<td class="col-xs-4 col-sm-2" ng-show="ord.orderStatus==='ORDERED'"><button class="btn btn-trans"><i class="text-danger fa fa-trash fa-lg"></i></button></td>-->
-            </tr>
-
-            </tbody>
-        </table>
+        </div>
     </div>
 </div>

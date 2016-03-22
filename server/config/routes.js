@@ -4,8 +4,11 @@
 
 var routes = require('../routes/indexRouter');
 var userRoute = require('../routes/userRouter');
-var productRoute = require('../routes/productRouter');
-var paymentRoute = require('../routes/paymentRouter');
+var photoRouter = require('../routes/photoRouter');
+var productRouter = require('../routes/productRouter');
+var paymentRouter = require('../routes/paymentRouter');
+var orderRouter = require('../routes/orderRouter');
+
 
 
 module.exports = function(app) {
@@ -19,8 +22,10 @@ module.exports = function(app) {
     });
 
     app.use('/api/users', userRoute);
-    app.use('/api/products', productRoute);
-    app.use('/api/payment', paymentRoute);
+    app.use('/api/photo',photoRouter);
+    app.use('/api/products', productRouter);
+    app.use('/api/payments', paymentRouter);
+    app.use('/api/orders', orderRouter);
     app.use('/', routes);
 
 // catch 404 and forward to error handler
@@ -37,6 +42,7 @@ module.exports = function(app) {
     if (app.get('env') === 'development') {
         app.use(function (err, req, res, next) {
             res.status(err.status || 500);
+            console.log("######## sending error ", err);
             res.json(err);
         });
     }

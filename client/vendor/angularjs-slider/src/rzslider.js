@@ -73,7 +73,7 @@
      * `options({})` allows global configuration of all sliders in the
      * application.
      *
-     *   var app = angular.module( 'App', ['rzModule'], function( RzSliderOptions ) {
+     *   var www = angular.module( 'App', ['rzModule'], function( RzSliderOptions ) {
      *     // show ticks for all sliders
      *     RzSliderOptions.options( { showTicks: true } );
      *   });

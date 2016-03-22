@@ -15,15 +15,19 @@ var shipping = sequelize.define('shipping', {
 
     name: {
         type: Sequelize.STRING,
-        field: 'name'
+        field: 'name',
+        allowNull:false
     },
     price: {
         type: Sequelize.DECIMAL,
-        field: 'pct'
+        field: 'price',
+        allowNull:false
     },
     active: {
         type: Sequelize.BOOLEAN,
-        field: 'active'
+        field: 'active',
+        defaultValue:true,
+        allowNull:false
     }
 
 

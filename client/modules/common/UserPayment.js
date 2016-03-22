@@ -10,7 +10,7 @@ appModule.factory('UserPayment', ["$rootScope","$http","$q", "$log",function($ro
 
             var deferred = $q.defer();
 
-            $http.post("/api/payment/create", order)
+            $http.post("/api/payments/create", order)
                 .success(function (data){
 
                     deferred.resolve(data);
@@ -19,8 +19,35 @@ appModule.factory('UserPayment', ["$rootScope","$http","$q", "$log",function($ro
                     deferred.reject(err);
                 });
             return deferred.promise;
-        }
+        },
+        applyCoupon : function(coupon){
 
+            var deferred = $q.defer();
+
+            $http.post("/api/payments/coupon", coupon)
+                .success(function (data){
+
+                    deferred.resolve(data);
+                })
+                .error(function(err){
+                    deferred.reject(err);
+                });
+            return deferred.promise;
+        },
+        calcTax : function(){
+
+            var deferred = $q.defer();
+
+            $http.post("/api/payments/calctax" )
+                .success(function (data){
+
+                    deferred.resolve(data);
+                })
+                .error(function(err){
+                    deferred.reject(err);
+                });
+            return deferred.promise;
+        },
 
     }
 

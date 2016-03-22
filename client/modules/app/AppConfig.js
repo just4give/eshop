@@ -1,13 +1,49 @@
 appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locationProvider",
     function($stateProvider, $urlRouterProvider, $httpProvider,$locationProvider) {
-    
+
+
+    var routeRoleChecks = {
+
+        auth: function(UserService) {
+            return UserService.isAuthorized();
+        },
+        authWithAdminRole: function(UserService) {
+            return UserService.isAuthorizedRole("admin");
+        },
+        authWithSuperUserRole: function(UserService) {
+            return UserService.isAuthorizedRole("super");
+        }
+    }
+
 	$urlRouterProvider.otherwise('home');
     
     $stateProvider
       .state('home', {
          url: '/?callback',
          templateUrl: 'modules/app/tmpl/home.html',
-         controller: "HomeController"
+         controller: "HomeController",
+          resolve:{
+              Categories: function(Category,$q){
+                  var deferred = $q.defer();
+
+                  Category.query(function(data){
+
+                      deferred.resolve(data);
+                  })
+
+                  return deferred.promise;
+              },
+              Merchandises: function(Merchandise,$q){
+                  var deferred = $q.defer();
+
+                  Merchandise.query(function(data){
+
+                      deferred.resolve(data);
+                  })
+
+                  return deferred.promise;
+              }
+          }
      }) .state('login', {
             url: '/login?cb',
             templateUrl: 'modules/app/tmpl/login.html',
@@ -77,16 +113,22 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locat
     }).state('checkout', {
             url: '/checkout',
             templateUrl: 'modules/checkout/tmpl/checkout.html',
-            controller:"CheckoutController"
+            controller:"CheckoutController",
+            resolve:{
+                auth: routeRoleChecks.auth
+            }
     }).state('confirm', {
-            url: '/confirm',
+            url: '/confirm?id',
             templateUrl: 'modules/checkout/tmpl/confirm.html',
             controller:"ConfirmController"
         })
     .state('myorder', {
             url: '/myorder',
             templateUrl: 'modules/order/tmpl/my-order.html',
-            controller:"MyOrderController"
+            controller:"MyOrderController",
+            resolve:{
+                auth: routeRoleChecks.auth
+            }
     }).state('who', {
         url: '/who',
         templateUrl: 'modules/app/tmpl/who-we-are.html'
@@ -169,6 +211,16 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locat
             url: '/merchandises/:id',
             templateUrl: 'modules/admin/tmpl/merchandise-edit.html',
             controller: 'MerchandiseDetailsController'
+        })
+        .state('admin.shippings', {
+            url: '/shippings',
+            templateUrl: 'modules/admin/tmpl/shippings.html',
+            controller: 'ShippingController'
+        })
+        .state('admin.shipping-detail', {
+            url: '/shippings/:id',
+            templateUrl: 'modules/admin/tmpl/shipping-edit.html',
+            controller: 'ShippingDetailsController'
         })
      ;
 

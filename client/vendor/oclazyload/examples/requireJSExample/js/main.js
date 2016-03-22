@@ -16,7 +16,7 @@ requirejs.config({
     }
 });
 
-// Start the main app logic.
+// Start the main www logic.
 requirejs(['test'], function() {
     angular.bootstrap(document.body, ['test']);
 });

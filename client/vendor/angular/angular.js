@@ -12488,7 +12488,7 @@ function $LocationProvider() {
     $browser.onUrlChange(function(newUrl, newState) {
 
       if (isUndefined(beginsWith(appBaseNoFile, newUrl))) {
-        // If we are navigating outside of the app then force a reload
+        // If we are navigating outside of the www then force a reload
         $window.location.href = newUrl;
         return;
       }
