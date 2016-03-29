@@ -3,7 +3,7 @@
  */
 var appModule = angular.module("eshop",['ui.router','ui.bootstrap','ngAnimate', 'ngTouch','mgcrea.ngStrap','angular-confirm',
     'LocalStorageModule','ngFileUpload','toaster','headroom','viewhead','epilouge.ngService','rzModule','chart.js',
-    'angularUtils.directives.dirPagination','smoothScroll','credit-cards','oc.lazyLoad']);
+    'angularUtils.directives.dirPagination','smoothScroll','credit-cards','oc.lazyLoad','facebook','xeditable']);
 
 appModule.config(function (localStorageServiceProvider) {
     localStorageServiceProvider
@@ -13,9 +13,10 @@ appModule.config(function (localStorageServiceProvider) {
 
 });
 
-appModule.run(["$interval","localStorageService","$rootScope", "RzSliderOptions","UserCart","$state",
-    function($interval,localStorageService,$rootScope,RzSliderOptions,UserCart,$state ){
+appModule.run(["$interval","localStorageService","$rootScope", "RzSliderOptions","UserCart","$state","editableOptions",
+    function($interval,localStorageService,$rootScope,RzSliderOptions,UserCart,$state ,editableOptions){
 
+        editableOptions.theme = 'bs3';
        // RzSliderOptions.options( { showTicks: true } );
         $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, rejection) {
 
@@ -45,7 +46,7 @@ appModule.run(["$interval","localStorageService","$rootScope", "RzSliderOptions"
     $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
         console.log(toState);
             if(toState.name==='login'){
-                $rootScope.showHeader=false;
+                $rootScope.showHeader=true;
                 $rootScope.loginRedirect=fromState.name;
             }else{
                 $rootScope.showHeader=true;
@@ -86,6 +87,13 @@ appModule.config(function($asideProvider) {
         animation: 'am-fadeAndSlideRight',
         placement: 'right'
     });
+})
+
+appModule.config(function(FacebookProvider) {
+    // Set your appId through the setAppId method or
+    // use the shortcut in the initialize method directly.
+    FacebookProvider.init('341307939406976');
+
 })
 /*
 authorizeCurrentUserForRoute: function(role) {

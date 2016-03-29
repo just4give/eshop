@@ -2,8 +2,8 @@
  * Created by Mithun.Das on 12/4/2015.
  */
 appModule.controller("loginController",["$window","$scope","$rootScope","$log","$modal", "$interval","$timeout",
-    "$state","UserService","localStorageService","OrderService","UserCart","$stateParams","$location",
-    function($window,$scope,$rootScope,$log,$modal,$interval,$timeout,$state,UserService,localStorageService,OrderService,UserCart,$stateParams,$location){
+    "$state","UserService","localStorageService","OrderService","UserCart","$stateParams","$location","Facebook",
+    function($window,$scope,$rootScope,$log,$modal,$interval,$timeout,$state,UserService,localStorageService,OrderService,UserCart,$stateParams,$location,Facebook){
 
     $log.debug('initializing login controller');
     $log.debug($rootScope.bootstrappedUser);
@@ -100,14 +100,14 @@ appModule.controller("loginController",["$window","$scope","$rootScope","$log","
             $rootScope.user=undefined;
             $rootScope.cart=[];
             localStorageService.remove("cart");
-            $state.go('/');
+            $state.go('home');
         },function(err){
 
         });
 
     }
 
-    $scope.register = function(){
+    $scope.signup = function(){
         $scope.showSignupErr ='';
         $scope.signupprogress = true;
 
@@ -125,12 +125,19 @@ appModule.controller("loginController",["$window","$scope","$rootScope","$log","
         }
         UserService.register($scope.signupform).then(function(data){
             $scope.signupprogress = false;
-            if(data.errorCode){
-                $scope.showSignupErr = data.errorMessage;
+            if(!data.success){
+                $scope.showSignupErr = data.message;
             }else{
 
-                $rootScope.user = data;
+                $rootScope.user = data.user;
                 $rootScope.loggedIn = true;
+
+                if($rootScope.loginRedirect){
+                    $state.go($rootScope.loginRedirect);
+                }else{
+                    $state.go("home");
+                }
+
 
             }
         },function(err){
@@ -145,9 +152,9 @@ appModule.controller("loginController",["$window","$scope","$rootScope","$log","
 
         $scope.fbLogin = function() {
             //alert('fb login called' + $state.current.name);
-            localStorageService.cookie.set("ui-state",$state.current.name,1);
+            //localStorageService.cookie.set("ui-state",$state.current.name,1);
 
-            $window.location.href='http://localhost:3000/api/user/login/facebook';
+            //$window.location.href='http://localhost:3000/api/user/login/facebook';
             /*UserService.fbLogin().then(function(data) {
                 $scope.signupprogress = false;
                 $log.debug(data);
@@ -170,10 +177,103 @@ appModule.controller("loginController",["$window","$scope","$rootScope","$log","
             fbLoginWindow.onbeforeunload =function(){
                 $log.debug('+++++ on close');
             }*/
+            if(!$rootScope.fbLoggedIn){
+                    Facebook.login(function(response) {
+                        $log.debug(response);
+                        if (response.status == 'connected') {
+                            $rootScope.fbLoggedIn = true;
+                            $scope.me($scope.fbLoginApp);
+
+                        }
+
+                    },{scope: 'email'});
+                }else{
+                    $scope.fbLoginApp();
+                }
 
         };
+        $scope.$watch(
+            function() {
+                return Facebook.isReady();
+            },
+            function(newVal) {
+                if (newVal)
+                    $scope.facebookReady = true;
+            }
+        );
+
+        $scope.requestPassword = function(email){
+            $log.debug("email ",email);
+            $scope.signupprogress = true;
+            $scope.pwdres = {};
+
+            UserService.reqPassword(email)
+                .then(function(data){
+                    $scope.signupprogress = false;
+                    $scope.pwdres = data;
+
+                },function(err){
+                    $scope.signupprogress = false;
+                    $rootScope.$broadcast('api_error',err);
+                });
+        }
 
 
+        Facebook.getLoginStatus(function(response) {
+            $log.debug('checking fb login status');
+            $log.debug(response);
+            if (response.status == 'connected') {
+                $rootScope.fbLoggedIn = true;
+                $scope.me();
+            }
+
+        });
+
+        $scope.me = function(callback) {
+            Facebook.api('/me?fields=name,email,first_name,last_name,picture', function(response) {
+
+                $scope.$apply(function() {
+                    $rootScope.fbUser = response;
+                    if(callback){
+                        callback();
+                    }
+                });
+
+            });
+        };
+
+        $scope.fbLoginApp = function(){
+            $log.debug("log into app with facebook credential");
+            var fbUser = {
+                email: $rootScope.fbUser.email,
+                facebookId: $rootScope.fbUser.id,
+                firstName : $rootScope.fbUser.first_name,
+                lastName : $rootScope.fbUser.last_name
+            };
+            $scope.signupprogress = true;
+            UserService.fbLogin(fbUser).then(function(data){
+                $scope.signupprogress = false;
+
+                if(!data.success){
+                    $scope.showLoginErr = "Login failed";
+                }else{
+
+                    $rootScope.user = data.user;
+                    $rootScope.loggedIn = true;
+
+                    if($rootScope.loginRedirect){
+                        $state.go($rootScope.loginRedirect);
+                    }else{
+                        $state.go("home");
+                    }
+
+                }
+            },function(err){
+                $scope.signupprogress = false;
+                $rootScope.$broadcast('api_error',err);
+            });
+
+        }
 
       /*  $rootScope.search = function(query){
             $state.go("search",{query: query});

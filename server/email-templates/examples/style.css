@@ -1,0 +1,17 @@
+
+body {
+  background-color: #ddd;
+  color: #333333;
+}
+
+h1 {
+font-family: 'Avenir Next', sans-serif;
+}
+.navbar-brand{
+  padding: 10px;
+}
+.navbar-brand>img {
+  max-width: 40px;
+  max-height: 40px;
+
+}

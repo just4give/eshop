@@ -12,7 +12,7 @@ appModule.controller("MyOrderController",["$scope","$rootScope","$log","$modal",
         $scope.ordSearch ={};
         $scope.getResults = function(currentPage){
 
-            OrderService.query(currentPage,10,$scope.ordSearch)
+            OrderService.query(currentPage,$scope.recordsPerPage,'user',$scope.ordSearch)
                 .then(function (data) {
                     $scope.orders  = data.rows;
                     $scope.totalRecords = data.count;

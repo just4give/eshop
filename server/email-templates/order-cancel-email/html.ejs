@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+<% include ../common/header %>
+<h3>Hello, <%= model.firstName %></h3>
+
+<p class="text-success">Your cancel request has been created successfully. We will process your request within 24 hours. </p>
+<p class="text-success">Your refund will be credited to your account within 5 business days after processed.</p>
+<p>Order# <strong><%= model.orderNumber %></strong></p>
+<p>Refund Amount <strong><%= model.reqAmnt %></strong></p>
+</body>
+</html>

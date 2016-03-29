@@ -12,31 +12,39 @@
             <table class="" style="width: 100%">
                 <thead>
                         <tr class="row">
-                            <th class="col-xs-4" >Placed On</th>
-                            <th class="col-xs-4" >Total</th>
-                            <th class="col-xs-4" >Ship To</th>
+                            <th class="col-xs-3" >Placed On</th>
+                            <th class="col-xs-3" >Total</th>
+                            <th class="col-xs-3" >Ship To</th>
+                            <th class="col-xs-3" >Order#</th>
                         </tr>
                 </thead>
                 <tbody>
                 <tr class="row" ng-init="fullAddress=order.address.firstName + ' '+order.address.lastName +', '+ order.address.address1+', '+ order.address.state + ' '+ order.address.zip">
-                    <td class="col-xs-4" ng-bind="order.createdAt | date:'short'"></td>
-                    <td class="col-xs-4" ng-bind="order.finalCost | currency"></td>
-                    <td class="col-xs-4" ><p  ng-bind-template="{{fullAddress| limitTo:20}} {{fullAddress.length > 20 ? '...' : ''}}"
+                    <td class="col-xs-3" ng-bind="order.createdAt | date:'short'"></td>
+                    <td class="col-xs-3" ng-bind="order.finalCost | currency"></td>
+                    <td class="col-xs-3" ><p  ng-bind-template="{{fullAddress| limitTo:20}} {{fullAddress.length > 20 ? '...' : ''}}"
                                               uib-popover="{{fullAddress}}" popover-trigger="mouseenter" popover-placement="bottom-left"></p></td>
+                    <td class="col-xs-3" ng-bind="order.orderNumber"></td>
                 </tr>
                 </tbody>
             </table>
         </div>
         <div class="panel-body " >
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-xs-12 col-sm-9">
                     <h3 ng-bind="order.orderStatus.label">Preparing shipment</h3>
+                    <div class="col-xs-12 " data-wow-delay="0s">
+                        <uib-progressbar animate="true" value="0" type="success"></uib-progressbar>
+                    </div>
                 </div>
-                <div class="col-xs-12 " data-wow-delay="0s">
-                    <uib-progressbar animate="true" value="0" type="success"></uib-progressbar>
+                <div class="col-xs-12 col-sm-3">
+                    <p><button class="btn btn-default" ng-click="" ng-show="order.orderStatusId===1">Cancel this Order</button></p>
+                    <p><button class="btn btn-default" ng-click="">Track this Order</button></p>
                 </div>
 
+
             </div>
+            <hr>
             <div class="row order-item" ng-repeat="cart in order.carts">
                 <div class="col-xs-6 col-sm-3">
                     <img ng-src="{{cart.product.photo.imageUrl}}" class="img-responsive">

@@ -25,12 +25,10 @@ appModule.factory('UserService', ["$rootScope","$http","$q", "$log",function($ro
             return deferred.promise;
         },
         isAuthorized  : function(){
-            console.log("inside isAuthorized");
+
             var deferred = $q.defer();
 
-            if($rootScope.loggedIn ){
-                deferred.resolve(true);
-            }else {
+
                 $http.get("/api/users/loggedin")
                     .success(function (data){
                         if(data.success){
@@ -39,18 +37,18 @@ appModule.factory('UserService', ["$rootScope","$http","$q", "$log",function($ro
                             $rootScope.loggedIn = true;
                             deferred.resolve(true);
                         }else{
-                            console.log("1. not authorized");
+
                             deferred.reject('not authorized');
                         }
 
 
                     })
                     .error(function(err){
-                        console.log("2. not authorized");
+
                         deferred.reject('not authorized');
                     });
 
-            }
+
 
 
 
@@ -101,11 +99,11 @@ appModule.factory('UserService', ["$rootScope","$http","$q", "$log",function($ro
                 return false;
             }
         },
-        fbLogin : function(){
+        fbLogin : function(fbUser){
 
             var deferred = $q.defer();
 
-            $http.get("/api/users/login/facebook")
+            $http.post("/api/users/login/facebook",fbUser)
                 .success(function (data){
 
                     deferred.resolve(data);
@@ -113,10 +111,6 @@ appModule.factory('UserService', ["$rootScope","$http","$q", "$log",function($ro
                 .error(function(err){
                     deferred.reject(err);
                 });
-
-
-
-
             return deferred.promise;
         },
         register : function(user){
@@ -154,6 +148,35 @@ appModule.factory('UserService', ["$rootScope","$http","$q", "$log",function($ro
 
 
 
+            return deferred.promise;
+        },
+        reqPassword : function(email){
+
+            var deferred = $q.defer();
+
+            $http.post($rootScope.apiContext + "/api/users/reqpassword", {email:email})
+                .success(function (data){
+
+                    deferred.resolve(data);
+                })
+                .error(function(err){
+                    deferred.reject(err);
+                });
+
+
+
+
+            return deferred.promise;
+        },
+        changePassword : function(pwd){
+            var deferred = $q.defer();
+            $http.post($rootScope.apiContext + "/api/users/chngpassword", {password:pwd})
+                .success(function (data){
+                    deferred.resolve(data);
+                })
+                .error(function(err){
+                    deferred.reject(err);
+                });
             return deferred.promise;
         }
 

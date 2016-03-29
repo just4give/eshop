@@ -40,7 +40,13 @@ module.exports = {
                 }
             }
         },
-        apiContext:"http://localhost:4100"
+        apiContext:"http://localhost:4100",
+        mail: {
+            "smtp": "smtps://noreply.techfcous@gmail.com:Appstacksolutions@smtp.gmail.com",
+            "sender":"eShop <noreply.techfocus@gmail.com>",
+            "receiver":"eShop <noreply.techfocus@gmail.com>"
+        }
+
 
     },
     aws: {

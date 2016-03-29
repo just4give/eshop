@@ -35,10 +35,26 @@
         <div class="row search-page" >
             <img src="images/loader.gif" class="hidden">
             <div class="row">
-                <label ng-bind-template="found {{totalRecords}} products"> </label>
+                <!--<label ng-bind-template="found {{totalRecords}} products"> </label>-->
+                <div class="col-sm-3"><strong class="pull-left" ng-bind-template="{{totalRecords}} - product(s) found"></strong></div>
+                <div>
+
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label class="col-xs-3">Sort</label>
+                    <div class="col-xs-9">
+                        <select class="form-control " ng-model="search.sort" ng-options="key.sortObj as key.label for key in sortKeys" ng-change="reSearch()"></select>
+                    </div>
+
+                </div>
+                <dir-pagination-controls on-page-change="pageChanged(newPageNumber)" class="col-sm-6 text-right"></dir-pagination-controls>
+            </div>
+            <div class="row text-center margin-bottom-10" ng-show="prgIndicator">
+                <i class="spinner"></i>
             </div>
             <div class="row">
-                <div class="wow zoomIn col-xs-12 col-sm-4 col-md-4 col-lg-3 text-center" ng-repeat="p in products">
+               <!-- <div class="wow zoomIn col-xs-12 col-sm-4 col-md-4 col-lg-3 text-center" ng-repeat="p in products">-->
+                <div class="wow zoomIn col-xs-12 col-sm-4 col-md-4 col-lg-3 text-center" dir-paginate="p in products|itemsPerPage:recordsPerPage" total-items="totalRecords" current-page="pagination.current">
                     <div class="thumbnail product-box">
                         <div class="on-sale" ng-show="p.regularPrice!==p.price"></div>
                         <img ng-src="{{p.photo.imageUrl}}" alt="product image" err-src="images/no-image.png" loader-src="images/loader.gif" >
@@ -68,12 +84,10 @@
                     </div>
                 </div>
             </div>
-            <div class="row text-center margin-bottom-10" ng-show="prgIndicator">
-               <i class="spinner"></i>
-            </div>
-            <div class="row text-center">
+
+           <!-- <div class="row text-center">
                 <button class="btn btn-default" ng-click="loadMore()">Load More</button>
-            </div>
+            </div>-->
 
         </div>
     </div>

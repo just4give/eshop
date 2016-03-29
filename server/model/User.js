@@ -20,16 +20,18 @@ var user = sequelize.define('user', {
     },
     firstName: {
         type: Sequelize.STRING,
-        field: 'firstName'
+        field: 'firstName',
+        allowNull:false
     },
     lastName: {
         type: Sequelize.STRING,
-        field: 'lastName'
+        field: 'lastName',
+        allowNull:false
     },
     email: {
         type: Sequelize.STRING,
         field: 'email',
-        unique:true
+        allowNull:false
     },
     username: {
         type: Sequelize.STRING,
@@ -42,6 +44,10 @@ var user = sequelize.define('user', {
     salt: {
         type: Sequelize.STRING,
         field: 'salt'
+    },
+    facebookId: {
+        type: Sequelize.STRING,
+        field: 'facebookId'
     },
     roles: {
         type: Sequelize.STRING,

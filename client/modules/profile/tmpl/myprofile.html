@@ -1,0 +1,78 @@
+<div class="container">
+
+    <div class=" col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 margin-top-20" >
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Your Account Information</div>
+
+            </div>
+            <div class="panel-body" >
+
+                <div class="img-thumbnail" ng-show="fbUser.picture">
+                    <img ng-src="{{fbUser.picture.data.url}}">
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <span>First Name</span>
+                    </div>
+                    <div class="col-xs-8">
+                        <label ><a href="#" editable-text="profile.firstName">{{ profile.firstName}}</a></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <span>Last Name</span>
+                    </div>
+                    <div class="col-xs-8">
+                        <label ><a href="#" editable-text="profile.lastName">{{ profile.lastName}}</a></label>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <span>Registered Email</span>
+                    </div>
+                    <div class="col-xs-8 ">
+                        <span ng-bind="profile.email" class="text-muted"></span>
+                    </div>
+                </div>
+                <div class="row margin-top-20" ng-show="!profile.facebookId && !pwdchng">
+                    <a class="col-xs-12 link" ng-click="pwdchng=true" >Change password</a>
+                </div>
+                <div class="col-xs-12 margin-top-20" ng-show="pwdchng">
+                    <form name="p" class="form-horizontal" >
+                        <div class="form-group"  ng-class="{ 'has-error': p.passwd.$invalid  }">
+                            <label  class="col-md-3 control-label">Password</label>
+                            <div class="col-md-9">
+                                <input type="password" required class="form-control" name="passwd" placeholder="Password" ng-model="profile.password">
+                            </div>
+                        </div>
+                        <div class="form-group"  ng-class="{ 'has-error': p.passwd2.$invalid  }">
+                            <label  class="col-md-3 control-label">Confirm Password</label>
+                            <div class="col-md-9">
+
+                                <input type="password" required class="form-control" name="passwd2" placeholder="Re-type password" ng-model="profile.password2" password-match="profile.password" >
+                                <span class="errorMessage" data-ng-show="p.passwd2.$dirty && p.passwd2.$error.passwordNoMatch && !p.passwd2.$error.required"> Password do not match.</span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <!-- Button -->
+                            <div class="col-md-offset-3 col-md-9">
+                                <button ng-disabled="p.$invalid" type="button" class="btn btn-info" ng-click="changePassword()"><i class="icon-hand-right"></i> Submit</button>
+                                <button type="button" class="btn btn-warning" ng-click="pwdchng=false"><i class="icon-hand-right"></i> Cancel</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+</div>

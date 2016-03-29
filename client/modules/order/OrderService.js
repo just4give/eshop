@@ -19,6 +19,20 @@ appModule.factory('OrderService', ["$rootScope","$http","$q","$log", function($r
                     deferred.reject(err);
                 });
             return deferred.promise;
+        },
+        updateStatus : function(orderId,statusId){
+
+            var deferred = $q.defer();
+
+            $http.post("api/orders/updatestatus",{orderId: orderId, statusId: statusId})
+                .success(function (data){
+                    deferred.resolve(data);
+
+                })
+                .error(function(err){
+                    deferred.reject(err);
+                });
+            return deferred.promise;
         }
     }
 

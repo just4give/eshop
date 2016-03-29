@@ -30,7 +30,7 @@ module.exports = function(app, config) {
     app.use(session({secret: 'online shop',
                     resave:true,
                     saveUninitialized:true,
-                    cookie: { maxAge: 1000*60*20 }}));
+                    cookie: { maxAge: 1000*60*60 }}));
     app.use(passport.initialize());
     app.use(passport.session());
 

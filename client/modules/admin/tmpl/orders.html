@@ -1,1 +1,82 @@
-<h2>Your orders</h2>
+<div class=" margin-top-10">
+    <div class="row margin-bottom-10">
+        <span class="text-xx-large">Manage Order(s)</span>
+    </div>
+    <div class="row ">
+        <div class="col-sm-6"><strong class="pull-left" ng-bind-template="{{totalRecords}} - order(s) found"></strong></div>
+
+        <dir-pagination-controls on-page-change="pageChanged(newPageNumber)" class="col-sm-6 text-right"></dir-pagination-controls>
+    </div>
+    <div class="panel panel-default order-panel " dir-paginate="order in orders |itemsPerPage:recordsPerPage" total-items="totalRecords" current-page="pagination.current" >
+        <div class="panel-heading">
+            <table class="" style="width: 100%">
+                <thead>
+                <tr class="row">
+                    <th class="col-xs-2" >Placed On</th>
+                    <th class="col-xs-2" >Total</th>
+                    <th class="col-xs-3" >Ship To</th>
+                    <th class="col-xs-3" >Order#</th>
+                    <th class="col-xs-2" >Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="row" ng-init="fullAddress=order.address.firstName + ' '+order.address.lastName +', '+ order.address.address1+', '+ order.address.state + ' '+ order.address.zip;order.open=false">
+                    <td class="col-xs-2" ng-bind="order.createdAt | date:'short'"></td>
+                    <td class="col-xs-2" ng-bind="order.finalCost | currency"></td>
+                    <td class="col-xs-3" ><p  ng-bind-template="{{fullAddress| limitTo:20}} {{fullAddress.length > 20 ? '...' : ''}}"
+                                              uib-popover="{{fullAddress}}" popover-trigger="mouseenter" popover-placement="bottom-left"></p></td>
+                    <td class="col-xs-3" ng-bind="order.orderNumber"></td>
+                    <td class="col-xs-2" ><strong><span ng-bind="order.orderStatus.label"></span></strong></td>
+                    <td><a class="link" ng-click="order.open=!order.open"><i class="fa fa-lg"
+                    ng-class="[{'fa-angle-right ': !order.open},{'fa-angle-down':order.open}]"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel-body " ng-show="order.open">
+            <div class="row">
+                <div class="col-xs-6">
+                  <!--  <h3 ng-bind="order.orderStatus.label">Preparing shipment</h3>-->
+                   <h3> <a href="#" editable-select="order.orderStatus" e-ng-options="s as s.label for s in ordStats"
+                           onbeforesave="changeStatus($data,order)">
+                        {{order.orderStatus.label}}
+                    </a></h3>
+                </div>
+                <div class="col-xs-6">
+                    <button class="btn btn-default" ng-click="showTracking($index)" >Show Tracking</button>
+                    <div ng-show="order.orderTracking">
+                        <p ng-bind-template="Carrier# {{order.orderTracking.carrier}}"></p>
+                        <p ng-bind-template="Tracking# {{order.orderTracking.trackingNumber}}"></p>
+                    </div>
+                </div>
+                <!--<div class="col-xs-12 " data-wow-delay="0s">
+                    <uib-progressbar animate="true" value="0" type="success"></uib-progressbar>
+                </div>-->
+
+            </div>
+            <hr>
+            <div class="row order-item" ng-repeat="cart in order.carts">
+                <div class="col-xs-6 col-sm-3">
+                    <img ng-src="{{cart.product.photo.imageUrl}}" class="img-responsive">
+                </div>
+                <div class="col-xs-6 col-sm-9">
+                    <div class="col-sm-6 col-xs-12">
+                        <a class="col-xs-12 product-name" ui-sref="product({id: cart.product.id, name: getSearchName(cart.product.name)})"><span class="" ng-bind="cart.product.name"></span></a>
+                        <p ng-bind-template="Quantity: {{cart.quantity}}"></p>
+                        <p ng-bind-template="Price: {{cart.price | currency}}"></p>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                       <!-- <p><button class="btn btn-default" ng-click="addToCart(cart.product)">Buy it Again</button></p>
+                        <p><button class="btn btn-default" ng-click="addToCart(cart.product)">Cancel This Item</button></p>-->
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/html" >
+
+</script>

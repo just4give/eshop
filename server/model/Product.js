@@ -40,6 +40,16 @@ var product = sequelize.define('product', {
         set: function(val) {
             return this.setDataValue('regularPrice', val?val:product.price);
         }
+    },
+    createdAt: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('NOW'),
+        field: 'createdAt'
+    },
+    updatedAt: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('NOW'),
+        field: 'updatedAt'
     }
 
 },{

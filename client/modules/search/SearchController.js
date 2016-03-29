@@ -6,14 +6,18 @@ appModule.controller("searchController",["$scope","$rootScope","$log","$timeout"
     function($scope,$rootScope,$log,$timeout,$interval,$modal,toaster,$stateParams,$state,SearchService,Categories,Merchandises,UserCart){
 
     $scope.quantities = [1,2,3,4,5,6,7,8,9,10];
-        $rootScope.search = $rootScope.search|| {query : $stateParams.query, priceMin:0, priceMax:1000,checkedCategories :[],checkedMerchandises:[]};
+    $rootScope.search = $rootScope.search|| {query : $stateParams.query, priceMin:0, priceMax:1000,checkedCategories :[],checkedMerchandises:[]};
 
     $log.debug("Search query = ",$rootScope.search );
     $scope.categories=Categories;
     $scope.merchandises=Merchandises;
     $scope.facetOpen=true;
-
-
+    $scope.recordsPerPage = 10;
+    $scope.pagination = {current: 1};
+    $scope.sortKeys = [
+        {label:"price low to high", sortObj: ['price','ASC']},
+        {label:"price high to low", sortObj: ['price','DESC']},
+        {label:"New arrival", sortObj: ['createdAt','ASC']}];
 
     angular.forEach(Categories,function(d){
         //$rootScope.search.checkedCategories.push(d.name);
@@ -50,13 +54,14 @@ appModule.controller("searchController",["$scope","$rootScope","$log","$timeout"
     });
 
     $scope.getResults = function(currentPage){
-
-        SearchService.query(currentPage,10,$rootScope.search)
+        $scope.prgIndicator= true;
+        SearchService.query(currentPage,$scope.recordsPerPage,$rootScope.search)
             .then(function (data) {
                 $scope.products  = data.rows;
                 $scope.totalRecords = data.count;
+                $scope.prgIndicator= false;
             }, function (err) {
-
+                $scope.prgIndicator= false;
                 toaster.pop("error", "", "System error !");
             });
 
@@ -65,9 +70,18 @@ appModule.controller("searchController",["$scope","$rootScope","$log","$timeout"
     $scope.getSearchName=function(name){
         return name.replace(/\s+/g, '-').toUpperCase();
     }
-    $scope.getResults(1);
+    $scope.getResults($scope.pagination.current);
+
+
+    $scope.pageChanged = function(newPage) {
+        $scope.getResults(newPage);
+    };
+
+
+
     $scope.reSearch = function(){
-        $scope.getResults(1);
+        $scope.pagination.current=1;
+        $scope.getResults($scope.pagination.current);
     }
     $scope.toggleCheck = function (code,list) {
         if (list.indexOf(code) === -1) {
@@ -165,10 +179,10 @@ appModule.controller("searchController",["$scope","$rootScope","$log","$timeout"
         });
     }
     $scope.loadMore = function(){
-        $scope.prgIndicator= true;
-        $timeout(function(){
-            $scope.prgIndicator=false;
-        },1000)
+        $scope.pagination.current++;
+        $scope.getResults($scope.pagination.current);
+
+
     }
 
 }]);

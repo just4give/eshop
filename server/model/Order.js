@@ -12,6 +12,9 @@ var Shipping = require('./Shipping');
 var Coupon = require('./Coupon');
 var Address = require('./Address');
 var OrderStatus = require('./OrderStatus');
+var OrderTracking = require('./OrderTracking');
+
+var seqGen = require('password-generator');
 
 var order = sequelize.define('order', {
     id: {
@@ -20,11 +23,13 @@ var order = sequelize.define('order', {
         primaryKey: true,
         autoIncrement: true
     },
-    trackingId: {
-        type: Sequelize.UUID,
-        field: 'uuid',
+    orderNumber: {
+        type: Sequelize.STRING,
+        field: 'orderNumber',
         unique: true,
-        defaultValue: Sequelize.UUIDV1
+        defaultValue: function(){
+            return seqGen(3, false, /\d/)+"-"+new Date().valueOf();
+        }
     },
     productCost: {
         type: Sequelize.DECIMAL(10, 2),
@@ -73,6 +78,7 @@ order.belongsTo(Shipping);
 order.belongsTo(Address);
 order.belongsTo(Coupon);
 order.belongsTo(OrderStatus);
+order.hasOne(OrderTracking, { foreignKey: 'orderId' });
 order.hasMany(Cart);
 
 order.sync({force:false}).then(function(){
@@ -178,4 +184,7 @@ order.middleware ={
     }
 }
 
+/*order.orderNumber = function(){
+   return seqGen(3, false, /\d/)+"-"+new Date().valueOf();
+}*/
 module.exports = order;

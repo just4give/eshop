@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+<% include ../common/header %>
+<h3>Welcome back , <%= user.firstName %></h3>
+
+<p class="text-success">You are receiving this email as you have requested a temporary password to log into your account</p>
+<p>Please use below password. We strongly recommend you to change the password after login</p>
+<h4><%= user.password %></h4>
+</body>
+</html>

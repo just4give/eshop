@@ -23,6 +23,14 @@ var payment = sequelize.define('payment', {
         type: Sequelize.STRING,
         field: 'paymentId'
     },
+    saleId: {
+        type: Sequelize.STRING,
+        field: 'saleId'
+    },
+    amount: {
+        type: Sequelize.DECIMAL(10,2),
+        field: 'amount'
+    },
     payerId: {
         type: Sequelize.STRING,
         field: 'payerId'

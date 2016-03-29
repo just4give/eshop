@@ -20,16 +20,16 @@ module.exports = function(config) {
 
             console.log('calling passport.use with '+ username +" " + password);
 
-            User.findOne({where:{username:username}}).then(function(user) {
+            User.findOne({where:{username:username,facebookId:null}}).then(function(user) {
 
                 if(user && user.authenticate(password)) {
-                    console.log('user is authenticated');
+
                     delete user.dataValues.password;
                     delete user.dataValues.salt;
-                    console.log("****** returning user ", user);
+
                     return done(null, user);
                 } else {
-                    console.log('user is NOT authenticated');
+
                     return done(null, false);
                 }
             },function(err){
@@ -43,7 +43,7 @@ module.exports = function(config) {
 
 
     passport.serializeUser(function(user, done) {
-        console.log('serialize  '+ user);
+
         if(user) {
             done(null, user.uuid);
         }
@@ -53,6 +53,8 @@ module.exports = function(config) {
         console.log('deserialize '+ id);
         User.findOne({where:{uuid:id}}).then(function(user) {
             if(user) {
+                delete user.dataValues.password;
+                delete user.dataValues.salt;
                 return done(null, user);
             } else {
                 return done(null, false);

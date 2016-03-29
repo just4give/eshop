@@ -117,6 +117,13 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locat
             resolve:{
                 auth: routeRoleChecks.auth
             }
+    }).state('profile', {
+            url: '/profile',
+            templateUrl: 'modules/profile/tmpl/myprofile.html',
+            controller:"ProfileController",
+            resolve:{
+                auth: routeRoleChecks.auth
+            }
     }).state('confirm', {
             url: '/confirm?id',
             templateUrl: 'modules/checkout/tmpl/confirm.html',
@@ -169,7 +176,8 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locat
         })
         .state('admin.orders', {
             url: '/orders',
-            templateUrl: 'modules/admin/tmpl/orders.html'
+            templateUrl: 'modules/admin/tmpl/orders.html',
+            controller:'AdminOrderController'
         })
         .state('admin.products', {
             url: '/products',

@@ -10,6 +10,21 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
     $scope.step ="shipping";
     $scope.order = {};
     $scope.order.discount=0;
+
+    $scope.months = [
+        {label:'01-Jan', value:1},
+        {label:'02-Feb', value:2},
+        {label:'03-Mar', value:3},
+        {label:'04-Apr', value:4},
+        {label:'05-May', value:5},
+        {label:'06-Jun', value:6},
+        {label:'07-Jul', value:7},
+        {label:'08-Aug', value:8},
+        {label:'09-Sep', value:9},
+        {label:'10-Oct', value:10},
+        {label:'11-Nov', value:11},
+        {label:'12-Dec', value:12}]    ;
+    $scope.years =[2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
     //get all active shipping methods
     Shipping.query({active:true},function(data){
             $scope.shippings = data;
@@ -90,7 +105,7 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
         }else {
             $scope.address.$save(function (data) {
                 toaster.pop("info", "", "New address created");
-                $scope.shippings.push(data);
+                $scope.addresses.push(data);
             })
         }
     }

@@ -1,17 +1,13 @@
-<div class="container">
-    <div class="row">
-        <a ui-sref="home" class="img-brand" >
-            <img src="images/logo.png">
-        </a>
-    </div>
-    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+<div class="container" ng-init="page='login'">
+
+    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" ng-show="page =='login'">
 
 
 
         <div class="panel panel-info" >
             <div class="panel-heading">
                 <div class="panel-title">Sign In</div>
-                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
+                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#" ng-click="page='password'">Forgot password?</a></div>
             </div>
 
             <div style="padding-top:30px" class="panel-body" >
@@ -21,36 +17,39 @@
                 <div class="alert alert-danger margin-top-10 col-sm-12" ng-show="showLoginErr">
                     {{showLoginErr}}
                 </div>
+                <div class="row text-center margin-bottom-10" ng-show="signupprogress">
+                    <i class="spinner"></i>
+                </div>
 
-                <form id="loginform" class="form-horizontal" role="form">
+                <form id="loginform" class="form-horizontal" role="form" name="f1">
 
-                    <div style="margin-bottom: 25px" class="input-group">
+                    <div style="margin-bottom: 25px" class="input-group" ng-class="{ 'has-error': f1.username.$invalid  }">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="login-username" type="text" class="form-control" name="username" ng-model="loginform.username"  placeholder="username or email">
+                        <input id="login-username" required type="email" class="form-control" name="username" ng-model="loginform.username"  placeholder="username or email">
                     </div>
 
-                    <div style="margin-bottom: 25px" class="input-group">
+                    <div style="margin-bottom: 25px" class="input-group" ng-class="{ 'has-error': f1.password.$invalid  }">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="login-password" type="password" class="form-control" name="password" placeholder="password"  ng-model="loginform.password">
+                        <input id="login-password" required type="password" class="form-control" name="password" placeholder="password"  ng-model="loginform.password">
                     </div>
 
 
 
-                    <div class="input-group">
+                   <!-- <div class="input-group">
                         <div class="checkbox">
                             <label>
                                 <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
                             </label>
                         </div>
-                    </div>
+                    </div>-->
 
 
                     <div style="margin-top:10px" class="form-group">
                         <!-- Button -->
 
                         <div class="col-sm-12 controls">
-                            <a id="btn-login" href="#" class="btn btn-success" ng-click="submitLogin()"> Login  </a>
-                            <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>
+                            <a id="btn-login" href="#" class="btn btn-success" ng-click="submitLogin()" ng-disabled="f1.$invalid"> Login  </a>
+                            <a id="btn-fblogin" href="#" class="btn btn-primary" ng-click="fbLogin()" ng-disabled="!facebookReady">Login with Facebook</a>
 
                         </div>
                     </div>
@@ -60,7 +59,7 @@
                         <div class="col-md-12 control">
                             <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
                                 Don't have an account!
-                                <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                                <a href="#" ng-click="page='signup'">
                                     Sign Up Here
                                 </a>
                             </div>
@@ -73,70 +72,110 @@
             </div>
         </div>
     </div>
-    <div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" ng-show="page =='signup'">
         <div class="panel panel-info">
             <div class="panel-heading">
                 <div class="panel-title">Sign Up</div>
-                <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Sign In</a></div>
+                <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" ng-click="page='login'">Sign In</a></div>
             </div>
             <div class="panel-body" >
-                <form id="signupform" class="form-horizontal" role="form">
+                <form id="signupform" class="form-horizontal" role="form" name="f2">
 
-                    <div id="signupalert" style="display:none" class="alert alert-danger">
-                        <p>Error:</p>
-                        <span></span>
+                    <div id="signupalert" class="alert alert-danger" ng-show="showSignupErr">
+                        <p ng-bind="showSignupErr"></p>
+
                     </div>
 
+                    <div class="row text-center margin-bottom-10" ng-show="signupprogress">
+                        <i class="spinner"></i>
+                    </div>
 
-
-                    <div class="form-group">
-                        <label for="email" class="col-md-3 control-label">Email</label>
+                    <div class="form-group"  ng-class="{ 'has-error': f2.email.$invalid  }">
+                        <label class="col-md-3 control-label">Email</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="email" placeholder="Email Address">
+                            <input type="email" required class="form-control" name="email" placeholder="Email Address" ng-model="signupform.email">
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="firstname" class="col-md-3 control-label">First Name</label>
+                    <div class="form-group"  ng-class="{ 'has-error': f2.firstname.$invalid  }">
+                        <label class="col-md-3 control-label">First Name</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="firstname" placeholder="First Name">
+                            <input type="text" required class="form-control" name="firstname" placeholder="First Name" ng-model="signupform.firstName">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="lastname" class="col-md-3 control-label">Last Name</label>
+                    <div class="form-group"  ng-class="{ 'has-error': f2.lastname.$invalid  }">
+                        <label  class="col-md-3 control-label">Last Name</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+                            <input type="text" required class="form-control" name="lastname" placeholder="Last Name" ng-model="signupform.lastName">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="password" class="col-md-3 control-label">Password</label>
+                    <div class="form-group"  ng-class="{ 'has-error': f2.passwd.$invalid  }">
+                        <label  class="col-md-3 control-label">Password</label>
                         <div class="col-md-9">
-                            <input type="password" class="form-control" name="passwd" placeholder="Password">
+                            <input type="password" required class="form-control" name="passwd" placeholder="Password" ng-model="signupform.password">
+                        </div>
+                    </div>
+                    <div class="form-group"  ng-class="{ 'has-error': f2.passwd2.$invalid  }">
+                        <label  class="col-md-3 control-label">Confirm Password</label>
+                        <div class="col-md-9">
+                            <input type="password" required class="form-control" name="passwd2" placeholder="Re-type password" ng-model="signupform.password2" password-match="signupform.password" >
+                            <span class="errorMessage" data-ng-show="f2.passwd2.$dirty && f2.passwd2.$error.passwordNoMatch && !f2.passwd2.$error.required"> Password do not match.</span>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="icode" class="col-md-3 control-label">Invitation Code</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" name="icode" placeholder="">
-                        </div>
-                    </div>
 
                     <div class="form-group">
                         <!-- Button -->
                         <div class="col-md-offset-3 col-md-9">
-                            <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
-                            <span style="margin-left:8px;">or</span>
+                            <button id="btn-signup" ng-disabled="f2.$invalid" type="button" class="btn btn-info" ng-click="signup()"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
+
                         </div>
                     </div>
 
-                    <div style="border-top: 1px solid #999; padding-top:20px"  class="form-group">
 
+
+
+                </form>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    <div id="password" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" ng-show="page =='password'">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Forgot Password?</div>
+                <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" ng-click="page='login'">Sign In</a></div>
+            </div>
+            <div class="panel-body" >
+                <form name="f3" class="form-horizontal" role="form">
+
+                    <div id="signupalert" class="alert alert-danger" ng-class="[{'alert-success': pwdres.success},{'alert-danger':!pwdres.success}]" ng-show="pwdres">
+                        <p ng-bind="pwdres.message"></p>
+
+                    </div>
+
+                    <div class="row text-center margin-bottom-10" ng-show="signupprogress">
+                        <i class="spinner"></i>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error': f3.email.$invalid  }">
+                        <label class="col-md-3 control-label">Email</label>
+                        <div class="col-md-9">
+                            <input type="email" class="form-control" required name="email" placeholder="Email Address" ng-model="signupform.email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <!-- Button -->
                         <div class="col-md-offset-3 col-md-9">
-                            <button id="btn-fbsignup" type="button" class="btn btn-primary"><i class="icon-facebook"></i>   Sign Up with Facebook</button>
-                        </div>
+                            <button id="btn-signup" type="button" class="btn btn-info" ng-click="requestPassword(signupform.email)" ng-disabled="f3.$invalid"><i class="icon-hand-right"></i> &nbsp Request Password</button>
 
+                        </div>
                     </div>
+
 
 
 

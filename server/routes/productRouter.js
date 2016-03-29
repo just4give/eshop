@@ -31,11 +31,16 @@ router.get('/search', function(req, res,next) {
     if(search.checkedMerchandises.length>0){
         wMerchandise ={name:{$in:search.checkedMerchandises}};
     }
-
+    var o=['createdAt','ASC'];
+    if(search.sort){
+        o = search.sort;
+    }
     Product.findAndCountAll({where:q,
+        order:[o],
         include:[{model: Photo},
             {model:Category, where: wCaterogry},
-            {model:Merchandise,where:wMerchandise}]})
+            {model:Merchandise,where:wMerchandise}],
+            offset:(pageNumber-1)*limit, limit:parseInt(limit)})
         .then(function(data){
            res.json(data);
         },function(err){

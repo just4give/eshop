@@ -100,3 +100,33 @@ angular.module('epilouge.ngService').factory('Coupon', ["$resource", "$log",func
     });
 
 }]);
+
+angular.module('epilouge.ngService').factory('OrderStatus', ["$resource", "$log",function($resource,$log){
+
+    return  $resource('/api/orderStatus/:id', { id: '@id' }, {
+        update: {
+            method: 'PUT' // this method issues a PUT request
+        }
+    });
+
+}]);
+
+angular.module('epilouge.ngService').factory('OrderTracking', ["$resource", "$log",function($resource,$log){
+
+    return  $resource('/api/orderTracking/:id', { id: '@id' }, {
+        update: {
+            method: 'PUT' // this method issues a PUT request
+        }
+    });
+
+}]);
+
+angular.module('epilouge.ngService').factory('Refund', ["$resource", "$log",function($resource,$log){
+
+    return  $resource('/api/refund/:id', { id: '@id' }, {
+        update: {
+            method: 'PUT' // this method issues a PUT request
+        }
+    });
+
+}]);
