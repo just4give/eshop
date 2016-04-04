@@ -1,0 +1,43 @@
+
+<div>
+    <button class="btn btn-warning" ng-click="create()">Create New</button>
+</div>
+<div class="row text-right">
+    <dir-pagination-controls ></dir-pagination-controls>
+</div>
+
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th ng-click="sort('pct')">On
+            <span class="glyphicon sort-icon" ng-show="sortKey=='createdAt'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+        <th ng-click="sort('pct')">Type
+            <span class="glyphicon sort-icon" ng-show="sortKey=='type'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+        <th ng-click="sort('name')">SaleID
+            <span class="glyphicon sort-icon" ng-show="sortKey=='saleId'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+       <th ng-click="sort('pct')">Amount
+            <span class="glyphicon sort-icon" ng-show="sortKey=='reqAmnt'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+        <th ng-click="sort('pct')">Status
+            <span class="glyphicon sort-icon" ng-show="sortKey=='status'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr  dir-paginate="r in records|orderBy:sortKey:reverse |itemsPerPage: 10 " >
+
+        <td class="col-xs-2 ">{{r.createdAt | date: 'short'}} </td>
+
+        <td class="col-xs-2 ">{{r.type}} </td>
+        <td class="col-xs-2 ">{{r.saleId}} </td>
+        <td class="col-xs-2 ">{{r.reqAmnt | currency}} </td>
+        <td class="col-xs-2 "><span class="label"
+        ng-class="[{'label-success': r.status=='PROCESSED'},{'label-danger': r.status=='REQUESTED'}]">{{r.status}} </span></td>
+        <td class="col-xs-2 ">
+            <a class="link link-edit link-lg" uib-tooltip="Process Refund" ng-click="edit(r.id)"><i class="fa fa-pencil-square-o"></i></a>
+        </td>
+
+    </tr>
+
+
+    </tbody>
+</table>

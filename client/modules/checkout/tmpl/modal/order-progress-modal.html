@@ -1,12 +1,14 @@
-<div class="modal ">
+<div class="modal progress-modal">
     <div class="modal-dialog">
         <div class="modal-content">
 
-            <div class="modal-body " style="background-color: rgba(4, 150, 7, 0.91); color:white">
+            <div class="modal-body text-center ">
 
-                <i class="fa fa-spinner fa-spin fa-3x"></i>
-                <span><strong>Order is being processed... </strong></span>
-                <p>Please do not refresh the page or hit back</p>
+                <div class="col-xs-12 ">
+                    <i class="spinner"></i>
+                </div>
+                <p ng-bind="apiSMessage"></p>
+
             </div>
 
 

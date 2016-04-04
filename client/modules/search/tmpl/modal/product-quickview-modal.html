@@ -17,28 +17,38 @@
                     <div class="col-xs-12 col-sm-6 product-detail-box">
                         <div class="">
                             <div class="col-xs-12 ">
-                                <span class="reg-price"><strike> <strong>Reg price</strong></span><span>$200</strike></span>
-                                <span class="sale-price"><strong>Sale price</strong></span><span> $150</span>
+                               <!-- <span class="reg-price"><strike> <strong>Reg price</strong></span><span>$200</strike></span>
+                                <span class="sale-price"><strong>Sale price</strong></span><span> $150</span>-->
+
+                                <strong><strike> <span class="reg-price  text-medium" ng-bind-template="${{selectedProduct.regularPrice}}" ng-show="selectedProduct.regularPrice!==selectedProduct.price">Price unavailable</span></strike></strong>
+                                <strong> <span class="sale-price" ng-bind-template="${{selectedProduct.price}}">Price unavailable</span></strong>
+
                             </div>
 
-                            <uib-tabset>
 
-                                <uib-tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" >
-                                    {{tab.content}}
+                            <uib-tabset>
+                                <uib-tab  heading="Overview" active="true" >
+                                    <div class="margin-top-10 text-medium" style="min-height: 100px">{{selectedProduct.description}}</div>
+                                </uib-tab>
+                                <uib-tab  heading="Details" active="false" >
+                                    <div class="margin-top-10 text-medium" style="min-height: 100px"> {{selectedProduct.detailDescription}}</div>
                                 </uib-tab>
 
+
                             </uib-tabset>
+
+
                             <div class="col-xs-12 input-group" style="margin-top: 10px">
                                 <label class="col-xs-6">Quantity</label>
                                 <div class="col-xs-6"><select class="form-control" ng-model="selectedProduct.quantity" ng-options="n for n in quantities"></select></div>
                             </div>
-                            <div class="col-xs-12 " style="margin-top: 10px">
-                                <button class="btn btn-opp-secondary " ng-click="addToCart(selectedProduct)"><i class="fa fa-shopping-bag"></i> Add to cart</button>
-                                <button class="btn btn-default pull-right" ng-click="$hide()">Continue Shopping</button>
+                            <div class="col-xs-12 margin-top-10" >
+                                <button class="btn btn-opp-secondary btn-block " ng-click="addToCart(selectedProduct)"><i class="fa fa-shopping-bag"></i> Add to cart</button>
                             </div>
-                            <div class="col-xs-12 " style="margin-top: 10px">
+                            <div class="col-xs-12 margin-top-10">
+                                <button class="btn btn-default btn-block" ng-click="$hide()">Continue Shopping</button>
+                            </div>
 
-                            </div>
 
                         </div>
                     </div>

@@ -33,6 +33,20 @@ appModule.factory('OrderService', ["$rootScope","$http","$q","$log", function($r
                     deferred.reject(err);
                 });
             return deferred.promise;
+        },
+        requestReturn : function(cartId,type){
+
+            var deferred = $q.defer();
+
+            $http.post("api/orders/return",{cartId: cartId, type: type})
+                .success(function (data){
+                    deferred.resolve(data);
+
+                })
+                .error(function(err){
+                    deferred.reject(err);
+                });
+            return deferred.promise;
         }
     }
 

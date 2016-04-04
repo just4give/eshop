@@ -58,15 +58,7 @@ appModule.factory('UserService', ["$rootScope","$http","$q", "$log",function($ro
         },
         isAuthorizedRole  : function(role){
             var deferred = $q.defer();
-            if($rootScope.loggedIn){
-                if( $rootScope.user.roles.indexOf(role) !== -1){
-                    deferred.resolve(true);
-                }else{
-                    deferred.reject('not authorized');
-                }
-
-            }else {
-                $http.get("/api/users/loggedin")
+            $http.get("/api/users/loggedin")
                     .success(function (data){
                         if(data.success){
 
@@ -89,7 +81,7 @@ appModule.factory('UserService', ["$rootScope","$http","$q", "$log",function($ro
                         deferred.reject('not authorized');
                     });
 
-            }
+
             return deferred.promise;
         },
         isAdmin:function(){

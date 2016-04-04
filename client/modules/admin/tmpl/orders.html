@@ -66,8 +66,8 @@
                         <p ng-bind-template="Price: {{cart.price | currency}}"></p>
                     </div>
                     <div class="col-sm-6 col-xs-12">
-                       <!-- <p><button class="btn btn-default" ng-click="addToCart(cart.product)">Buy it Again</button></p>
-                        <p><button class="btn btn-default" ng-click="addToCart(cart.product)">Cancel This Item</button></p>-->
+                        <p ><div class="alert alert-warning" ng-hide="cart.returnStatus === null"><i class="fa fa-exclamation-triangle"></i> <span ng-bind="cart.returnStatus"></span></div></p>
+
                     </div>
 
                 </div>

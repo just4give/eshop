@@ -43,7 +43,13 @@ var card = sequelize.define('card', {
     },
     cvv2: {
         type: Sequelize.INTEGER,
-        field: 'cvv2'
+        field: 'cvv2',
+        get: function() {
+            return crypto.decrypt(this.getDataValue('cvv2'));
+        },
+        set: function(val) {
+            return this.setDataValue('cvv2', crypto.encrypt(val));
+        }
     },
     createdAt: {
         type: Sequelize.DATE,

@@ -1,6 +1,7 @@
 body {
   background-color: #ddd;
   color: #555555;
+  font-family: 'Avenir Next', sans-serif;
 }
 
 h1 {
@@ -14,4 +15,14 @@ h1 {
 }
 .margin-top-20{
   margin-top: 20px;
+}
+
+.text-large{
+  font-size: large;
+}
+.text-medium{
+  font-size: medium;
+}
+.text-x-large{
+  font-size: x-large;
 }

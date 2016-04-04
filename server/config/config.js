@@ -32,8 +32,8 @@ module.exports = {
             "api" : {
                 "host" : "api.sandbox.paypal.com",
                 "port" : "",
-                "client_id" : "AVMw5JN4k_zRzJ64NBiw4MsRtmIz-VzG7AL8Y9pLJIV8xzh5izEABb7P-IBDAih_x8nJhGTDrrE0rGAg",
-                "client_secret" : "ENU_KLnpFMWA4ujjyhOtAewn8CjbPiLoXAmd05SqqKjoRhe8bvhNdO4PPTLoO5IFz-s-K4ZXX7FG6wzU",
+                "client_id" : "AQBzaVkwDcE5FxjD8b-WSidhmeVisqyONNckR4fSJLNkg8qKNp5RktfB7cPs1UYqJxFpfmiWLJurqL1p",
+                "client_secret" : "EHrJIRqyOJaO7RicMe07dJMhxP4LxfvZlSGQkkbVFPLFVPkVjXaDZB-4PDrFYGXk20RS3IO9Yd7V_b0y",
                 redirect_urls :{
                 return_url: "http://localhost:4100/api/payments/execute",
                 cancel_url: "http://localhost:4100/api/payments/cancel"

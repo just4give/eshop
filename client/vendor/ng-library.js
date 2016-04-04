@@ -16,6 +16,9 @@ angular.module('epilouge.ngService').factory('Photo', ["$resource", "$log",funct
     return  $resource('/api/photo/:id', { id: '@id' }, {
         update: {
             method: 'PUT' // this method issues a PUT request
+        },
+        delete: {
+            method: 'DELETE'
         }
     });
 
@@ -126,6 +129,20 @@ angular.module('epilouge.ngService').factory('Refund', ["$resource", "$log",func
     return  $resource('/api/refund/:id', { id: '@id' }, {
         update: {
             method: 'PUT' // this method issues a PUT request
+        }
+    });
+
+}]);
+
+
+angular.module('epilouge.ngService').factory('ProductGallery', ["$resource", "$log",function($resource,$log){
+
+    return  $resource('/api/productGallery/:id', { id: '@id' }, {
+        update: {
+            method: 'PUT' // this method issues a PUT request
+        },
+        delete: {
+            method: 'DELETE'
         }
     });
 

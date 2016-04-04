@@ -1,7 +1,9 @@
 $product-carousel-height  : 400px;
 
 .product-carousel-box{
-    height: $product-carousel-height;
+
+  padding-left: 20px;
+  padding-right: 20px;
 
   h1{
     font-size: x-large;
@@ -27,6 +29,7 @@ $product-carousel-height  : 400px;
   }
 
   .carousel-indicators li{
+    display: none;
     border-color: rgba(185,185,185,0.5);
   }
 /*  .carousel-indicators li {
@@ -45,10 +48,29 @@ $product-carousel-height  : 400px;
     background-color: $menu-background-color
   }
 
+  .carousel-control{
+    color: $menu-background-color;
+  }
   img {
     width: auto;
     height: auto;
     overflow: hidden;
     padding: 25px;
+  }
+}
+
+.product-carousel-thumb-list{
+  text-align: center;
+  //background-color: gray;
+
+  .thumbnail{
+
+    border-radius: 0px;
+    img{
+      height: 50px;
+    }
+  }
+  .active-thumb{
+    opacity: 0.5;
   }
 }

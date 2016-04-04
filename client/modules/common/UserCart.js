@@ -10,7 +10,8 @@ appModule.factory("UserCart", ["$log","$rootScope","Cart","localStorageService",
 
         $rootScope.$watch("loggedIn",function(newValue, oldValue){
             if(newValue && newValue===true){
-                $log.debug("User just logged in");
+                $log.debug("**** User just logged in");
+
                 retrieveCart();
             }
         });
@@ -26,7 +27,7 @@ appModule.factory("UserCart", ["$log","$rootScope","Cart","localStorageService",
 
 
                     if(item.id){
-                        item.$update(function(data){
+                        Cart.update({id: item.id},item,function(data){
 
                             var indx =  _.findIndex($rootScope.cart,{productId:data.productId});
                             if(indx!= -1){
@@ -105,9 +106,9 @@ appModule.factory("UserCart", ["$log","$rootScope","Cart","localStorageService",
         }
 
         var retrieveCart = function(){
-            if($rootScope.loggedIn && $rootScope.state && $rootScope.state.user){
+            if($rootScope.loggedIn &&  $rootScope.user){
                 $rootScope.cartUpdated=false;
-                Cart.query({userId: $rootScope.state.user.id ,orderId:null},function(data){
+                Cart.query({userId: $rootScope.user.id ,orderId:'null'},function(data){
                     $log.debug("retrieved user cart details ", data);
                     angular.forEach(data, function(dbCartItem){
                         var indx =  _.findIndex($rootScope.cart,{productId:dbCartItem.productId});

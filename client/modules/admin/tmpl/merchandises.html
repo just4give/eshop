@@ -19,7 +19,11 @@
 
         <td class="col-xs-4 ">{{r.name}} </td>
 
-
+        <td class="col-xs-3 ">
+            <a class="btn-link " uib-tooltip="Clicke to active/inactive" ng-click="toggleStatus(r)">
+                <span class="label" ng-class="[{'label-success': r.active},{'label-default': !r.active}]">{{r.active ? 'ACTIVE':'INACTIVE'}}</span>
+            </a>
+        </td>
         <td class="col-xs-2 ">
             <a class="link link-edit link-lg" uib-tooltip="Edit" ng-click="edit(r.id)"><i class="fa fa-pencil-square-o"></i></a>
             <a class="link link-delete link-lg" uib-tooltip="Delete" ng-click="delete(r)"><i class="fa fa-trash-o"></i></a></td>

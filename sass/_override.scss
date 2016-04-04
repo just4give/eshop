@@ -1,7 +1,9 @@
 .badge{
   background-color: $menu-background-color;
 }
-
+.badge-order{
+  background-color: $secondary-band-color;
+}
 .navbar{
   border-radius: 0px;
   margin-bottom: 0px;
@@ -51,4 +53,12 @@ input::-webkit-inner-spin-button {
 
 .spinner{
   color: rgba(0, 0, 255, 0.37);
+}
+
+.btn-link{
+  text-decoration: none;
+  &:hover{
+    text-decoration: none;
+    cursor: pointer;
+  }
 }

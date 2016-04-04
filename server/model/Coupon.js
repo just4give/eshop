@@ -45,7 +45,8 @@ var coupon = sequelize.define('coupon', {
     },
     active: {
         type: Sequelize.BOOLEAN,
-        field: 'active'
+        field: 'active',
+        defaultValue:true
     }
 
 

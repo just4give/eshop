@@ -149,18 +149,19 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
             }
         })
         $scope.order.cartIds = cartIds;
+        var pmodal = $modal({scope: $scope, templateUrl: 'modules/checkout/tmpl/modal/order-progress-modal.html', show: true});
 
         UserPayment.purchase($scope.order)
             .then(function(data){
-                $log.debug("Payment successful ",data);
-
-
-                if(data.method==='paypal'){
+                 if(data.method==='paypal'){
                     $window.location.href=data.redirectUrl;
                     $scope.apiSMessage = "You are being redirected to paypal. Please wait..."
                 }else{
                     $scope.orderPgIndc = false;
                     $scope.apiSMessage="";
+                     if(pmodal){
+                         pmodal.hide();
+                     }
                     $state.go("confirm", {id: data.paymentId});
                 }
 

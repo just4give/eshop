@@ -9,7 +9,8 @@ appModule.config(function (localStorageServiceProvider) {
     localStorageServiceProvider
         .setPrefix('eshop')
         .setStorageType('localStorage') //sessionStorage
-        .setNotify(true, true)
+        .setNotify(true, true);
+
 
 });
 
@@ -17,6 +18,9 @@ appModule.run(["$interval","localStorageService","$rootScope", "RzSliderOptions"
     function($interval,localStorageService,$rootScope,RzSliderOptions,UserCart,$state ,editableOptions){
 
         editableOptions.theme = 'bs3';
+
+        $rootScope.pspinner =false;
+
        // RzSliderOptions.options( { showTicks: true } );
         $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, rejection) {
 

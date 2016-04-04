@@ -4,8 +4,11 @@
 var Sequelize = require('sequelize');
 var sequelize = require('../config/sequelize');
 var User = require('./User');
-var Card = require('./Card');
+var Cart = require('./Cart');
 var Order = require('./Order');
+var Product = require('./Product');
+var Photo = require('./Photo');
+
 var _ = require('lodash');
 var crypto = require('../config/crypto');
 
@@ -24,6 +27,10 @@ var refund = sequelize.define('refund', {
     saleId: {
         type: Sequelize.STRING,
         field: 'saleId'
+    },
+    orderNumber: {
+        type: Sequelize.STRING,
+        field: 'orderNumber'
     },
     reqAmnt: {
         type: Sequelize.DECIMAL(10,2),
@@ -59,7 +66,7 @@ var refund = sequelize.define('refund', {
 });
 
 refund.belongsTo(User);
-refund.belongsTo(Card);
+refund.belongsTo(Cart);
 refund.belongsTo(Order);
 
 
@@ -72,7 +79,7 @@ refund.middleware ={
 
     list: {
         auth: function(req, res, context) {
-            if(!req.isAuthenticated()){
+            if(!req.isAuthenticated() || req.user.roles.indexOf('admin') === -1){
                 return context.error(403, "Not authenticated");
             }
             return context.continue;
@@ -88,13 +95,31 @@ refund.middleware ={
     },
     delete:{
         auth: function(req, res, context) {
-            if(!req.isAuthenticated()){
+            if(!req.isAuthenticated() || req.user.roles.indexOf('admin') === -1){
                 return context.error(403, "Not authenticated");
             }
             return context.continue;
         }
     },
+    read: {
+        fetch: {
+            before: function (req, res, context) {
+                //context.include = [{model:Tax, where:{id:2}}];
+                // console.log('product:read:fetch:before');
+                context.include = [{model: Cart, include:[{model: Product,include:[Photo]}]}, {model: Order}];
 
+                return context.continue;
+            },
+            action: function (req, res, context) {
+                // change behavior of actually writing the data
+                return context.continue;
+            },
+            after: function (req, res, context) {
+                // set some sort of flag after writing list data
+                return context.continue;
+            }
+        }
+    },
     create: {
         auth: function(req, res, context) {
 
@@ -123,7 +148,7 @@ refund.middleware ={
     update: {
         auth: function(req, res, context) {
 
-            if(!req.isAuthenticated() || req.body.userId != req.user.id){
+            if(!req.isAuthenticated() || req.user.roles.indexOf('admin') === -1){
                 return context.error(403, "Not authenticated");
             }
 

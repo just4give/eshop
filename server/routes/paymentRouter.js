@@ -17,7 +17,9 @@ var Tax = require('../model/Tax');
 var auth = require('../config/auth');
 var Payment = require('../model/Payment');
 var Order = require('../model/Order');
+var Refund = require('../model/Refund');
 var EmailSender = require('../config/email-sender');
+var async = require("async");
 
 router.post('/create', auth.requiresApiLogin,function(req, res,next) {
 
@@ -32,15 +34,8 @@ router.post('/create', auth.requiresApiLogin,function(req, res,next) {
         },
         "transactions": [{
             "amount": {
-                "total": "6.07",
-                "currency": "USD",
-                "details": {
-                    "subtotal": "5.00",
-                    "tax": "0.07",
-                    "shipping": "1.00",
-                    "handling_fee": "1.00",
-                    "shipping_discount": "-1.00"
-                }
+                "total": "8.00",
+                "currency": "USD"
             },
             "description": "eShop payment",
             "soft_descriptor": "eShop soft description",
@@ -50,10 +45,10 @@ router.post('/create', auth.requiresApiLogin,function(req, res,next) {
     if(req.body.paymentMethod === 'credit_card'){
         payment.payer.funding_instruments = [{
             "credit_card": {
-                "number": "5500005555555559",
-                "type": "mastercard",
+                "number": "4032035880663596",
+                "type": "visa",
                 "expire_month": 12,
-                "expire_year": 2018,
+                "expire_year": 2020,
                 "cvv2": 111,
                 "first_name": "Joe",
                 "last_name": "Shopper"
@@ -65,12 +60,8 @@ router.post('/create', auth.requiresApiLogin,function(req, res,next) {
 
     paypal.payment.create(payment, function (err, payment) {
         if (err) {
-
-            var err2 = {
-                status:500, message:'Invalid card'
-            }
-            //TODO: generate proper paypal message
-            return next(err2);
+             //TODO: generate proper paypal message
+            return next(err);
         } else {
 
 
@@ -107,7 +98,7 @@ router.post('/create', auth.requiresApiLogin,function(req, res,next) {
                           .then(function(data){
                               Cart.update({orderId: data.id, updatedAt:new Date()},{where: {id: {$in:order.cartIds}} })
                                   .then(function(data){
-                                      res.json({paymentId: payment.id, method:'credit_card'});
+                                      res.json({paymentId: order.orderNumber, method:'credit_card'});
                                   },function(err){
                                       return next(err);
                                   })
@@ -163,7 +154,7 @@ router.get('/execute',auth.requiresApiLogin, function(req, res,next){
                                 sendOrderEmail(newOrder.id);
 
 
-                                res.redirect("/confirm?id="+paymentId);
+                                res.redirect("/confirm?id="+newOrder.orderNumber);
                             },function(err){
                                 return next(err);
                             })
@@ -212,7 +203,7 @@ var sendOrderEmail = function(orderId){
         })
 }
 
-router.get('/cancel',auth.requiresApiLogin, function(req, res,next){
+router.get('/cancel', function(req, res,next){
     res.redirect("/cart");
 });
 router.post('/coupon', function(req, res){
@@ -221,7 +212,7 @@ router.post('/coupon', function(req, res){
     var now = new Date();
     Coupon.findOne({where: {code:code, validFrom:{$lte:now}, validThrough:{$gte:now} }})
         .then(function(coupon){
-          if(!coupon){
+          if(!coupon || !coupon.active){
               res.json({valid:false, message:'Coupon not valid or expired'});
          }else{
              if(coupon.minPurchase > amt ){
@@ -258,5 +249,143 @@ router.post('/calctax', auth.requiresApiLogin,function(req, res){
         });
 
 });
+
+router.post('/refund', auth.requiresRole("admin"), function(req, res, next){
+    var refundId = req.body.refundId;
+    var fund = {
+                 amount:{
+                     currency: "USD",
+                     total : req.body.amount
+                 }
+    }
+
+    async.auto({
+        findRefund : function(callback){
+
+            console.log("*** 1. findRefund");
+            Refund.findById(refundId,{include:[{model:User}]})
+                .then(function(data){
+                    if(data.status ==='PROCESSED'){
+                        callback(new Error("This request was processed earlier"));
+
+                    }else{
+                        callback(null,data);
+
+                    }
+                    return null;
+                },function(err){
+                    callback(err);
+                    return null;
+                })
+        },
+        processRefund : ['findRefund', function(results, callback){
+            console.log("*** 2. processRefund " , fund);
+            console.log("*** Sale ID ",results.findRefund.saleId);
+            paypal.sale.refund(results.findRefund.saleId, fund, function(err, data){
+                if(err){
+                    console.log("** Error in paypal ", err);
+                    callback(err);
+                    return null;
+                }
+                else{
+                    callback(null,{});
+                    return null;
+                }
+            })
+        }],
+        updateRefund : ['processRefund', function(results,callback){
+            console.log("*** 3. updateRefund");
+            var refund = results.findRefund;
+            refund.status='PROCESSED';
+            refund.refundAmnt=req.body.amount;
+            refund.updatedAt = new Date();
+
+            refund.save({fields: ['status','refundAmnt','updatedAt']})
+                .then(function(data){
+                    callback(null, data);
+                    return null;
+                },function(err){
+                    callback(err);
+                    return null;
+                })
+
+        }],
+        updateCart: ['processRefund', function(results,callback){
+            console.log("*** 4. updateCart");
+            if(results.findRefund.cartId){
+                Cart.findById(results.findRefund.cartId,{include:[{model: Product,include:[Photo]}]})
+                    .then(function(cart){
+                       // callback(null,data);
+                       // return null;
+                        if(results.findRefund.type === 'return'){
+                            cart.returnStatus = 'RETURN_PROCESSED';
+                        }else{
+                            cart.returnStatus = 'CANCEL_PROCESSED';
+                        }
+                        cart.updatedAt = new Date();
+                        cart.save({fields: ['returnStatus','updatedAt']})
+                            .then(function(data){
+                                callback(null, cart);
+                                return null;
+                            },function(err){
+                                callback(err);
+                                return null;
+                            })
+
+                    },function(err){
+                        callback(err);
+                        return null;
+                    })
+
+            }else{
+                callback(null,undefined);
+                return null;
+            }
+
+        }],
+        email:['updateRefund','updateCart', function(results,callback){
+            try {
+                console.log("*** 5. email");
+                var emailData = {
+                    to: results.findRefund.user.email,
+                    subject: "Processed " + results.findRefund.type + " request",
+                    model: {
+                        orderNumber: results.findRefund.orderNumber,
+                        firstName: results.findRefund.user.firstName,
+                        item: results.updateCart,
+                        refundAmnt: req.body.amount,
+                        type:results.findRefund.type
+                    }
+                }
+
+                EmailSender.sendEmail('item-return-processed', emailData, function (err1, results1) {
+                    callback(null, {});
+                });
+            }catch (err){
+                console.log("Error in try ",err);
+            }
+        }]
+    },function(err, results){
+        if(err){
+            console.log("** Final error " , err);
+            res.json({success:false, message: err.message});
+        }else{
+            res.json({success:true});
+        }
+    })
+
+
+
+})
+
+router.get('/list', auth.requiresRole("admin"),function(req, res, next){
+    paypal.payment.list(function(err, data){
+        if(err){
+            res.json(err);
+            return;
+        }
+        res.json(data);
+    })
+})
 
 module.exports = router;

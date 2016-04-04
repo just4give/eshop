@@ -35,7 +35,11 @@
                     </div>
                 </div>
             </div>
-
+            <div class="row">
+                <p>Test User ? Please click help icon for credit card and paypal credential
+                 <span><i class="fa fa-question-circle"  uib-popover-template="'tmpl.test.payment.html'"
+                          popover-title="Test Mode" popover-trigger="click"  popover-placement="top-left"></i></span></p>
+            </div>
             <div class="row" id="payment" >
                 <div class="col-xs-12 text-center margin-bottom-20" >
                     <button class="margin-top-10 btn btn-default btn-lg" ng-class="[{'btn-success':paymentMethod==='paypal'}]" ng-click="payWithPayPal()"><i class="fa fa-paypal"></i> Pay with Paypal</button>
@@ -78,11 +82,11 @@
                                         <div cc-exp class="text-box col-xs-12">
                                             <div class="col-xs-6" ng-class="{ 'has-error': formCard.month.$invalid  }" style="padding-left: 0px">
                                                 <!--<input class="col-xs-10" placeholder="MM"  required ng-model="card.expire_month" cc-exp-month name="month"/>-->
-                                                <select class="form-control" required  ng-model="card.expire_month" ng-options="m.value as m.label for m in months" name="month"></select>
+                                                <select class="form-control" required  ng-model="card.expire_month" ng-options="m.value as m.label for m in months" name="month"  cc-exp-month></select>
                                             </div>
                                             <div class="col-xs-6" ng-class="{ 'has-error': formCard.year.$invalid  }"  style="padding-left: 0px">
                                                 <!--<input  class="col-xs-10" placeholder="YY"  required ng-model="card.expire_year" cc-exp-year name="year"/>-->
-                                                <select class="form-control" required ng-model="card.expire_year" name="year" ng-options="yr as yr for yr in years"></select>
+                                                <select class="form-control" required ng-model="card.expire_year" name="year" ng-options="yr as yr for yr in years" cc-exp-year ></select>
                                             </div>
                                         </div>
                                     </div>
@@ -93,7 +97,7 @@
 
                                         </div>
                                     </div>
-
+                                    <pre>{{formCard.$error |json}}</pre>
 
                                 </div>
                             </div>
@@ -126,13 +130,13 @@
                             </tr>
                         </table>
 
-                        <div class="row text-center margin-bottom-10" ng-show="orderPgIndc">
+                       <!-- <div class="row text-center margin-bottom-10" ng-show="orderPgIndc">
                             <i class="spinner"></i>
                         </div>
                         <div class="text-center margin-bottom-10 alert alert-success" ng-show="apiSMessage" >
-                            <!--<span class="text1"><strong>Order being processed...Please do not refresh the page or hit back</strong></span>-->
+                            &lt;!&ndash;<span class="text1"><strong>Order being processed...Please do not refresh the page or hit back</strong></span>&ndash;&gt;
                             <span ng-bind="apiSMessage"><strong></strong></span>
-                        </div>
+                        </div>-->
                         <div class="text-center margin-bottom-10 alert alert-danger" ng-show="apiEMessage" >
                             <!--<span class="text1"><strong>Order being processed...Please do not refresh the page or hit back</strong></span>-->
                             <span  ng-bind="apiEMessage"><strong></strong></span>
@@ -152,3 +156,24 @@
     </div>
 
 </div>
+
+
+<script type="text/ng-template" id="tmpl.test.payment.html">
+    <div>
+        <h3>Credit Card</h3>
+        <table>
+            <tr><td>First Name</td><td>Joe</td></tr>
+            <tr><td>Last Name</td><td>Shopper</td></tr>
+            <tr><td>Card #</td><td>4032035880663596</td></tr>
+            <tr><td>Exp(MM/YY)</td><td>12/2020</td></tr>
+            <tr><td>CVV</td><td>111</td></tr>
+
+        </table>
+        <h3>Paypal</h3>
+        <table>
+            <tr><td>Username</td><td>connecttechfocus-buyer@gmail.com</td></tr>
+            <tr><td>Password</td><td>appstacksolutions</td></tr>
+        </table>
+    </div>
+
+</script>

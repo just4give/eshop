@@ -48,6 +48,20 @@ appModule.factory('UserPayment', ["$rootScope","$http","$q", "$log",function($ro
                 });
             return deferred.promise;
         },
+        processRefund : function(refundId, amount){
+
+            var deferred = $q.defer();
+
+            $http.post("/api/payments/refund" ,{refundId: refundId, amount: amount})
+                .success(function (data){
+
+                    deferred.resolve(data);
+                })
+                .error(function(err){
+                    deferred.reject(err);
+                });
+            return deferred.promise;
+        }
 
     }
 

@@ -10,12 +10,22 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var multipart = require('connect-multiparty');
 var session = require('express-session');
+var SQLiteStore = require('connect-sqlite3')(session);
+var sessionStore = new SQLiteStore;
 var passport = require('passport');
 
 
 module.exports = function(app, config) {
 
     console.log(config);
+
+    var sessionMiddleware = session({
+        store: sessionStore,
+        key:'online shop',
+        secret: 'online shop',
+        resave:true,
+        saveUninitialized:true,
+        cookie: { maxAge: 1000*60*60 }});
 
 // view engine setup
     app.set('views', path.join(config.rootPath, 'server/views'));
@@ -27,10 +37,11 @@ module.exports = function(app, config) {
     app.use(express.static(path.join(config.rootPath, 'client')));
 
 
-    app.use(session({secret: 'online shop',
+    /*app.use(session({secret: 'online shop',
                     resave:true,
                     saveUninitialized:true,
-                    cookie: { maxAge: 1000*60*60 }}));
+                    cookie: { maxAge: 1000*60*60 }}));*/
+    app.use(sessionMiddleware);
     app.use(passport.initialize());
     app.use(passport.session());
 

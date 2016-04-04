@@ -21,9 +21,9 @@ router.get('/search', function(req, res,next) {
     var wMerchandise ={};
 
     if(search.query){
-        q = {$or:[{name:{$like: '%'+search.query+'%'}},{description:{$like: '%'+search.query+'%'}}], price:{$between: [search.priceMin, search.priceMax]}};
+        q = {active:true ,$or:[{name:{$like: '%'+search.query+'%'}},{description:{$like: '%'+search.query+'%'}}], price:{$between: [search.priceMin, search.priceMax]}};
     }else{
-        q = {price:{$between: [search.priceMin, search.priceMax]}};
+        q = {active:true, price:{$between: [search.priceMin, search.priceMax]}};
     }
     if(search.checkedCategories.length>0){
         wCaterogry ={name:{$in:search.checkedCategories}};

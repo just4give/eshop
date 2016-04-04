@@ -17,6 +17,8 @@ templateMap['welcome'] =  new EmailTemplate(path.join(__dirname,'..', 'email-tem
 templateMap['order-cancel'] = new EmailTemplate(path.join(__dirname,'..', 'email-templates', 'order-cancel-email'));
 templateMap['order-shipped'] = new EmailTemplate(path.join(__dirname,'..', 'email-templates', 'order-shipped-email'));
 templateMap['order-placed'] = new EmailTemplate(path.join(__dirname,'..', 'email-templates', 'order-placed-email'));
+templateMap['item-return-req'] = new EmailTemplate(path.join(__dirname,'..', 'email-templates', 'item-return-req-email'));
+templateMap['item-return-processed'] = new EmailTemplate(path.join(__dirname,'..', 'email-templates', 'item-return-processed-email'));
 
 var emailSender = {
 

@@ -105,12 +105,12 @@
     }
   }
   .reg-price{
-    color: black;
+    color: #b7b7b7;
   }
   .sale-price{
-    color: red;
-    font-size: larger;
-    margin-bottom: 15px;
+    color: #53ba18;
+    font-size: x-large;
+    margin-bottom: 20px;
   }
   .modal-footer{
     padding: 0px;
@@ -136,4 +136,13 @@
 
 .tab-pane.am-fade.active-add {
   animation-name: fadeIn;
+}
+
+.modal.progress-modal{
+  background-color: rgba(255,255,255,0.8);
+
+  .modal-content{
+    box-shadow: none;
+    background-color: white;
+  }
 }

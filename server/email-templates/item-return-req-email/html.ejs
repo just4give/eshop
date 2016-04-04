@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+<% include ../common/header %>
+<div class="container">
+<div class="col-xs-12 text-medium" >Hello, <%= model.firstName %></div>
+<div class="col-xs-12 text-success text-large">We have received your <%= model.type %> request.</div>
+<p>
+    We are sorry to hear that you had to <%= model.type %>. We will process your request within 24 hours.
+    Any refund will be sent back to your original payment method.
+</p>
+<div class="text-large">
+    <div class="col-xs-12">
+        <label>Order Number :</label><span> <%= model.orderNumber%></span>
+    </div>
+    <div class="col-xs-12">
+        <label>Est Refund :</label><span> $<%= model.estRefundAmnt %></span>
+    </div>
+
+</div>
+<div class="row text-center margin-top-20">
+    <a class="btn btn-success" href="" >View Your Oder</a>
+</div>
+
+<div class="col-xs-12">Item details</div>
+<hr>
+<table class="table" >
+
+    <tbody>
+
+        <tr class="row">
+        <td class="col-xs-3 col-sm-2">
+
+            <a href="#" class="thumbnail">
+                <img src="http://appstacksolutions.com/images/p2.jpg" alt="...">
+
+            </a>
+
+
+
+        </td>
+        <td class="col-xs-9 col-sm-10" style="font-size: large">
+            <p><a ><%= model.item.product.name%></a></p>
+            <p ><label>Qty:</label><span> <%=model.item.quantity%></span></p>
+            <p><label>Price:</label><span> $<%= model.item.price %></span></p>
+
+    </tr>
+
+
+
+    </tbody>
+</table>
+</div>
+</body>
+</html>

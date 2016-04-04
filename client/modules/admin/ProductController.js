@@ -34,12 +34,23 @@ appModule.controller("ProductController",["$scope","$rootScope","$log","$modal",
                     });
                 });
         }
+        $scope.toggleStatus = function(r){
+
+            var index = _.findIndex($scope.records, r);
+            r.active = !r.active;
+            r.$update(function(data){
+                $scope.records[index]=data;
+                toaster.pop("info","","Status updated");
+            });
+
+        }
 
     }]);
 
 appModule.controller("ProductDetailsController",["$scope","$rootScope","$log","$modal","$state", "toaster","Upload","$window",
-    "Product","Tax","Photo","Category","Merchandise","$stateParams","$confirm","$timeout",
-    function($scope,$rootScope,$log,$modal,$state,toaster,Upload,$window,Product,Tax,Photo,Category,Merchandise,$stateParams,$confirm,$timeout){
+    "Product","Tax","Photo","Category","Merchandise","$stateParams","$confirm","$timeout","ProductGallery",
+    function($scope,$rootScope,$log,$modal,$state,toaster,Upload,$window,Product,Tax,Photo,Category,Merchandise,$stateParams,
+             $confirm,$timeout,ProductGallery){
 
 
 
@@ -98,15 +109,9 @@ appModule.controller("ProductDetailsController",["$scope","$rootScope","$log","$
         }
 
         $scope.uploadProductImage = function(file){
-
-
-            if(!file ||file.$error){
-
+           if(!file ||file.$error){
                 return;
             }
-
-
-
             var newImage = {progress: '0%',imageUrl:undefined };
             var existingPhoto = $scope.product.photo;
             $scope.product.photo=newImage;
@@ -116,9 +121,7 @@ appModule.controller("ProductDetailsController",["$scope","$rootScope","$log","$
                 method: 'POST',
                 file:file
             }).then(function (resp) {
-
-
-                    $log.debug(resp.data);
+                   $log.debug(resp.data);
                     newImage.imageUrl = resp.data.imageUrl;
                     newImage.id = resp.data.id;
                     $scope.product.photo = resp.data;
@@ -140,16 +143,50 @@ appModule.controller("ProductDetailsController",["$scope","$rootScope","$log","$
                             }
                         })
                     }
-
-
-
-
-
-
-            }, function (err) {
+          }, function (err) {
                 if(existingPhoto){
                     $scope.product.photo =$scope.product.photo;
                 }
+            }, function (evt) {
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+
+                newImage.progress = progressPercentage +'%';
+            });
+
+        }
+
+        $scope.uploadProductAdditionalImage = function(file){
+
+            if(!$scope.product.id ){
+                toaster.pop("info","","Please save the product before you upload additional photos");
+                return;
+            }
+            if(!file ||file.$error){
+                return;
+            }
+            $scope.product.productGalleries = $scope.product.productGalleries || [];
+            var newImage = {progress: '0%',imageUrl:undefined };
+            var index = $scope.product.productGalleries.length;
+            $scope.product.productGalleries.push(new ProductGallery());
+            $scope.product.productGalleries[index].photo = newImage;
+            $scope.product.productGalleries[index].productId=$scope.product.id;
+
+            Upload.upload({
+                url: '/api/photo/upload',
+                method: 'POST',
+                file:file
+            }).then(function (resp) {
+                $log.debug(resp.data);
+                newImage.imageUrl = resp.data.imageUrl;
+                newImage.id = resp.data.id;
+                $scope.product.productGalleries[index].photoId= resp.data.id;
+                $scope.product.productGalleries[index].$save(function(data){
+                    $log.debug("productGalleries saved");
+                    $scope.product.productGalleries[index].photo = newImage;
+                })
+
+            }, function (err) {
+
             }, function (evt) {
                 var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
 
@@ -168,13 +205,13 @@ appModule.controller("ProductDetailsController",["$scope","$rootScope","$log","$
             $scope.product = new Product();
         }
 
-        Tax.query(function(data){
+        Tax.query({active:true},function(data){
             $scope.taxes = data;
         })
-        Category.query(function(data){
+        Category.query({active:true},function(data){
             $scope.categories = data;
         })
-        Merchandise.query(function(data){
+        Merchandise.query({active:true},function(data){
             $scope.merchandises=data;
         })
 
@@ -199,20 +236,30 @@ appModule.controller("ProductDetailsController",["$scope","$rootScope","$log","$
 
         }
 
-        $scope.deletePhoto = function(r){
+        $scope.deleteGalleryPhoto = function(r){
             $confirm({text: 'You are going to delete the record.' ,ok:"Yes,delete",cancel:"Cancel" , title:"Delete?"})
                 .then(function() {
-                    var index = _.findIndex($scope.slides, r);
+                    var index = _.findIndex( $scope.product.productGalleries, r);
+                    var photoGallery = $scope.product.productGalleries[index];
+                    var photoId = photoGallery.photoId;
 
-                    Photo.get({id:r.id},function(photo){
-                        photo.$delete(function(data){
-                            $scope.slides.splice(index,1);
-                            toaster.pop("info","","Record deleted");
+                    ProductGallery.delete({id: photoGallery.id},function(data){
+                        Photo.get({id: photoId}, function (photo) {
+                            photo.$delete(function (data) {
+                                $scope.product.productGalleries.splice(index,1);
+                                toaster.pop("info","","Record deleted");
+
+                            }, function (err) {
+
+                            });
+                        })
+
+
                         },function(err){
                             $log.debug(err);
                             toaster.pop("error","",err.data.message);
                         });
-                    })
+
 
 
                 });

@@ -33,6 +33,16 @@ appModule.controller("MerchandiseController",["$scope","$rootScope","$log","$mod
                 });
             });
     }
+    $scope.toggleStatus = function(r){
+
+        var index = _.findIndex($scope.records, r);
+        r.active = !r.active;
+        r.$update(function(data){
+            $scope.records[index]=data;
+            toaster.pop("info","","Status updated");
+        });
+
+    }
 
 }]);
 

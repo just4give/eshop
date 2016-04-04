@@ -49,11 +49,18 @@ appModule.controller("AdminOrderController",["$scope","$rootScope","$log","$moda
 
                 OrderService.updateStatus($scope.selectedOrder.id, $scope.tobeStatus.id)
                     .then(function(data){
+
                         $log.debug("order updated ", data);
-                        var indx =  _.findIndex($scope.orders,{id:data.id});
-                        $scope.orders[indx] = data;
-                        toaster.pop("info", "", "Status updated successfully");
-                        return true;
+
+                        if(data.success){
+                            var indx =  _.findIndex($scope.orders,{id:data.order.id});
+                            $scope.orders[indx] = data.order;
+                            toaster.pop("info", "", "Status updated successfully");
+                            return true;
+                        }else{
+                            toaster.pop("error", "", data.message);
+                        }
+
                     },function(err){
                         toaster.pop("error", "", "System error !");
                     });

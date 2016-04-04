@@ -9,7 +9,7 @@
    <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>-->
     <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="vendor/angular-chart.js/dist/angular-chart.css">
+    <!--<link href="vendor/angular-chart.js/dist/angular-chart.min.css" rel="stylesheet" >-->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="vendor/angular/angular-csp.css" rel="stylesheet">
     <link href="vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -17,8 +17,8 @@
     <link href="vendor/angularjs-slider/dist/rzslider.css" rel="stylesheet">
     <link href="vendor/bootstrap-additions/dist/bootstrap-additions.min.css" rel="stylesheet" >
     <link href="vendor/angular-xeditable/dist/css/xeditable.min.css" rel="stylesheet">
-    <!--<link rel="stylesheet" href="css/admin.css" type="text/css">-->
-    <link rel="stylesheet" href="vendor/metisMenu/dist/metisMenu.min.css">
+    <link href="vendor/metisMenu/dist/metisMenu.min.css" rel="stylesheet" >
+
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <base href="/">
@@ -88,7 +88,7 @@
       </div>
 
     </header>
-
+    <div id="progress-spinner"  ng-show="pspinner"><i class="spinner"></i></div>
     <toaster-container></toaster-container>
     <div ui-view class=" page-view"  ></div>
 
@@ -130,6 +130,7 @@
   <script src="vendor/oclazyload/dist/ocLazyLoad.js"></script>
   <script src="vendor/angular-xeditable/dist/js/xeditable.min.js"></script>
 
+
   <script src="modules/app/AppModule.js"></script>
   <script src="modules/common/HTTPInterceptor.js"></script>
   <script src="modules/app/AppConfig.js"></script>
@@ -152,6 +153,7 @@
   <script src="modules/common/AdController.js"></script>
   <script src="modules/search/ProductDetailsController.js"></script>
   <script src="modules/profile/ProfileController.js"></script>
+  <script src="modules/search/LoadingDirective.js"></script>
 
   <!--admin controllers -->
   <script src="modules/admin/DashboardController.js"></script>
@@ -161,6 +163,8 @@
   <script src="modules/admin/MerchandiseController.js"></script>
   <script src="modules/admin/ShippingController.js"></script>
   <script src="modules/admin/AdminOrderController.js"></script>
-
+  <script src="modules/admin/RefundController.js"></script>
+  <script src="modules/admin/DashboardService.js"></script>
+  <script src="modules/admin/CouponController.js"></script>
 
 </html>

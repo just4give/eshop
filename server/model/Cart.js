@@ -7,6 +7,7 @@ var User = require('./User');
 var Product = require('./Product');
 var Photo = require('./Photo');
 
+
 var cart = sequelize.define('cart', {
     id: {
         type: Sequelize.INTEGER,
@@ -22,6 +23,10 @@ var cart = sequelize.define('cart', {
     price: {
         type: Sequelize.DECIMAL(10, 2),
         field: 'price'
+    },
+    returnStatus: {
+        type: Sequelize.STRING,
+        field: 'returnStatus'
     },
     createdAt: {
         type: Sequelize.DATE,
@@ -44,6 +49,7 @@ var cart = sequelize.define('cart', {
 });
 cart.belongsTo(Product);
 cart.belongsTo(User);
+
 
 
 cart.sync().then(function(){

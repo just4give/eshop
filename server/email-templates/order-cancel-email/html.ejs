@@ -5,11 +5,11 @@
 </head>
 <body>
 <% include ../common/header %>
-<h3>Hello, <%= model.firstName %></h3>
+<div class="col-xs-12 text-medium">Hello, <%= model.firstName %></div>
 
-<p class="text-success">Your cancel request has been created successfully. We will process your request within 24 hours. </p>
-<p class="text-success">Your refund will be credited to your account within 5 business days after processed.</p>
-<p>Order# <strong><%= model.orderNumber %></strong></p>
-<p>Refund Amount <strong><%= model.reqAmnt %></strong></p>
+<div class="col-xs-12 text-success">Your cancel request has been created successfully. We will process your request within 24 hours. </div>
+<div class="col-xs-12 text-success">Your refund will be credited to your account within 5 business days after processed.</div>
+<div class="col-xs-12 text-medium">Order# <strong><%= model.orderNumber %></strong></div>
+<div class="col-xs-12 text-medium">Refund Amount <strong> $<%= model.reqAmnt %></strong></div>
 </body>
 </html>

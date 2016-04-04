@@ -23,20 +23,6 @@ appModule.factory('SearchService', ["$rootScope","$http","$q","$log", function($
 
 }]);
 
-appModule.directive('errSrc', function() {
-    return {
-        link: function(scope, element, attrs) {
-            attrs.$set('src', attrs.loaderSrc);
-
-            element.bind('error', function() {
-
-                if (attrs.src != attrs.errSrc) {
-                    attrs.$set('src', attrs.errSrc);
-                }
-            });
-        }
-    }
-});
 
 /*
 attrs.$observe('ngSrc', function(value) {

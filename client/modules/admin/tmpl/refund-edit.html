@@ -1,0 +1,52 @@
+<h3 class="text-center margin-bottom-20"><span class="label label-default" ng-bind="refund.id?'Process Refund':'Create New Refund Request'"></span></h3>
+
+<form name="p" novalidate>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="form-group col-sm-12" >
+            <label class="control-label">On</label>
+            <span class="form-control" ng-bind="refund.createdAt" ></span>
+        </div>
+        <div class="form-group col-sm-12" >
+            <label class="control-label">Order Number</label>
+            <span  class="form-control" ng-bind="refund.orderNumber" ></span>
+        </div>
+        <div class="form-group col-sm-12" >
+            <label class="control-label">SaleID</label>
+            <span  class="form-control" ng-bind="refund.saleId" ></span>
+        </div>
+        <div class="form-group col-sm-12" >
+            <label class="control-label">Type</label>
+            <span  class="form-control" ng-bind="refund.type" ></span>
+        </div>
+        <div class="form-group col-sm-12" >
+            <label class="control-label">Req Amount</label>
+            <span class="form-control" ng-bind="refund.reqAmnt|currency"></span>
+        </div>
+        <div class="form-group col-sm-12" ng-class="{ 'has-error': p.amnt.$invalid  }">
+            <label class="control-label">Refund Amount</label>
+            <input type="number" class="form-control" placeholder="Enter refund amount"  ng-model="refund.refundAmnt" name="amnt" required>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6" ng-show="refund.cartId">
+
+        <div class="col-xs-6">
+
+            <a href="#" class="thumbnail">
+                <img ng-src="{{refund.cart.product.photo.imageUrl}}" alt="...">
+
+            </a>
+
+        </div>
+        <div class="col-xs-6 " style="font-size: large">
+            <p><a >{{refund.cart.product.name}}</a></p>
+            <p ><label>Qty:</label><span> {{refund.cart.quantity}}</span></p>
+            <p><label>Price:</label><span>{{refund.cart.price | currency}}</span></p>
+        </div>
+
+    </div>
+
+    <div class="col-xs-12 text-right">
+        <button class="btn btn-warning" ng-click="processRefund()" ng-disabled="p.$invalid" ng-bind="refund.id?'Process Refund':'Create Refund'">Create</button>
+    </div>
+</form>

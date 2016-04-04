@@ -1,3 +1,4 @@
+<view-title>eShop-Admin</view-title>
 <aside class="col-sm-3" style="padding-left: 0px;margin-left: -5px">
 <div class="navbar-inverse sidebar nav-v" role="navigation">
     <div class="sidebar-nav navbar-collapse">
@@ -8,7 +9,7 @@
             </li>
 
             <li ui-sref-active="active">
-                <a ui-sref="admin.orders"><i class="fa fa-shopping-bag fa-fw"></i> Orders<span></span></a>
+                <a ui-sref="admin.orders"><i class="fa fa-shopping-bag fa-fw"></i> Orders <span class="badge badge-order " ng-bind="dashboard.newOrderCount"> </span></a>
             </li>
 
             <li ui-sref-active="active">
@@ -32,7 +33,10 @@
             </li>
 
             <li ui-sref-active="active">
-                <a ui-sref="admin.payments"><i class="fa fa-money fa-fw"></i> Payments</a>
+                <a ui-sref="admin.refunds" ><i class="fa fa-money fa-fw"></i> Refunds <span class="text-danger badge"  ng-bind="dashboard.refundCount"> </span></a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="admin.coupons"><i class="fa fa-bullhorn fa-fw"></i> Manage Coupons</a>
             </li>
 
 

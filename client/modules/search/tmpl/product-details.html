@@ -1,52 +1,73 @@
 <view-title>{{product.name}}</view-title>
 <div class="row product-details">
-    <div class="col-xs-12 col-sm-6">
+    <div class="col-xs-12 col-sm-6 text-center">
 
             <!--<img ng-src="{{product.url}}">-->
 
             <div class="row" >
                 <div class="product-carousel-box" style="border-right: 1px double gray">
                     <h1 class="text-center" >{{product.name}}</h1>
-                    <img ng-src="{{product.photo.imageUrl}}" class="img-responsive" />
-                    <!--<uib-carousel interval="myInterval" no-wrap="true">
-                        <uib-slide ng-repeat="slide in slides" active="slide.active" class="row">
+                    <img ng-src="{{product.photo.imageUrl}}" alt="product image" err-src="images/no-image.png" loader-src="images/loader.gif"
+                         class=""  ng-hide="product.productGalleries.length>0" />
+                    <uib-carousel interval="myInterval" no-wrap="true" ng-show="product.productGalleries.length>0">
+                        <uib-slide ng-repeat="gallery in product.productGalleries" active="gallery.active" class="row">
 
 
                             <div class="col-xs-12">
-                                <img ng-src="{{slide.image}}" class="img-responsive">
+
+                                <img ng-src="{{gallery.photo.imageUrl}}" alt="product image" err-src="images/no-image.png" loader-src="images/loader.gif"  class="" />
+
                             </div>
                         </uib-slide>
-                    </uib-carousel>-->
+                    </uib-carousel>
+
+
                 </div>
 
             </div>
+        <ul class="row product-carousel-thumb-list list-inline"  ng-show="product.productGalleries.length>0">
+            <li class="" ng-class="{'active-thumb': gallery.active}" ng-repeat="gallery in product.productGalleries"  ng-click="gallery.active=true">
+                <a class="thumbnail link" >
+                    <img src="{{gallery.photo.imageUrl}}">
+                </a>
+            </li>
+        </ul>
+
     </div>
+
     <div class="col-xs-12 col-sm-6 product-detail-box">
         <div class="">
-            <div class="col-xs-12 reg-price">
-               <!-- <span><strong>Reg price</strong></span><span><strike> $200</strike></span>-->
+            <!--<div class="col-xs-12 reg-price">
+               &lt;!&ndash; <span><strong>Reg price</strong></span><span><strike> $200</strike></span>&ndash;&gt;
             </div>
             <div class="col-xs-12 sale-price">
                 <span><strong>Sale price</strong></span><span ng-bind="product.price"> </span>
-            </div>
+            </div>-->
+
+            <h2 class="text-success">
+                <strong><strike> <span class="reg-price text-muted text-medium" ng-bind-template="${{product.regularPrice}}" ng-show="product.regularPrice!==product.price">Price unavailable</span></strike></strong>
+                <strong> <span class="price" ng-bind-template="${{product.price}}">Price unavailable</span></strong>
+
+            </h2>
+
             <uib-tabset>
 
                 <uib-tab  heading="Overview" active="true" >
-                   Tab content 1
+                   <div class="margin-top-10 text-medium" style="min-height: 150px">{{product.description}}</div>
                 </uib-tab>
                 <uib-tab  heading="Details" active="false" >
-                    Tab content 2
+                    <div class="margin-top-10 text-medium" style="min-height: 150px"> {{product.detailDescription}}</div>
                 </uib-tab>
 
             </uib-tabset>
-            <div class="col-xs-12 " style="margin-top: 10px">
+            <div class="row" style="margin-top: 10px;padding-right: 30px">
                 <label class="col-xs-4">Quantity</label>
                 <div class="col-xs-4"><select class="form-control" ng-model="product.quantity" ng-options="n for n in quantities"></select></div>
                 <button class="col-xs-4 btn btn-opp-secondary" ng-click="addToCart()"><i class="fa fa-shopping-bag"></i> Add to cart</button>
             </div>
 
             <div class="col-xs-12 " style="margin-top: 10px">
-                <button class="btn btn-default pull-right" ng-click="$hide()">Continue Shopping</button>
+                <button class="btn btn-default pull-right" ui-sref="search">Continue Shopping</button>
             </div>
 
         </div>

@@ -33,13 +33,14 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-9">
                     <h3 ng-bind="order.orderStatus.label">Preparing shipment</h3>
-                    <div class="col-xs-12 " data-wow-delay="0s">
+                    <!--<div class="col-xs-12 " data-wow-delay="0s">
                         <uib-progressbar animate="true" value="0" type="success"></uib-progressbar>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="col-xs-12 col-sm-3">
-                    <p><button class="btn btn-default" ng-click="" ng-show="order.orderStatusId===1">Cancel this Order</button></p>
-                    <p><button class="btn btn-default" ng-click="">Track this Order</button></p>
+                    <p><button class="btn btn-default" ng-click="" ng-show="order.orderStatus.code==='ordered'">Cancel this Order</button></p>
+                    <p><button class="btn btn-default" ng-show="order.orderStatus.code==='shipped'" ng-click="showTracking(order)"
+                               uib-popover-template="'tmpl.tracking.html'" popover-title="Tracking Information" popover-trigger="click"  popover-placement="bottom-left">Track this Order</button></p>
                 </div>
 
 
@@ -57,7 +58,10 @@
                     </div>
                     <div class="col-sm-6 col-xs-12">
                         <p><button class="btn btn-default" ng-click="addToCart(cart.product)">Buy it Again</button></p>
-                        <p><button class="btn btn-default" ng-click="addToCart(cart.product)">Cancel This Item</button></p>
+                        <p><button class="btn btn-default" ng-click="returnItem($parent.$index,$index, 'cancel')" ng-show="order.orderStatus.code==='ordered'  && !cart.returnStatus">Cancel This Item</button></p>
+                        <p><button class="btn btn-default" ng-click="returnItem($parent.$index,$index, 'return')" ng-show="order.orderStatus.code==='shipped' && !cart.returnStatus">Return This Item</button></p>
+                        <p ><div class="alert alert-warning" ng-hide="cart.returnStatus === null"><i class="fa fa-exclamation-triangle"></i> <span ng-bind="cart.returnStatus"></span></div></p>
+
                     </div>
 
                 </div>
@@ -66,3 +70,22 @@
         </div>
     </div>
 </div>
+
+<script type="text/ng-template" id="tmpl.tracking.html">
+    <div>
+       <div class="col-xs-12 text-center" ng-show="!tracking"> <i class="fa fa-spin fa-spinner"></i></div>
+        <div class="col-xs-12">
+            <span class=""><strong>Tracking# </strong></span>
+            <span>{{tracking.trackingNumber}}</span>
+        </div>
+        <div class="col-xs-12">
+            <span class=""><strong>Carrier: </strong></span>
+            <span>{{tracking.carrier}}</span>
+        </div>
+        <div class="col-xs-12">
+            <span class=""><strong>Est Delivery: </strong></span>
+            <span>{{tracking.estDelivery | date: short}}</span>
+        </div>
+    </div>
+
+</script>

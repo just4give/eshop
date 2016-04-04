@@ -33,7 +33,18 @@ appModule.controller("TaxController",["$scope","$rootScope","$log","$modal","$st
                 });
             });
     }
+    $scope.toggleStatus = function(r){
+        $rootScope.pspinner=true;
+         var index = _.findIndex($scope.records, r);
+        r.active = !r.active;
+        r.$update(function(data){
+            $scope.records[index]=data;
+            toaster.pop("info","","Status updated");
+            $rootScope.pspinner=false;
 
+        });
+
+    }
 }]);
 
 appModule.controller("TaxDetailsController",["$scope","$rootScope","$log","$modal","$state", "toaster","$stateParams","Tax","$confirm",

@@ -1,0 +1,118 @@
+[
+  {
+    "createdAt": "2016-04-04T14:31:41.000Z",
+    "updatedAt": "2016-04-04T14:31:41.000Z",
+    "id": 20,
+    "quantity": 2,
+    "productId": 4,
+    "price": 998,
+    "userId": 16,
+    "returnStatus": null,
+    "orderId": null,
+    "$promise": {},
+    "$resolved": true,
+    "product": {
+      "id": 4,
+      "name": "iPad Pro",
+      "description": "iPad Pro",
+      "detailDescription": "iPad Pro",
+      "price": 499,
+      "regularPrice": 499,
+      "active": true,
+      "createdAt": "2016-03-27T18:41:47.000Z",
+      "updatedAt": "2016-03-27T18:41:47.000Z",
+      "taxId": 1,
+      "photoId": 47,
+      "categoryId": 2,
+      "merchandiseId": 1,
+      "tax": {
+        "id": 1,
+        "name": "6.5 % tax",
+        "pct": 10,
+        "active": true
+      },
+      "photo": {
+        "id": 47,
+        "fileName": "47.png",
+        "imageUrl": "http://cpa.local.com/repo/thumb/47.png",
+        "thumbnailUrl": "http://cpa.local.com/repo/thumb/47.png",
+        "active": true
+      },
+      "category": {
+        "id": 2,
+        "name": "Tablet and Mobile",
+        "active": true
+      },
+      "merchandise": {
+        "id": 1,
+        "name": "Apple",
+        "active": true
+      },
+      "productGalleries": [
+        {
+          "id": 5,
+          "photoId": 49,
+          "productId": 4,
+          "photo": {
+            "id": 49,
+            "fileName": "49.jpg",
+            "imageUrl": "http://cpa.local.com/repo/thumb/49.jpg",
+            "thumbnailUrl": "http://cpa.local.com/repo/thumb/49.jpg",
+            "active": true
+          }
+        },
+        {
+          "id": 6,
+          "photoId": 50,
+          "productId": 4,
+          "photo": {
+            "id": 50,
+            "fileName": "50.jpg",
+            "imageUrl": "http://cpa.local.com/repo/thumb/50.jpg",
+            "thumbnailUrl": "http://cpa.local.com/repo/thumb/50.jpg",
+            "active": true
+          }
+        }
+      ],
+      "$promise": {},
+      "$resolved": true
+    }
+  },
+  {
+    "quantity": 1,
+    "productId": 3,
+    "product": {
+      "id": 3,
+      "name": "Samsung Tab 4",
+      "description": "New generation Samsung Tab 4",
+      "detailDescription": null,
+      "price": 499,
+      "regularPrice": 499,
+      "active": true,
+      "createdAt": "2016-03-27T18:41:47.000Z",
+      "updatedAt": "2016-03-27T18:41:47.000Z",
+      "taxId": 2,
+      "photoId": 41,
+      "categoryId": 2,
+      "merchandiseId": 2,
+      "photo": {
+        "id": 41,
+        "fileName": "41.png",
+        "imageUrl": "http://cpa.local.com/repo/thumb/41.png",
+        "thumbnailUrl": "http://cpa.local.com/repo/thumb/41.png",
+        "active": true
+      },
+      "category": {
+        "id": 2,
+        "name": "Tablet and Mobile",
+        "active": true
+      },
+      "merchandise": {
+        "id": 2,
+        "name": "Samsung",
+        "active": true
+      }
+    },
+    "price": 499
+  }
+]

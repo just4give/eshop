@@ -57,7 +57,7 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locat
                 Categories: function(Category,$q){
                     var deferred = $q.defer();
 
-                    Category.query(function(data){
+                    Category.query({active:true},function(data){
 
                         deferred.resolve(data);
                     })
@@ -67,7 +67,7 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locat
                 Merchandises: function(Merchandise,$q){
                     var deferred = $q.defer();
 
-                    Merchandise.query(function(data){
+                    Merchandise.query({active:true},function(data){
 
                         deferred.resolve(data);
                     })
@@ -79,11 +79,11 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locat
     .state('details', {
             url: '/details/:id',
             templateUrl: 'modules/search/tmpl/product-details.html',
-            controller:'productDetailsController'
+            controller:'productSearchDetailsController'
     }).state('product', {
             url: '/product/:name/:id',
             templateUrl: 'modules/search/tmpl/product-details.html',
-            controller:'productDetailsController',
+            controller:'productSearchDetailsController',
             resolve: {
                 loadMyFiles: function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
@@ -166,13 +166,20 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locat
 
                         ]
                     })
-                }
+                },
+                Dashboard : function(DashboardService){
+                    return DashboardService.getDashboard();
+                },
+                auth: routeRoleChecks.authWithAdminRole
             }
         })
     .state('admin.dashboard', {
             url: '/dashboard',
             templateUrl: 'modules/admin/tmpl/dashboard.html',
-            controller:'DashboardController'
+            controller:'DashboardController',
+            resolve:{
+
+            }
         })
         .state('admin.orders', {
             url: '/orders',
@@ -230,6 +237,27 @@ appModule.config(["$stateProvider","$urlRouterProvider", "$httpProvider","$locat
             templateUrl: 'modules/admin/tmpl/shipping-edit.html',
             controller: 'ShippingDetailsController'
         })
+        .state('admin.refunds', {
+            url: '/refunds',
+            templateUrl: 'modules/admin/tmpl/refunds.html',
+            controller: 'RefundController'
+        })
+        .state('admin.refund-detail', {
+            url: '/refunds/:id',
+            templateUrl: 'modules/admin/tmpl/refund-edit.html',
+            controller: 'RefundDetailsController'
+        })
+        .state('admin.coupons', {
+            url: '/coupons',
+            templateUrl: 'modules/admin/tmpl/coupons.html',
+            controller: 'CouponController'
+        })
+        .state('admin.coupon-detail', {
+            url: '/coupons/:id',
+            templateUrl: 'modules/admin/tmpl/coupon-edit.html',
+            controller: 'CouponDetailsController'
+        })
+
      ;
 
      $locationProvider.html5Mode(true);

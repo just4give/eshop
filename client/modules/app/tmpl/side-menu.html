@@ -7,7 +7,7 @@
             <div class="aside-body" >
 
                 <ul class="list-unstyled side-menu">
-                    <li><a ui-sref="admin.dashboard" ng-click="$hide()"><i class="fa fa-cogs fa-fw"></i> Admin</a></li>
+                    <li><a ui-sref="admin.dashboard" ng-click="$hide()" ng-show="user.roles.indexOf('admin')!= -1"><i class="fa fa-cogs fa-fw"></i> Admin</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a ui-sref="profile" ng-click="$hide()"><i class="fa fa-user fa-fw"></i> My Account</a></li>
                     <li><a ui-sref="myorder" ng-click="$hide()"><i class="fa fa-briefcase fa-fw"></i> My Order</a></li>

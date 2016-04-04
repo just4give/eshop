@@ -8,7 +8,7 @@ var photoRouter = require('../routes/photoRouter');
 var productRouter = require('../routes/productRouter');
 var paymentRouter = require('../routes/paymentRouter');
 var orderRouter = require('../routes/orderRouter');
-
+var dashboardRouter = require('../routes/dashboardRouter');
 
 
 module.exports = function(app) {
@@ -26,6 +26,7 @@ module.exports = function(app) {
     app.use('/api/products', productRouter);
     app.use('/api/payments', paymentRouter);
     app.use('/api/orders', orderRouter);
+    app.use('/api/dashboard',dashboardRouter);
     app.use('/', routes);
 
 // catch 404 and forward to error handler

@@ -33,6 +33,16 @@ appModule.controller("CategoryController",["$scope","$rootScope","$log","$modal"
                 });
             });
     }
+    $scope.toggleStatus = function(r){
+
+        var index = _.findIndex($scope.records, r);
+        r.active = !r.active;
+        r.$update(function(data){
+            $scope.records[index]=data;
+            toaster.pop("info","","Status updated");
+        });
+
+    }
 
 }]);
 

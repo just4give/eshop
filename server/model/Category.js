@@ -16,6 +16,11 @@ var category = sequelize.define('category', {
     name: {
         type: Sequelize.STRING,
         field: 'name'
+    },
+    active: {
+        type: Sequelize.BOOLEAN,
+        field: 'active',
+        defaultValue:true
     }
 
 },{

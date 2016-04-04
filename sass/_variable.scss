@@ -3,7 +3,7 @@ $menu-color: white;
 $menu-background-shade: #F5E1E1;
 $background-color: #E9E9E9;
 $text-color-primary: #555;
-$secondary-band-color: green;
+$secondary-band-color: #22BB22;
 $mobile-width: 767px;
 
 @mixin box-shadow{
@@ -71,10 +71,16 @@ $mobile-width: 767px;
   border-color: transparent;
   @include no-active-focus;
 }
+
+.text-medium{
+  font-size: medium;
+}
 .text-x-large{
   font-size: x-large;
 }
-
+.text-large{
+  font-size: large;
+}
 .text-xx-large{
   font-size: xx-large;
 }

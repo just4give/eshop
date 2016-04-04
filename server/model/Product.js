@@ -7,6 +7,7 @@ var Tax = require('./Tax');
 var Photo = require('./Photo');
 var Category = require('./Category');
 var Merchandise = require('./Merchandise');
+var ProductGallery = require('./ProductGallery');
 
 var product = sequelize.define('product', {
     id: {
@@ -41,6 +42,11 @@ var product = sequelize.define('product', {
             return this.setDataValue('regularPrice', val?val:product.price);
         }
     },
+    active: {
+        type: Sequelize.BOOLEAN,
+        field: 'active',
+        defaultValue:true
+    },
     createdAt: {
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('NOW'),
@@ -61,6 +67,7 @@ product.belongsTo(Tax);
 product.belongsTo(Photo);
 product.belongsTo(Category);
 product.belongsTo(Merchandise);
+product.hasMany(ProductGallery);
 product.sync().then(function(){
 
 });
@@ -122,8 +129,9 @@ product.middleware ={
         fetch: {
             before: function (req, res, context) {
                 //context.include = [{model:Tax, where:{id:2}}];
-               // console.log('product:read:fetch:before');
-                context.include = [{model: Tax}, {model: Photo},{model:Category},{model:Merchandise}];
+                console.log('***** product:read:fetch:before');
+                context.include = [{model: Tax}, {model: Photo},{model:Category},{model:Merchandise},
+                    {model:ProductGallery, include:[{model:Photo}]}];
 
                 return context.continue;
             },
