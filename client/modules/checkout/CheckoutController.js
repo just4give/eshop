@@ -11,6 +11,14 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
     $scope.order = {};
     $scope.order.discount=0;
 
+    var fieldsMap ={
+        "payer.funding_instruments[0].credit_card.number":"Card Number",
+        "payer.funding_instruments[0].credit_card.type":"Card Card Type",
+        "payer.funding_instruments[0].credit_card.expire_month":"Expiry Month",
+        "payer.funding_instruments[0].credit_card.expire_year":"Expiry Year",
+        "payer.funding_instruments[0].credit_card.cvv2":"CVV",
+    }
+
     $scope.months = [
         {label:'01-Jan', value:1},
         {label:'02-Feb', value:2},
@@ -24,7 +32,17 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
         {label:'10-Oct', value:10},
         {label:'11-Nov', value:11},
         {label:'12-Dec', value:12}]    ;
-    $scope.years =[2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
+    $scope.years =[
+        {label:'2016', value:16},
+        {label:'2017', value:17},
+        {label:'2018', value:18},
+        {label:'2019', value:19},
+        {label:'2020', value:20},
+        {label:'2021', value:21},
+        {label:'2022', value:22},
+        {label:'2023', value:23},
+        {label:'2024', value:24},
+        {label:'2025', value:25}] ;
     //get all active shipping methods
     Shipping.query({active:true},function(data){
             $scope.shippings = data;
@@ -66,13 +84,13 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
             amt: $scope.order.productCost
         }
         $scope.orderPgIndc = true;
-        $scope.apiSMessage = "Checking your coupon"
+        $scope.apiSMessage = "Checking your coupon..."
         UserPayment.applyCoupon(coupon)
             .then(function(data){
                 $scope.orderPgIndc = false;
 
                 if(data.valid){
-                    $scope.apiSMessage="";
+                    $scope.apiSMessage="You saved $"+data.amt+" by coupon";
                     $scope.apiEMessage="";
                     $scope.order.discount= data.amt;
                     $scope.order.couponId=data.id;
@@ -137,8 +155,14 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
         $scope.orderPgIndc = true;
         $scope.order.paymentMethod = $scope.paymentMethod;
         $scope.order.finalCost = $scope.order.productCost+$scope.order.tax+$scope.order.shippingCost-$scope.order.discount;
+
+       //FIXME:
+        if(!$scope.formCard.cardNumber.$ccType){
+            $scope.formCard.cardNumber.$ccType = "visa";
+        }
         if($scope.paymentMethod !== 'paypal'){
             $scope.order.card = $scope.card;
+            $scope.order.card.type = $scope.formCard.cardNumber.$ccType.toLowerCase();
         }
         $scope.apiSMessage = "Order being processed...Please do not refresh the page or hit back";
         $scope.apiEMessage="";
@@ -153,6 +177,7 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
 
         UserPayment.purchase($scope.order)
             .then(function(data){
+                $log.debug("payment response ", data);
                  if(data.method==='paypal'){
                     $window.location.href=data.redirectUrl;
                     $scope.apiSMessage = "You are being redirected to paypal. Please wait..."
@@ -169,10 +194,15 @@ appModule.controller("CheckoutController",["$scope","$rootScope","$log","$modal"
                 $log.debug(err);
                 $scope.orderPgIndc = false;
                 $scope.apiSMessage="";
-
+                if(pmodal){
+                    pmodal.hide();
+                }
                 $scope.apiEMessage = "Your order was not successful."
-                if(err.message){
-                    $scope.apiEMessage = err.message;
+                if(err.httpStatusCode == 400){
+                    angular.forEach(err.response.details,function(detail){
+                        $scope.apiEMessage +=  "<br>"+fieldsMap[detail.field] + "->"+detail.issue;
+                    })
+
                 }
             })
     }

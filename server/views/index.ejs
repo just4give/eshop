@@ -51,10 +51,11 @@
           </div><!-- /input-group -->
         </form>
 
-        <div class="col-xs-6 col-sm-3 text-right">
+        <div class="col-xs-6 col-sm-3 " style="line-height: 40px">
+          <a class="link cart visible-xs pull-left"><i class="fa fa-search fa-lg" ng-click="openSearchModal()"></i></a>
 
-          <a class="link cart" ui-sref="cart"><i class="fa fa-shopping-bag fa-2x"></i>
-            <span class="badge" ng-bind="cart? cart.length:0"> </span>
+          <a class="link cart" ui-sref="cart"><i class="fa fa-shopping-bag fa-2x"><span class="badge" ng-bind="cart? cart.length:0"> </span></i>
+
 
           </a>
 
@@ -62,29 +63,31 @@
 
 
 
-          <div class="btn-group " ng-show="loggedIn">
+
             <!--<button type="button" class="btn btn-opp-primary" ng-bind="state.user.firstName">  </button>-->
-            <a  class="link cart dropdown-toggle" data-template-url="modules/app/tmpl/side-menu.html" data-placement="right"
+            <a  ng-show="loggedIn" class="link cart dropdown-toggle" data-template-url="modules/app/tmpl/side-menu.html" data-placement="right"
                 data-animation="am-slide-right"
                 bs-aside="aside" data-container="body">
-              <i class="text-warning fa fa-user fa-2x"></i>
+              <i class=" fa fa-user fa-2x"></i>
             </a>
+            <a  ng-click="$hide()" ng-show="loggedIn && user.roles.indexOf('admin')!= -1" data-template-url="modules/admin/tmpl/admin-side-menu.html"
+                data-placement="left"  data-animation="am-slide-left"
+                bs-aside="aside" data-container="body"><i class="fa fa-cog fa-2x"></i> </a>
 
 
-          </div>
 
         </div>
-        <form class="col-xs-12 visible-xs margin-top-10 margin-bottom-10">
-          <!--<input type="search" placeholder="Search..." class="product-search-text" ng-model="query">
+       <!-- <form class="col-xs-12 visible-xs margin-top-10 margin-bottom-10">
+          &lt;!&ndash;<input type="search" placeholder="Search..." class="product-search-text" ng-model="query">
           <button class="btn-search" ng-submit="search(query)"   ui-sref="search({query: query , category: ''})"><i class="fa fa-search"></i></button>
--->
+&ndash;&gt;
           <div class="input-group ">
             <input type="text" class="form-control" placeholder="Search for..." ng-model="search.query">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button"  ui-sref="search({query: search.query })"><i class="fa fa-search"></i></button>
               </span>
-          </div><!-- /input-group -->
-        </form>
+          </div>&lt;!&ndash; /input-group &ndash;&gt;
+        </form>-->
       </div>
 
     </header>
@@ -129,6 +132,7 @@
   <script src="vendor/angular-ui-router-styles/ui-router-styles.js"></script>
   <script src="vendor/oclazyload/dist/ocLazyLoad.js"></script>
   <script src="vendor/angular-xeditable/dist/js/xeditable.min.js"></script>
+  <script src="vendor/angular-sanitize/angular-sanitize.min.js"></script>
 
 
   <script src="modules/app/AppModule.js"></script>
@@ -167,4 +171,35 @@
   <script src="modules/admin/DashboardService.js"></script>
   <script src="modules/admin/CouponController.js"></script>
 
+  <script type="text/ng-template" id="tmpl.search.modal.html">
+
+    <div class="modal ">
+      <div class="modal-dialog">
+        <div class="modal-content login-modal">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$hide()"><span aria-hidden="true">&times;</span></button>
+
+          </div>
+
+          <div class="modal-body text-center ">
+
+            <form >
+
+              <div class="input-group ">
+                <input type="text" class="form-control" placeholder="Search for..." ng-model="search.query">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="$hide()"  ui-sref="search({query: search.query })"><i class="fa fa-search"></i></button>
+              </span>
+              </div><!-- /input-group -->
+            </form>
+          </div>
+
+
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+
+  </script>
 </html>

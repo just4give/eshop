@@ -7,7 +7,7 @@ body{
   padding-top: 80px;
 
   @media (max-width: 767px) {
-    padding-top: 100px;
+   // padding-top: 100px;
   }
 }
 
@@ -46,7 +46,7 @@ body{
 
 
   @media (max-width: 767px) {
-    height: 100px;
+   // height: 100px;
   }
 }
 .cart{
@@ -482,4 +482,8 @@ body{
 
 .animate-show.animate-show-active {
   opacity: 1;
+}
+
+._bar{
+  border-bottom: 1px solid rgba(128,128,128,0.5);
 }

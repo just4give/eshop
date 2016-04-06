@@ -248,9 +248,6 @@ body {
   font-weight: 300;
   color: black;
   padding-top: 80px; }
-  @media (max-width: 767px) {
-    body {
-      padding-top: 100px; } }
 
 .navbar-opp {
   background-color: #b80c08;
@@ -280,9 +277,6 @@ body {
   padding-top: 10px;
   padding-left: 10px;
   padding-right: 10px; }
-  @media (max-width: 767px) {
-    .top-header {
-      height: 100px; } }
 
 .cart {
   color: #b80c08;
@@ -630,6 +624,9 @@ body {
 
 .animate-show.animate-show-active {
   opacity: 1; }
+
+._bar {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.5); }
 
 .slider {
   height: 400px;
@@ -1495,8 +1492,6 @@ NAV
 
 .nav-v {
   background-color: rgba(41, 39, 39, 0.7);
-  padding-top: 20px;
-  padding-bottom: 20px;
   height: 100vh; }
   .nav-v li > a {
     color: white; }
@@ -1508,7 +1503,6 @@ NAV
     background-color: rgba(0, 0, 0, 0.2); }
 
 .chart-container {
-  height: 250px;
   padding: 10px; }
 
 /*#wrapper {

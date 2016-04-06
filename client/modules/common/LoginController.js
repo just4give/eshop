@@ -49,6 +49,9 @@ appModule.controller("loginController",["$window","$scope","$rootScope","$log","
          modal = $modal({scope: $scope, templateUrl: 'modules/common/tmpl/modal/login-modal.html', show: true});
     }
 
+    $scope.openSearchModal = function(){
+        modal = $modal({scope: $scope, templateUrl: 'tmpl.search.modal.html', show: true});
+    }
     $scope.submitLogin = function(){
         $scope.showLoginErr ='';
         $scope.signupprogress = true;

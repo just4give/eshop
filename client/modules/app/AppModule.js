@@ -3,7 +3,7 @@
  */
 var appModule = angular.module("eshop",['ui.router','ui.bootstrap','ngAnimate', 'ngTouch','mgcrea.ngStrap','angular-confirm',
     'LocalStorageModule','ngFileUpload','toaster','headroom','viewhead','epilouge.ngService','rzModule','chart.js',
-    'angularUtils.directives.dirPagination','smoothScroll','credit-cards','oc.lazyLoad','facebook','xeditable']);
+    'angularUtils.directives.dirPagination','smoothScroll','credit-cards','oc.lazyLoad','facebook','xeditable','ngSanitize']);
 
 appModule.config(function (localStorageServiceProvider) {
     localStorageServiceProvider

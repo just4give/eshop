@@ -5,71 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52748e04-2220-488d-b501-127385a89192" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/modules/admin/CouponController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/modules/admin/DashboardService.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/modules/admin/RefundController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/modules/admin/tmpl/coupon-edit.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/modules/admin/tmpl/coupons.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/modules/admin/tmpl/refund-edit.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/modules/admin/tmpl/refunds.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/modules/search/LoadingDirective.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sass/_chart.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sass/_progress.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/config/test.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/email-templates/item-return-processed-email/html.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/email-templates/item-return-processed-email/style.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/email-templates/item-return-req-email/html.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/email-templates/item-return-req-email/style.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/model/ProductGallery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/routes/dashboardRouter.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/modules/admin/tmpl/admin-side-menu-list.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/modules/admin/tmpl/admin-side-menu.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sass-cache/b64a854949725a8f7d18cfc88a803d26759d7563/_admin_app.scssc" afterPath="$PROJECT_DIR$/.sass-cache/b64a854949725a8f7d18cfc88a803d26759d7563/_admin_app.scssc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sass-cache/b64a854949725a8f7d18cfc88a803d26759d7563/_application.scssc" afterPath="$PROJECT_DIR$/.sass-cache/b64a854949725a8f7d18cfc88a803d26759d7563/_application.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sass-cache/b64a854949725a8f7d18cfc88a803d26759d7563/_modal.scssc" afterPath="$PROJECT_DIR$/.sass-cache/b64a854949725a8f7d18cfc88a803d26759d7563/_modal.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sass-cache/b64a854949725a8f7d18cfc88a803d26759d7563/_override.scssc" afterPath="$PROJECT_DIR$/.sass-cache/b64a854949725a8f7d18cfc88a803d26759d7563/_override.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sass-cache/b64a854949725a8f7d18cfc88a803d26759d7563/_product_carousel.scssc" afterPath="$PROJECT_DIR$/.sass-cache/b64a854949725a8f7d18cfc88a803d26759d7563/_product_carousel.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sass-cache/b64a854949725a8f7d18cfc88a803d26759d7563/_search.scssc" afterPath="$PROJECT_DIR$/.sass-cache/b64a854949725a8f7d18cfc88a803d26759d7563/_search.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sass-cache/b64a854949725a8f7d18cfc88a803d26759d7563/_variable.scssc" afterPath="$PROJECT_DIR$/.sass-cache/b64a854949725a8f7d18cfc88a803d26759d7563/_variable.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sass-cache/b64a854949725a8f7d18cfc88a803d26759d7563/style.scssc" afterPath="$PROJECT_DIR$/.sass-cache/b64a854949725a8f7d18cfc88a803d26759d7563/style.scssc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/grunt-browser-sync/node_modules/browser-sync/node_modules/socket.io/node_modules/socket.io-client/node_modules/engine.io-client/node_modules/ws/node_modules/bufferutil/build/Release/obj.target/bufferutil/src/bufferutil.o" afterPath="$PROJECT_DIR$/node_modules/grunt-browser-sync/node_modules/browser-sync/node_modules/socket.io/node_modules/socket.io-client/node_modules/engine.io-client/node_modules/ws/node_modules/bufferutil/build/Release/obj.target/bufferutil/src/bufferutil.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/grunt-browser-sync/node_modules/browser-sync/node_modules/socket.io/node_modules/socket.io-client/node_modules/engine.io-client/node_modules/ws/node_modules/utf-8-validate/build/Release/obj.target/validation/src/validation.o" afterPath="$PROJECT_DIR$/node_modules/grunt-browser-sync/node_modules/browser-sync/node_modules/socket.io/node_modules/socket.io-client/node_modules/engine.io-client/node_modules/ws/node_modules/utf-8-validate/build/Release/obj.target/validation/src/validation.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sessions.db" afterPath="$PROJECT_DIR$/sessions.db" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/css/style.css" afterPath="$PROJECT_DIR$/client/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/css/style.css.map" afterPath="$PROJECT_DIR$/client/css/style.css.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/admin/AdminOrderController.js" afterPath="$PROJECT_DIR$/client/modules/admin/AdminOrderController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/admin/CategoryController.js" afterPath="$PROJECT_DIR$/client/modules/admin/CategoryController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/admin/DashboardController.js" afterPath="$PROJECT_DIR$/client/modules/admin/DashboardController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/admin/MerchandiseController.js" afterPath="$PROJECT_DIR$/client/modules/admin/MerchandiseController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/admin/ProductController.js" afterPath="$PROJECT_DIR$/client/modules/admin/ProductController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/admin/ShippingController.js" afterPath="$PROJECT_DIR$/client/modules/admin/ShippingController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/admin/TaxController.js" afterPath="$PROJECT_DIR$/client/modules/admin/TaxController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/admin/tmpl/categories.html" afterPath="$PROJECT_DIR$/client/modules/admin/tmpl/categories.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/admin/tmpl/dashboard.html" afterPath="$PROJECT_DIR$/client/modules/admin/tmpl/dashboard.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/admin/tmpl/home.html" afterPath="$PROJECT_DIR$/client/modules/admin/tmpl/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/admin/tmpl/merchandises.html" afterPath="$PROJECT_DIR$/client/modules/admin/tmpl/merchandises.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/admin/tmpl/orders.html" afterPath="$PROJECT_DIR$/client/modules/admin/tmpl/orders.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/admin/tmpl/product-edit.html" afterPath="$PROJECT_DIR$/client/modules/admin/tmpl/product-edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/admin/tmpl/products.html" afterPath="$PROJECT_DIR$/client/modules/admin/tmpl/products.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/admin/tmpl/shippings.html" afterPath="$PROJECT_DIR$/client/modules/admin/tmpl/shippings.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/admin/tmpl/taxes.html" afterPath="$PROJECT_DIR$/client/modules/admin/tmpl/taxes.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/app/AppConfig.js" afterPath="$PROJECT_DIR$/client/modules/app/AppConfig.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/admin/tmpl/refunds.html" afterPath="$PROJECT_DIR$/client/modules/admin/tmpl/refunds.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/app/AppModule.js" afterPath="$PROJECT_DIR$/client/modules/app/AppModule.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/app/tmpl/side-menu.html" afterPath="$PROJECT_DIR$/client/modules/app/tmpl/side-menu.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/app/tmpl/login.html" afterPath="$PROJECT_DIR$/client/modules/app/tmpl/login.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/checkout/CheckoutController.js" afterPath="$PROJECT_DIR$/client/modules/checkout/CheckoutController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/checkout/tmpl/checkout.html" afterPath="$PROJECT_DIR$/client/modules/checkout/tmpl/checkout.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/checkout/tmpl/confirm.html" afterPath="$PROJECT_DIR$/client/modules/checkout/tmpl/confirm.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/checkout/tmpl/modal/order-progress-modal.html" afterPath="$PROJECT_DIR$/client/modules/checkout/tmpl/modal/order-progress-modal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/common/HTTPInterceptor.js" afterPath="$PROJECT_DIR$/client/modules/common/HTTPInterceptor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/common/UserCart.js" afterPath="$PROJECT_DIR$/client/modules/common/UserCart.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/common/UserPayment.js" afterPath="$PROJECT_DIR$/client/modules/common/UserPayment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/common/UserService.js" afterPath="$PROJECT_DIR$/client/modules/common/UserService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/order/MyOrderController.js" afterPath="$PROJECT_DIR$/client/modules/order/MyOrderController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/order/OrderService.js" afterPath="$PROJECT_DIR$/client/modules/order/OrderService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/order/tmpl/my-order.html" afterPath="$PROJECT_DIR$/client/modules/order/tmpl/my-order.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/search/ProductDetailsController.js" afterPath="$PROJECT_DIR$/client/modules/search/ProductDetailsController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/search/SearchService.js" afterPath="$PROJECT_DIR$/client/modules/search/SearchService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/search/tmpl/modal/product-quickview-modal.html" afterPath="$PROJECT_DIR$/client/modules/search/tmpl/modal/product-quickview-modal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/search/tmpl/product-details.html" afterPath="$PROJECT_DIR$/client/modules/search/tmpl/product-details.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/vendor/ng-library.js" afterPath="$PROJECT_DIR$/client/vendor/ng-library.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/modules/common/LoginController.js" afterPath="$PROJECT_DIR$/client/modules/common/LoginController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/grunt-browser-sync/node_modules/browser-sync/node_modules/anymatch/node_modules/micromatch/node_modules/braces/node_modules/expand-range/node_modules/fill-range/node_modules/randomatic/node_modules/is-number/package.json" afterPath="$PROJECT_DIR$/node_modules/grunt-browser-sync/node_modules/browser-sync/node_modules/anymatch/node_modules/micromatch/node_modules/braces/node_modules/expand-range/node_modules/fill-range/node_modules/randomatic/node_modules/is-number/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/grunt-browser-sync/node_modules/browser-sync/node_modules/localtunnel/node_modules/request/node_modules/har-validator/node_modules/is-my-json-valid/node_modules/generate-object-property/node_modules/is-property/.npmignore" afterPath="$PROJECT_DIR$/node_modules/grunt-browser-sync/node_modules/browser-sync/node_modules/localtunnel/node_modules/request/node_modules/har-validator/node_modules/is-my-json-valid/node_modules/generate-object-property/node_modules/is-property/.npmignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/grunt-browser-sync/node_modules/browser-sync/node_modules/localtunnel/node_modules/request/node_modules/har-validator/node_modules/is-my-json-valid/node_modules/generate-object-property/node_modules/is-property/README.md" afterPath="$PROJECT_DIR$/node_modules/grunt-browser-sync/node_modules/browser-sync/node_modules/localtunnel/node_modules/request/node_modules/har-validator/node_modules/is-my-json-valid/node_modules/generate-object-property/node_modules/is-property/README.md" />
@@ -93,32 +49,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/velocity/node_modules/tracer/node_modules/dateformat/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json/node_modules/error-ex/node_modules/is-arrayish/README.md" afterPath="$PROJECT_DIR$/node_modules/velocity/node_modules/tracer/node_modules/dateformat/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json/node_modules/error-ex/node_modules/is-arrayish/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/velocity/node_modules/tracer/node_modules/dateformat/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json/node_modules/error-ex/node_modules/is-arrayish/index.js" afterPath="$PROJECT_DIR$/node_modules/velocity/node_modules/tracer/node_modules/dateformat/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json/node_modules/error-ex/node_modules/is-arrayish/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/velocity/node_modules/tracer/node_modules/dateformat/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json/node_modules/error-ex/node_modules/is-arrayish/package.json" afterPath="$PROJECT_DIR$/node_modules/velocity/node_modules/tracer/node_modules/dateformat/node_modules/meow/node_modules/read-pkg-up/node_modules/read-pkg/node_modules/load-json-file/node_modules/parse-json/node_modules/error-ex/node_modules/is-arrayish/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/_admin_app.scss" afterPath="$PROJECT_DIR$/sass/_admin_app.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/_application.scss" afterPath="$PROJECT_DIR$/sass/_application.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/_modal.scss" afterPath="$PROJECT_DIR$/sass/_modal.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/_override.scss" afterPath="$PROJECT_DIR$/sass/_override.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/_product_carousel.scss" afterPath="$PROJECT_DIR$/sass/_product_carousel.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/_search.scss" afterPath="$PROJECT_DIR$/sass/_search.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/_variable.scss" afterPath="$PROJECT_DIR$/sass/_variable.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/style.scss" afterPath="$PROJECT_DIR$/sass/style.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/config/config.js" afterPath="$PROJECT_DIR$/server/config/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/config/email-sender.js" afterPath="$PROJECT_DIR$/server/config/email-sender.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/config/express.js" afterPath="$PROJECT_DIR$/server/config/express.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/config/routes.js" afterPath="$PROJECT_DIR$/server/config/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/email-templates/common/email.scss" afterPath="$PROJECT_DIR$/server/email-templates/common/email.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/email-templates/common/header.ejs" afterPath="$PROJECT_DIR$/server/email-templates/common/header.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/email-templates/examples/welcome-email.html" afterPath="$PROJECT_DIR$/server/email-templates/examples/welcome-email.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/email-templates/order-cancel-email/html.ejs" afterPath="$PROJECT_DIR$/server/email-templates/order-cancel-email/html.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/email-templates/order-placed-email/html.ejs" afterPath="$PROJECT_DIR$/server/email-templates/order-placed-email/html.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/model/Card.js" afterPath="$PROJECT_DIR$/server/model/Card.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/model/Cart.js" afterPath="$PROJECT_DIR$/server/model/Cart.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/model/Category.js" afterPath="$PROJECT_DIR$/server/model/Category.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/model/Coupon.js" afterPath="$PROJECT_DIR$/server/model/Coupon.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/model/Product.js" afterPath="$PROJECT_DIR$/server/model/Product.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/model/Refund.js" afterPath="$PROJECT_DIR$/server/model/Refund.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/orderRouter.js" afterPath="$PROJECT_DIR$/server/routes/orderRouter.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/paymentRouter.js" afterPath="$PROJECT_DIR$/server/routes/paymentRouter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/productRouter.js" afterPath="$PROJECT_DIR$/server/routes/productRouter.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/views/index.ejs" afterPath="$PROJECT_DIR$/server/views/index.ejs" />
     </list>
     <ignored path="online-shop.iws" />
@@ -143,78 +77,62 @@
       <file leaf-file-name="index.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/views/index.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.226415">
-              <caret line="90" column="49" selection-start-line="90" selection-start-column="49" selection-end-line="90" selection-end-column="49" />
+            <state vertical-scroll-proportion="-7.981132">
+              <caret line="72" column="143" selection-start-line="72" selection-start-column="143" selection-end-line="72" selection-end-column="143" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/modules/admin/tmpl/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0609319">
+              <caret line="2" column="75" selection-start-line="2" selection-start-column="75" selection-end-line="2" selection-end-column="75" />
+              <folding>
+                <element signature="n#style#0;n#section#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="products.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/modules/admin/tmpl/products.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="7.923077">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="taxes.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/modules/admin/tmpl/taxes.html">
+      <file leaf-file-name="admin-side-menu-list.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/modules/admin/tmpl/admin-side-menu-list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+            <state vertical-scroll-proportion="-0.53846157">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="toaster.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/vendor/angularjs-toaster/toaster.css">
+      <file leaf-file-name="admin-side-menu.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/modules/admin/tmpl/admin-side-menu.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.7272725">
-              <caret line="40" column="1" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
+            <state vertical-scroll-proportion="-9.807693">
+              <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_progress.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sass/_progress.scss">
+      <file leaf-file-name="refunds.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/modules/admin/tmpl/refunds.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.65384614">
-              <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TaxController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/modules/admin/TaxController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="33" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HTTPInterceptor.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/modules/common/HTTPInterceptor.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.444445">
-              <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dashboardRouter.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/routes/dashboardRouter.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60714287">
-              <caret line="50" column="201" selection-start-line="50" selection-start-column="201" selection-end-line="50" selection-end-column="201" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AppModule.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/modules/app/AppModule.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+            <state vertical-scroll-proportion="-1.3846154">
+              <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -225,9 +143,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="SCSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -237,15 +155,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/server/email-templates/order-cancel-email/html.ejs" />
-        <option value="$PROJECT_DIR$/server/email-templates/item-return-processed-email/html.ejs" />
-        <option value="$PROJECT_DIR$/server/routes/orderRouter.js" />
-        <option value="$PROJECT_DIR$/client/modules/app/tmpl/side-menu.html" />
-        <option value="$PROJECT_DIR$/client/modules/common/UserService.js" />
-        <option value="$PROJECT_DIR$/client/modules/admin/tmpl/orders.html" />
-        <option value="$PROJECT_DIR$/client/modules/admin/tmpl/refunds.html" />
-        <option value="$PROJECT_DIR$/sass/_override.scss" />
-        <option value="$PROJECT_DIR$/client/modules/admin/tmpl/shippings.html" />
         <option value="$PROJECT_DIR$/client/modules/admin/ShippingController.js" />
         <option value="$PROJECT_DIR$/server/model/Category.js" />
         <option value="$PROJECT_DIR$/client/modules/admin/CategoryController.js" />
@@ -254,7 +163,6 @@
         <option value="$PROJECT_DIR$/client/modules/admin/MerchandiseController.js" />
         <option value="$PROJECT_DIR$/client/modules/admin/tmpl/products.html" />
         <option value="$PROJECT_DIR$/server/routes/productRouter.js" />
-        <option value="$PROJECT_DIR$/sass/_application.scss" />
         <option value="$PROJECT_DIR$/server/model/Product.js" />
         <option value="$PROJECT_DIR$/sass/_product_carousel.scss" />
         <option value="$PROJECT_DIR$/client/modules/search/tmpl/product-details.html" />
@@ -265,29 +173,39 @@
         <option value="$PROJECT_DIR$/client/modules/admin/ProductController.js" />
         <option value="$PROJECT_DIR$/server/model/Card.js" />
         <option value="$PROJECT_DIR$/client/modules/checkout/tmpl/modal/order-progress-modal.html" />
-        <option value="$PROJECT_DIR$/client/modules/checkout/CheckoutController.js" />
-        <option value="$PROJECT_DIR$/client/modules/checkout/tmpl/confirm.html" />
-        <option value="$PROJECT_DIR$/client/modules/checkout/tmpl/checkout.html" />
         <option value="$PROJECT_DIR$/client/modules/app/AppConfig.js" />
         <option value="$PROJECT_DIR$/client/modules/admin/tmpl/coupons.html" />
         <option value="$PROJECT_DIR$/server/model/Coupon.js" />
-        <option value="$PROJECT_DIR$/server/routes/paymentRouter.js" />
         <option value="$PROJECT_DIR$/client/modules/admin/tmpl/coupon-edit.html" />
         <option value="$PROJECT_DIR$/client/modules/admin/CouponController.js" />
         <option value="$PROJECT_DIR$/server/config/express.js" />
         <option value="$PROJECT_DIR$/server/config/test.json" />
         <option value="$PROJECT_DIR$/client/modules/common/UserCart.js" />
         <option value="$PROJECT_DIR$/client/modules/admin/tmpl/taxes.html" />
-        <option value="$PROJECT_DIR$/client/modules/admin/tmpl/home.html" />
         <option value="$PROJECT_DIR$/client/modules/search/tmpl/modal/product-quickview-modal.html" />
         <option value="$PROJECT_DIR$/sass/_modal.scss" />
         <option value="$PROJECT_DIR$/sass/style.scss" />
         <option value="$PROJECT_DIR$/sass/_progress.scss" />
-        <option value="$PROJECT_DIR$/client/modules/app/AppModule.js" />
-        <option value="$PROJECT_DIR$/server/views/index.ejs" />
         <option value="$PROJECT_DIR$/client/modules/admin/TaxController.js" />
         <option value="$PROJECT_DIR$/client/modules/common/HTTPInterceptor.js" />
         <option value="$PROJECT_DIR$/server/routes/dashboardRouter.js" />
+        <option value="$PROJECT_DIR$/server/config/config.js" />
+        <option value="$PROJECT_DIR$/client/modules/app/AppModule.js" />
+        <option value="$PROJECT_DIR$/client/modules/checkout/CheckoutController.js" />
+        <option value="$PROJECT_DIR$/server/routes/paymentRouter.js" />
+        <option value="$PROJECT_DIR$/client/modules/checkout/tmpl/confirm.html" />
+        <option value="$PROJECT_DIR$/client/modules/checkout/tmpl/checkout.html" />
+        <option value="$PROJECT_DIR$/client/modules/admin/AdminOrderController.js" />
+        <option value="$PROJECT_DIR$/client/modules/admin/tmpl/dashboard.html" />
+        <option value="$PROJECT_DIR$/client/modules/common/LoginController.js" />
+        <option value="$PROJECT_DIR$/client/modules/app/tmpl/login.html" />
+        <option value="$PROJECT_DIR$/sass/_application.scss" />
+        <option value="$PROJECT_DIR$/sass/_admin_app.scss" />
+        <option value="$PROJECT_DIR$/client/modules/admin/tmpl/admin-side-menu.html" />
+        <option value="$PROJECT_DIR$/server/views/index.ejs" />
+        <option value="$PROJECT_DIR$/client/modules/admin/tmpl/admin-side-menu-list.html" />
+        <option value="$PROJECT_DIR$/client/modules/admin/tmpl/refunds.html" />
+        <option value="$PROJECT_DIR$/client/modules/admin/tmpl/home.html" />
       </list>
     </option>
   </component>
@@ -313,8 +231,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -465,6 +383,150 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eShop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eshop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eShop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eshop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tmpl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eShop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eshop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tmpl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eShop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eshop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eShop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eshop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tmpl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eShop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eshop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="bin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -579,27 +641,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15806112" sideWeight="0.49499285" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19642857" sideWeight="0.49499285" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24920969" sideWeight="0.50500715" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32575756" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.27489176" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="11" y="137" width="1344" height="454" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.21405229" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="11" y="137" width="1344" height="454" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32575756" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -618,153 +680,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/vendor/angular-bootstrap/ui-bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03068592">
-          <caret line="429" column="24" selection-start-line="429" selection-start-column="24" selection-end-line="429" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/modules/search/ProductDetailsController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="52" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/modules/search/tmpl/search-result.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.115385">
-          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/model/Payment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.349914">
-          <caret line="153" column="13" selection-start-line="151" selection-start-column="11" selection-end-line="153" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/config/auth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="72" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/model/Photo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="44" selection-start-line="54" selection-start-column="44" selection-end-line="54" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/model/Product.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="146" column="6" selection-start-line="127" selection-start-column="3" selection-end-line="146" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/model/ProductGallery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="6" selection-start-line="53" selection-start-column="6" selection-end-line="53" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/modules/admin/tmpl/product-edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.346154">
-          <caret line="133" column="60" selection-start-line="133" selection-start-column="60" selection-end-line="133" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/model/Card.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/modules/checkout/tmpl/modal/cart-delete-confirm-modal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.091561936">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/modules/checkout/tmpl/modal/order-progress-modal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3076923">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/modules/checkout/CheckoutController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="165" column="17" selection-start-line="165" selection-start-column="17" selection-end-line="165" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/modules/checkout/tmpl/confirm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8461537">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/modules/checkout/tmpl/checkout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.269231">
-          <caret line="167" column="30" selection-start-line="167" selection-start-column="30" selection-end-line="167" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/modules/app/AppConfig.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="244" column="39" selection-start-line="244" selection-start-column="39" selection-end-line="244" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/modules/order/tmpl/my-order.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.8076925">
-          <caret line="22" column="68" selection-start-line="22" selection-start-column="68" selection-end-line="22" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/modules/admin/tmpl/coupons.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.615385">
-          <caret line="30" column="46" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/model/Coupon.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="29" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/routes/paymentRouter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="214" column="40" selection-start-line="214" selection-start-column="40" selection-end-line="214" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/modules/admin/tmpl/coupon-edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="87" selection-start-line="39" selection-start-column="87" selection-end-line="39" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/modules/admin/CouponController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -797,7 +712,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="275" column="53" selection-start-line="275" selection-start-column="53" selection-end-line="275" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -805,7 +719,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="86" column="16" selection-start-line="86" selection-start-column="16" selection-end-line="86" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -813,7 +726,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="101" column="48" selection-start-line="101" selection-start-column="48" selection-end-line="101" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -821,13 +733,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="30" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/modules/admin/tmpl/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="23" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -842,7 +747,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -850,15 +754,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="50" column="17" selection-start-line="46" selection-start-column="11" selection-end-line="50" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sass/_application.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.014268728">
-          <caret line="1" column="41" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -914,10 +809,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="72" selection-start-line="22" selection-start-column="72" selection-end-line="22" selection-end-column="72" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#uib-tab#0;n#uib-tabset#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#uib-tab#1;n#uib-tabset#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -961,43 +852,226 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/admin/TaxController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="33" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/common/HTTPInterceptor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/routes/dashboardRouter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="50" column="201" selection-start-line="50" selection-start-column="201" selection-end-line="50" selection-end-column="201" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/config/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/modules/app/AppModule.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+          <caret line="5" column="122" selection-start-line="5" selection-start-column="122" selection-end-line="5" selection-end-column="122" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/checkout/ConfirmController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/app/AppConfig.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.275862">
+          <caret line="130" column="10" selection-start-line="130" selection-start-column="10" selection-end-line="130" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/routes/paymentRouter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="97" column="51" selection-start-line="97" selection-start-column="51" selection-end-line="97" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/checkout/tmpl/confirm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.769231">
+          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <marker date="1459877735807" expanded="true" signature="815:827" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/admin/AdminOrderController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sass/_chart.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.046428572">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/admin/tmpl/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/checkout/tmpl/modal/order-progress-modal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="16" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/checkout/tmpl/modal/update-cart-item.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/checkout/CheckoutController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="166" column="26" selection-start-line="166" selection-start-column="15" selection-end-line="166" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/checkout/tmpl/modal/address-modal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/app/tmpl/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.9615383">
+          <caret line="59" column="114" selection-start-line="59" selection-start-column="114" selection-end-line="59" selection-end-column="114" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sass/_application.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.8846154">
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/common/LoginController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sass/_admin_app.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.7454543">
+          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/views/index.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.226415">
-          <caret line="90" column="49" selection-start-line="90" selection-start-column="49" selection-end-line="90" selection-end-column="49" />
+        <state vertical-scroll-proportion="-7.981132">
+          <caret line="72" column="143" selection-start-line="72" selection-start-column="143" selection-end-line="72" selection-end-column="143" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/app/tmpl/side-menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.1923075">
+          <caret line="11" column="63" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/modules/admin/TaxController.js">
+    <entry file="file://$PROJECT_DIR$/client/modules/checkout/tmpl/checkout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="33" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="33" />
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/modules/common/HTTPInterceptor.js">
+    <entry file="file://$PROJECT_DIR$/client/modules/admin/tmpl/products.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.444445">
-          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+        <state vertical-scroll-proportion="7.923077">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/routes/dashboardRouter.js">
+    <entry file="file://$PROJECT_DIR$/client/modules/admin/tmpl/refunds.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60714287">
-          <caret line="50" column="201" selection-start-line="50" selection-start-column="201" selection-end-line="50" selection-end-column="201" />
+        <state vertical-scroll-proportion="-1.3846154">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/admin/tmpl/admin-side-menu-list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.53846157">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/admin/tmpl/admin-side-menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.807693">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/modules/admin/tmpl/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0609319">
+          <caret line="2" column="75" selection-start-line="2" selection-start-column="75" selection-end-line="2" selection-end-column="75" />
+          <folding>
+            <element signature="n#style#0;n#section#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

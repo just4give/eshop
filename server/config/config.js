@@ -43,21 +43,10 @@ module.exports = {
         apiContext:"http://localhost:4100",
         mail: {
             "smtp": "smtps://noreply.techfcous@gmail.com:Appstacksolutions@smtp.gmail.com",
-            "sender":"eShop <noreply.techfocus@gmail.com>",
-            "receiver":"eShop <noreply.techfocus@gmail.com>"
+            "sender":"eShop <noreply.techfcous@gmail.com>",
+            "receiver":"eShop <noreply.techfcous@gmail.com>"
         }
 
-
-    },
-    aws: {
-
-        rootPath: rootPath,
-        port: process.env.PORT || 3100,
-        host     : "localhost",
-        user     : "root",
-        password : "password",
-        database : "eshop",
-        connectionLimit: 50
 
     }
 }

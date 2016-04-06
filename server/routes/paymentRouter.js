@@ -45,13 +45,13 @@ router.post('/create', auth.requiresApiLogin,function(req, res,next) {
     if(req.body.paymentMethod === 'credit_card'){
         payment.payer.funding_instruments = [{
             "credit_card": {
-                "number": "4032035880663596",
-                "type": "visa",
-                "expire_month": 12,
-                "expire_year": 2020,
-                "cvv2": 111,
-                "first_name": "Joe",
-                "last_name": "Shopper"
+                "number": req.body.card.number,
+                "type": req.body.card.type,
+                "expire_month": req.body.card.expire_month,
+                "expire_year": req.body.card.expire_year,
+                "cvv2": req.body.card.cvv,
+                "first_name": req.body.card.first_name,
+                "last_name": req.body.card.last_name
             }
         }];
     }else{
@@ -95,10 +95,10 @@ router.post('/create', auth.requiresApiLogin,function(req, res,next) {
                       order.paymentId = data.id;
                       order.orderStatusId=1;
                       Order.create(order)
-                          .then(function(data){
-                              Cart.update({orderId: data.id, updatedAt:new Date()},{where: {id: {$in:order.cartIds}} })
+                          .then(function(newOrder){
+                              Cart.update({orderId: newOrder.id, updatedAt:new Date()},{where: {id: {$in:order.cartIds}} })
                                   .then(function(data){
-                                      res.json({paymentId: order.orderNumber, method:'credit_card'});
+                                      res.json({paymentId: newOrder.orderNumber, method:'credit_card'});
                                   },function(err){
                                       return next(err);
                                   })

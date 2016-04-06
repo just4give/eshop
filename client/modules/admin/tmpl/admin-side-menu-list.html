@@ -1,0 +1,40 @@
+<ul class="nav in" id="side-menu">
+
+    <li ui-sref-active="active">
+        <a ui-sref="admin.dashboard"  ng-click="$hide()"><i class="fa fa-line-chart fa-fw"></i> Dashboard</a>
+    </li>
+
+    <li ui-sref-active="active">
+        <a ui-sref="admin.orders" ng-click="$hide()"><i class="fa fa-shopping-bag fa-fw"></i> Orders <span class="badge badge-order " ng-bind="dashboard.newOrderCount"> </span></a>
+    </li>
+
+    <li ui-sref-active="active">
+        <a ui-sref="admin.products" ng-click="$hide()"><i class="fa fa-database fa-fw"></i> Products<span></span></a>
+    </li>
+
+    <li ui-sref-active="active">
+        <a ui-sref="admin.categories" ng-click="$hide()"><i class="fa fa-database fa-fw"></i> Categories<span></span></a>
+    </li>
+
+    <li ui-sref-active="active">
+        <a ui-sref="admin.merchandises" ng-click="$hide()"><i class="fa fa-cubes fa-fw"></i> Merchandises<span></span></a>
+    </li>
+
+    <li ui-sref-active="active">
+        <a ui-sref="admin.taxes" ng-click="$hide()"><i class="fa fa-calculator fa-fw"></i> Taxes</a>
+    </li>
+
+    <li ui-sref-active="active">
+        <a ui-sref="admin.shippings" ng-click="$hide()"><i class="fa fa-truck fa-fw"></i> Shipping</a>
+    </li>
+
+    <li ui-sref-active="active">
+        <a ui-sref="admin.refunds" ng-click="$hide()" ><i class="fa fa-money fa-fw"></i> Refunds <span class="text-danger badge"  ng-bind="dashboard.refundCount"> </span></a>
+    </li>
+    <li ui-sref-active="active">
+        <a ui-sref="admin.coupons" ng-click="$hide()"><i class="fa fa-bullhorn fa-fw"></i> Manage Coupons</a>
+    </li>
+
+
+
+</ul>

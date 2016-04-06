@@ -66,7 +66,8 @@
                                 <div class="row" style="margin-top:10px">
                                     <div class="heading col-xs-12">Card Number</div>
                                     <div class="text-box col-xs-12" ng-class="{ 'has-error': formCard.cardNumber.$invalid  }">
-                                      <input type="text" class="col-sm-6 col-xs-10" placeholder="16 digit credit card number" name="cardNumber" required ng-model="card.number" cc-number cc-eager-type >
+                                      <input type="text" class="col-sm-6 col-xs-10" placeholder="16 digit credit card number" name="cardNumber" required ng-model="card.number"
+                                             cc-number cc-eager-type cc-type="card.type">
 
                                     <span class="col-sm-offset-1 col-sm-2 col-xs-2">
                                         <i ng-show="formCard.cardNumber.$ccEagerType ==='MasterCard'" class="fa fa-cc-mastercard fa-fw fa-3x"></i>
@@ -86,7 +87,7 @@
                                             </div>
                                             <div class="col-xs-6" ng-class="{ 'has-error': formCard.year.$invalid  }"  style="padding-left: 0px">
                                                 <!--<input  class="col-xs-10" placeholder="YY"  required ng-model="card.expire_year" cc-exp-year name="year"/>-->
-                                                <select class="form-control" required ng-model="card.expire_year" name="year" ng-options="yr as yr for yr in years" cc-exp-year ></select>
+                                                <select class="form-control" required ng-model="card.expire_year" name="year" ng-options="m.value as m.label for m in years" cc-exp-year ></select>
                                             </div>
                                         </div>
                                     </div>
@@ -120,15 +121,17 @@
                             <tr><td><label>Item(s)</label></td><td ng-bind="cart.length"></td></tr>
                             <tr><td><label>Item(s) cost</label></td><td ng-bind="order.productCost | currency"></td></tr>
                             <tr><td><label>Tax</label></td><td ng-bind="order.tax | currency">$10</td></tr>
-                            <tr><td><label>Shipping and Handling</label></td><td ng-bind="order.shippingCost |currency"></td></tr>
+
                             <tr ng-show="order.discount>0"><td><label>Discount</label></td><td ng-bind="order.discount |currency" class="discount"><string></string></td></tr>
+                            <tr class="_bar"><td><label>Shipping and Handling</label></td><td ng-bind="order.shippingCost |currency"></td></tr>
                             <tr><td><label>Total</label></td><td class="total" ng-bind-template="{{order.productCost+order.tax+order.shippingCost-order.discount | currency}} ">$225</td></tr>
-                            <tr><td>Have any coupon?</td></tr>
-                            <tr>
-                                <td ><input type="text" ng-model="couponCode"> </td>
-                                <td ><button class="btn btn-default pull-left" ng-click="applyCoupon()">Apply</button> </td>
-                            </tr>
+
                         </table>
+                        <div class="row margin-bottom-20">
+                            <label class="col-xs-5">Have a promo code?</label>
+                            <div class="col-xs-3 "><input class="form-control" type="text" ng-model="couponCode"></div>
+                            <button class="btn btn-default col-xs-offset-1 col-xs-2" ng-click="applyCoupon()">Apply</button>
+                        </div>
 
                        <!-- <div class="row text-center margin-bottom-10" ng-show="orderPgIndc">
                             <i class="spinner"></i>
@@ -139,11 +142,15 @@
                         </div>-->
                         <div class="text-center margin-bottom-10 alert alert-danger" ng-show="apiEMessage" >
                             <!--<span class="text1"><strong>Order being processed...Please do not refresh the page or hit back</strong></span>-->
-                            <span  ng-bind="apiEMessage"><strong></strong></span>
+                            <span  ng-bind-html="apiEMessage"><strong></strong></span>
+                        </div>
+                        <div class="text-center margin-bottom-10 alert alert-success" ng-show="apiSMessage" >
+                            <!--<span class="text1"><strong>Order being processed...Please do not refresh the page or hit back</strong></span>-->
+                            <span  ng-bind="apiSMessage"><strong></strong></span>
                         </div>
                         <div class="text-center margin-bottom-20">
-                            <button class="btn btn-success btn-lg" ng-click="makePurchase()"   id="btn-confirm"
-                            ng-disabled="orderPgIndc || !order.addressId || !order.shippingId || !paymentMethod || (paymentMethod==='credit_card' && formCard.$invalid)" >Make Payment</button>
+                            <button class="btn btn-success btn-lg btn-block" ng-click="makePurchase()"   id="btn-confirm"
+                            ng-disabled="orderPgIndc || !order.addressId || !order.shippingId || !paymentMethod || (paymentMethod==='credit_card' && formCard.$invalid)" ><i class="fa fa-lock"></i> Make Payment</button>
 
                         </div>
                     </div>
