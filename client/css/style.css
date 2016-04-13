@@ -244,7 +244,7 @@ input::-webkit-inner-spin-button {
     background-color: white; }
 
 body {
-  font-family: 'Avenir Next', sans-serif;
+  font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 300;
   color: black;
   padding-top: 80px; }
@@ -1458,10 +1458,16 @@ NAV
 .aside {
   background-color: black; }
   .aside .side-menu li > a {
-    font-size: large;
     font-weight: normal;
     line-height: 35px;
     color: rgba(255, 255, 255, 0.82); }
+
+.aside-admin {
+  background-color: #333333; }
+  .aside-admin .aside-dialog .aside-header {
+    background-color: #555; }
+  .aside-admin .aside-body .nav > li > a {
+    color: white; }
 
 /*!
  * Start Bootstrap - SB Admin 2 Bootstrap Admin Theme (http://startbootstrap.com)

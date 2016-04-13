@@ -6,11 +6,27 @@
   background-color: black;
   .side-menu{
     li>a{
-      font-size: large;
+      //font-size: large;
       font-weight: normal;
       line-height: 35px;
       color: rgba(255, 255, 255, 0.82);
 
+    }
+  }
+}
+
+.aside-admin{
+  background-color: #333333;
+
+  .aside-dialog {
+    .aside-header {
+
+      background-color: #555;
+    }
+  }
+  .aside-body{
+    .nav>li>a{
+      color: white;
     }
   }
 }

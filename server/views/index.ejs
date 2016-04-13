@@ -6,8 +6,8 @@
     <meta name="description" content="Online shopping cart website, a product by AppStackSolutions.com">
     <meta name="author" content="AppStackSolutions.com">
     <title ng-bind-template="{{viewTitle}} - AppStackSolutions.com">AppStackSolutions.com</title>
-   <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!--<link href="vendor/angular-chart.js/dist/angular-chart.min.css" rel="stylesheet" >-->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -46,12 +46,12 @@
           <div class="input-group ">
             <input type="text" class="form-control" placeholder="Search for..." ng-model="search.query">
             <span class="input-group-btn">
-              <button class="btn btn-default" type="button"  ui-sref="search({query: search.query })"><i class="fa fa-search"></i></button>
+              <button class="btn btn-default" type="button"   ui-sref="search({query: search.query })"><i class="fa fa-search"></i></button>
             </span>
           </div><!-- /input-group -->
         </form>
 
-        <div class="col-xs-6 col-sm-3 " style="line-height: 40px">
+        <div class="col-xs-6 col-sm-3 " style="line-height: 40px; text-align: right">
           <a class="link cart visible-xs pull-left"><i class="fa fa-search fa-lg" ng-click="openSearchModal()"></i></a>
 
           <a class="link cart" ui-sref="cart"><i class="fa fa-shopping-bag fa-2x"><span class="badge" ng-bind="cart? cart.length:0"> </span></i>
@@ -70,7 +70,7 @@
                 bs-aside="aside" data-container="body">
               <i class=" fa fa-user fa-2x"></i>
             </a>
-            <a  ng-click="$hide()" ng-show="loggedIn && user.roles.indexOf('admin')!= -1" data-template-url="modules/admin/tmpl/admin-side-menu.html"
+            <a  class="link visible-xs text-success pull-right"  style="margin-left: 10px" ng-click="$hide();loadDashaboard()" ng-show="loggedIn && user.roles.indexOf('admin')!= -1" data-template-url="modules/admin/tmpl/admin-side-menu.html"
                 data-placement="left"  data-animation="am-slide-left"
                 bs-aside="aside" data-container="body"><i class="fa fa-cog fa-2x"></i> </a>
 
@@ -91,6 +91,7 @@
       </div>
 
     </header>
+
     <div id="progress-spinner"  ng-show="pspinner"><i class="spinner"></i></div>
     <toaster-container></toaster-container>
     <div ui-view class=" page-view"  ></div>

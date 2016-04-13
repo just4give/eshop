@@ -2,8 +2,9 @@
  * Created by Mithun.Das on 12/4/2015.
  */
 appModule.controller("loginController",["$window","$scope","$rootScope","$log","$modal", "$interval","$timeout",
-    "$state","UserService","localStorageService","OrderService","UserCart","$stateParams","$location","Facebook",
-    function($window,$scope,$rootScope,$log,$modal,$interval,$timeout,$state,UserService,localStorageService,OrderService,UserCart,$stateParams,$location,Facebook){
+    "$state","UserService","localStorageService","OrderService","UserCart","$stateParams","$location","Facebook","DashboardService",
+    function($window,$scope,$rootScope,$log,$modal,$interval,$timeout,$state,UserService,localStorageService,OrderService,
+             UserCart,$stateParams,$location,Facebook,DashboardService){
 
     $log.debug('initializing login controller');
     $log.debug($rootScope.bootstrappedUser);
@@ -51,6 +52,9 @@ appModule.controller("loginController",["$window","$scope","$rootScope","$log","
 
     $scope.openSearchModal = function(){
         modal = $modal({scope: $scope, templateUrl: 'tmpl.search.modal.html', show: true});
+    }
+    $scope.loadDashaboard = function(){
+        DashboardService.getDashboard();
     }
     $scope.submitLogin = function(){
         $scope.showLoginErr ='';
@@ -278,9 +282,9 @@ appModule.controller("loginController",["$window","$scope","$rootScope","$log","
 
         }
 
-      /*  $rootScope.search = function(query){
-            $state.go("search",{query: query});
-        }*/
+        $rootScope.submitSearch = function(){
+            $state.go("search",{query: $rootScope.search.query});
+        }
 }]);
 
 

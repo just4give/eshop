@@ -39,12 +39,12 @@ orderStatus.sync().then(function(){
         .then(function(data){
             if(data.length==0){
 
-                return orderStatus.create({
-                    id:1,
-                    code: 'ordered',
-                    label:'Ordered',
-                    active:true
-                });
+                return orderStatus.bulkCreate([
+                    {id:1,code: 'ordered',label:'Ordered',active:true},
+                    {id:2,code: 'prep',label:'Preparing Shipment',active:true},
+                    {id:3,code: 'ready',label:'Ready to Ship',active:true},
+                    {id:4,code: 'shipped',label:'Shipped',active:true},
+                    {id:5,code: 'cancel',label:'Cancelled',active:true}]);
             }
 
         });

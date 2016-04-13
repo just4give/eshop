@@ -5,7 +5,7 @@ appModule.controller("AdminOrderController",["$scope","$rootScope","$log","$moda
     "UserCart","OrderStatus","OrderTracking",
     function($scope,$rootScope,$log,$modal,$state,$interval,OrderService,toaster,UserCart,OrderStatus,OrderTracking){
 
-        $scope.recordsPerPage = 3;
+        $scope.recordsPerPage = 5;
         $scope.pagination = {current: 1};
 
         $scope.ordSearch ={};

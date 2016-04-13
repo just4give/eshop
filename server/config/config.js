@@ -45,6 +45,11 @@ module.exports = {
             "smtp": "smtps://noreply.techfcous@gmail.com:Appstacksolutions@smtp.gmail.com",
             "sender":"eShop <noreply.techfcous@gmail.com>",
             "receiver":"eShop <noreply.techfcous@gmail.com>"
+        },
+        s3:{
+            enabled: true,
+            org_bucket: "eshop.original.bucket.2",
+            thumb_bucket:"eshop.thumb.bucket.2"
         }
 
 

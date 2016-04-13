@@ -34,7 +34,7 @@ router.post('/create', auth.requiresApiLogin,function(req, res,next) {
         },
         "transactions": [{
             "amount": {
-                "total": "8.00",
+                "total": order.finalCost,
                 "currency": "USD"
             },
             "description": "eShop payment",

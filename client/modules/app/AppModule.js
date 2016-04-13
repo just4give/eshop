@@ -30,21 +30,17 @@ appModule.run(["$interval","localStorageService","$rootScope", "RzSliderOptions"
             }
         })
 
+        $rootScope.$watch('viewTitle', function(newValue, oldValue){
+            console.log("viewTitle changed from ", oldValue, " to ", newValue);
+            if(!newValue){
+                $rootScope.viewTitle = oldValue;
+            }
+        })
+
 //create a new instance
     new WOW().init();
 
-    $rootScope.$on('$routeChangeStart', function (next, current) {
-        //when the view changes sync wow
-        new WOW().sync();
-    });
 
-    $rootScope.$on('$stateChangeStart', function (event, toState) {
-
-    });
-
-    $rootScope.$on('$locationChangeSuccess', function(e) {
-
-    });
 
 
     $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
